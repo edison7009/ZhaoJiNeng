@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>找技能 — 龙虾OpenClaw中文技能库</title>
+  <title>全部技能 — 找技能 · 龙虾OpenClaw中文技能库</title>
   <link rel="icon" href="./ico.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +55,7 @@
       overflow-x: hidden;
     }
 
-    /* Brand watermark - ico.png as blurred ghost background */
+    /* Brand watermark */
     .brand-watermark {
       position: fixed;
       top: 50%;
@@ -70,7 +70,6 @@
       z-index: 1;
     }
 
-    /* Ambient Blobs for Premium Feel (SkillHub Style) */
     .bg-blob {
       position: absolute;
       border-radius: 50%;
@@ -103,7 +102,7 @@
       position: relative;
     }
 
-    /* Pill-shaped Navigation */
+    /* Navigation */
     .nav-wrapper {
       position: fixed;
       top: 24px;
@@ -139,7 +138,7 @@
       color: #111111;
       font-size: 18px;
       font-weight: 700;
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
       letter-spacing: 0px;
     }
 
@@ -220,261 +219,62 @@
       transform: scale(0.96);
     }
 
-    /* iOS 风格 Hero */
-    .hero {
-      padding: 180px 0 100px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-      max-width: 1060px;
+    /* Page header */
+    .page-header {
+      padding: 120px 0 40px;
+      max-width: 980px;
       margin: 0 auto;
     }
 
-    .hero-content {
-      flex: 1.1;
-      max-width: 540px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      background: #fff;
-      color: #4e5969;
-      border: 1px solid transparent;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 28px;
-    }
-
-    .hero-badge svg {
-      color: var(--accent-color);
-      width: 14px;
-      height: 14px;
-    }
-
-    .hero-title {
-      font-size: 64px;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
-      color: #111;
-    }
-
-    .hero-title span {
-      background: linear-gradient(90deg, #D94025 0%, #f5734a 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-desc {
-      font-size: 16px;
-      color: #4e5969;
-      margin-bottom: 48px;
-      line-height: 1.6;
-      font-weight: 400;
-      max-width: 480px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 28px;
-      font-size: 15px;
-      font-weight: 600;
-      border-radius: 9999px;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: #D94025;
-      color: #fff;
-      border: none;
-      box-shadow: 0 8px 20px rgba(217, 64, 37, 0.2);
-    }
-
-    .btn-primary:hover {
-      opacity: 0.9;
-      box-shadow: 0 8px 24px rgba(217, 64, 37, 0.3);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: #fff;
-      color: #D94025;
-      border: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-left: 16px;
-    }
-
-    .btn-secondary:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    /* Hero 卡片展示 */
-    .hero-card {
-      flex: 0.9;
-      max-width: 420px;
-      position: relative;
-    }
-
-    .mock-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(40px) saturate(180%);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
-      border: 1px solid #fff;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.05);
-    }
-
-    .role-tabs {
-      display: flex;
-      gap: 4px;
-      background: #f2f3f5;
-      padding: 4px;
-      border-radius: 12px;
-      width: 100%;
-      margin: 0 0 24px 0;
-      border: none;
-      box-shadow: none;
-      backdrop-filter: none;
-    }
-
-    .role-tab {
-      flex: 1;
-      padding: 10px 0;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #86909c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-    }
-
-    .role-tab.active {
-      background: #fff;
-      color: #111;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .card-tip {
-      font-size: 14px;
-      color: #4e5969;
-      margin-bottom: 16px;
-      font-weight: 500;
-    }
-
-    .card-code {
-      background: #f2f3f5;
-      border-radius: 12px;
-      padding: 16px;
-      font-family: -apple-system, monospace;
-      font-size: 13px;
-      color: #111;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .card-code span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      user-select: all;
-    }
-
-    .card-copy {
-      background: rgba(0, 0, 0, 0.05);
-      border: none;
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 13px;
-      color: #4e5969;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }
-
-    .card-copy:hover {
-      background: rgba(0, 0, 0, 0.08);
-      color: #111;
-    }
-
-    /* List Area */
-    .section-header {
-      margin-top: 20px;
-      margin-bottom: 24px;
-      text-align: left;
-      max-width: 980px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .header-tags {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .htag {
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .htag-blue {
-      background: #fff1f0;
-      color: #D94025;
-    }
-
-    .htag-orange {
-      background: #fff2e8;
-      color: #fa541c;
-    }
-
-    .htag-green {
-      background: #f6ffed;
-      color: #52c41a;
-    }
-
-    .section-title {
-      font-size: 32px;
+    .page-header h1 {
+      font-size: 36px;
       font-weight: 800;
       letter-spacing: -0.5px;
-      margin-bottom: 12px;
-      color: #111;
+      margin-bottom: 8px;
     }
 
-    .section-subtitle {
+    .page-header p {
       font-size: 15px;
       color: #86909c;
       font-weight: 400;
     }
 
+    /* Category tabs */
+    .category-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      max-width: 980px;
+      margin: 0 auto 24px;
+    }
+
+    .cat-tab {
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+
+    .cat-tab:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .cat-tab.active {
+      background: var(--accent-color);
+      color: #fff;
+      border-color: var(--accent-color);
+      box-shadow: 0 4px 12px rgba(217, 64, 37, 0.25);
+    }
+
+    /* Ranking container */
     .ranking-container {
       background: var(--card-bg);
       border-radius: 24px;
@@ -513,9 +313,10 @@
 
     .search-box input:focus {
       border-color: var(--accent-color);
-      box-shadow: 0 0 0 4px rgba(0, 82, 217, 0.1);
+      box-shadow: 0 0 0 4px rgba(217, 64, 37, 0.1);
     }
 
+    /* Skill items */
     .ranking-item {
       display: flex;
       align-items: center;
@@ -541,17 +342,9 @@
       flex-shrink: 0;
     }
 
-    .rank-num.top-1 {
-      color: #f5222d;
-    }
-
-    .rank-num.top-2 {
-      color: #fa541c;
-    }
-
-    .rank-num.top-3 {
-      color: #fa8c16;
-    }
+    .rank-num.top-1 { color: #f5222d; }
+    .rank-num.top-2 { color: #fa541c; }
+    .rank-num.top-3 { color: #fa8c16; }
 
     .rank-icon {
       width: 56px;
@@ -564,7 +357,6 @@
       font-size: 20px;
       margin-right: 20px;
       flex-shrink: 0;
-      /* 通过行内样式去补充阴影发光，这里只做基础过渡 */
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
@@ -626,7 +418,7 @@
       color: #fa8c16;
     }
 
-    /* Modal iOS 风格 */
+    /* Modal */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -705,7 +497,6 @@
       justify-content: center;
       font-size: 32px;
       font-weight: 800;
-      /* 也会通过 js 带入色彩阴影 */
     }
 
     .m-title {
@@ -798,7 +589,6 @@
       padding-bottom: 60px;
     }
 
-    /* Empty state */
     .empty-state {
       text-align: center;
       padding: 80px 20px;
@@ -812,99 +602,6 @@
       font-weight: 600;
     }
 
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        padding: 140px 0 40px;
-        text-align: center;
-        gap: 40px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-card {
-        width: 100%;
-        padding: 0 16px;
-      }
-
-      .ranking-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-        position: relative;
-        padding: 20px;
-      }
-
-      .rank-icon {
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 8px;
-      }
-
-      .rank-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .rank-num {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        text-align: right;
-        width: auto;
-        font-size: 20px;
-      }
-
-      .rank-stats {
-        margin-left: 0;
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      .m-header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .m-tags {
-        justify-content: center;
-      }
-    }
-
-    /* Toast notification */
-    .toast {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      background: #333;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      pointer-events: none;
-      z-index: 999;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Pagination */
     /* Skeleton loading */
     .skeleton-item {
       display: flex;
@@ -960,15 +657,8 @@
     }
 
     @keyframes skeleton-pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.4;
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     .load-end {
@@ -1000,14 +690,92 @@
       pointer-events: none;
       z-index: 900;
     }
+
     .back-top.show {
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
     }
+
     .back-top:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(217, 64, 37, 0.4);
+    }
+
+    /* Result count */
+    .result-count {
+      text-align: right;
+      padding: 12px 32px 0;
+      font-size: 13px;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .page-header {
+        padding: 120px 16px 32px;
+      }
+
+      .page-header h1 {
+        font-size: 28px;
+      }
+
+      .category-tabs {
+        padding: 0 16px;
+        gap: 6px;
+      }
+
+      .cat-tab {
+        padding: 6px 14px;
+        font-size: 13px;
+      }
+
+      .ranking-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        position: relative;
+        padding: 20px;
+      }
+
+      .rank-icon {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 8px;
+      }
+
+      .rank-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .rank-num {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        text-align: right;
+        width: auto;
+        font-size: 20px;
+      }
+
+      .rank-stats {
+        margin-left: 0;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .m-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .m-tags {
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -1021,18 +789,18 @@
   <!-- Navbar -->
   <div class="nav-wrapper">
     <nav class="navbar">
-      <a href="#" class="nav-logo">
+      <a href="./" class="nav-logo">
         <img src="./ico.png" alt="找技能">
         <span>找技能</span>
       </a>
       <div class="nav-links">
-        <a href="#" class="active">官方推荐</a>
-        <a href="./all.html">全部技能</a>
+        <a href="./">官方推荐</a>
+        <a href="./all.html" class="active">全部技能</a>
         <a href="https://echobird.ai/" target="_blank" style="display:flex;align-items:center;">一键安装OpenClaw<span
             class="badge-soon">推荐</span></a>
         <a href="https://echobird.ai/" target="_blank">完美卸载OpenClaw</a>
       </div>
-      <button class="nav-search-btn">
+      <button class="nav-search-btn" onclick="document.getElementById('searchInput').focus();window.scrollTo({top:200,behavior:'smooth'})">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
@@ -1043,92 +811,56 @@
   </div>
 
   <div class="container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <div class="hero-badge">
-          🦞
-          为中国龙虾养殖户打造中文 Skills 社区
-        </div>
-        <h1 class="hero-title">养龙虾的第一步，<br>先来<span>找技能！</span></h1>
-        <p class="hero-desc">
-          精选推荐，高速下载体验，轻松查找 ClawHub 1.3万 个 AI Skills
-        </p>
-        <div class="hero-buttons">
-          <a href="#explore" class="btn btn-primary">查看精选榜单</a>
-          <a href="#" class="btn btn-secondary">探索全部技能</a>
-        </div>
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>🦞 全部 AI Skills</h1>
+      <p>浏览 ClawHub 生态中的所有 AI 技能，支持分类筛选与搜索</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="category-tabs">
+      <button class="cat-tab active" data-cat="all">全部</button>
+      <button class="cat-tab" data-cat="AI智能">AI 智能</button>
+      <button class="cat-tab" data-cat="开发工具">开发工具</button>
+      <button class="cat-tab" data-cat="效率提升">效率提升</button>
+      <button class="cat-tab" data-cat="数据分析">数据分析</button>
+      <button class="cat-tab" data-cat="内容创作">内容创作</button>
+      <button class="cat-tab" data-cat="安全合规">安全合规</button>
+      <button class="cat-tab" data-cat="通讯协作">通讯协作</button>
+    </div>
+
+    <!-- Skills List -->
+    <div class="ranking-container">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"
+          style="color:var(--text-tertiary)">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input type="text" id="searchInput" placeholder="搜索技能名称或功能描述（支持中英文）...">
       </div>
-      <div class="hero-card">
-        <div class="mock-card">
-          <div class="role-tabs">
-            <button class="role-tab active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
-                <rect x="9" y="9" width="6" height="6" />
-              </svg> 我是 Agent</button>
-            <button class="role-tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg> 我是 Human</button>
+
+      <div class="result-count" id="resultCount"></div>
+
+      <div id="skillsList">
+        <div class="empty-state">
+          <div
+            style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: var(--accent-color); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px;">
           </div>
-          <p class="card-tip">将此提示发送给你的Agent，以安装ZhaoJiNeng CLI</p>
-          <div class="card-code">
-            <span>curl -fsSL https://zhaojineng.com/install.sh | bash</span>
-            <button class="card-copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-              </svg> 复制</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Data List Area -->
-    <section id="explore">
-      <div class="section-header">
-        <div class="header-tags">
-          <span class="htag htag-blue">★ 官方认证推荐</span>
-          <span class="htag htag-orange">⚡ 加速下载</span>
-          <span class="htag htag-green">✓ 安全审计</span>
-        </div>
-        <h2 class="section-title" id="sectionTitle">精选技能 Top 50</h2>
-        <p class="section-subtitle">从 ClawHub 生态中精选最值得安装的 50 个 AI Skills，国内直连镜像，一键加速安装。</p>
-      </div>
-
-      <div class="ranking-container">
-        <div class="search-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"
-            style="color:var(--text-tertiary)">
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
-          <input type="text" id="searchInput" placeholder="搜索技能名称或功能描述（支持中英文）...">
-        </div>
-
-        <div id="skillsList">
-          <div class="empty-state">
-            <div
-              style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: var(--accent-color); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px;">
-            </div>
-            <h3>正在同步最新技能数据...</h3>
-            <style>
-              @keyframes spin {
-                to {
-                  transform: rotate(360deg);
-                }
+          <h3>正在同步最新技能数据...</h3>
+          <style>
+            @keyframes spin {
+              to {
+                transform: rotate(360deg);
               }
-            </style>
-          </div>
+            }
+          </style>
         </div>
-        <div id="scrollSentinel"></div>
       </div>
-    </section>
+      <div id="scrollSentinel"></div>
+    </div>
   </div>
 
-  <div class="toast" id="toast">✅ 已复制到剪贴板</div>
   <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
@@ -1182,10 +914,8 @@
   </div>
 
   <script>
-    // 读取同目录下的 skills.json（部署到 Cloudflare Pages / GitHub Pages 后自动生效）
     const API_URL = './skills.json';
     const BATCH_SIZE = 8;
-    const MAX_ITEMS = 50;
     let allSkills = [];
     let filteredSkills = [];
     let loadedCount = 0;
@@ -1203,13 +933,33 @@
     function getInitials(name) {
       return (name || 'SK').substring(0, 2).toUpperCase();
     }
+
+    function getColor(name) {
+      if (!name) return colorPalette[0];
+      const charCode = name.charCodeAt(0) + (name.charCodeAt(1) || 0);
+      return colorPalette[charCode % colorPalette.length];
+    }
+
+    function formatNumber(num) {
+      if (!num) return '0';
+      if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+      return num.toLocaleString();
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
     function renderItem(skill, globalIndex) {
       const c = getColor(skill.name);
       const isSearch = document.getElementById('searchInput').value;
       const rankClass = globalIndex < 3 && currentCategory === 'all' && !isSearch ? `top-${globalIndex + 1}` : '';
       const rankDisplay = isSearch ? '-' : (globalIndex + 1);
-      const desc = skill.description_zh || skill.description || '暂无详细描述';
-      const tag = Array.isArray(skill.tags) ? (skill.tags[0] || '综合增强') : (skill.tags || '综合增强').toString().split(',')[0];
+      const desc = skill.description_zh || skill.description || 'No description available';
+      const tag = Array.isArray(skill.tags) ? (skill.tags[0] || 'General') : (skill.tags || 'General').toString().split(',')[0];
       return `
         <div class="ranking-item" data-id="${escapeHtml(skill.slug)}">
           <div class="rank-num ${rankClass}">${rankDisplay}</div>
@@ -1254,7 +1004,6 @@
       const sentinel = document.getElementById('scrollSentinel');
       const batch = Math.min(BATCH_SIZE, remaining);
 
-      // Show skeleton
       sentinel.innerHTML = skeletonHTML(batch);
 
       setTimeout(() => {
@@ -1270,9 +1019,8 @@
         container.appendChild(fragment);
         loadedCount += batch;
 
-        // Clear skeleton, show end message if done
         if (loadedCount >= filteredSkills.length) {
-          sentinel.innerHTML = '<div class="load-end">— 已展示全部精选技能 —</div>';
+          sentinel.innerHTML = `<div class="load-end">— All ${filteredSkills.length} skills loaded —</div>`;
         } else {
           sentinel.innerHTML = '';
         }
@@ -1280,38 +1028,24 @@
       }, 300);
     }
 
-    function getColor(name) {
-      if (!name) return colorPalette[0];
-      const charCode = name.charCodeAt(0) + (name.charCodeAt(1) || 0);
-      return colorPalette[charCode % colorPalette.length];
-    }
-
-    function formatNumber(num) {
-      if (!num) return '0';
-      if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
-      return num.toLocaleString();
-    }
-
-    function escapeHtml(str) {
-      return String(str || '')
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-    }
+    const catKeywords = {
+      'AI智能': ['ai', 'llm', 'chat', 'model', 'gpt', 'agent', 'prompt', 'embedding', 'neural', 'ml', 'deep-learning'],
+      '开发工具': ['dev', 'code', 'git', 'api', 'deploy', 'debug', 'test', 'docker', 'build', 'compiler', 'ide', 'lint'],
+      '效率提升': ['productivity', 'work', 'tool', 'automat', 'workflow', 'task', 'schedule', 'note', 'organiz'],
+      '数据分析': ['data', 'analytics', 'sql', 'search', 'database', 'chart', 'visualiz', 'statist', 'query', 'csv'],
+      '内容创作': ['content', 'write', 'blog', 'article', 'copy', 'generat', 'image', 'video', 'design', 'creative', 'markdown'],
+      '安全合规': ['security', 'safe', 'auth', 'encrypt', 'compliance', 'audit', 'protect', 'vulnerab', 'firewall', 'ssl'],
+      '通讯协作': ['communic', 'collaborat', 'chat', 'messag', 'email', 'slack', 'team', 'meeting', 'notify', 'webhook']
+    };
 
     function applyFilters() {
       let filtered = allSkills;
 
       if (currentCategory !== 'all') {
-        const catMap = {
-          'AI智能': ['ai', 'llm', 'chat', 'model'],
-          '开发工具': ['dev', 'code', 'git', 'api', 'deploy'],
-          '效率提升': ['productivity', 'work', 'tool'],
-          '数据分析': ['data', 'analytics', 'sql', 'search']
-        };
-        const keywords = catMap[currentCategory] || [];
+        const keywords = catKeywords[currentCategory] || [];
         filtered = filtered.filter(s => {
-          const text = ((s.tags || '') + ' ' + (s.name || '')).toLowerCase();
+          const tagText = Array.isArray(s.tags) ? s.tags.join(' ') : (s.tags || '');
+          const text = (tagText + ' ' + (s.name || '') + ' ' + (s.description || '')).toLowerCase();
           return keywords.some(k => text.includes(k));
         });
       }
@@ -1322,17 +1056,15 @@
           const text = ((s.name || '') + ' ' + (s.description_zh || '') + ' ' + (s.description || '')).toLowerCase();
           return text.includes(q);
         });
-        document.getElementById('sectionTitle').textContent = '搜索结果';
-      } else {
-        document.getElementById('sectionTitle').textContent = currentCategory === 'all' ? '精选技能 Top 50' : currentCategory + ' 技能';
       }
 
       filtered.sort((a, b) => (b.score || b.downloads || 0) - (a.score || a.downloads || 0));
 
-      filteredSkills = filtered.slice(0, MAX_ITEMS);
+      filteredSkills = filtered;
       loadedCount = 0;
       document.getElementById('skillsList').innerHTML = '';
       document.getElementById('scrollSentinel').innerHTML = '';
+      document.getElementById('resultCount').textContent = `共 ${filteredSkills.length} 个技能`;
 
       if (filteredSkills.length === 0) {
         document.getElementById('skillsList').innerHTML = `
@@ -1386,15 +1118,15 @@
       mIcon.textContent = getInitials(skill.name);
       mIcon.style.background = c.bg;
       mIcon.style.color = c.text;
-      mIcon.style.boxShadow = `0 12px 32px ${c.bg}`; /* 弹窗大光晕 */
+      mIcon.style.boxShadow = `0 12px 32px ${c.bg}`;
 
       document.getElementById('mTitle').textContent = skill.name;
-      document.getElementById('mVersion').textContent = `v${skill.version || '1.0.0'} · ${skill.updated_at ? new Date(skill.updated_at).toLocaleDateString() : '最近更新'}`;
+      document.getElementById('mVersion').textContent = `v${skill.version || '1.0.0'} · ${skill.updated_at ? new Date(skill.updated_at).toLocaleDateString() : 'Recently updated'}`;
 
       const tags = Array.isArray(skill.tags) ? skill.tags : (skill.tags || 'General').toString().split(',');
       document.getElementById('mTags').innerHTML = tags.map(t => `<span class="rank-tag" style="background:${c.bg};color:${c.text}">${escapeHtml(t.trim())}</span>`).join('');
 
-      document.getElementById('mDesc').textContent = skill.description_zh || skill.description || '暂无描述信息';
+      document.getElementById('mDesc').textContent = skill.description_zh || skill.description || 'No description available';
 
       document.getElementById('mStars').textContent = formatNumber(skill.stars);
       document.getElementById('mDownloads').textContent = formatNumber(skill.downloads);
@@ -1416,31 +1148,18 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
     // Events
-    document.getElementById('searchInput').addEventListener('input', () => { setTimeout(applyFilters, 300); });
+    let searchTimer;
+    document.getElementById('searchInput').addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(applyFilters, 300);
+    });
 
-    document.querySelectorAll('.cat-btn').forEach(btn => {
+    document.querySelectorAll('.cat-tab').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentCategory = btn.dataset.cat;
         applyFilters();
-      });
-    });
-
-    document.querySelectorAll('.role-tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.role-tab').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-
-    // Copy button
-    document.querySelector('.card-copy').addEventListener('click', () => {
-      const text = document.querySelector('.card-code span').textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
       });
     });
 
