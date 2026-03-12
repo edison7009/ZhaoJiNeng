@@ -1213,8 +1213,19 @@
       if (entries[0].isIntersecting && !isLoading && loadedCount < filteredSkills.length) {
         loadMore();
       }
-    }, { rootMargin: '200px' });
+    }, { rootMargin: '2000px' });
     scrollObserver.observe(document.getElementById('scrollSentinel'));
+
+    // Fallback scroll listener for scaled viewport
+    window.addEventListener('scroll', () => {
+      if (!isLoading && loadedCount < filteredSkills.length) {
+        const sentinel = document.getElementById('scrollSentinel');
+        const rect = sentinel.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 500) {
+          loadMore();
+        }
+      }
+    });
 
     async function initData() {
       try {
