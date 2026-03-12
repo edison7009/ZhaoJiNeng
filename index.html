@@ -1126,7 +1126,7 @@
         const rankClass = index < 3 && currentCategory === 'all' && !document.getElementById('searchInput').value ? `top-${index + 1}` : '';
         const rankDisplay = document.getElementById('searchInput').value ? '-' : (index + 1);
         const desc = skill.description_zh || skill.description || '暂无详细描述';
-        const tag = (skill.tags || '综合增强').split(',')[0];
+        const tag = Array.isArray(skill.tags) ? (skill.tags[0] || '综合增强') : (skill.tags || '综合增强').toString().split(',')[0];
 
         return `
           <div class="ranking-item" data-id="${escapeHtml(skill.slug)}">
