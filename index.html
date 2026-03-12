@@ -657,8 +657,6 @@
       transform: translateY(40px) scale(0.95);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: var(--shadow-lg);
-      max-height: 90vh;
-      overflow-y: auto;
     }
 
     .modal-overlay.open .modal-content {
@@ -1256,40 +1254,31 @@
       <div class="m-install">
         <h3 class="m-install-title">安装方式</h3>
         <div class="m-install-tabs">
-          <button class="m-tab active" data-panel="agent">🤖 Agent</button>
-          <button class="m-tab" data-panel="human">👤 Human</button>
+          <button class="m-tab active" data-panel="agent">我是 Agent</button>
+          <button class="m-tab" data-panel="human">我是 Human</button>
         </div>
 
         <div class="m-panel" id="panelAgent">
-          <p class="m-panel-tip">Copy this command and send it to your AI Agent to install:</p>
+          <p class="m-panel-tip">复制以下命令发送给你的 AI Agent 即可安装：</p>
           <div class="m-cmd">
             <code id="mAgentCmd">zhaojineng install skill-name</code>
-            <button class="m-cmd-copy" onclick="copyCmd('mAgentCmd')">📋 Copy</button>
+            <button class="m-cmd-copy" onclick="copyCmd('mAgentCmd')">复制</button>
           </div>
         </div>
 
         <div class="m-panel" id="panelHuman" style="display:none">
-          <p class="m-panel-tip">Step 1: Install ZhaoJiNeng CLI</p>
+          <p class="m-panel-tip">第一步：安装找技能 CLI</p>
           <div class="m-cmd">
             <code>curl -fsSL https://zhaojineng.com/install.sh | bash</code>
-            <button class="m-cmd-copy" onclick="copyCmd(this.previousElementSibling)">📋 Copy</button>
+            <button class="m-cmd-copy" onclick="copyCmd(this.previousElementSibling)">复制</button>
           </div>
-          <p class="m-panel-tip" style="margin-top:12px">Step 2: Install skill</p>
+          <p class="m-panel-tip" style="margin-top:12px">第二步：安装技能</p>
           <div class="m-cmd">
             <code id="mHumanCmd">zhaojineng install skill-name</code>
-            <button class="m-cmd-copy" onclick="copyCmd('mHumanCmd')">📋 Copy</button>
+            <button class="m-cmd-copy" onclick="copyCmd('mHumanCmd')">复制</button>
           </div>
         </div>
       </div>
-
-      <a href="#" id="mLink" class="m-action" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-          <polyline points="15 3 21 3 21 9" />
-          <line x1="10" y1="14" x2="21" y2="3" />
-        </svg>
-        View on ClawHub
-      </a>
     </div>
   </div>
 
