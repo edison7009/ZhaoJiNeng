@@ -914,38 +914,100 @@
       border-bottom: 1px solid var(--border-color);
       animation: skeleton-pulse 1.5s ease-in-out infinite;
     }
+
     .skeleton-item .sk-rank {
-      width: 28px; height: 20px;
-      background: #e8e8e8; border-radius: 6px;
+      width: 28px;
+      height: 20px;
+      background: #e8e8e8;
+      border-radius: 6px;
     }
+
     .skeleton-item .sk-icon {
-      width: 48px; height: 48px;
-      background: #e8e8e8; border-radius: 14px; flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: #e8e8e8;
+      border-radius: 14px;
+      flex-shrink: 0;
     }
+
     .skeleton-item .sk-content {
-      flex: 1; display: flex; flex-direction: column; gap: 8px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
+
     .skeleton-item .sk-title {
-      width: 45%; height: 18px;
-      background: #e8e8e8; border-radius: 6px;
+      width: 45%;
+      height: 18px;
+      background: #e8e8e8;
+      border-radius: 6px;
     }
+
     .skeleton-item .sk-desc {
-      width: 80%; height: 14px;
-      background: #e8e8e8; border-radius: 6px;
+      width: 80%;
+      height: 14px;
+      background: #e8e8e8;
+      border-radius: 6px;
     }
+
     .skeleton-item .sk-stats {
-      width: 80px; height: 16px;
-      background: #e8e8e8; border-radius: 6px; flex-shrink: 0;
+      width: 80px;
+      height: 16px;
+      background: #e8e8e8;
+      border-radius: 6px;
+      flex-shrink: 0;
     }
+
     @keyframes skeleton-pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
     }
+
     .load-end {
       text-align: center;
       padding: 24px;
       color: var(--text-tertiary);
       font-size: 13px;
+    }
+
+    /* Back to top */
+    .back-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(217, 64, 37, 0.3);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s;
+      pointer-events: none;
+      z-index: 900;
+    }
+    .back-top.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(217, 64, 37, 0.4);
     }
   </style>
 </head>
@@ -988,7 +1050,7 @@
           🦞
           为中国龙虾养殖户打造中文 Skills 社区
         </div>
-        <h1 class="hero-title">AI 安装中文技能，<br>就上<span>找技能！</span></h1>
+        <h1 class="hero-title">养龙虾的第一步，<br>先来<span>找技能！</span></h1>
         <p class="hero-desc">
           精选推荐，高速下载体验，轻松查找 ClawHub 1.3万 个 AI Skills
         </p>
@@ -1067,6 +1129,9 @@
   </div>
 
   <div class="toast" id="toast">✅ 已复制到剪贴板</div>
+  <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
   <footer>
     <p>Data from <a href="https://clawhub.ai" target="_blank"
@@ -1120,7 +1185,7 @@
     // 读取同目录下的 skills.json（部署到 Cloudflare Pages / GitHub Pages 后自动生效）
     const API_URL = './skills.json';
     const BATCH_SIZE = 8;
-    const MAX_ITEMS = 56;
+    const MAX_ITEMS = 50;
     let allSkills = [];
     let filteredSkills = [];
     let loadedCount = 0;
@@ -1377,6 +1442,11 @@
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 2000);
       });
+    });
+
+    // Back to top button
+    window.addEventListener('scroll', () => {
+      document.getElementById('backTop').classList.toggle('show', window.scrollY > 500);
     });
 
     initData();
