@@ -1261,7 +1261,11 @@
         </div>
 
         <div class="m-panel" id="panelAgent">
-          <p class="m-panel-tip">复制以下命令发送给你的 AI Agent 即可安装：</p>
+          <p class="m-panel-tip">首次使用请先安装 CLI，已安装可直接复制以下命令发送给 Agent：</p>
+          <div class="m-cmd" style="margin-bottom:10px">
+            <code>curl -fsSL https://zhaojineng.com/install.sh | bash</code>
+            <button class="m-cmd-copy" onclick="copyCmd(this.previousElementSibling)">复制</button>
+          </div>
           <div class="m-cmd">
             <code id="mAgentCmd">zhaojineng install skill-name</code>
             <button class="m-cmd-copy" onclick="copyCmd('mAgentCmd')">复制</button>
@@ -1269,7 +1273,7 @@
         </div>
 
         <div class="m-panel" id="panelHuman" style="display:none">
-          <p class="m-panel-tip">第一步：安装找技能 CLI</p>
+          <p class="m-panel-tip">第一步：安装找技能 CLI（已安装可跳过）</p>
           <div class="m-cmd">
             <code>curl -fsSL https://zhaojineng.com/install.sh | bash</code>
             <button class="m-cmd-copy" onclick="copyCmd(this.previousElementSibling)">复制</button>
