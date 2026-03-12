@@ -20,8 +20,8 @@
       --text-main: #111111;
       --text-secondary: #555555;
       --text-tertiary: #888888;
-      --accent-color: #0052D9;
-      --accent-hover: #003eb3;
+      --accent-color: #D94025;
+      --accent-hover: #b83520;
       --border-color: rgba(0, 0, 0, 0.04);
       --nav-bg: rgba(255, 255, 255, 0.55);
       --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
@@ -58,13 +58,14 @@
     /* Brand watermark - ico.png as blurred ghost background */
     .brand-watermark {
       position: fixed;
-      top: 5%;
-      right: -5%;
-      width: 600px;
-      height: 600px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px;
+      height: 450px;
       background: url('./ico.png') no-repeat center / contain;
-      opacity: 0.06;
-      filter: blur(30px);
+      opacity: 0.10;
+      filter: blur(20px);
       pointer-events: none;
       z-index: 1;
     }
@@ -179,7 +180,7 @@
     }
 
     .badge-soon {
-      background: #ff7d00;
+      background: var(--accent-color);
       color: #fff;
       font-size: 10px;
       padding: 2px 6px;
@@ -251,7 +252,7 @@
     }
 
     .hero-badge svg {
-      color: #0052D9;
+      color: var(--accent-color);
       width: 14px;
       height: 14px;
     }
@@ -266,7 +267,7 @@
     }
 
     .hero-title span {
-      background: linear-gradient(90deg, #0052D9 0%, #33b8ff 100%);
+      background: linear-gradient(90deg, #D94025 0%, #f5734a 100%);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -295,21 +296,21 @@
     }
 
     .btn-primary {
-      background: #007aff;
+      background: #D94025;
       color: #fff;
       border: none;
-      box-shadow: 0 8px 20px rgba(0, 122, 255, 0.2);
+      box-shadow: 0 8px 20px rgba(217, 64, 37, 0.2);
     }
 
     .btn-primary:hover {
       opacity: 0.9;
-      box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(217, 64, 37, 0.3);
       transform: translateY(-1px);
     }
 
     .btn-secondary {
       background: #fff;
-      color: #007aff;
+      color: #D94025;
       border: none;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       margin-left: 16px;
@@ -410,6 +411,8 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .card-copy:hover {
@@ -444,8 +447,8 @@
     }
 
     .htag-blue {
-      background: #e8f3ff;
-      color: #1677ff;
+      background: #fff1f0;
+      color: #D94025;
     }
 
     .htag-orange {
@@ -873,6 +876,32 @@
         justify-content: center;
       }
     }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #333;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 999;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
@@ -891,9 +920,10 @@
       </a>
       <div class="nav-links">
         <a href="#" class="active">官方推荐</a>
-        <a href="#">ClawHub 技能</a>
-        <a href="#" style="display:flex;align-items:center;">社区<span class="badge-soon">SOON</span></a>
-        <a href="#">关于</a>
+        <a href="#">全部技能</a>
+        <a href="https://echobird.ai/" target="_blank" style="display:flex;align-items:center;">一键安装OpenClaw<span
+            class="badge-soon">推荐</span></a>
+        <a href="https://echobird.ai/" target="_blank">完美卸载OpenClaw</a>
       </div>
       <button class="nav-search-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -910,10 +940,8 @@
     <section class="hero">
       <div class="hero-content">
         <div class="hero-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9" />
-          </svg>
-          专为中国用户优化的 AI SKILLS 社区
+          🦞
+          为中国龙虾养殖户打造中文 Skills 社区
         </div>
         <h1 class="hero-title">AI 装中文技能，<br>就上<span>找技能！</span></h1>
         <p class="hero-desc">
@@ -940,7 +968,7 @@
           </div>
           <p class="card-tip">将此提示发送给你的Agent，以安装ZhaoJiNeng CLI</p>
           <div class="card-code">
-            <span>微提 https://zhaojineng-1388575217.cos...</span>
+            <span>curl -fsSL https://zhaojineng.com/install.sh | bash</span>
             <button class="card-copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
@@ -991,6 +1019,8 @@
       </div>
     </section>
   </div>
+
+  <div class="toast" id="toast">✅ 已复制到剪贴板</div>
 
   <footer>
     <p>Data from <a href="https://clawhub.ai" target="_blank"
@@ -1241,6 +1271,16 @@
       btn.addEventListener('click', () => {
         document.querySelectorAll('.role-tab').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+      });
+    });
+
+    // Copy button
+    document.querySelector('.card-copy').addEventListener('click', () => {
+      const text = document.querySelector('.card-code span').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2000);
       });
     });
 
