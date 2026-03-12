@@ -870,6 +870,25 @@
       transform: scale(1.02);
     }
 
+    .m-download {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      margin-top: 16px;
+      background: #f0f5ff;
+      color: #1d5aad;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 12px;
+      border: 1px solid #d6e4ff;
+      transition: all 0.2s;
+    }
+
+    .m-download:hover {
+      background: #d6e4ff;
+    }
+
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -1291,6 +1310,10 @@
           </div>
         </div>
       </div>
+
+      <a href="#" id="mDownload" class="m-download" target="_blank">
+        📦 直接下载技能 zip 文件
+      </a>
     </div>
   </div>
 
@@ -1513,6 +1536,9 @@
       document.getElementById('mDownloads').textContent = formatNumber(skill.downloads);
       document.getElementById('mInstalls').textContent = formatNumber(skill.installs);
 
+
+      // Set download link
+      document.getElementById('mDownload').href = `https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/${skill.slug}.zip`;
 
       // Set install commands
       const installCmd = `skillhub install ${skill.slug}`;
