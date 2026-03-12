@@ -55,6 +55,21 @@
       overflow-x: hidden;
     }
 
+    /* Brand watermark - ico.png as blurred ghost background */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -5%;
+      right: -8%;
+      width: 700px;
+      height: 700px;
+      background: url('./ico.png') no-repeat center / contain;
+      opacity: 0.035;
+      filter: blur(50px) saturate(0.3);
+      pointer-events: none;
+      z-index: 0;
+    }
+
     /* Ambient Blobs for Premium Feel (SkillHub Style) */
     .bg-blob {
       position: absolute;
@@ -900,7 +915,7 @@
           </svg>
           专为中国用户优化的 AI SKILLS 社区
         </div>
-        <h1 class="hero-title">AI 装中文技能，<br><span>就上找技能！</span></h1>
+        <h1 class="hero-title">AI 装中文技能，<br>就上<span>找技能！</span></h1>
         <p class="hero-desc">
           精选推荐，高速下载体验，轻松查找 ClawHub 1.3万 个 AI Skills
         </p>
