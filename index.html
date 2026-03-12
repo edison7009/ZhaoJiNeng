@@ -56,8 +56,7 @@
     }
 
     /* Brand watermark - ico.png as blurred ghost background */
-    body::after {
-      content: '';
+    .brand-watermark {
       position: fixed;
       top: 5%;
       right: -5%;
@@ -67,7 +66,7 @@
       opacity: 0.06;
       filter: blur(30px);
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
     }
 
     /* Ambient Blobs for Premium Feel (SkillHub Style) */
@@ -879,6 +878,7 @@
 
 <body>
 
+  <div class="brand-watermark"></div>
   <div class="bg-blob blob-1"></div>
   <div class="bg-blob blob-2"></div>
 
