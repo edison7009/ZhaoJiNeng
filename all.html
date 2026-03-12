@@ -580,6 +580,89 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
 
+    /* Modal install section */
+    .m-install {
+      margin-bottom: 24px;
+    }
+
+    .m-install-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .m-install-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .m-tab {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #f8f9fa;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--text-secondary);
+    }
+
+    .m-tab.active {
+      background: #fff;
+      color: var(--text-main);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .m-panel-tip {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .m-cmd {
+      display: flex;
+      align-items: center;
+      background: #1a1a2e;
+      border-radius: 12px;
+      padding: 14px 16px;
+      gap: 12px;
+    }
+
+    .m-cmd code {
+      flex: 1;
+      color: #e0e0e0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .m-cmd-copy {
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .m-cmd-copy:hover {
+      background: var(--accent-hover);
+      transform: scale(1.02);
+    }
+
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -902,13 +985,42 @@
         </div>
       </div>
 
+      <div class="m-install">
+        <h3 class="m-install-title">安装方式</h3>
+        <div class="m-install-tabs">
+          <button class="m-tab active" data-panel="agent">🤖 Agent</button>
+          <button class="m-tab" data-panel="human">👤 Human</button>
+        </div>
+
+        <div class="m-panel" id="panelAgent">
+          <p class="m-panel-tip">Copy this command and send it to your AI Agent to install:</p>
+          <div class="m-cmd">
+            <code id="mAgentCmd">zhaojineng install skill-name</code>
+            <button class="m-cmd-copy" onclick="copyCmd('mAgentCmd')">📋 Copy</button>
+          </div>
+        </div>
+
+        <div class="m-panel" id="panelHuman" style="display:none">
+          <p class="m-panel-tip">Step 1: Install ZhaoJiNeng CLI</p>
+          <div class="m-cmd">
+            <code>curl -fsSL https://zhaojineng.com/install.sh | bash</code>
+            <button class="m-cmd-copy" onclick="copyCmd(this.previousElementSibling)">📋 Copy</button>
+          </div>
+          <p class="m-panel-tip" style="margin-top:12px">Step 2: Install skill</p>
+          <div class="m-cmd">
+            <code id="mHumanCmd">zhaojineng install skill-name</code>
+            <button class="m-cmd-copy" onclick="copyCmd('mHumanCmd')">📋 Copy</button>
+          </div>
+        </div>
+      </div>
+
       <a href="#" id="mLink" class="m-action" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
           <polyline points="15 3 21 3 21 9" />
           <line x1="10" y1="14" x2="21" y2="3" />
         </svg>
-        前往 ClawHub 安装该技能
+        View on ClawHub
       </a>
     </div>
   </div>
@@ -1134,6 +1246,17 @@
 
       document.getElementById('mLink').href = skill.homepage || `https://clawhub.ai/${skill.slug}`;
 
+      // Set install commands
+      const installCmd = `zhaojineng install ${skill.slug}`;
+      document.getElementById('mAgentCmd').textContent = installCmd;
+      document.getElementById('mHumanCmd').textContent = installCmd;
+
+      // Reset to Agent tab
+      document.querySelectorAll('.m-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.m-tab[data-panel="agent"]').classList.add('active');
+      document.getElementById('panelAgent').style.display = '';
+      document.getElementById('panelHuman').style.display = 'none';
+
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -1146,6 +1269,22 @@
     document.getElementById('modalClose').addEventListener('click', closeModal);
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Modal install tabs
+    document.querySelectorAll('.m-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.m-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panelAgent').style.display = tab.dataset.panel === 'agent' ? '' : 'none';
+        document.getElementById('panelHuman').style.display = tab.dataset.panel === 'human' ? '' : 'none';
+      });
+    });
+
+    function copyCmd(target) {
+      const el = typeof target === 'string' ? document.getElementById(target) : target;
+      const text = el.textContent;
+      navigator.clipboard.writeText(text);
+    }
 
     // Events
     let searchTimer;
