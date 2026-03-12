@@ -513,7 +513,7 @@
 
     .search-box input:focus {
       border-color: var(--accent-color);
-      box-shadow: 0 0 0 4px rgba(0, 82, 217, 0.1);
+      box-shadow: 0 0 0 4px rgba(217, 64, 37, 0.1);
     }
 
     .ranking-item {
@@ -1137,31 +1137,33 @@
         </p>
         <div class="hero-buttons">
           <a href="#explore" class="btn btn-primary">查看精选榜单</a>
-          <a href="#" class="btn btn-secondary">探索全部技能</a>
+          <a href="./all.html" class="btn btn-secondary">探索全部技能</a>
         </div>
       </div>
       <div class="hero-card">
         <div class="mock-card">
           <div class="role-tabs">
-            <button class="role-tab active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2">
-                <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
-                <rect x="9" y="9" width="6" height="6" />
-              </svg> 我是 Agent</button>
-            <button class="role-tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg> 我是 Human</button>
+            <button class="role-tab active" id="heroTabAgent">我是 Agent</button>
+            <button class="role-tab" id="heroTabHuman">我是 Human</button>
           </div>
-          <p class="card-tip">将此提示发送给你的Agent，以安装ZhaoJiNeng CLI</p>
-          <div class="card-code">
-            <span>curl -fsSL https://zhaojineng.com/install.sh | bash</span>
-            <button class="card-copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-              </svg> 复制</button>
+          <div id="heroAgent">
+            <p class="card-tip">复制以下命令发送给你的 Agent，即可安装找技能 CLI</p>
+            <div class="card-code">
+              <span>curl -fsSL https://zhaojineng.com/install.sh | bash</span>
+              <button class="card-copy">复制</button>
+            </div>
+          </div>
+          <div id="heroHuman" style="display:none">
+            <p class="card-tip">第一步：在终端中运行以下命令安装找技能 CLI</p>
+            <div class="card-code">
+              <span>curl -fsSL https://zhaojineng.com/install.sh | bash</span>
+              <button class="card-copy">复制</button>
+            </div>
+            <p class="card-tip" style="margin-top:12px">第二步：安装技能（示例）</p>
+            <div class="card-code">
+              <span>zhaojineng install youtube-watcher</span>
+              <button class="card-copy">复制</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1559,20 +1561,29 @@
       });
     });
 
-    document.querySelectorAll('.role-tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.role-tab').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
+    // Hero tab switching
+    document.getElementById('heroTabAgent').addEventListener('click', () => {
+      document.getElementById('heroTabAgent').classList.add('active');
+      document.getElementById('heroTabHuman').classList.remove('active');
+      document.getElementById('heroAgent').style.display = '';
+      document.getElementById('heroHuman').style.display = 'none';
+    });
+    document.getElementById('heroTabHuman').addEventListener('click', () => {
+      document.getElementById('heroTabHuman').classList.add('active');
+      document.getElementById('heroTabAgent').classList.remove('active');
+      document.getElementById('heroHuman').style.display = '';
+      document.getElementById('heroAgent').style.display = 'none';
     });
 
-    // Copy button
-    document.querySelector('.card-copy').addEventListener('click', () => {
-      const text = document.querySelector('.card-code span').textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
+    // Copy buttons (hero cards)
+    document.querySelectorAll('.card-copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const span = btn.closest('.card-code').querySelector('span');
+        navigator.clipboard.writeText(span.textContent).then(() => {
+          const toast = document.getElementById('toast');
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 2000);
+        });
       });
     });
 
