@@ -896,50 +896,56 @@
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
       z-index: 999;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
+
     .toast.show {
       opacity: 1;
       transform: translateY(0);
     }
 
     /* Pagination */
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-top: 32px;
-      padding-bottom: 16px;
-    }
-    .page-btn {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border-color);
-      background: #fff;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-main);
-      cursor: pointer;
-      transition: all 0.2s;
+    /* Skeleton loading */
+    .skeleton-item {
       display: flex;
       align-items: center;
-      justify-content: center;
+      padding: 20px 24px;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-color);
+      animation: skeleton-pulse 1.5s ease-in-out infinite;
     }
-    .page-btn:hover:not(.disabled):not(.active) {
-      border-color: var(--accent-color);
-      color: var(--accent-color);
+    .skeleton-item .sk-rank {
+      width: 28px; height: 20px;
+      background: #e8e8e8; border-radius: 6px;
     }
-    .page-btn.active {
-      background: var(--accent-color);
-      color: #fff;
-      border-color: var(--accent-color);
-      box-shadow: 0 4px 12px rgba(217, 64, 37, 0.25);
+    .skeleton-item .sk-icon {
+      width: 48px; height: 48px;
+      background: #e8e8e8; border-radius: 14px; flex-shrink: 0;
     }
-    .page-btn.disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
+    .skeleton-item .sk-content {
+      flex: 1; display: flex; flex-direction: column; gap: 8px;
+    }
+    .skeleton-item .sk-title {
+      width: 45%; height: 18px;
+      background: #e8e8e8; border-radius: 6px;
+    }
+    .skeleton-item .sk-desc {
+      width: 80%; height: 14px;
+      background: #e8e8e8; border-radius: 6px;
+    }
+    .skeleton-item .sk-stats {
+      width: 80px; height: 16px;
+      background: #e8e8e8; border-radius: 6px; flex-shrink: 0;
+    }
+    @keyframes skeleton-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .load-end {
+      text-align: center;
+      padding: 24px;
+      color: var(--text-tertiary);
+      font-size: 13px;
     }
   </style>
 </head>
@@ -982,7 +988,7 @@
           🦞
           为中国龙虾养殖户打造中文 Skills 社区
         </div>
-        <h1 class="hero-title">AI 装中文技能，<br>就上<span>找技能！</span></h1>
+        <h1 class="hero-title">AI 安装中文技能，<br>就上<span>找技能！</span></h1>
         <p class="hero-desc">
           精选推荐，高速下载体验，轻松查找 ClawHub 1.3万 个 AI Skills
         </p>
@@ -1055,7 +1061,7 @@
             </style>
           </div>
         </div>
-        <div id="pagination" class="pagination"></div>
+        <div id="scrollSentinel"></div>
       </div>
     </section>
   </div>
@@ -1113,13 +1119,13 @@
   <script>
     // 读取同目录下的 skills.json（部署到 Cloudflare Pages / GitHub Pages 后自动生效）
     const API_URL = './skills.json';
-    const PAGE_SIZE = 8;
-    const MAX_PAGES = 7;
+    const BATCH_SIZE = 8;
+    const MAX_ITEMS = 56;
     let allSkills = [];
     let filteredSkills = [];
-    let displayedSkills = [];
+    let loadedCount = 0;
     let currentCategory = 'all';
-    let currentPage = 1;
+    let isLoading = false;
 
     const colorPalette = [
       { bg: 'var(--cat-1)', text: 'var(--cat-1-text)' },
@@ -1131,6 +1137,82 @@
 
     function getInitials(name) {
       return (name || 'SK').substring(0, 2).toUpperCase();
+    }
+    function renderItem(skill, globalIndex) {
+      const c = getColor(skill.name);
+      const isSearch = document.getElementById('searchInput').value;
+      const rankClass = globalIndex < 3 && currentCategory === 'all' && !isSearch ? `top-${globalIndex + 1}` : '';
+      const rankDisplay = isSearch ? '-' : (globalIndex + 1);
+      const desc = skill.description_zh || skill.description || '暂无详细描述';
+      const tag = Array.isArray(skill.tags) ? (skill.tags[0] || '综合增强') : (skill.tags || '综合增强').toString().split(',')[0];
+      return `
+        <div class="ranking-item" data-id="${escapeHtml(skill.slug)}">
+          <div class="rank-num ${rankClass}">${rankDisplay}</div>
+          <div class="rank-icon" style="background: ${c.bg}; color: ${c.text};">${escapeHtml(getInitials(skill.name))}</div>
+          <div class="rank-content">
+            <div class="rank-header">
+              <span class="rank-name">${escapeHtml(skill.name)}</span>
+              <span class="rank-tag" style="background:${c.bg}; color:${c.text}">${escapeHtml(tag)}</span>
+            </div>
+            <div class="rank-desc" title="${escapeHtml(desc)}">${escapeHtml(desc)}</div>
+          </div>
+          <div class="rank-stats">
+            <div class="rank-stat stars">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              ${formatNumber(skill.stars)}
+            </div>
+            <div class="rank-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              ${formatNumber(skill.downloads)}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function skeletonHTML(count) {
+      return Array(count).fill(`
+        <div class="skeleton-item">
+          <div class="sk-rank"></div>
+          <div class="sk-icon"></div>
+          <div class="sk-content"><div class="sk-title"></div><div class="sk-desc"></div></div>
+          <div class="sk-stats"></div>
+        </div>`).join('');
+    }
+
+    function loadMore() {
+      if (isLoading) return;
+      const remaining = filteredSkills.length - loadedCount;
+      if (remaining <= 0) return;
+
+      isLoading = true;
+      const container = document.getElementById('skillsList');
+      const sentinel = document.getElementById('scrollSentinel');
+      const batch = Math.min(BATCH_SIZE, remaining);
+
+      // Show skeleton
+      sentinel.innerHTML = skeletonHTML(batch);
+
+      setTimeout(() => {
+        const fragment = document.createDocumentFragment();
+        const temp = document.createElement('div');
+        for (let i = 0; i < batch; i++) {
+          const idx = loadedCount + i;
+          temp.innerHTML = renderItem(filteredSkills[idx], idx);
+          const el = temp.firstElementChild;
+          el.addEventListener('click', () => openModal(el.dataset.id));
+          fragment.appendChild(el);
+        }
+        container.appendChild(fragment);
+        loadedCount += batch;
+
+        // Clear skeleton, show end message if done
+        if (loadedCount >= filteredSkills.length) {
+          sentinel.innerHTML = '<div class="load-end">— 已展示全部精选技能 —</div>';
+        } else {
+          sentinel.innerHTML = '';
+        }
+        isLoading = false;
+      }, 300);
     }
 
     function getColor(name) {
@@ -1150,58 +1232,6 @@
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
-    }
-
-    function renderList(skills) {
-      const container = document.getElementById('skillsList');
-      if (skills.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" style="opacity:0.3;margin-bottom:16px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <h3>未找到相关技能</h3>
-            <p>尝试更换搜索词或分类</p>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = skills.map((skill, index) => {
-        const c = getColor(skill.name);
-        const rankClass = index < 3 && currentCategory === 'all' && !document.getElementById('searchInput').value ? `top-${index + 1}` : '';
-        const rankDisplay = document.getElementById('searchInput').value ? '-' : (index + 1);
-        const desc = skill.description_zh || skill.description || '暂无详细描述';
-        const tag = Array.isArray(skill.tags) ? (skill.tags[0] || '综合增强') : (skill.tags || '综合增强').toString().split(',')[0];
-
-        return `
-          <div class="ranking-item" data-id="${escapeHtml(skill.slug)}">
-            <div class="rank-num ${rankClass}">${rankDisplay}</div>
-            <div class="rank-icon" style="background: ${c.bg}; color: ${c.text}; box-shadow: 0 8px 24px ${c.bg.replace('var(', 'var(').replace(')', '')};">
-              ${escapeHtml(getInitials(skill.name))}
-            </div>
-            <div class="rank-content">
-              <div class="rank-header">
-                <span class="rank-name">${escapeHtml(skill.name)}</span>
-                <span class="rank-tag" style="background:${c.bg}; color:${c.text}">${escapeHtml(tag)}</span>
-              </div>
-              <div class="rank-desc" title="${escapeHtml(desc)}">${escapeHtml(desc)}</div>
-            </div>
-            <div class="rank-stats">
-              <div class="rank-stat stars">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                ${formatNumber(skill.stars)}
-              </div>
-              <div class="rank-stat">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                ${formatNumber(skill.downloads)}
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      document.querySelectorAll('.ranking-item').forEach(item => {
-        item.addEventListener('click', () => openModal(item.dataset.id));
-      });
     }
 
     function applyFilters() {
@@ -1232,41 +1262,33 @@
         document.getElementById('sectionTitle').textContent = currentCategory === 'all' ? '精选技能 Top 50' : currentCategory + ' 技能';
       }
 
-      // Sort by score/downloads
       filtered.sort((a, b) => (b.score || b.downloads || 0) - (a.score || a.downloads || 0));
 
-      filteredSkills = filtered.slice(0, PAGE_SIZE * MAX_PAGES);
-      currentPage = 1;
-      renderPage();
-    }
+      filteredSkills = filtered.slice(0, MAX_ITEMS);
+      loadedCount = 0;
+      document.getElementById('skillsList').innerHTML = '';
+      document.getElementById('scrollSentinel').innerHTML = '';
 
-    function renderPage() {
-      const totalPages = Math.min(MAX_PAGES, Math.ceil(filteredSkills.length / PAGE_SIZE));
-      const start = (currentPage - 1) * PAGE_SIZE;
-      displayedSkills = filteredSkills.slice(start, start + PAGE_SIZE);
-      renderList(displayedSkills);
-      renderPagination(totalPages);
-    }
-
-    function renderPagination(totalPages) {
-      const container = document.getElementById('pagination');
-      if (totalPages <= 1) { container.innerHTML = ''; return; }
-      let html = '';
-      html += `<button class="page-btn ${currentPage === 1 ? 'disabled' : ''}" onclick="goPage(${currentPage - 1})">&laquo;</button>`;
-      for (let i = 1; i <= totalPages; i++) {
-        html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+      if (filteredSkills.length === 0) {
+        document.getElementById('skillsList').innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" style="opacity:0.3;margin-bottom:16px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <h3>未找到相关技能</h3>
+            <p>尝试更换搜索词或分类</p>
+          </div>`;
+        return;
       }
-      html += `<button class="page-btn ${currentPage === totalPages ? 'disabled' : ''}" onclick="goPage(${currentPage + 1})">&raquo;</button>`;
-      container.innerHTML = html;
+
+      loadMore();
     }
 
-    function goPage(page) {
-      const totalPages = Math.min(MAX_PAGES, Math.ceil(filteredSkills.length / PAGE_SIZE));
-      if (page < 1 || page > totalPages) return;
-      currentPage = page;
-      renderPage();
-      document.getElementById('explore').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // IntersectionObserver for infinite scroll
+    const scrollObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !isLoading && loadedCount < filteredSkills.length) {
+        loadMore();
+      }
+    }, { rootMargin: '200px' });
+    scrollObserver.observe(document.getElementById('scrollSentinel'));
 
     async function initData() {
       try {
