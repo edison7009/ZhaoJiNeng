@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>找技能 — 龙虾（OpenClaw）中文技能库</title>
+  <link rel="icon" href="./ico.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f8fa;
+      --card-bg: rgba(255, 255, 255, 0.4);
+      --card-bg-hover: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.6);
+      --text-main: #111111;
+      --text-secondary: #555555;
+      --text-tertiary: #888888;
+      --accent-color: #0052D9;
+      --accent-hover: #003eb3;
+      --border-color: rgba(0, 0, 0, 0.04);
+      --nav-bg: rgba(255, 255, 255, 0.55);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.08);
+      
+      --cat-1: #eef2fa; --cat-1-text: #2f5fe3;
+      --cat-2: #f0f7f3; --cat-2-text: #1d7b4b;
+      --cat-3: #fef5ed; --cat-3-text: #b56011;
+      --cat-4: #fcf0f5; --cat-4-text: #b82b6b;
+      --cat-5: #f4ecfb; --cat-5-text: #722ed1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Blobs for Premium Feel (SkillHub Style) */
+    .bg-blob {
+      position: absolute; border-radius: 50%; filter: blur(140px); z-index: -1; opacity: 0.7; pointer-events: none;
+    }
+    .blob-1 { top: -10vh; left: -10vw; width: 60vw; height: 80vh; background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+    .blob-2 { top: 10vh; right: -10vw; width: 60vw; height: 80vh; background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; position: relative; }
+
+    /* Pill-shaped Navigation */
+    .nav-wrapper { position: fixed; top: 24px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 100; pointer-events: none; }
+    .navbar {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      border-radius: 9999px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px 10px 24px;
+      width: 100%; max-width: 1120px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #111111; font-size: 18px; font-weight: 700; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; letter-spacing: 0px; }
+    .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 8px; align-items: center; position: relative; }
+    .nav-links a { 
+      text-decoration: none; color: #4e5969; font-weight: 500; font-size: 14px; 
+      padding: 8px 16px; border-radius: 999px; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; z-index: 1;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #111; font-weight: 600; background: rgba(0,0,0,0.04); }
+    .nav-links a:active { transform: scale(0.96); }
+    .badge-soon { background: #ff7d00; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 999px; font-weight: 800; transform: scale(0.9); margin-left: 4px; }
+    .nav-search-btn {
+      background: #f2f3f5; border: none; padding: 8px 16px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px; cursor: pointer; color: #4e5969; font-size: 14px; font-weight: 500;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-search-btn svg { width: 14px; height: 14px; transition: transform 0.2s; }
+    .nav-search-btn:hover { background: #e5e6eb; color: #111; }
+    .nav-search-btn:active { transform: scale(0.96); }
+
+    /* iOS 风格 Hero */
+    .hero { padding: 180px 0 100px; display: flex; align-items: center; justify-content: space-between; gap: 60px; max-width: 1060px; margin: 0 auto; }
+    .hero-content { flex: 1.1; max-width: 540px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; 
+      background: #fff; color: #4e5969; border: 1px solid transparent; box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 28px;
+    }
+    .hero-badge svg { color: #0052D9; width: 14px; height: 14px; }
+    .hero-title { font-size: 64px; font-weight: 800; line-height: 1.15; letter-spacing: -2px; margin-bottom: 24px; color: #111; }
+    .hero-title span { 
+      background: linear-gradient(90deg, #0052D9 0%, #33b8ff 100%); 
+      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+    }
+    .hero-desc { font-size: 16px; color: #4e5969; margin-bottom: 48px; line-height: 1.6; font-weight: 400; max-width: 480px; }
+    
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px;
+      font-size: 15px; font-weight: 600; border-radius: 9999px; text-decoration: none; transition: all 0.2s; cursor: pointer;
+    }
+    .btn-primary { background: #007aff; color: #fff; border: none; box-shadow: 0 8px 20px rgba(0, 122, 255, 0.2); }
+    .btn-primary:hover { opacity: 0.9; box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3); transform: translateY(-1px); }
+    .btn-secondary { background: #fff; color: #007aff; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-left: 16px; }
+    .btn-secondary:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+
+    /* Hero 卡片展示 */
+    .hero-card { flex: 0.9; max-width: 420px; position: relative; }
+    .mock-card {
+      background: rgba(255,255,255,0.85); 
+      backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid #fff;
+      border-radius: 20px; padding: 24px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.05);
+    }
+    .role-tabs {
+      display: flex; gap: 4px; background: #f2f3f5; padding: 4px; border-radius: 12px;
+      width: 100%; margin: 0 0 24px 0; border: none; box-shadow: none; backdrop-filter: none;
+    }
+    .role-tab {
+      flex: 1; padding: 10px 0; border-radius: 8px; font-size: 14px; font-weight: 600; color: #86909c;
+      display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; border: none; background: transparent;
+    }
+    .role-tab.active { background: #fff; color: #111; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    
+    .card-tip { font-size: 14px; color: #4e5969; margin-bottom: 16px; font-weight: 500; }
+    .card-code {
+      background: #f2f3f5; border-radius: 12px; padding: 16px; font-family: -apple-system, monospace;
+      font-size: 13px; color: #111; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .card-code span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; user-select: all; }
+    .card-copy { background: rgba(0,0,0,0.05); border: none; padding: 6px 10px; border-radius: 8px; font-size: 13px; color: #4e5969; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px; }
+    .card-copy:hover { background: rgba(0,0,0,0.08); color: #111; }
+
+    /* List Area */
+    .section-header { margin-top: 20px; margin-bottom: 24px; text-align: left; max-width: 980px; margin-left: auto; margin-right: auto; }
+    .header-tags { display: flex; gap: 12px; margin-bottom: 16px; }
+    .htag { padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+    .htag-blue { background: #e8f3ff; color: #1677ff; }
+    .htag-orange { background: #fff2e8; color: #fa541c; }
+    .htag-green { background: #f6ffed; color: #52c41a; }
+    
+    .section-title { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; color: #111; }
+    .section-subtitle { font-size: 15px; color: #86909c; font-weight: 400; }
+
+    .ranking-container {
+      background: var(--card-bg); border-radius: 24px; box-shadow: var(--shadow-md);
+      backdrop-filter: blur(32px) saturate(180%); -webkit-backdrop-filter: blur(32px) saturate(180%);
+      border: 1px solid var(--glass-border); margin: 0 auto 80px; overflow: hidden;
+      max-width: 980px;
+    }
+    
+    .search-box { padding: 24px 32px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.2); }
+    .search-box input {
+      flex: 1; height: 48px; padding: 0 20px; border-radius: 12px; border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.6); font-size: 15px; font-weight: 500; outline: none; transition: all 0.2s;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .search-box input:focus { border-color: var(--accent-color); box-shadow: 0 0 0 4px rgba(0,82,217,0.1); }
+
+    .ranking-item {
+      display: flex; align-items: center; padding: 24px 32px; border-bottom: 1px solid var(--border-color);
+      transition: background 0.2s; cursor: pointer;
+    }
+    .ranking-item:last-child { border-bottom: none; }
+    .ranking-item:hover { background: #f9f9fb; }
+    
+    .rank-num { font-size: 24px; font-weight: 800; color: var(--text-tertiary); width: 48px; flex-shrink: 0; }
+    .rank-num.top-1 { color: #f5222d; } .rank-num.top-2 { color: #fa541c; } .rank-num.top-3 { color: #fa8c16; }
+    
+    .rank-icon {
+      width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 20px; margin-right: 20px; flex-shrink: 0;
+      /* 通过行内样式去补充阴影发光，这里只做基础过渡 */
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .ranking-item:hover .rank-icon { transform: scale(1.05); }
+    
+    .rank-content { flex: 1; min-width: 0; }
+    .rank-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+    .rank-name { font-size: 18px; font-weight: 700; color: var(--text-main); }
+    .rank-tag { font-size: 12px; padding: 4px 10px; border-radius: 6px; font-weight: 600; }
+    .rank-desc { font-size: 15px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 400; }
+    
+    .rank-stats { display: flex; gap: 24px; font-size: 14px; color: var(--text-tertiary); flex-shrink: 0; font-weight: 600; margin-left: 20px; }
+    .rank-stat { display: flex; align-items: center; gap: 6px; }
+    .rank-stat.stars { color: #fa8c16; }
+
+    /* Modal iOS 风格 */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s;
+    }
+    .modal-overlay.open { display: flex; opacity: 1; }
+    .modal-content {
+      background: #fff; width: 100%; max-width: 600px; border-radius: 32px; padding: 40px; position: relative;
+      transform: translateY(40px) scale(0.95); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: var(--shadow-lg);
+      max-height: 90vh; overflow-y: auto;
+    }
+    .modal-overlay.open .modal-content { transform: translateY(0) scale(1); }
+    .modal-close {
+      position: absolute; top: 24px; right: 24px; background: #f0f2f5; border: none; width: 36px; height: 36px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary); font-size: 16px; font-weight: bold; transition: background 0.2s;
+    }
+    .modal-close:hover { background: #e4e6eb; color: var(--text-main); }
+    
+    .m-header { display: flex; gap: 24px; margin-bottom: 24px; align-items: center; }
+    .m-icon { 
+      width: 88px; height: 88px; border-radius: 24px; display: flex; align-items: center; justify-content: center; 
+      font-size: 32px; font-weight: 800;
+      /* 也会通过 js 带入色彩阴影 */
+    }
+    .m-title { font-size: 28px; font-weight: 800; margin-bottom: 6px; line-height: 1.2; letter-spacing: -0.5px; }
+    .m-version { font-size: 15px; color: var(--text-tertiary); font-weight: 500; }
+    .m-tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+    .m-desc { font-size: 16px; color: var(--text-main); line-height: 1.7; margin-bottom: 32px; background: #f8f9fa; padding: 24px; border-radius: 20px; font-weight: 400; }
+    .m-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .m-stat-box { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 20px; padding: 20px 16px; text-align: center; }
+    .m-stat-num { font-size: 24px; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
+    .m-stat-label { font-size: 13px; color: var(--text-tertiary); font-weight: 600; }
+    
+    .m-action {
+      display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 18px;
+      background: var(--text-main); color: white; text-decoration: none; font-size: 17px; font-weight: 700;
+      border-radius: 9999px; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .m-action:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+
+    footer { text-align: center; padding: 40px 20px; color: var(--text-tertiary); font-size: 14px; font-weight: 500; padding-bottom: 60px; }
+
+    /* Empty state */
+    .empty-state { text-align: center; padding: 80px 20px; color: var(--text-tertiary); }
+    .empty-state h3 { font-size: 18px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600; }
+
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; padding: 140px 0 40px; text-align: center; gap: 40px; }
+      .nav-links { display: none; }
+      .hero-buttons { justify-content: center; }
+      .hero-card { width: 100%; padding: 0 16px; }
+      .ranking-item { flex-direction: column; align-items: flex-start; gap: 16px; position: relative; padding: 20px; }
+      .rank-icon { margin-left: auto; margin-right: auto; margin-bottom: 8px; }
+      .rank-header { flex-direction: column; align-items: flex-start; }
+      .rank-num { position: absolute; top: 20px; right: 20px; text-align: right; width: auto; font-size: 20px; }
+      .rank-stats { margin-left: 0; width: 100%; justify-content: space-between; }
+      .m-header { flex-direction: column; text-align: center; }
+      .m-tags { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <!-- Navbar -->
+  <div class="nav-wrapper">
+    <nav class="navbar">
+      <a href="#" class="nav-logo">
+        <img src="./ico.png" alt="找技能">
+        <span>找技能</span>
+      </a>
+      <div class="nav-links">
+        <a href="#" class="active">官方推荐</a>
+        <a href="#">ClawHub 技能</a>
+        <a href="#" style="display:flex;align-items:center;">社区<span class="badge-soon">SOON</span></a>
+        <a href="#">关于</a>
+      </div>
+      <button class="nav-search-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        搜索
+      </button>
+    </nav>
+  </div>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9"/></svg>
+          专为中国用户优化的 AI SKILLS 社区
+        </div>
+        <h1 class="hero-title">AI 装中文技能，<br><span>就上找技能！</span></h1>
+        <p class="hero-desc">
+          精选推荐，高速下载体验，轻松查找 ClawHub 1.3万 个 AI Skills
+        </p>
+        <div class="hero-buttons">
+          <a href="#explore" class="btn btn-primary">查看精选榜单</a>
+          <a href="#" class="btn btn-secondary">探索全部技能</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="mock-card">
+          <div class="role-tabs">
+            <button class="role-tab active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/></svg> 我是 Agent</button>
+            <button class="role-tab"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> 我是 Human</button>
+          </div>
+          <p class="card-tip">将此提示发送给你的Agent，以安装ZhaoJiNeng CLI</p>
+          <div class="card-code">
+            <span>微提 https://zhaojineng-1388575217.cos...</span>
+            <button class="card-copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> 复制</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data List Area -->
+    <section id="explore">
+      <div class="section-header">
+        <div class="header-tags">
+          <span class="htag htag-blue">★ 官方认证推荐</span>
+          <span class="htag htag-orange">⚡ 加速下载</span>
+          <span class="htag htag-green">✓ 安全审计</span>
+        </div>
+        <h2 class="section-title" id="sectionTitle">精选 TOP 50 AI Skills 榜单</h2>
+        <p class="section-subtitle">从 ClawHub 生态中精选最值得安装的 50 个 AI Skills，国内直连镜像，一键加速安装。</p>
+      </div>
+
+      <div class="ranking-container">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" style="color:var(--text-tertiary)"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="searchInput" placeholder="搜索技能名称或功能描述（支持中英文）...">
+        </div>
+
+        <div id="skillsList">
+          <div class="empty-state">
+            <div style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: var(--accent-color); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px;"></div>
+            <h3>正在同步最新技能数据...</h3>
+            <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Data from <a href="https://clawhub.ai" target="_blank" style="color:var(--text-main);font-weight:600;text-decoration:none;">ClawHub</a> · © 2026 找技能 (zhaojineng.com)</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content" id="modalContent">
+      <button class="modal-close" id="modalClose">✕</button>
+      
+      <div class="m-header">
+        <div class="m-icon" id="mIcon"></div>
+        <div>
+          <h2 class="m-title" id="mTitle"></h2>
+          <div class="m-version" id="mVersion"></div>
+          <div class="m-tags" id="mTags"></div>
+        </div>
+      </div>
+
+      <div class="m-desc" id="mDesc"></div>
+
+      <div class="m-stats">
+        <div class="m-stat-box">
+          <div class="m-stat-num" id="mStars">0</div>
+          <div class="m-stat-label">⭐️ 收藏评分</div>
+        </div>
+        <div class="m-stat-box">
+          <div class="m-stat-num" id="mDownloads">0</div>
+          <div class="m-stat-label">📥 累计下载</div>
+        </div>
+        <div class="m-stat-box">
+          <div class="m-stat-num" id="mInstalls">0</div>
+          <div class="m-stat-label">📦 活跃集成</div>
+        </div>
+      </div>
+
+      <a href="#" id="mLink" class="m-action" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        前往 ClawHub 安装该技能
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // 读取同目录下的 skills.json（部署到 Cloudflare Pages / GitHub Pages 后自动生效）
+    const API_URL = './skills.json';
+    let allSkills = [];
+    let displayedSkills = [];
+    let currentCategory = 'all';
+
+    const colorPalette = [
+      { bg: 'var(--cat-1)', text: 'var(--cat-1-text)' },
+      { bg: 'var(--cat-2)', text: 'var(--cat-2-text)' },
+      { bg: 'var(--cat-3)', text: 'var(--cat-3-text)' },
+      { bg: 'var(--cat-4)', text: 'var(--cat-4-text)' },
+      { bg: 'var(--cat-5)', text: 'var(--cat-5-text)' }
+    ];
+
+    function getInitials(name) {
+      return (name || 'SK').substring(0, 2).toUpperCase();
+    }
+
+    function getColor(name) {
+      if (!name) return colorPalette[0];
+      const charCode = name.charCodeAt(0) + (name.charCodeAt(1) || 0);
+      return colorPalette[charCode % colorPalette.length];
+    }
+
+    function formatNumber(num) {
+      if (!num) return '0';
+      if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+      return num.toLocaleString();
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function renderList(skills) {
+      const container = document.getElementById('skillsList');
+      if (skills.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" style="opacity:0.3;margin-bottom:16px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <h3>未找到相关技能</h3>
+            <p>尝试更换搜索词或分类</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = skills.map((skill, index) => {
+        const c = getColor(skill.name);
+        const rankClass = index < 3 && currentCategory === 'all' && !document.getElementById('searchInput').value ? `top-${index + 1}` : '';
+        const rankDisplay = document.getElementById('searchInput').value ? '-' : (index + 1);
+        const desc = skill.description_zh || skill.description || '暂无详细描述';
+        const tag = (skill.tags || '综合增强').split(',')[0];
+
+        return `
+          <div class="ranking-item" data-id="${escapeHtml(skill.slug)}">
+            <div class="rank-num ${rankClass}">${rankDisplay}</div>
+            <div class="rank-icon" style="background: ${c.bg}; color: ${c.text}; box-shadow: 0 8px 24px ${c.bg.replace('var(', 'var(').replace(')', '')};">
+              ${escapeHtml(getInitials(skill.name))}
+            </div>
+            <div class="rank-content">
+              <div class="rank-header">
+                <span class="rank-name">${escapeHtml(skill.name)}</span>
+                <span class="rank-tag" style="background:${c.bg}; color:${c.text}">${escapeHtml(tag)}</span>
+              </div>
+              <div class="rank-desc" title="${escapeHtml(desc)}">${escapeHtml(desc)}</div>
+            </div>
+            <div class="rank-stats">
+              <div class="rank-stat stars">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                ${formatNumber(skill.stars)}
+              </div>
+              <div class="rank-stat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                ${formatNumber(skill.downloads)}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.querySelectorAll('.ranking-item').forEach(item => {
+        item.addEventListener('click', () => openModal(item.dataset.id));
+      });
+    }
+
+    function applyFilters() {
+      let filtered = allSkills;
+      
+      if (currentCategory !== 'all') {
+        const catMap = {
+          'AI智能': ['ai', 'llm', 'chat', 'model'],
+          '开发工具': ['dev', 'code', 'git', 'api', 'deploy'],
+          '效率提升': ['productivity', 'work', 'tool'],
+          '数据分析': ['data', 'analytics', 'sql', 'search']
+        };
+        const keywords = catMap[currentCategory] || [];
+        filtered = filtered.filter(s => {
+          const text = ((s.tags||'') + ' ' + (s.name||'')).toLowerCase();
+          return keywords.some(k => text.includes(k));
+        });
+      }
+
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      if (q) {
+        filtered = filtered.filter(s => {
+          const text = ((s.name||'') + ' ' + (s.description_zh||'') + ' ' + (s.description||'')).toLowerCase();
+          return text.includes(q);
+        });
+        document.getElementById('sectionTitle').textContent = '搜索结果';
+      } else {
+        document.getElementById('sectionTitle').textContent = currentCategory === 'all' ? '精选技能 Top 50' : currentCategory + ' 技能';
+      }
+
+      // Sort by score/downloads
+      filtered.sort((a, b) => (b.score || b.downloads || 0) - (a.score || a.downloads || 0));
+      
+      displayedSkills = filtered.slice(0, 50);
+      renderList(displayedSkills);
+    }
+
+    async function initData() {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        
+        allSkills = data.skills || data.data || [];
+        applyFilters();
+        
+      } catch (err) {
+        console.error('Data fetch failed:', err);
+        document.getElementById('skillsList').innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <h3>数据源连接失败</h3>
+            <p>如果您在本地通过 file:// 访问，请配置本地 HTTP 服务避免跨域错误。</p>
+          </div>
+        `;
+      }
+    }
+
+    // Modal
+    const modal = document.getElementById('modalOverlay');
+    function openModal(slug) {
+      const skill = allSkills.find(s => s.slug === slug);
+      if (!skill) return;
+
+      const c = getColor(skill.name);
+      const mIcon = document.getElementById('mIcon');
+      mIcon.textContent = getInitials(skill.name);
+      mIcon.style.background = c.bg; 
+      mIcon.style.color = c.text;
+      mIcon.style.boxShadow = `0 12px 32px ${c.bg}`; /* 弹窗大光晕 */
+
+      document.getElementById('mTitle').textContent = skill.name;
+      document.getElementById('mVersion').textContent = `v${skill.version || '1.0.0'} · ${skill.updated_at ? new Date(skill.updated_at).toLocaleDateString() : '最近更新'}`;
+      
+      const tags = (skill.tags || '综合增强').split(',').map(t => `<span class="rank-tag" style="background:${c.bg};color:${c.text}">${escapeHtml(t)}</span>`).join('');
+      document.getElementById('mTags').innerHTML = tags;
+
+      document.getElementById('mDesc').textContent = skill.description_zh || skill.description || '暂无描述信息';
+      
+      document.getElementById('mStars').textContent = formatNumber(skill.stars);
+      document.getElementById('mDownloads').textContent = formatNumber(skill.downloads);
+      document.getElementById('mInstalls').textContent = formatNumber(skill.installs);
+      
+      document.getElementById('mLink').href = skill.homepage || `https://clawhub.ai/${skill.slug}`;
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+    // Events
+    document.getElementById('searchInput').addEventListener('input', () => { setTimeout(applyFilters, 300); });
+    
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.dataset.cat;
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('.role-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.role-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    initData();
+  </script>
+</body>
+</html>
