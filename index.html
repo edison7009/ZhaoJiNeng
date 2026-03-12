@@ -902,6 +902,45 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      padding-bottom: 16px;
+    }
+    .page-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .page-btn:hover:not(.disabled):not(.active) {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+    .page-btn.active {
+      background: var(--accent-color);
+      color: #fff;
+      border-color: var(--accent-color);
+      box-shadow: 0 4px 12px rgba(217, 64, 37, 0.25);
+    }
+    .page-btn.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 
@@ -987,7 +1026,7 @@
           <span class="htag htag-orange">⚡ 加速下载</span>
           <span class="htag htag-green">✓ 安全审计</span>
         </div>
-        <h2 class="section-title" id="sectionTitle">精选 TOP 50 AI Skills 榜单</h2>
+        <h2 class="section-title" id="sectionTitle">精选技能 Top 50</h2>
         <p class="section-subtitle">从 ClawHub 生态中精选最值得安装的 50 个 AI Skills，国内直连镜像，一键加速安装。</p>
       </div>
 
@@ -1016,6 +1055,7 @@
             </style>
           </div>
         </div>
+        <div id="pagination" class="pagination"></div>
       </div>
     </section>
   </div>
@@ -1073,9 +1113,13 @@
   <script>
     // 读取同目录下的 skills.json（部署到 Cloudflare Pages / GitHub Pages 后自动生效）
     const API_URL = './skills.json';
+    const PAGE_SIZE = 8;
+    const MAX_PAGES = 7;
     let allSkills = [];
+    let filteredSkills = [];
     let displayedSkills = [];
     let currentCategory = 'all';
+    let currentPage = 1;
 
     const colorPalette = [
       { bg: 'var(--cat-1)', text: 'var(--cat-1-text)' },
@@ -1191,8 +1235,37 @@
       // Sort by score/downloads
       filtered.sort((a, b) => (b.score || b.downloads || 0) - (a.score || a.downloads || 0));
 
-      displayedSkills = filtered.slice(0, 50);
+      filteredSkills = filtered.slice(0, PAGE_SIZE * MAX_PAGES);
+      currentPage = 1;
+      renderPage();
+    }
+
+    function renderPage() {
+      const totalPages = Math.min(MAX_PAGES, Math.ceil(filteredSkills.length / PAGE_SIZE));
+      const start = (currentPage - 1) * PAGE_SIZE;
+      displayedSkills = filteredSkills.slice(start, start + PAGE_SIZE);
       renderList(displayedSkills);
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      const container = document.getElementById('pagination');
+      if (totalPages <= 1) { container.innerHTML = ''; return; }
+      let html = '';
+      html += `<button class="page-btn ${currentPage === 1 ? 'disabled' : ''}" onclick="goPage(${currentPage - 1})">&laquo;</button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+      }
+      html += `<button class="page-btn ${currentPage === totalPages ? 'disabled' : ''}" onclick="goPage(${currentPage + 1})">&raquo;</button>`;
+      container.innerHTML = html;
+    }
+
+    function goPage(page) {
+      const totalPages = Math.min(MAX_PAGES, Math.ceil(filteredSkills.length / PAGE_SIZE));
+      if (page < 1 || page > totalPages) return;
+      currentPage = page;
+      renderPage();
+      document.getElementById('explore').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     async function initData() {
