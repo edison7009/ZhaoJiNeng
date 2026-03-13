@@ -16,10 +16,42 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Discover latest skills data URL from skillhub.tencent.com
+        id: discover
+        run: |
+          # Fetch skillhub homepage and extract hashed JS bundle filename
+          PAGE_HTML=$(curl -fsSL "https://skillhub.tencent.com/")
+          JS_NAME=$(echo "$PAGE_HTML" | grep -oP 'skill-hub\.[A-Za-z0-9_-]+\.js' | head -1)
+          if [ -z "$JS_NAME" ]; then
+            echo "Could not find JS bundle name in page HTML"
+            exit 1
+          fi
+          echo "Found JS bundle: $JS_NAME"
+
+          # Fetch JS bundle and extract skills data hash
+          JS_URL="https://cloudcache.tencent-cloud.com/qcloud/tea/app/assets/$JS_NAME"
+          JS_TEXT=$(curl -fsSL "$JS_URL")
+          DATA_HASH=$(echo "$JS_TEXT" | grep -oP 'skills\.[a-f0-9]+\.json' | head -1 | grep -oP '[a-f0-9]+(?=\.json)')
+          if [ -z "$DATA_HASH" ]; then
+            echo "Could not find skills data hash in JS bundle"
+            exit 1
+          fi
+          echo "Found skills hash: $DATA_HASH"
+
+          DATA_URL="https://cloudcache.tencentcs.com/qcloud/tea/app/data/skills.${DATA_HASH}.json?max_age=31536000"
+          echo "url=$DATA_URL" >> $GITHUB_OUTPUT
+          echo "hash=$DATA_HASH" >> $GITHUB_OUTPUT
+
       - name: Download latest skills.json
         run: |
-          curl -fsSL -o skills_new.json \
-            "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills.json"
+          echo "Downloading from: ${{ steps.discover.outputs.url }}"
+          curl -fsSL -o skills_new.json "${{ steps.discover.outputs.url }}"
+          COUNT=$(python3 -c "import json; d=json.load(open('skills_new.json')); print(len(d.get('skills', d.get('data', []))))")
+          echo "Downloaded $COUNT skills"
+          if [ "$COUNT" -lt 100 ]; then
+            echo "ERROR: Too few skills ($COUNT), aborting"
+            exit 1
+          fi
 
       - name: Check for changes
         id: diff
@@ -42,5 +74,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add skills.json
-          git commit -m "chore: sync skills.json (${{ steps.diff.outputs.count }} skills)"
+          git commit -m "chore: sync skills.json (${{ steps.diff.outputs.count }} skills, hash=${{ steps.discover.outputs.hash }})"
           git push
