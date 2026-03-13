@@ -68,11 +68,24 @@ jobs:
         if: steps.diff.outputs.changed == 'true'
         run: mv skills_new.json skills.json
 
+      - name: Update skills hash in HTML files
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          OLD_HASH=$(grep -oP '(?<=SKILLS_HASH: )[a-f0-9]+' index.html | head -1)
+          NEW_HASH="${{ steps.discover.outputs.hash }}"
+          if [ "$OLD_HASH" != "$NEW_HASH" ]; then
+            echo "Updating hash in HTML: $OLD_HASH -> $NEW_HASH"
+            sed -i "s/skills\.${OLD_HASH}\.json/skills.${NEW_HASH}.json/g" index.html all.html
+            sed -i "s/SKILLS_HASH: ${OLD_HASH}/SKILLS_HASH: ${NEW_HASH}/g" index.html all.html
+          else
+            echo "Hash unchanged: $NEW_HASH"
+          fi
+
       - name: Commit and push
         if: steps.diff.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add skills.json
-          git commit -m "chore: sync skills.json (${{ steps.diff.outputs.count }} skills, hash=${{ steps.discover.outputs.hash }})"
+          git add skills.json index.html all.html
+          git commit -m "chore: sync skills data (${{ steps.diff.outputs.count }} skills, hash=${{ steps.discover.outputs.hash }})"
           git push

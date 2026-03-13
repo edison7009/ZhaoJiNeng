@@ -1318,10 +1318,13 @@
   </div>
 
   <script>
-    // Primary: Tencent official CDN (accessible in mainland China)
-    const TENCENT_DATA_BASE = 'https://cloudcache.tencentcs.com/qcloud/tea/app/data/';
-    const TENCENT_DATA_BASE_ALT = 'https://cloudcache.tencent-cloud.com/qcloud/tea/app/data/';
-    const SKILLS_HASH_KEY = 'skillsJsonHash';
+    // Skills data URLs - hash is auto-updated by GitHub Actions sync workflow
+    // SKILLS_HASH: 2d46363b
+    const SKILLS_URLS = [
+      'https://cloudcache.tencentcs.com/qcloud/tea/app/data/skills.2d46363b.json',
+      'https://cloudcache.tencent-cloud.com/qcloud/tea/app/data/skills.2d46363b.json',
+      './skills.json'
+    ];
     const BATCH_SIZE = 50;
     const MAX_ITEMS = 50;
     let allSkills = [];
@@ -1493,27 +1496,8 @@
     }, { rootMargin: '200px' });
     scrollObserver.observe(document.getElementById('scrollSentinel'));
 
-    async function getSkillsHash() {
-      const cached = sessionStorage.getItem(SKILLS_HASH_KEY);
-      if (cached) return cached;
-      try {
-        const pageHtml = await fetch('https://skillhub.tencent.com/').then(r => r.text());
-        const jsMatch = pageHtml.match(/skill-hub\.([A-Za-z0-9_-]+)\.js/);
-        if (!jsMatch) return null;
-        const jsUrl = `https://cloudcache.tencent-cloud.com/qcloud/tea/app/assets/skill-hub.${jsMatch[1]}.js`;
-        const jsText = await fetch(jsUrl).then(r => r.text());
-        const dataMatch = jsText.match(/skills\.([a-f0-9]+)\.json/);
-        if (!dataMatch) return null;
-        sessionStorage.setItem(SKILLS_HASH_KEY, dataMatch[1]);
-        return dataMatch[1];
-      } catch (e) {
-        console.warn('Hash discovery failed:', e);
-        return null;
-      }
-    }
-
     async function tryFetchSkills(url) {
-      const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      const res = await fetch(url, { signal: AbortSignal.timeout(12000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       const arr = data.skills || data.data || [];
@@ -1522,14 +1506,7 @@
     }
 
     async function initData() {
-      const hash = await getSkillsHash();
-      const tencentUrls = hash ? [
-        `${TENCENT_DATA_BASE}skills.${hash}.json?max_age=31536000`,
-        `${TENCENT_DATA_BASE_ALT}skills.${hash}.json?max_age=31536000`,
-      ] : [];
-      const allUrls = [...tencentUrls, './skills.json'];
-
-      for (const url of allUrls) {
+      for (const url of SKILLS_URLS) {
         try {
           allSkills = await tryFetchSkills(url);
           console.log(`Loaded ${allSkills.length} skills from: ${url}`);
@@ -1539,7 +1516,6 @@
           console.warn(`Failed: ${url}`, err.message);
         }
       }
-
       document.getElementById('skillsList').innerHTML = `
         <div class="empty-state">
           <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
