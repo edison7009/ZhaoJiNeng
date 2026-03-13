@@ -6,7 +6,7 @@
 set -euo pipefail
 
 BRAND="zhaojineng"
-KIT_URL="https://skillhub-1251783334.cos.ap-guangzhou.myqcloud.com/install/latest.tar.gz"
+KIT_URL="https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/latest.tar.gz"
 INSTALL_DIR="${HOME}/.${BRAND}"
 BIN_DIR="${INSTALL_DIR}/bin"
 
