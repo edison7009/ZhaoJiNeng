@@ -7,6 +7,7 @@ const CLAWHUB_API = 'https://clawhub.ai/api/v1/download';  // DEFAULT_REGISTRY f
 const SKILLS_SH_BASE = 'https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills';
 
 // Check if a URL is accessible (HEAD request, fast)
+// 404 = not found (skip); 405 = HEAD not allowed but URL exists (ok); 429 = rate limited but URL exists (ok)
 async function checkUrl(url) {
   try {
     const res = await fetch(url, {
@@ -14,7 +15,8 @@ async function checkUrl(url) {
       headers: { 'User-Agent': 'ZhaoJiNeng-Resolver/1.0' },
       signal: AbortSignal.timeout(5000),
     });
-    return res.ok;
+    // 404 / 410 = truly not found; everything else means URL exists
+    return res.status !== 404 && res.status !== 410;
   } catch {
     return false;
   }
