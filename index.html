@@ -342,7 +342,7 @@
       display:flex; align-items:center; justify-content:center;
       font-weight:800; font-size:20px; flex-shrink:0;
     }
-    .hsc-meta { flex:1; min-width:0; }
+    .hsc-meta { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; }
     .hsc-name {
       font-weight:800; font-size:26px; color:var(--text-primary);
       white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
@@ -1242,8 +1242,10 @@
             </div>
           </div>
           <p class="hsc-desc" id="heroSkillDesc">正在获取技能信息...</p>
-          <p style="font-size:17px;font-weight:800;color:#111;margin:14px 0 2px;">安装方式</p>
-          <p style="font-size:13px;color:#aaa;margin-bottom:6px;">复制给 AI Agent：</p>
+          <p style="margin:14px 0 6px;">
+            <span style="font-size:17px;font-weight:800;color:#111;">安装方式</span>
+            <span style="font-size:13px;color:#aaa;margin-left:8px;">复制给 AI Agent：</span>
+          </p>
           <div class="hsc-cmd">
             <span id="heroInstallCmdText">帮我安装这个技能 https://zhaojineng.com/skills/...</span>
             <button id="heroCardCopy">复制</button>
