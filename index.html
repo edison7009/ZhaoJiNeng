@@ -1187,16 +1187,17 @@
       <div class="hero-card">
         <div class="mock-card">
           <p class="card-tip" style="font-weight:700;font-size:15px;">Quick Download</p>
-          <div class="os-tabs" id="heroOsTabs">
-            <button class="os-tab active" id="heroOsMac">🍎 macOS / Linux</button>
-            <button class="os-tab" id="heroOsWin">🪟 Windows</button>
+          <div class="os-tabs" id="heroOsTabs" style="gap:4px;">
+            <button class="os-tab active" id="heroOsWin">🪟 Windows</button>
+            <button class="os-tab" id="heroOsMac">🍎 macOS</button>
+            <button class="os-tab" id="heroOsLinux">🐧 Linux</button>
           </div>
-          <p class="card-tip">Example — download any skill directly:</p>
+          <p class="card-tip" style="margin-top:10px;">把这个地址复制给 AI：</p>
           <div class="card-code">
-            <span id="heroInstallCmdText">curl -L "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/youtube-watcher.zip" -o youtube-watcher.zip</span>
+            <span id="heroInstallCmdText">https://zhaojineng.com/skills/youtube-watcher.zip</span>
             <button class="card-copy">复制</button>
           </div>
-          <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">No CLI required &mdash; Works on macOS, Windows &amp; Linux</p>
+          <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">适用所有平台 · 国内加速直链</p>
         </div>
       </div>
     </section>
@@ -1286,17 +1287,18 @@
       </div>
 
       <div class="m-install">
-        <h3 class="m-install-title">Download &amp; Install</h3>
-        <div class="os-tabs" id="modalOsTabs">
-          <button class="os-tab active" id="modalOsMac">🍎 macOS / Linux</button>
-          <button class="os-tab" id="modalOsWin">🪟 Windows</button>
+        <h3 class="m-install-title">Download</h3>
+        <div class="os-tabs" id="modalOsTabs" style="gap:4px;">
+          <button class="os-tab active" id="modalOsWin">🪟 Windows</button>
+          <button class="os-tab" id="modalOsMac">🍎 macOS</button>
+          <button class="os-tab" id="modalOsLinux">🐧 Linux</button>
         </div>
-        <p class="m-panel-tip">Run in terminal to download this skill:</p>
+        <p class="m-panel-tip" style="margin-top:12px;">把这个地址复制给 AI：</p>
         <div class="m-cmd">
-          <code id="mCliCmd">curl -L "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/skill-name.zip" -o skill-name.zip</code>
-          <button class="m-cmd-copy" onclick="copyCmd('mCliCmd')">复制</button>
+          <code id="mSkillUrl">https://zhaojineng.com/skills/skill-name.zip</code>
+          <button class="m-cmd-copy" onclick="copyCmd('mSkillUrl')">复制</button>
         </div>
-        <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">Works on macOS, Windows &amp; Linux &mdash; no CLI required</p>
+        <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">适用所有平台 · 国内加速直链</p>
       </div>
 
       <a href="#" id="mDownload" class="m-download" target="_blank">
@@ -1539,20 +1541,16 @@
       document.getElementById('mInstalls').textContent = formatNumber(skill.installs);
 
 
-      // Set download link
-      document.getElementById('mDownload').href = `https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/${skill.slug}.zip`;
+      // Set download link (via Cloudflare proxy)
+      const skillUrl = `https://zhaojineng.com/skills/${skill.slug}.zip`;
+      document.getElementById('mDownload').href = skillUrl;
 
-      // Set install commands
-      const cosBase = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
-      const macCmd = `curl -L "${cosBase}/${skill.slug}.zip" -o ${skill.slug}.zip`;
-      const winCmd = `iwr "${cosBase}/${skill.slug}.zip" -OutFile ${skill.slug}.zip`;
-      document.getElementById('mCliCmd').textContent = macCmd;
-      window._modalMacCmd = macCmd;
-      window._modalWinCmd = winCmd;
+      // Set skill URL for copy-to-AI
+      document.getElementById('mSkillUrl').textContent = skillUrl;
 
-      // Reset to Mac tab
-      document.getElementById('modalOsMac').classList.add('active');
-      document.getElementById('modalOsWin').classList.remove('active');
+      // Reset to Windows tab (first)
+      document.querySelectorAll('#modalOsTabs .os-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('modalOsWin').classList.add('active');
 
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1567,16 +1565,20 @@
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    // Modal OS tab switching
-    document.getElementById('modalOsMac').addEventListener('click', () => {
-      document.getElementById('modalOsMac').classList.add('active');
-      document.getElementById('modalOsWin').classList.remove('active');
-      if (window._modalMacCmd) document.getElementById('mCliCmd').textContent = window._modalMacCmd;
+    // Modal OS tab switching (pure style, URL stays the same)
+    document.querySelectorAll('#modalOsTabs .os-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('#modalOsTabs .os-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
     });
-    document.getElementById('modalOsWin').addEventListener('click', () => {
-      document.getElementById('modalOsWin').classList.add('active');
-      document.getElementById('modalOsMac').classList.remove('active');
-      if (window._modalWinCmd) document.getElementById('mCliCmd').textContent = window._modalWinCmd;
+
+    // Hero OS tab switching (pure style)
+    document.querySelectorAll('#heroOsTabs .os-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('#heroOsTabs .os-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
     });
 
     function copyCmd(target) {
@@ -1599,18 +1601,6 @@
         currentCategory = btn.dataset.cat;
         applyFilters();
       });
-    });
-
-    // Hero OS tab switching
-    document.getElementById('heroOsMac').addEventListener('click', () => {
-      document.getElementById('heroOsMac').classList.add('active');
-      document.getElementById('heroOsWin').classList.remove('active');
-      document.getElementById('heroInstallCmdText').textContent = 'curl -L "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/youtube-watcher.zip" -o youtube-watcher.zip';
-    });
-    document.getElementById('heroOsWin').addEventListener('click', () => {
-      document.getElementById('heroOsWin').classList.add('active');
-      document.getElementById('heroOsMac').classList.remove('active');
-      document.getElementById('heroInstallCmdText').textContent = 'iwr "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/youtube-watcher.zip" -OutFile youtube-watcher.zip';
     });
 
     // Copy buttons (hero cards)
