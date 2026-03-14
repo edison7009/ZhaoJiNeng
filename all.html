@@ -1091,6 +1091,26 @@
       return TAG_ZH[key] || t;
     }
 
+    const CAT_KEYWORDS = {
+      'AI智能': ['ai', 'llm', 'chat', 'model', 'gpt', 'agent', 'prompt', 'embedding', 'neural', 'ml'],
+      '开发工具': ['dev', 'code', 'git', 'api', 'deploy', 'debug', 'test', 'docker', 'build'],
+      '效率提升': ['productivity', 'work', 'tool', 'automat', 'workflow', 'task', 'note'],
+      '数据分析': ['data', 'analytics', 'sql', 'search', 'database', 'chart', 'query'],
+      '内容创作': ['content', 'write', 'blog', 'article', 'copy', 'image', 'video', 'creative'],
+      '安全合规': ['security', 'safe', 'auth', 'encrypt', 'compliance', 'audit', 'protect'],
+      '通讯协作': ['communic', 'collaborat', 'messag', 'email', 'slack', 'team', 'meeting'],
+    };
+    function getSkillCategory(skill) {
+      const text = [
+        ...(Array.isArray(skill.tags) ? skill.tags : (skill.tags||'').toString().split(',').map(t=>t.trim())),
+        skill.name || '', skill.description || ''
+      ].join(' ').toLowerCase();
+      for (const [cat, kws] of Object.entries(CAT_KEYWORDS)) {
+        if (kws.some(k => text.includes(k))) return cat;
+      }
+      return '通用';
+    }
+
     function renderItem(skill, globalIndex) {
       const c = getColor(skill.name);
       const isSearch = document.getElementById('searchInput').value;
@@ -1105,7 +1125,7 @@
           <div class="rank-content">
             <div class="rank-header">
               <span class="rank-name">${escapeHtml(skill.name)}</span>
-              <span class="rank-tag" style="background:${c.bg}; color:${c.text}">${escapeHtml(translateTag(tag))}</span>
+              <span class="rank-tag" style="background:${c.bg}; color:${c.text}">${escapeHtml(getSkillCategory(skill))}</span>
             </div>
             <div class="rank-desc" title="${escapeHtml(desc)}">${escapeHtml(desc)}</div>
           </div>
