@@ -3,7 +3,7 @@
 // - /skills/xxx      → resolve available download sources, return AI-readable metadata
 
 const COS_BASE    = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
-const CLAWHUB_API = 'https://clawhub.ai/api/v1/download';  // DEFAULT_REGISTRY from clawhub CLI
+const CLAWHUB_API = 'https://wry-manatee-359.convex.site/api/v1/download';  // ClawHub Convex backend (returns 200/404 correctly)
 const SKILLS_SH_BASE = 'https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills';
 
 // Check if a URL is accessible (HEAD request, fast)
