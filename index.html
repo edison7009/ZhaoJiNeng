@@ -1588,25 +1588,60 @@
       return arr;
     }
 
+    let dataLoaded = false;
+    const CACHE_KEY = 'zjn_skills_v1';
+    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+    function loadFromCache() {
+      try {
+        const raw = sessionStorage.getItem(CACHE_KEY);
+        if (!raw) return false;
+        const { ts, data } = JSON.parse(raw);
+        if (Date.now() - ts > CACHE_TTL) return false;
+        allSkills = data;
+        dataLoaded = true;
+        applyFilters();
+        updateHeroSkillCard(allSkills);
+        return true;
+      } catch(e) { return false; }
+    }
+
+    function saveToCache(skills) {
+      try {
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: skills }));
+      } catch(e) {}
+    }
+
     async function initData() {
+      // Show cached data instantly if available
+      const hasCached = loadFromCache();
+
       for (const url of SKILLS_URLS) {
         try {
-          allSkills = await tryFetchSkills(url);
-          console.log(`Loaded ${allSkills.length} skills from: ${url}`);
-          applyFilters();
-          updateHeroSkillCard(allSkills); // Call after data is loaded
+          const skills = await tryFetchSkills(url);
+          allSkills = skills;
+          saveToCache(skills);
+          if (!dataLoaded) {
+            dataLoaded = true;
+            applyFilters();
+            updateHeroSkillCard(allSkills);
+          }
           return;
         } catch (err) {
           console.warn(`Failed: ${url}`, err.message);
         }
       }
-      document.getElementById('skillsList').innerHTML = `
-        <div class="empty-state">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <h3>Data source unavailable</h3>
-          <p>Please try again later.</p>
-        </div>
-      `;
+
+      // Only show error if data was NEVER loaded (not even from cache)
+      if (!dataLoaded) {
+        document.getElementById('skillsList').innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <h3>Data source unavailable</h3>
+            <p>Please try again later.</p>
+          </div>
+        `;
+      }
     }
 
     // Modal
