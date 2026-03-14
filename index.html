@@ -1765,12 +1765,14 @@
       document.getElementById('heroSkillDownloads').textContent = formatNumber(skill.downloads);
       document.getElementById('heroSkillInstalls').textContent = formatNumber(skill.installs);
       slugToHashUrl(skill.slug).then(url => {
-        document.getElementById('heroInstallCmdText').textContent = `帮我安装这个技能 ${url}`;
+        heroInstallUrl = `帮我安装这个技能 ${url}`;
+        document.getElementById('heroInstallCmdText').textContent = heroInstallUrl;
       });
     }
 
+    let heroInstallUrl = '';
     document.getElementById('heroCardCopy').addEventListener('click', () => {
-      const text = document.getElementById('heroInstallCmdText').textContent;
+      const text = heroInstallUrl || document.getElementById('heroInstallCmdText').textContent;
       navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('toast');
         toast.classList.add('show');
