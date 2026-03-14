@@ -336,6 +336,26 @@
       padding: 24px;
       box-shadow: 0 20px 48px rgba(0, 0, 0, 0.05);
     }
+    .hsc-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+    .hsc-icon {
+      width:44px; height:44px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:14px; flex-shrink:0;
+    }
+    .hsc-meta { flex:1; min-width:0; }
+    .hsc-name { font-weight:700; font-size:15px; color:var(--text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .hsc-tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+    .hsc-desc {
+      font-size:13px; color:var(--text-secondary); line-height:1.5;
+      margin:8px 0 12px; display:-webkit-box;
+      -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+    }
+    .hsc-stats { display:flex; gap:0; border:1px solid rgba(0,0,0,0.06); border-radius:12px; overflow:hidden; margin-bottom:4px; }
+    .hsc-stat { flex:1; text-align:center; padding:10px 4px; border-right:1px solid rgba(0,0,0,0.06); }
+    .hsc-stat:last-child { border-right:none; }
+    .hsc-stat-num { font-weight:700; font-size:16px; color:var(--text-primary); }
+    .hsc-stat-label { font-size:11px; color:var(--text-tertiary); margin-top:2px; }
+
 
     .role-tabs {
       display: flex;
@@ -1186,18 +1206,25 @@
       </div>
       <div class="hero-card">
         <div class="mock-card">
-          <p class="card-tip" style="font-weight:700;font-size:15px;">Quick Download</p>
-          <div class="os-tabs" id="heroOsTabs" style="gap:4px;">
-            <button class="os-tab active" id="heroOsWin">🪟 Windows</button>
-            <button class="os-tab" id="heroOsMac">🍎 macOS</button>
-            <button class="os-tab" id="heroOsLinux">🐧 Linux</button>
+          <div class="hsc-header">
+            <div class="hsc-icon" id="heroSkillIcon">SK</div>
+            <div class="hsc-meta">
+              <div class="hsc-name" id="heroSkillName">加载中...</div>
+              <div class="hsc-tags" id="heroSkillTags"></div>
+            </div>
           </div>
-          <p class="card-tip" style="margin-top:10px;">把这个地址复制给 AI：</p>
+          <p class="hsc-desc" id="heroSkillDesc">正在获取技能信息...</p>
+          <div class="hsc-stats">
+            <div class="hsc-stat"><div class="hsc-stat-num" id="heroSkillStars">—</div><div class="hsc-stat-label">⭐ 收藏</div></div>
+            <div class="hsc-stat"><div class="hsc-stat-num" id="heroSkillDownloads">—</div><div class="hsc-stat-label">📦 下载</div></div>
+            <div class="hsc-stat"><div class="hsc-stat-num" id="heroSkillInstalls">—</div><div class="hsc-stat-label">🔥 活跃</div></div>
+          </div>
+          <p class="card-tip" style="margin-top:12px;font-size:12px;color:var(--text-secondary);">安装方式 · 复制给 AI Agent：</p>
           <div class="card-code">
-            <span id="heroInstallCmdText">https://zhaojineng.com/skills/youtube-watcher.zip</span>
-            <button class="card-copy">复制</button>
+            <span id="heroInstallCmdText">帮我安装这个技能 https://zhaojineng.com/skills/...</span>
+            <button class="card-copy" id="heroCardCopy">复制</button>
           </div>
-          <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">适用所有平台 · 国内加速直链</p>
+          <p style="font-size:11px;color:var(--text-tertiary);margin-top:6px;text-align:center;">适用所有平台 · AI 自动识别并安装</p>
         </div>
       </div>
     </section>
@@ -1524,6 +1551,7 @@
           allSkills = await tryFetchSkills(url);
           console.log(`Loaded ${allSkills.length} skills from: ${url}`);
           applyFilters();
+          updateHeroSkillCard(allSkills); // Call after data is loaded
           return;
         } catch (err) {
           console.warn(`Failed: ${url}`, err.message);
@@ -1638,6 +1666,39 @@
     // Back to top button
     window.addEventListener('scroll', () => {
       document.getElementById('backTop').classList.toggle('show', window.scrollY > 500);
+    });
+
+    // Hero skill card: random from loaded featured skills
+    function updateHeroSkillCard(skills) {
+      const top = skills.filter(s => (s.score||0) > 0 || (s.downloads||0) > 50);
+      const pool = top.length >= 10 ? top : skills;
+      const skill = pool[Math.floor(Math.random() * Math.min(pool.length, 50))];
+      if (!skill) return;
+      const c = getColor(skill.name);
+      const icon = document.getElementById('heroSkillIcon');
+      icon.textContent = getInitials(skill.name);
+      icon.style.background = c.bg; icon.style.color = c.text;
+      document.getElementById('heroSkillName').textContent = skill.name;
+      const tags = Array.isArray(skill.tags) ? skill.tags : (skill.tags||'').toString().split(',');
+      document.getElementById('heroSkillTags').innerHTML = tags.slice(0,3).map(t =>
+        `<span class="rank-tag" style="background:${c.bg};color:${c.text};font-size:11px;padding:2px 6px">${escapeHtml(translateTag(t.trim()))}</span>`
+      ).join('');
+      document.getElementById('heroSkillDesc').textContent = skill.description_zh || skill.description || '';
+      document.getElementById('heroSkillStars').textContent = formatNumber(skill.stars);
+      document.getElementById('heroSkillDownloads').textContent = formatNumber(skill.downloads);
+      document.getElementById('heroSkillInstalls').textContent = formatNumber(skill.installs);
+      slugToHashUrl(skill.slug).then(url => {
+        document.getElementById('heroInstallCmdText').textContent = `帮我安装这个技能 ${url}`;
+      });
+    }
+
+    document.getElementById('heroCardCopy').addEventListener('click', () => {
+      const text = document.getElementById('heroInstallCmdText').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2000);
+      });
     });
 
     initData();
