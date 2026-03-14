@@ -1761,9 +1761,7 @@
       document.getElementById('heroSkillTags').innerHTML =
         `<span class="rank-tag" style="background:${c.bg};color:${c.text};font-size:12px;padding:3px 8px">${escapeHtml(cat)}</span>`;
       document.getElementById('heroSkillDesc').textContent = skill.description_zh || skill.description || '';
-      document.getElementById('heroSkillStars').textContent = formatNumber(skill.stars);
-      document.getElementById('heroSkillDownloads').textContent = formatNumber(skill.downloads);
-      document.getElementById('heroSkillInstalls').textContent = formatNumber(skill.installs);
+
       setHeroInstallUrl(skill.slug);
     }
 
