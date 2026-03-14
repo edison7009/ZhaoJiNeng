@@ -1512,7 +1512,16 @@
 
     // Modal
     const modal = document.getElementById('modalOverlay');
-    function openModal(slug) {
+    // Compute SHA-256(slug + "|" + UTC-date) → first 24 hex chars (daily-rotating)
+    async function slugToHashUrl(slug) {
+      const date = new Date().toISOString().slice(0, 10); // YYYY-MM-DD UTC
+      const data = new TextEncoder().encode(slug + '|' + date);
+      const buf  = await crypto.subtle.digest('SHA-256', data);
+      const hex  = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+      return 'https://zhaojineng.com/skills/' + hex.slice(0, 24);
+    }
+
+    async function openModal(slug) {
       const skill = allSkills.find(s => s.slug === slug);
       if (!skill) return;
 
@@ -1540,8 +1549,9 @@
       const cosZip = `https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/${skill.slug}.zip`;
       document.getElementById('mDownload').href = cosZip;
 
-      // Set AI installation instruction
-      const aiInstallCmd = `帮我安装这个技能 https://zhaojineng.com/skills/${skill.slug}`;
+      // Set AI installation instruction with daily-rotating hash URL
+      const hashUrl = await slugToHashUrl(skill.slug);
+      const aiInstallCmd = `帮我安装这个技能 ${hashUrl}`;
       document.getElementById('mSkillUrl').textContent = aiInstallCmd;
 
       modal.classList.add('open');

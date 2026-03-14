@@ -1,12 +1,44 @@
 // Cloudflare Pages Function - /skills/:name
-// - /skills/xxx.zip  → proxy to Tencent COS (for direct download)
-// - /skills/xxx      → resolve available sources, fetch & embed SKILL.md content
+// - /skills/xxx.zip       → proxy to Tencent COS (direct download)
+// - /skills/{24-hex-hash} → daily-rotating URL, resolves to slug via SHA-256
+// - /skills/{slug}        → human-readable (kept for backward compat)
 
 const COS_BASE       = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
-const CLAWHUB_API    = 'https://wry-manatee-359.convex.site/api/v1/download'; // ClawHub Convex backend
+const CLAWHUB_API    = 'https://wry-manatee-359.convex.site/api/v1/download';
 const SKILLS_SH_BASE = 'https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills';
 
-// HEAD check: 404/410 = truly not found; 405/429/other = exists
+// Compute SHA-256(slug + "|" + dateStr), return lower-hex first 24 chars
+async function slugHashForDate(slug, dateStr) {
+  const buf = await crypto.subtle.digest(
+    'SHA-256',
+    new TextEncoder().encode(slug + '|' + dateStr)
+  );
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 24);
+}
+
+// UTC date string "YYYY-MM-DD", offsetDays: 0=today, -1=yesterday
+function utcDate(offsetDays = 0) {
+  const d = new Date(Date.now() + offsetDays * 86400000);
+  return d.toISOString().slice(0, 10);
+}
+
+// Resolve 24-hex hash → slug by trying today + yesterday against featured slugs
+async function resolveHash(hash, origin) {
+  try {
+    const res = await fetch(`${origin}/featured-slugs.json`, { signal: AbortSignal.timeout(5000) });
+    if (!res.ok) return null;
+    const slugs = await res.json();
+    for (const offsetDays of [0, -1]) {
+      const date = utcDate(offsetDays);
+      for (const slug of slugs) {
+        if (await slugHashForDate(slug, date) === hash) return slug;
+      }
+    }
+  } catch {}
+  return null;
+}
+
+// HEAD check: 404/410 = not found; any other status = exists
 async function checkUrl(url) {
   try {
     const res = await fetch(url, {
@@ -20,30 +52,28 @@ async function checkUrl(url) {
   }
 }
 
-// Parse ZIP bytes, extract SKILL.md content (handles stored + deflate)
+// Parse ZIP bytes, extract SKILL.md content (stored + deflate)
 async function extractSkillMdFromZip(zipBytes) {
   const view = new DataView(zipBytes.buffer);
   let offset = 0;
 
   while (offset < zipBytes.length - 30) {
     const sig = view.getUint32(offset, true);
-    if (sig !== 0x04034b50) break; // not a local file header
+    if (sig !== 0x04034b50) break;
 
-    const compression   = view.getUint16(offset + 8,  true);
+    const compression    = view.getUint16(offset + 8,  true);
     const compressedSize = view.getUint32(offset + 18, true);
-    const filenameLen   = view.getUint16(offset + 26, true);
-    const extraLen      = view.getUint16(offset + 28, true);
-    const filename      = new TextDecoder().decode(zipBytes.slice(offset + 30, offset + 30 + filenameLen));
-    const dataOffset    = offset + 30 + filenameLen + extraLen;
+    const filenameLen    = view.getUint16(offset + 26, true);
+    const extraLen       = view.getUint16(offset + 28, true);
+    const filename       = new TextDecoder().decode(zipBytes.slice(offset + 30, offset + 30 + filenameLen));
+    const dataOffset     = offset + 30 + filenameLen + extraLen;
 
     if (filename === 'SKILL.md' || filename.endsWith('/SKILL.md')) {
       const fileData = zipBytes.slice(dataOffset, dataOffset + compressedSize);
       if (compression === 0) {
-        // Stored (no compression)
         return new TextDecoder('utf-8', { fatal: false }).decode(fileData);
       } else if (compression === 8) {
-        // Deflate
-        const ds     = new DecompressionStream('deflate-raw');
+        const ds = new DecompressionStream('deflate-raw');
         const writer = ds.writable.getWriter();
         const reader = ds.readable.getReader();
         writer.write(fileData);
@@ -62,7 +92,7 @@ async function extractSkillMdFromZip(zipBytes) {
       }
     }
 
-    if (compressedSize === 0 && filenameLen === 0) break; // safety
+    if (compressedSize === 0 && filenameLen === 0) break;
     offset = dataOffset + compressedSize;
   }
   return null;
@@ -84,7 +114,7 @@ async function fetchSkillMdFromZip(zipUrl) {
 }
 
 export async function onRequest(context) {
-  const { params } = context;
+  const { params, request } = context;
   const name = params.name;
 
   // Proxy .zip requests directly to COS
@@ -97,13 +127,26 @@ export async function onRequest(context) {
     return new Response(response.body, { status: response.status, headers });
   }
 
-  const slug        = name;
-  const cosZip      = `${COS_BASE}/${slug}.zip`;
-  const lightmakeUrl = `https://lightmake.site/api/v1/download?slug=${slug}`;
-  const clawhubUrl  = `${CLAWHUB_API}?slug=${slug}`;
-  const skillsMdUrl = `${SKILLS_SH_BASE}/${slug}/SKILL.md`;
+  // Resolve 24-char hex hash → slug (daily-rotating URL)
+  let slug = name;
+  if (/^[0-9a-f]{24}$/.test(name)) {
+    const origin   = new URL(request.url).origin;
+    const resolved = await resolveHash(name, origin);
+    if (!resolved) {
+      return new Response(
+        'Skill link has expired or is invalid.\nVisit https://zhaojineng.com to get the current link.',
+        { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Access-Control-Allow-Origin': '*' } }
+      );
+    }
+    slug = resolved;
+  }
 
-  // Parallel: check all download sources + fetch SKILL.md text from GitHub if available
+  const cosZip       = `${COS_BASE}/${slug}.zip`;
+  const lightmakeUrl = `https://lightmake.site/api/v1/download?slug=${slug}`;
+  const clawhubUrl   = `${CLAWHUB_API}?slug=${slug}`;
+  const skillsMdUrl  = `${SKILLS_SH_BASE}/${slug}/SKILL.md`;
+
+  // Parallel: check all download sources + fetch GitHub SKILL.md text
   const [cosOk, lightmakeOk, clawhubOk, skillsMdRes] = await Promise.all([
     checkUrl(cosZip),
     checkUrl(lightmakeUrl),
@@ -114,7 +157,7 @@ export async function onRequest(context) {
 
   let skillMdContent = skillsMdRes || null;
 
-  // If no GitHub SKILL.md, extract from zip (COS preferred, ClawHub fallback)
+  // Extract SKILL.md from zip if not found via GitHub
   if (!skillMdContent && cosOk) {
     skillMdContent = await fetchSkillMdFromZip(cosZip);
   }
@@ -122,11 +165,10 @@ export async function onRequest(context) {
     skillMdContent = await fetchSkillMdFromZip(clawhubUrl);
   }
 
-  // Build download links (only verified sources)
   const downloadLines = [];
-  if (cosOk)        downloadLines.push(`- China Mirror (SkillHub COS): ${cosZip}`);
-  if (lightmakeOk)  downloadLines.push(`- lightmake.site: ${lightmakeUrl}`);
-  if (clawhubOk)    downloadLines.push(`- ClawHub: ${clawhubUrl}`);
+  if (cosOk)       downloadLines.push(`- China Mirror (SkillHub COS): ${cosZip}`);
+  if (lightmakeOk) downloadLines.push(`- lightmake.site: ${lightmakeUrl}`);
+  if (clawhubOk)   downloadLines.push(`- ClawHub: ${clawhubUrl}`);
 
   const skillsMdOk = !!skillsMdRes;
   const mdLines = [];
@@ -134,7 +176,7 @@ export async function onRequest(context) {
 
   const downloadSection = downloadLines.length > 0
     ? downloadLines.join('\n')
-    : '- No verified download source found. Please visit https://clawhub.ai or https://zhaojineng.com';
+    : '- No verified download source found. Visit https://clawhub.ai or https://zhaojineng.com';
 
   const skillMdSection = skillMdContent
     ? `\n## SKILL.md Content\n\nThis is the full content of the skill. Read it to understand what this skill does.\n\n${skillMdContent}\n`
