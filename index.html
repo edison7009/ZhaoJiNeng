@@ -1242,15 +1242,11 @@
             </div>
           </div>
           <p class="hsc-desc" id="heroSkillDesc">正在获取技能信息...</p>
-          <p style="margin:14px 0 6px;">
-            <span style="font-size:17px;font-weight:800;color:#111;">安装方式</span>
-            <span style="font-size:13px;color:#aaa;margin-left:8px;">复制给 AI Agent：</span>
-          </p>
-          <div class="hsc-cmd">
+          <div class="hsc-cmd" style="margin-top:14px;">
             <span id="heroInstallCmdText">帮我安装这个技能 https://zhaojineng.com/skills/...</span>
             <button id="heroCardCopy">复制</button>
           </div>
-          <p style="font-size:11px;color:var(--text-tertiary);margin-top:6px;text-align:center;">适用所有平台 · AI 自动识别并安装</p>
+          <p style="font-size:11px;color:var(--text-tertiary);margin-top:6px;text-align:center;">复制给 AI Agent，自动识别并安装</p>
         </div>
       </div>
     </section>
@@ -1357,9 +1353,9 @@
     // Skills data URLs - hash is auto-updated by GitHub Actions sync workflow
     // SKILLS_HASH: 2d46363b
     const SKILLS_URLS = [
+      './skills.json',
       'https://cloudcache.tencentcs.com/qcloud/tea/app/data/skills.2d46363b.json',
       'https://cloudcache.tencent-cloud.com/qcloud/tea/app/data/skills.2d46363b.json',
-      './skills.json'
     ];
     const BATCH_SIZE = 50;
     const MAX_ITEMS = 50;
