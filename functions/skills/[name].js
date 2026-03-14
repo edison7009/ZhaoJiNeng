@@ -24,8 +24,7 @@ export async function onRequest(context) {
   // Otherwise, return AI-readable skill metadata
   const slug = name;
   const cosZip = `${COS_BASE}/${slug}.zip`;
-  const clawhubZip = `https://wry-manatee-359.convex.site/api/v1/download?slug=${slug}`;
-  const githubZip = `https://github.com/Michaelgathara/${slug}/archive/refs/heads/main.zip`;
+  const clawhubPage = `https://clawhub.ai/skills/${slug}`;
 
   const content = `# Skill: ${slug}
 
@@ -39,8 +38,11 @@ To install this skill, download the zip file and extract it to your agent's skil
 ## Download Links
 
 - China Mirror (Recommended for CN users): ${cosZip}
-- ClawHub Official: ${clawhubZip}
-- GitHub Mirror: ${githubZip}
+
+## Official Pages
+
+- ClawHub: ${clawhubPage}
+- ZhaoJiNeng Mirror: https://zhaojineng.com/skills/${slug}
 
 ## Skill Info
 
@@ -51,7 +53,7 @@ To install this skill, download the zip file and extract it to your agent's skil
 ## Agent Instructions
 
 If you are an AI agent reading this file, please:
-1. Download the zip from one of the links above (prefer China Mirror for CN users)
+1. Download the zip from the China Mirror link above
 2. Extract the contents to the appropriate skills directory
 3. Confirm installation to the user
 `;
