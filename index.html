@@ -336,25 +336,52 @@
       padding: 24px;
       box-shadow: 0 20px 48px rgba(0, 0, 0, 0.05);
     }
-    .hsc-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+    .hsc-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
     .hsc-icon {
-      width:44px; height:44px; border-radius:12px;
+      width:54px; height:54px; border-radius:14px;
       display:flex; align-items:center; justify-content:center;
-      font-weight:700; font-size:14px; flex-shrink:0;
+      font-weight:800; font-size:18px; flex-shrink:0;
     }
     .hsc-meta { flex:1; min-width:0; }
-    .hsc-name { font-weight:700; font-size:15px; color:var(--text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .hsc-tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+    .hsc-name {
+      font-weight:800; font-size:20px; color:var(--text-primary);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      line-height:1.2;
+    }
+    .hsc-tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:5px; }
     .hsc-desc {
-      font-size:13px; color:var(--text-secondary); line-height:1.5;
-      margin:8px 0 12px; display:-webkit-box;
+      font-size:14px; color:var(--text-secondary); line-height:1.6;
+      margin:10px 0 14px; display:-webkit-box;
       -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
     }
-    .hsc-stats { display:flex; gap:0; border:1px solid rgba(0,0,0,0.06); border-radius:12px; overflow:hidden; margin-bottom:4px; }
-    .hsc-stat { flex:1; text-align:center; padding:10px 4px; border-right:1px solid rgba(0,0,0,0.06); }
-    .hsc-stat:last-child { border-right:none; }
-    .hsc-stat-num { font-weight:700; font-size:16px; color:var(--text-primary); }
-    .hsc-stat-label { font-size:11px; color:var(--text-tertiary); margin-top:2px; }
+    /* 6-cell inline stats, no border box */
+    .hsc-stats {
+      display:flex; gap:0; margin-bottom:10px;
+      padding: 10px 0; border-top:1px solid rgba(0,0,0,0.05); border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+    .hsc-stat { flex:1; text-align:center; }
+    .hsc-stat-num { font-weight:700; font-size:16px; color:var(--text-primary); display:block; }
+    .hsc-stat-label { font-size:11px; color:var(--text-tertiary); margin-top:1px; display:block; }
+    /* Hero install box - same dark style as modal */
+    .hsc-cmd {
+      display:flex; align-items:center;
+      background:#1a1a2e; border-radius:12px;
+      padding:13px 16px; gap:12px; margin-top:6px;
+    }
+    .hsc-cmd span {
+      flex:1; color:#e0e0e0;
+      font-family:'SF Mono','Fira Code',monospace;
+      font-size:13px; white-space:nowrap;
+      overflow:hidden; text-overflow:ellipsis;
+    }
+    .hsc-cmd button {
+      background:var(--accent-color); color:#fff;
+      border:none; padding:6px 14px;
+      border-radius:8px; font-size:12px;
+      font-weight:700; cursor:pointer;
+      white-space:nowrap; transition:all 0.2s; flex-shrink:0;
+    }
+    .hsc-cmd button:hover { background:var(--accent-hover); transform:scale(1.02); }
 
 
     .role-tabs {
@@ -1219,10 +1246,10 @@
             <div class="hsc-stat"><div class="hsc-stat-num" id="heroSkillDownloads">—</div><div class="hsc-stat-label">📦 下载</div></div>
             <div class="hsc-stat"><div class="hsc-stat-num" id="heroSkillInstalls">—</div><div class="hsc-stat-label">🔥 活跃</div></div>
           </div>
-          <p class="card-tip" style="margin-top:12px;font-size:12px;color:var(--text-secondary);">安装方式 · 复制给 AI Agent：</p>
-          <div class="card-code">
+          <p class="card-tip" style="margin-top:4px;font-size:12px;color:var(--text-secondary);">安装方式 · 复制给 AI Agent：</p>
+          <div class="hsc-cmd">
             <span id="heroInstallCmdText">帮我安装这个技能 https://zhaojineng.com/skills/...</span>
-            <button class="card-copy" id="heroCardCopy">复制</button>
+            <button id="heroCardCopy">复制</button>
           </div>
           <p style="font-size:11px;color:var(--text-tertiary);margin-top:6px;text-align:center;">适用所有平台 · AI 自动识别并安装</p>
         </div>
