@@ -1062,6 +1062,35 @@
         .replace(/>/g, "&gt;");
     }
 
+    const TAG_ZH = {
+      'ai':'AI', 'automation':'自动化', 'browser':'浏览器', 'headless':'无头模式',
+      'web':'网页', 'memory':'记忆', 'persistence':'持久化', 'long-term':'长期',
+      'analytics':'数据分析', 'copywriting':'文案写作', 'marketing':'营销',
+      'seo':'SEO优化', 'productivity':'效率', 'assistant':'助手', 'business':'商务',
+      'documents':'文档', 'framework':'框架', 'security':'安全', 'identity':'身份',
+      'templates':'模板', 'team':'团队', 'workspace':'工作区', 'persona':'角色',
+      'sales':'销售', 'proactive':'主动型', 'production':'生产', 'proposals':'提案',
+      'code':'代码', 'deploy':'部署', 'data':'数据', 'search':'搜索',
+      'llm':'大语言模型', 'chat':'聊天', 'model':'模型', 'dev':'开发',
+      'tool':'工具', 'api':'API', 'git':'Git', 'sql':'SQL',
+      'prompt':'提示词', 'prompt engineering':'提示工程',
+      'self-improving':'自我优化', 'setup-wizard':'安装向导',
+      'meeting-notes':'会议记录', 'never-forget':'永不遗忘',
+      'long-running':'持续运行', 'in-chat-commands':'聊天命令',
+      'cost-saving':'节省成本', 'context-protection':'上下文保护',
+      'client-proposals':'客户提案', 'closing-deals':'成单',
+      'reliable-agent':'可靠Agent', 'starter-packs':'入门包',
+      'zero-terminal':'零终端', 'heartbeat':'心跳检测',
+      'ambient-monitoring':'环境监控', 'presets':'预设',
+      'escalation':'升级处理', 'clawdbot':'机器人',
+      'openclaw':'OpenClaw', 'claude':'Claude',
+      'ai-persona':'AI角色', 'advisor':'顾问', 'cro':'转化优化', 'html':'HTML',
+    };
+    function translateTag(t) {
+      const key = (t || '').toLowerCase().trim();
+      return TAG_ZH[key] || t;
+    }
+
     function renderItem(skill, globalIndex) {
       const c = getColor(skill.name);
       const isSearch = document.getElementById('searchInput').value;
@@ -1076,7 +1105,7 @@
           <div class="rank-content">
             <div class="rank-header">
               <span class="rank-name">${escapeHtml(skill.name)}</span>
-              <span class="rank-tag" style="background:${c.bg}; color:${c.text}">${escapeHtml(tag)}</span>
+              <span class="rank-tag" style="background:${c.bg}; color:${c.text}">${escapeHtml(translateTag(tag))}</span>
             </div>
             <div class="rank-desc" title="${escapeHtml(desc)}">${escapeHtml(desc)}</div>
           </div>
@@ -1262,7 +1291,7 @@
       document.getElementById('mVersion').textContent = `v${skill.version || '1.0.0'} · ${skill.updated_at ? new Date(skill.updated_at).toLocaleDateString() : 'Recently updated'}`;
 
       const tags = Array.isArray(skill.tags) ? skill.tags : (skill.tags || 'General').toString().split(',');
-      document.getElementById('mTags').innerHTML = tags.map(t => `<span class="rank-tag" style="background:${c.bg};color:${c.text}">${escapeHtml(t.trim())}</span>`).join('');
+      document.getElementById('mTags').innerHTML = tags.map(t => `<span class="rank-tag" style="background:${c.bg};color:${c.text}">${escapeHtml(translateTag(t.trim()))}</span>`).join('');
 
       document.getElementById('mDesc').textContent = skill.description_zh || skill.description || 'No description available';
 
