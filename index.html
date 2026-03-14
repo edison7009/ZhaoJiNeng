@@ -1287,18 +1287,13 @@
       </div>
 
       <div class="m-install">
-        <h3 class="m-install-title">Download</h3>
-        <div class="os-tabs" id="modalOsTabs" style="gap:4px;">
-          <button class="os-tab active" id="modalOsWin">🪟 Windows</button>
-          <button class="os-tab" id="modalOsMac">🍎 macOS</button>
-          <button class="os-tab" id="modalOsLinux">🐧 Linux</button>
-        </div>
-        <p class="m-panel-tip" style="margin-top:12px;">把这个地址复制给 AI：</p>
+        <h3 class="m-install-title">安装方式</h3>
+        <p class="m-panel-tip" style="margin-bottom:10px;">把下面这句话复制给 AI Agent：</p>
         <div class="m-cmd">
-          <code id="mSkillUrl">https://zhaojineng.com/skills/skill-name.zip</code>
+          <code id="mSkillUrl">帮我安装这个技能 https://zhaojineng.com/skills/skill-name</code>
           <button class="m-cmd-copy" onclick="copyCmd('mSkillUrl')">复制</button>
         </div>
-        <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">适用所有平台 · 国内加速直链</p>
+        <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">适用所有平台 · AI 会自动识别并下载安装</p>
       </div>
 
       <a href="#" id="mDownload" class="m-download" target="_blank">
@@ -1541,16 +1536,13 @@
       document.getElementById('mInstalls').textContent = formatNumber(skill.installs);
 
 
-      // Set download link (via Cloudflare proxy)
-      const skillUrl = `https://zhaojineng.com/skills/${skill.slug}.zip`;
-      document.getElementById('mDownload').href = skillUrl;
+      // Set direct download link (COS mirror)
+      const cosZip = `https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/${skill.slug}.zip`;
+      document.getElementById('mDownload').href = cosZip;
 
-      // Set skill URL for copy-to-AI
-      document.getElementById('mSkillUrl').textContent = skillUrl;
-
-      // Reset to Windows tab (first)
-      document.querySelectorAll('#modalOsTabs .os-tab').forEach(t => t.classList.remove('active'));
-      document.getElementById('modalOsWin').classList.add('active');
+      // Set AI installation instruction
+      const aiInstallCmd = `帮我安装这个技能 https://zhaojineng.com/skills/${skill.slug}`;
+      document.getElementById('mSkillUrl').textContent = aiInstallCmd;
 
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1564,14 +1556,6 @@
     document.getElementById('modalClose').addEventListener('click', closeModal);
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    // Modal OS tab switching (pure style, URL stays the same)
-    document.querySelectorAll('#modalOsTabs .os-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('#modalOsTabs .os-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-      });
-    });
 
     // Hero OS tab switching (pure style)
     document.querySelectorAll('#heroOsTabs .os-tab').forEach(tab => {
