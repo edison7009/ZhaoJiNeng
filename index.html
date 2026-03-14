@@ -1296,9 +1296,7 @@
         <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">适用所有平台 · AI 会自动识别并下载安装</p>
       </div>
 
-      <a href="#" id="mDownload" class="m-download" target="_blank">
-        📦 直接下载技能 zip 文件
-      </a>
+
     </div>
   </div>
 
@@ -1545,9 +1543,7 @@
       document.getElementById('mInstalls').textContent = formatNumber(skill.installs);
 
 
-      // Set direct download link (COS mirror)
-      const cosZip = `https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/${skill.slug}.zip`;
-      document.getElementById('mDownload').href = cosZip;
+
 
       // Set AI installation instruction with daily-rotating hash URL
       const hashUrl = await slugToHashUrl(skill.slug);
