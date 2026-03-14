@@ -1186,21 +1186,17 @@
       </div>
       <div class="hero-card">
         <div class="mock-card">
-          <p class="card-tip">安装 SkillHub CLI</p>
+          <p class="card-tip" style="font-weight:700;font-size:15px;">Quick Download</p>
           <div class="os-tabs" id="heroOsTabs">
             <button class="os-tab active" id="heroOsMac">🍎 macOS / Linux</button>
             <button class="os-tab" id="heroOsWin">🪟 Windows</button>
           </div>
+          <p class="card-tip">Example — download any skill directly:</p>
           <div class="card-code">
-            <span id="heroInstallCmdText">curl -fsSL https://zhaojineng.com/install.sh | bash</span>
+            <span id="heroInstallCmdText">curl -L "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/youtube-watcher.zip" -o youtube-watcher.zip</span>
             <button class="card-copy">复制</button>
           </div>
-          <p class="card-tip" style="margin-top:12px">安装技能（示例）</p>
-          <div class="card-code">
-            <span>skillhub install weather</span>
-            <button class="card-copy">复制</button>
-          </div>
-          <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">Works on macOS, Windows &amp; Linux</p>
+          <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">No CLI required &mdash; Works on macOS, Windows &amp; Linux</p>
         </div>
       </div>
     </section>
@@ -1290,23 +1286,17 @@
       </div>
 
       <div class="m-install">
-        <h3 class="m-install-title">Install</h3>
+        <h3 class="m-install-title">Download &amp; Install</h3>
         <div class="os-tabs" id="modalOsTabs">
           <button class="os-tab active" id="modalOsMac">🍎 macOS / Linux</button>
           <button class="os-tab" id="modalOsWin">🪟 Windows</button>
         </div>
-
-        <p class="m-panel-tip">Step 1 — Install SkillHub CLI</p>
+        <p class="m-panel-tip">Run in terminal to download this skill:</p>
         <div class="m-cmd">
-          <code id="mCliCmd">curl -fsSL https://zhaojineng.com/install.sh | bash</code>
+          <code id="mCliCmd">curl -L "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/skill-name.zip" -o skill-name.zip</code>
           <button class="m-cmd-copy" onclick="copyCmd('mCliCmd')">复制</button>
         </div>
-        <p class="m-panel-tip" style="margin-top:12px">Step 2 — Install this skill</p>
-        <div class="m-cmd">
-          <code id="mSkillCmd">skillhub install skill-name</code>
-          <button class="m-cmd-copy" onclick="copyCmd('mSkillCmd')">复制</button>
-        </div>
-        <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">Works on macOS, Windows &amp; Linux</p>
+        <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">Works on macOS, Windows &amp; Linux &mdash; no CLI required</p>
       </div>
 
       <a href="#" id="mDownload" class="m-download" target="_blank">
@@ -1553,13 +1543,16 @@
       document.getElementById('mDownload').href = `https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/${skill.slug}.zip`;
 
       // Set install commands
-      const installCmd = `skillhub install ${skill.slug}`;
-      document.getElementById('mSkillCmd').textContent = installCmd;
+      const cosBase = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
+      const macCmd = `curl -L "${cosBase}/${skill.slug}.zip" -o ${skill.slug}.zip`;
+      const winCmd = `iwr "${cosBase}/${skill.slug}.zip" -OutFile ${skill.slug}.zip`;
+      document.getElementById('mCliCmd').textContent = macCmd;
+      window._modalMacCmd = macCmd;
+      window._modalWinCmd = winCmd;
 
       // Reset to Mac tab
       document.getElementById('modalOsMac').classList.add('active');
       document.getElementById('modalOsWin').classList.remove('active');
-      document.getElementById('mCliCmd').textContent = 'curl -fsSL https://zhaojineng.com/install.sh | bash';
 
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1578,12 +1571,12 @@
     document.getElementById('modalOsMac').addEventListener('click', () => {
       document.getElementById('modalOsMac').classList.add('active');
       document.getElementById('modalOsWin').classList.remove('active');
-      document.getElementById('mCliCmd').textContent = 'curl -fsSL https://zhaojineng.com/install.sh | bash';
+      if (window._modalMacCmd) document.getElementById('mCliCmd').textContent = window._modalMacCmd;
     });
     document.getElementById('modalOsWin').addEventListener('click', () => {
       document.getElementById('modalOsWin').classList.add('active');
       document.getElementById('modalOsMac').classList.remove('active');
-      document.getElementById('mCliCmd').textContent = 'powershell -c "irm https://zhaojineng.com/install.ps1 | iex"';
+      if (window._modalWinCmd) document.getElementById('mCliCmd').textContent = window._modalWinCmd;
     });
 
     function copyCmd(target) {
@@ -1612,12 +1605,12 @@
     document.getElementById('heroOsMac').addEventListener('click', () => {
       document.getElementById('heroOsMac').classList.add('active');
       document.getElementById('heroOsWin').classList.remove('active');
-      document.getElementById('heroInstallCmdText').textContent = 'curl -fsSL https://zhaojineng.com/install.sh | bash';
+      document.getElementById('heroInstallCmdText').textContent = 'curl -L "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/youtube-watcher.zip" -o youtube-watcher.zip';
     });
     document.getElementById('heroOsWin').addEventListener('click', () => {
       document.getElementById('heroOsWin').classList.add('active');
       document.getElementById('heroOsMac').classList.remove('active');
-      document.getElementById('heroInstallCmdText').textContent = 'powershell -c "irm https://zhaojineng.com/install.ps1 | iex"';
+      document.getElementById('heroInstallCmdText').textContent = 'iwr "https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/youtube-watcher.zip" -OutFile youtube-watcher.zip';
     });
 
     // Copy buttons (hero cards)
