@@ -825,6 +825,31 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
 
+    /* OS Tab switcher in Hero card */
+    .os-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .os-tab {
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-tertiary);
+      transition: all 0.15s;
+    }
+
+    .os-tab.active {
+      background: var(--text-main);
+      color: #fff;
+      border-color: var(--text-main);
+    }
+
     .m-panel-tip {
       font-size: 13px;
       color: var(--text-tertiary);
@@ -1161,34 +1186,21 @@
       </div>
       <div class="hero-card">
         <div class="mock-card">
-          <div class="role-tabs">
-            <button class="role-tab active" id="heroTabAgent">我是 Agent</button>
-            <button class="role-tab" id="heroTabHuman">我是人类</button>
+          <p class="card-tip">安装 SkillHub CLI</p>
+          <div class="os-tabs" id="heroOsTabs">
+            <button class="os-tab active" id="heroOsMac">🍎 macOS / Linux</button>
+            <button class="os-tab" id="heroOsWin">🪟 Windows</button>
           </div>
-          <div id="heroAgent">
-            <p class="card-tip">首次使用请先安装 SkillHub CLI（已安装可跳过）</p>
-            <div class="card-code">
-              <span>curl -fsSL https://zhaojineng.com/install.sh | bash</span>
-              <button class="card-copy">复制</button>
-            </div>
-            <p class="card-tip" style="margin-top:12px">安装技能（示例）</p>
-            <div class="card-code">
-              <span>skillhub install weather</span>
-              <button class="card-copy">复制</button>
-            </div>
+          <div class="card-code">
+            <span id="heroInstallCmdText">curl -fsSL https://zhaojineng.com/install.sh | bash</span>
+            <button class="card-copy">复制</button>
           </div>
-          <div id="heroHuman" style="display:none">
-            <p class="card-tip">第一步：在终端中运行以下命令安装 SkillHub CLI</p>
-            <div class="card-code">
-              <span>curl -fsSL https://zhaojineng.com/install.sh | bash</span>
-              <button class="card-copy">复制</button>
-            </div>
-            <p class="card-tip" style="margin-top:12px">第二步：安装技能（示例）</p>
-            <div class="card-code">
-              <span>skillhub install weather</span>
-              <button class="card-copy">复制</button>
-            </div>
+          <p class="card-tip" style="margin-top:12px">安装技能（示例）</p>
+          <div class="card-code">
+            <span>skillhub install weather</span>
+            <button class="card-copy">复制</button>
           </div>
+          <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">Works on macOS, Windows &amp; Linux</p>
         </div>
       </div>
     </section>
@@ -1278,37 +1290,23 @@
       </div>
 
       <div class="m-install">
-        <h3 class="m-install-title">安装方式</h3>
-        <div class="m-install-tabs">
-          <button class="m-tab active" data-panel="agent">我是 Agent</button>
-          <button class="m-tab" data-panel="human">我是人类</button>
+        <h3 class="m-install-title">Install</h3>
+        <div class="os-tabs" id="modalOsTabs">
+          <button class="os-tab active" id="modalOsMac">🍎 macOS / Linux</button>
+          <button class="os-tab" id="modalOsWin">🪟 Windows</button>
         </div>
 
-        <div class="m-panel" id="panelAgent">
-          <p class="m-panel-tip">首次使用请先安装 SkillHub CLI（已安装可跳过）</p>
-          <div class="m-cmd">
-            <code>curl -fsSL https://zhaojineng.com/install.sh | bash</code>
-            <button class="m-cmd-copy" onclick="copyCmd(this.previousElementSibling)">复制</button>
-          </div>
-          <p class="m-panel-tip" style="margin-top:12px">已安装可直接复制以下命令发送给 Agent：</p>
-          <div class="m-cmd">
-            <code id="mAgentCmd">skillhub install skill-name</code>
-            <button class="m-cmd-copy" onclick="copyCmd('mAgentCmd')">复制</button>
-          </div>
+        <p class="m-panel-tip">Step 1 — Install SkillHub CLI</p>
+        <div class="m-cmd">
+          <code id="mCliCmd">curl -fsSL https://zhaojineng.com/install.sh | bash</code>
+          <button class="m-cmd-copy" onclick="copyCmd('mCliCmd')">复制</button>
         </div>
-
-        <div class="m-panel" id="panelHuman" style="display:none">
-          <p class="m-panel-tip">第一步：安装 SkillHub CLI（已安装可跳过）</p>
-          <div class="m-cmd">
-            <code>curl -fsSL https://zhaojineng.com/install.sh | bash</code>
-            <button class="m-cmd-copy" onclick="copyCmd(this.previousElementSibling)">复制</button>
-          </div>
-          <p class="m-panel-tip" style="margin-top:12px">第二步：安装技能</p>
-          <div class="m-cmd">
-            <code id="mHumanCmd">skillhub install skill-name</code>
-            <button class="m-cmd-copy" onclick="copyCmd('mHumanCmd')">复制</button>
-          </div>
+        <p class="m-panel-tip" style="margin-top:12px">Step 2 — Install this skill</p>
+        <div class="m-cmd">
+          <code id="mSkillCmd">skillhub install skill-name</code>
+          <button class="m-cmd-copy" onclick="copyCmd('mSkillCmd')">复制</button>
         </div>
+        <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">Works on macOS, Windows &amp; Linux</p>
       </div>
 
       <a href="#" id="mDownload" class="m-download" target="_blank">
@@ -1556,14 +1554,12 @@
 
       // Set install commands
       const installCmd = `skillhub install ${skill.slug}`;
-      document.getElementById('mAgentCmd').textContent = installCmd;
-      document.getElementById('mHumanCmd').textContent = installCmd;
+      document.getElementById('mSkillCmd').textContent = installCmd;
 
-      // Reset to Agent tab
-      document.querySelectorAll('.m-tab').forEach(t => t.classList.remove('active'));
-      document.querySelector('.m-tab[data-panel="agent"]').classList.add('active');
-      document.getElementById('panelAgent').style.display = '';
-      document.getElementById('panelHuman').style.display = 'none';
+      // Reset to Mac tab
+      document.getElementById('modalOsMac').classList.add('active');
+      document.getElementById('modalOsWin').classList.remove('active');
+      document.getElementById('mCliCmd').textContent = 'curl -fsSL https://zhaojineng.com/install.sh | bash';
 
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1578,14 +1574,16 @@
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    // Modal install tabs
-    document.querySelectorAll('.m-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.m-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('panelAgent').style.display = tab.dataset.panel === 'agent' ? '' : 'none';
-        document.getElementById('panelHuman').style.display = tab.dataset.panel === 'human' ? '' : 'none';
-      });
+    // Modal OS tab switching
+    document.getElementById('modalOsMac').addEventListener('click', () => {
+      document.getElementById('modalOsMac').classList.add('active');
+      document.getElementById('modalOsWin').classList.remove('active');
+      document.getElementById('mCliCmd').textContent = 'curl -fsSL https://zhaojineng.com/install.sh | bash';
+    });
+    document.getElementById('modalOsWin').addEventListener('click', () => {
+      document.getElementById('modalOsWin').classList.add('active');
+      document.getElementById('modalOsMac').classList.remove('active');
+      document.getElementById('mCliCmd').textContent = 'powershell -c "irm https://zhaojineng.com/install.ps1 | iex"';
     });
 
     function copyCmd(target) {
@@ -1610,18 +1608,16 @@
       });
     });
 
-    // Hero tab switching
-    document.getElementById('heroTabAgent').addEventListener('click', () => {
-      document.getElementById('heroTabAgent').classList.add('active');
-      document.getElementById('heroTabHuman').classList.remove('active');
-      document.getElementById('heroAgent').style.display = '';
-      document.getElementById('heroHuman').style.display = 'none';
+    // Hero OS tab switching
+    document.getElementById('heroOsMac').addEventListener('click', () => {
+      document.getElementById('heroOsMac').classList.add('active');
+      document.getElementById('heroOsWin').classList.remove('active');
+      document.getElementById('heroInstallCmdText').textContent = 'curl -fsSL https://zhaojineng.com/install.sh | bash';
     });
-    document.getElementById('heroTabHuman').addEventListener('click', () => {
-      document.getElementById('heroTabHuman').classList.add('active');
-      document.getElementById('heroTabAgent').classList.remove('active');
-      document.getElementById('heroHuman').style.display = '';
-      document.getElementById('heroAgent').style.display = 'none';
+    document.getElementById('heroOsWin').addEventListener('click', () => {
+      document.getElementById('heroOsWin').classList.add('active');
+      document.getElementById('heroOsMac').classList.remove('active');
+      document.getElementById('heroInstallCmdText').textContent = 'powershell -c "irm https://zhaojineng.com/install.ps1 | iex"';
     });
 
     // Copy buttons (hero cards)
