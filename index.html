@@ -1512,13 +1512,13 @@
 
     // Modal
     const modal = document.getElementById('modalOverlay');
-    // Compute SHA-256(slug + "|" + UTC-date) → first 24 hex chars (daily-rotating)
+    // Get daily-rotating hash URL from server (algorithm hidden server-side)
     async function slugToHashUrl(slug) {
-      const date = new Date().toISOString().slice(0, 10); // YYYY-MM-DD UTC
-      const data = new TextEncoder().encode(slug + '|' + date);
-      const buf  = await crypto.subtle.digest('SHA-256', data);
-      const hex  = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-      return 'https://zhaojineng.com/skills/' + hex.slice(0, 24);
+      try {
+        const r = await fetch(`/api/skill-hash?slug=${encodeURIComponent(slug)}`);
+        if (r.ok) { const d = await r.json(); return d.url; }
+      } catch {}
+      return `https://zhaojineng.com/skills/${slug}`; // fallback to slug URL
     }
 
     async function openModal(slug) {

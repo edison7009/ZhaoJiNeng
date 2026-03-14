@@ -6,12 +6,13 @@
 const COS_BASE       = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
 const CLAWHUB_API    = 'https://wry-manatee-359.convex.site/api/v1/download';
 const SKILLS_SH_BASE = 'https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills';
+const SECRET_SALT    = 'ZhaoJiNeng-2026-SkillHub'; // server-side secret, same as /api/skill-hash
 
-// Compute SHA-256(slug + "|" + dateStr), return lower-hex first 24 chars
+// Compute SHA-256(SECRET_SALT + "|" + slug + "|" + dateStr), return lower-hex first 24 chars
 async function slugHashForDate(slug, dateStr) {
   const buf = await crypto.subtle.digest(
     'SHA-256',
-    new TextEncoder().encode(slug + '|' + dateStr)
+    new TextEncoder().encode(SECRET_SALT + '|' + slug + '|' + dateStr)
   );
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 24);
 }
