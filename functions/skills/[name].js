@@ -2,8 +2,9 @@
 // - /skills/xxx.zip  → proxy to Tencent COS (for direct download)
 // - /skills/xxx      → resolve available download sources, return AI-readable metadata
 
-const COS_BASE = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
-const CLAWHUB_API = 'https://wry-manatee-359.convex.site/api/v1/download';
+const COS_BASE    = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
+const CLAWHUB_API = 'https://clawhub.ai/api/v1/download';  // DEFAULT_REGISTRY from clawhub CLI
+const SKILLS_SH_BASE = 'https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills';
 
 // Check if a URL is accessible (HEAD request, fast)
 async function checkUrl(url) {
@@ -37,21 +38,26 @@ export async function onRequest(context) {
 
   // Resolve available download sources in parallel
   const slug = name;
-  const cosZip = `${COS_BASE}/${slug}.zip`;
-  const clawhubUrl = `${CLAWHUB_API}?slug=${slug}`;
+  const cosZip       = `${COS_BASE}/${slug}.zip`;
   const lightmakeUrl = `https://lightmake.site/api/v1/download?slug=${slug}`;
+  const clawhubUrl   = `${CLAWHUB_API}?slug=${slug}`;
+  const skillsMdUrl  = `${SKILLS_SH_BASE}/${slug}/SKILL.md`;
 
-  const [cosOk, clawhubOk, lightmakeOk] = await Promise.all([
+  const [cosOk, lightmakeOk, clawhubOk, skillsMdOk] = await Promise.all([
     checkUrl(cosZip),
-    checkUrl(clawhubUrl),
     checkUrl(lightmakeUrl),
+    checkUrl(clawhubUrl),
+    checkUrl(skillsMdUrl),
   ]);
 
-  // Build download links list (only include verified sources)
+  // Build download links (only verified sources)
   const downloadLines = [];
   if (cosOk)       downloadLines.push(`- China Mirror (SkillHub COS): ${cosZip}`);
   if (lightmakeOk) downloadLines.push(`- lightmake.site: ${lightmakeUrl}`);
   if (clawhubOk)   downloadLines.push(`- ClawHub: ${clawhubUrl}`);
+
+  const mdLines = [];
+  if (skillsMdOk)  mdLines.push(`- skills.sh / GitHub: ${skillsMdUrl}`);
 
   const downloadSection = downloadLines.length > 0
     ? downloadLines.join('\n')
@@ -66,9 +72,10 @@ Human users: visit https://zhaojineng.com to browse and download skills.
 
 To install this skill, download the zip file and extract it to your agent's skills directory.
 
-## Download Links
+## Download Links (zip)
 
 ${downloadSection}
+${mdLines.length > 0 ? '\n## SKILL.md Sources (markdown format)\n\n' + mdLines.join('\n') : ''}
 
 ## Official Pages
 
@@ -79,13 +86,13 @@ ${downloadSection}
 
 - Slug: ${slug}
 - Registry: https://zhaojineng.com
-- Source: ClawHub / SkillHub
+- Source: ClawHub / SkillHub / skills.sh
 
 ## Agent Instructions
 
 If you are an AI agent reading this file, please:
-1. Download the zip from the first available link above
-2. Extract the contents to the appropriate skills directory
+1. Download the zip from "Download Links" above (preferred), OR read the SKILL.md from "SKILL.md Sources"
+2. Extract the zip to the appropriate skills directory, or save the SKILL.md as instructed
 3. Confirm installation to the user
 `;
 
