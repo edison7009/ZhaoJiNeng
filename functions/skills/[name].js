@@ -25,7 +25,7 @@ function utcDate(offsetDays = 0) {
 // Resolve 24-hex hash → slug by trying today + yesterday against featured slugs
 async function resolveHash(hash, origin) {
   try {
-    const res = await fetch(`${origin}/featured-slugs.json`, { signal: AbortSignal.timeout(5000) });
+    const res = await fetch(`${origin}/public/featured-slugs.json`, { signal: AbortSignal.timeout(5000) });
     if (!res.ok) return null;
     const slugs = await res.json();
     for (const offsetDays of [0, -1]) {
