@@ -1,41 +1,40 @@
 // Cloudflare Pages Function - /skills/:name
-// - /skills/xxx.zip       → proxy to Tencent COS (direct download)
-// - /skills/{24-hex-hash} → daily-rotating URL, resolves to slug via SHA-256
-// - /skills/{slug}        → human-readable (kept for backward compat)
+// - /skills/xxx.zip    → proxy to Tencent COS (direct download)
+// - /skills/{hex-token}→ AES-CTR daily-rotating encrypted slug URL
+// - /skills/{slug}     → human-readable (backward compat)
 
 const COS_BASE       = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
 const CLAWHUB_API    = 'https://wry-manatee-359.convex.site/api/v1/download';
 const SKILLS_SH_BASE = 'https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills';
-const SECRET_SALT    = 'ZhaoJiNeng-2026-SkillHub'; // server-side secret, same as /api/skill-hash
+const SECRET         = 'ZhaoJiNeng-2026-SkillHub'; // server-side only
 
-// Compute SHA-256(SECRET_SALT + "|" + slug + "|" + dateStr), return lower-hex first 24 chars
-async function slugHashForDate(slug, dateStr) {
-  const buf = await crypto.subtle.digest(
-    'SHA-256',
-    new TextEncoder().encode(SECRET_SALT + '|' + slug + '|' + dateStr)
-  );
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 24);
-}
-
-// UTC date string "YYYY-MM-DD", offsetDays: 0=today, -1=yesterday
+// UTC date string "YYYY-MM-DD"
 function utcDate(offsetDays = 0) {
   const d = new Date(Date.now() + offsetDays * 86400000);
   return d.toISOString().slice(0, 10);
 }
 
-// Resolve 24-hex hash → slug by trying today + yesterday against featured slugs
-async function resolveHash(hash, origin) {
-  try {
-    const res = await fetch(`${origin}/public/featured-slugs.json`, { signal: AbortSignal.timeout(5000) });
-    if (!res.ok) return null;
-    const slugs = await res.json();
-    for (const offsetDays of [0, -1]) {
-      const date = utcDate(offsetDays);
-      for (const slug of slugs) {
-        if (await slugHashForDate(slug, date) === hash) return slug;
-      }
-    }
-  } catch {}
+// Derive 16-byte AES-CTR key from SECRET + dateStr
+async function getDailyKey(dateStr) {
+  const raw = await crypto.subtle.digest('SHA-256',
+    new TextEncoder().encode(SECRET + '|' + dateStr));
+  return crypto.subtle.importKey('raw', raw.slice(0, 16),
+    { name: 'AES-CTR' }, false, ['encrypt', 'decrypt']);
+}
+
+// Decrypt hex token → slug. Tries today and yesterday.
+async function decryptToken(token) {
+  const bytes = Uint8Array.from(token.match(/.{2}/g), h => parseInt(h, 16));
+  for (const offset of [0, -1]) {
+    try {
+      const key = await getDailyKey(utcDate(offset));
+      const dec = await crypto.subtle.decrypt(
+        { name: 'AES-CTR', counter: new Uint8Array(16), length: 128 }, key, bytes);
+      const slug = new TextDecoder().decode(dec);
+      // Validate: slug should only contain lowercase letters, hyphens, digits
+      if (/^[a-z0-9][a-z0-9\-]{1,80}$/.test(slug)) return slug;
+    } catch {}
+  }
   return null;
 }
 
@@ -128,11 +127,10 @@ export async function onRequest(context) {
     return new Response(response.body, { status: response.status, headers });
   }
 
-  // Resolve 24-char hex hash → slug (daily-rotating URL)
+  // Decrypt AES-CTR token → slug (daily-rotating URL, any slug supported)
   let slug = name;
-  if (/^[0-9a-f]{24}$/.test(name)) {
-    const origin   = new URL(request.url).origin;
-    const resolved = await resolveHash(name, origin);
+  if (/^[0-9a-f]{10,160}$/.test(name) && name.length % 2 === 0) {
+    const resolved = await decryptToken(name);
     if (!resolved) {
       return new Response(
         'Skill link has expired or is invalid.\nVisit https://zhaojineng.com to get the current link.',
