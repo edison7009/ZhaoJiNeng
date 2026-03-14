@@ -1770,19 +1770,20 @@
 
     // update hero card URL tracking
     function setHeroInstallUrl(slug) {
-      heroInstallUrl = '';
       const btn = document.getElementById('heroCardCopy');
-      btn.disabled = true;
-      btn.textContent = '...';
+      // Use fallback URL immediately so the button is always ready
+      const fallbackUrl = `https://zhaojineng.com/skills/${slug}`;
+      heroInstallUrl = `帮我安装这个技能 ${fallbackUrl}`;
+      document.getElementById('heroInstallCmdText').textContent = heroInstallUrl;
+      btn.disabled = false;
+      btn.textContent = '复制';
+      // Silently upgrade to hash URL in background if available
       slugToHashUrl(slug).then(url => {
-        heroInstallUrl = `帮我安装这个技能 ${url}`;
-        document.getElementById('heroInstallCmdText').textContent = heroInstallUrl;
-        btn.disabled = false;
-        btn.textContent = '复制';
-      }).catch(() => {
-        btn.disabled = false;
-        btn.textContent = '复制';
-      });
+        if (url && url !== fallbackUrl) {
+          heroInstallUrl = `帮我安装这个技能 ${url}`;
+          document.getElementById('heroInstallCmdText').textContent = heroInstallUrl;
+        }
+      }).catch(() => {});
     }
 
     document.getElementById('heroCardCopy').addEventListener('click', () => {
