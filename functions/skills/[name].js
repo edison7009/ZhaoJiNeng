@@ -39,20 +39,19 @@ export async function onRequest(context) {
   const slug = name;
   const cosZip = `${COS_BASE}/${slug}.zip`;
   const clawhubUrl = `${CLAWHUB_API}?slug=${slug}`;
+  const lightmakeUrl = `https://lightmake.site/api/v1/download?slug=${slug}`;
 
-  const [cosOk, clawhubOk] = await Promise.all([
+  const [cosOk, clawhubOk, lightmakeOk] = await Promise.all([
     checkUrl(cosZip),
     checkUrl(clawhubUrl),
+    checkUrl(lightmakeUrl),
   ]);
 
   // Build download links list (only include verified sources)
   const downloadLines = [];
-  if (cosOk) {
-    downloadLines.push(`- China Mirror: ${cosZip}`);
-  }
-  if (clawhubOk) {
-    downloadLines.push(`- ClawHub Official: ${clawhubUrl}`);
-  }
+  if (cosOk)       downloadLines.push(`- China Mirror (SkillHub COS): ${cosZip}`);
+  if (lightmakeOk) downloadLines.push(`- lightmake.site: ${lightmakeUrl}`);
+  if (clawhubOk)   downloadLines.push(`- ClawHub: ${clawhubUrl}`);
 
   const downloadSection = downloadLines.length > 0
     ? downloadLines.join('\n')
