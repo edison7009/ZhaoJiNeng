@@ -1764,15 +1764,28 @@
       document.getElementById('heroSkillStars').textContent = formatNumber(skill.stars);
       document.getElementById('heroSkillDownloads').textContent = formatNumber(skill.downloads);
       document.getElementById('heroSkillInstalls').textContent = formatNumber(skill.installs);
-      slugToHashUrl(skill.slug).then(url => {
-        heroInstallUrl = `帮我安装这个技能 ${url}`;
-        document.getElementById('heroInstallCmdText').textContent = heroInstallUrl;
-      });
+      setHeroInstallUrl(skill.slug);
     }
 
     let heroInstallUrl = '';
-    document.getElementById('heroCardCopy').addEventListener('click', () => {
-      const text = heroInstallUrl || document.getElementById('heroInstallCmdText').textContent;
+    let heroInstallPromise = null;
+
+    // update hero card URL tracking
+    function setHeroInstallUrl(slug) {
+      heroInstallUrl = '';
+      heroInstallPromise = slugToHashUrl(slug).then(url => {
+        heroInstallUrl = `帮我安装这个技能 ${url}`;
+        document.getElementById('heroInstallCmdText').textContent = heroInstallUrl;
+        return heroInstallUrl;
+      });
+    }
+
+    document.getElementById('heroCardCopy').addEventListener('click', async () => {
+      let text = heroInstallUrl;
+      if (!text && heroInstallPromise) {
+        try { text = await heroInstallPromise; } catch(e) {}
+      }
+      if (!text) text = document.getElementById('heroInstallCmdText').textContent;
       navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('toast');
         toast.classList.add('show');
