@@ -1,12 +1,26 @@
 // Cloudflare Pages Function - /skills/:name
 // - /skills/xxx.zip  → proxy to Tencent COS (for direct download)
-// - /skills/xxx      → return machine-readable skill metadata (for AI agents)
+// - /skills/xxx      → resolve available download sources, return AI-readable metadata
 
 const COS_BASE = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
-const GITHUB_BASE = 'https://github.com/vercel-labs/agent-skills/raw/main/skills';
+const CLAWHUB_API = 'https://wry-manatee-359.convex.site/api/v1/download';
+
+// Check if a URL is accessible (HEAD request, fast)
+async function checkUrl(url) {
+  try {
+    const res = await fetch(url, {
+      method: 'HEAD',
+      headers: { 'User-Agent': 'ZhaoJiNeng-Resolver/1.0' },
+      signal: AbortSignal.timeout(5000),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
 
 export async function onRequest(context) {
-  const { params, request } = context;
+  const { params } = context;
   const name = params.name;
 
   // If requesting a .zip file, proxy directly to COS
@@ -21,10 +35,28 @@ export async function onRequest(context) {
     return new Response(response.body, { status: response.status, headers });
   }
 
-  // Otherwise, return AI-readable skill metadata
+  // Resolve available download sources in parallel
   const slug = name;
   const cosZip = `${COS_BASE}/${slug}.zip`;
-  const clawhubPage = `https://clawhub.ai/skills/${slug}`;
+  const clawhubUrl = `${CLAWHUB_API}?slug=${slug}`;
+
+  const [cosOk, clawhubOk] = await Promise.all([
+    checkUrl(cosZip),
+    checkUrl(clawhubUrl),
+  ]);
+
+  // Build download links list (only include verified sources)
+  const downloadLines = [];
+  if (cosOk) {
+    downloadLines.push(`- China Mirror: ${cosZip}`);
+  }
+  if (clawhubOk) {
+    downloadLines.push(`- ClawHub Official: ${clawhubUrl}`);
+  }
+
+  const downloadSection = downloadLines.length > 0
+    ? downloadLines.join('\n')
+    : '- No verified download source found. Please visit https://clawhub.ai or https://zhaojineng.com';
 
   const content = `# Skill: ${slug}
 
@@ -37,12 +69,12 @@ To install this skill, download the zip file and extract it to your agent's skil
 
 ## Download Links
 
-- China Mirror (Recommended for CN users): ${cosZip}
+${downloadSection}
 
 ## Official Pages
 
-- ClawHub: ${clawhubPage}
-- ZhaoJiNeng Mirror: https://zhaojineng.com/skills/${slug}
+- ClawHub: https://clawhub.ai/skills/${slug}
+- ZhaoJiNeng: https://zhaojineng.com/skills/${slug}
 
 ## Skill Info
 
@@ -53,7 +85,7 @@ To install this skill, download the zip file and extract it to your agent's skil
 ## Agent Instructions
 
 If you are an AI agent reading this file, please:
-1. Download the zip from the China Mirror link above
+1. Download the zip from the first available link above
 2. Extract the contents to the appropriate skills directory
 3. Confirm installation to the user
 `;
@@ -63,7 +95,7 @@ If you are an AI agent reading this file, please:
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
       'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'public, max-age=300',
+      'Cache-Control': 'no-cache', // Dynamic content - do not cache
     },
   });
 }
