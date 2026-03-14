@@ -1551,7 +1551,7 @@
         document.getElementById('sectionTitle').textContent = currentCategory === 'all' ? '精选技能 Top 50' : currentCategory + ' 技能';
       }
 
-      filtered.sort((a, b) => (b.score || b.downloads || 0) - (a.score || a.downloads || 0));
+      filtered.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
 
       filteredSkills = filtered.slice(0, MAX_ITEMS);
       loadedCount = 0;
