@@ -4,6 +4,17 @@ description: how to manually sync skills data from SkillHub
 
 # Sync Skills Data
 
+## Architecture (Updated 2026-03)
+
+SkillHub (skillhub.tencent.com) migrated from static CDN JSON files to a backend API:
+- **API Base**: `https://lightmake.site`
+- **Featured (Top 50)**: `GET /api/skills/top`
+- **All Skills (paginated)**: `GET /api/skills?page=N&size=20` (max 20 per page)
+- **Skill Download**: `http://lightmake.site/api/v1/download?slug={slug}`
+- **Required Headers**: `Referer: https://skillhub.tencent.com/` and `Origin: https://skillhub.tencent.com`
+
+The old static `skills.{hash}.json` CDN approach no longer works.
+
 ## Automatic (GitHub Actions)
 // turbo-all
 
@@ -11,45 +22,85 @@ Skills data is automatically synced every day at 11:00 Beijing time via GitHub A
 
 The workflow file is at `.github/workflows/sync-skills.yml`.
 
-The workflow dynamically discovers the latest skills data URL by:
-1. Fetching `https://skillhub.tencent.com/` to find the hashed JS bundle
-2. Parsing the JS bundle to extract the skills data hash
-3. Downloading from `https://cloudcache.tencentcs.com/qcloud/tea/app/data/skills.{hash}.json`
+The workflow:
+1. Fetches featured (top 50) skills from `/api/skills/top`
+2. Fetches all skills page by page from `/api/skills?page=N&size=20`
+3. Assembles the final `skills.json` with Python
+4. Commits and pushes if changed
 
 ## Manual Trigger
 
-1. Go to GitHub repo → Actions tab → "Sync Skills Data"
-2. Click "Run workflow" → "Run workflow"
+1. Go to GitHub repo -> Actions tab -> "Sync Skills Data"
+2. Click "Run workflow" -> "Run workflow"
 
-## Manual Local Sync
+## Manual Local Sync (PowerShell)
 
-1. Get the latest hash from skillhub.tencent.com:
-```bash
-PAGE=$(curl -fsSL https://skillhub.tencent.com/)
-JS_NAME=$(echo "$PAGE" | grep -oP 'skill-hub\.[A-Za-z0-9_-]+\.js' | head -1)
-JS=$(curl -fsSL "https://cloudcache.tencent-cloud.com/qcloud/tea/app/assets/$JS_NAME")
-HASH=$(echo "$JS" | grep -oP 'skills\.[a-f0-9]+\.json' | head -1 | grep -oP '[a-f0-9]+(?=\.json)')
-echo "Hash: $HASH"
+// turbo
+1. Run the sync script:
+```powershell
+powershell -ExecutionPolicy Bypass -File "C:\tmp\sync-skills.ps1"
 ```
 
-2. Download using the discovered URL:
-```bash
-curl -fsSL -o skills.json "https://cloudcache.tencentcs.com/qcloud/tea/app/data/skills.${HASH}.json?max_age=31536000"
+Or manually step by step:
+
+// turbo
+2. Fetch featured skills:
+```powershell
+$headers = @{"Referer"="https://skillhub.tencent.com/";"Origin"="https://skillhub.tencent.com"}
+$resp = Invoke-WebRequest -Uri "https://lightmake.site/api/skills/top" -UseBasicParsing -Headers $headers
+$json = [System.Text.Encoding]::UTF8.GetString($resp.RawContentStream.ToArray()) | ConvertFrom-Json
+Write-Host "Got $($json.data.skills.Count) featured skills"
 ```
 
-3. Commit and push:
+// turbo
+3. Fetch all skills (paginated, 20 per page):
+```powershell
+# Loop through pages 1..N until all skills fetched
+$page = 1; $all = @()
+do {
+  $r = Invoke-WebRequest -Uri "https://lightmake.site/api/skills?page=$page&size=20" -UseBasicParsing -Headers $headers
+  $j = [System.Text.Encoding]::UTF8.GetString($r.RawContentStream.ToArray()) | ConvertFrom-Json
+  $all += $j.data.skills; $page++
+  Start-Sleep -Milliseconds 100
+} while ($all.Count -lt $j.data.total)
+```
+
+4. Commit and push:
 ```bash
 git add skills.json
 git commit -m "chore: manual sync skills.json"
 git push
 ```
 
-## Data Source URLs
+## API Endpoints
 
 | Resource | URL |
 |----------|-----|
-| Skills Data (dynamic) | `https://cloudcache.tencentcs.com/qcloud/tea/app/data/skills.{hash}.json` |
-| Skills Data (alt CDN) | `https://cloudcache.tencent-cloud.com/qcloud/tea/app/data/skills.{hash}.json` |
-| Skill Download | `https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills/{slug}.zip` |
-| CLI Installer | `https://skillhub-1251783334.cos.ap-guangzhou.myqcloud.com/install/install.sh` |
-| CLI Version | `https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/version.json` |
+| Featured Top 50 | `https://lightmake.site/api/skills/top` |
+| All Skills (paginated) | `https://lightmake.site/api/skills?page=N&size=20` |
+| Skill Download | `http://lightmake.site/api/v1/download?slug={slug}` |
+| SkillHub Frontend | `https://skillhub.tencent.com/` |
+
+## Data Format
+
+Each skill object from the API:
+```json
+{
+  "slug": "skill-name",
+  "name": "Skill Name",
+  "description": "English description",
+  "description_zh": "Chinese description",
+  "version": "1.0.0",
+  "homepage": "https://clawhub.ai/skill-name",
+  "tags": [],
+  "downloads": 1000,
+  "stars": 50,
+  "installs": 100,
+  "score": 12345.6,
+  "category": "ai-intelligence",
+  "ownerName": "author",
+  "updated_at": 1772065840450
+}
+```
+
+Categories: `ai-intelligence`, `developer-tools`, `productivity`, `data-analysis`, `content-creation`, `security-compliance`, `communication-collaboration`

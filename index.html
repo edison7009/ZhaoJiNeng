@@ -1225,7 +1225,7 @@
         </div>
         <h1 class="hero-title">养好龙虾Claw，<br>先<span>找技能！</span></h1>
         <p class="hero-desc">
-          精选推荐，高速下载体验，轻松查找 ClawHub 1.3万 个 AI Skills
+          精选推荐，高速下载体验，轻松查找 ClawHub 2.2万 个 AI Skills
         </p>
         <div class="hero-buttons">
           <a href="#explore" class="btn btn-primary">查看精选榜单</a>
@@ -1350,13 +1350,11 @@
   </div>
 
   <script>
-    // Skills data URLs - hash is auto-updated by GitHub Actions sync workflow
-    // SKILLS_HASH: 2d46363b
+    // Skills data URLs - GitHub Actions syncs skills.json daily via SkillHub API
     const SKILLS_URLS = [
       '/public/featured.json',
       './skills.json',
       'https://cdn.jsdelivr.net/gh/edison7009/ZhaoJiNeng@main/public/featured.json',
-      'https://cloudcache.tencentcs.com/qcloud/tea/app/data/skills.2d46363b.json',
     ];
     const BATCH_SIZE = 50;
     const MAX_ITEMS = 50;
@@ -1503,41 +1501,30 @@
       return TAG_ZH[key] || t;
     }
 
-    const CAT_KEYWORDS = {
-      'AI智能': ['ai', 'llm', 'chat', 'model', 'gpt', 'agent', 'prompt', 'embedding', 'neural', 'ml'],
-      '开发工具': ['dev', 'code', 'git', 'api', 'deploy', 'debug', 'test', 'docker', 'build'],
-      '效率提升': ['productivity', 'work', 'tool', 'automat', 'workflow', 'task', 'note'],
-      '数据分析': ['data', 'analytics', 'sql', 'search', 'database', 'chart', 'query'],
-      '内容创作': ['content', 'write', 'blog', 'article', 'copy', 'image', 'video', 'creative'],
-      '安全合规': ['security', 'safe', 'auth', 'encrypt', 'compliance', 'audit', 'protect'],
-      '通讯协作': ['communic', 'collaborat', 'messag', 'email', 'slack', 'team', 'meeting'],
+    // Category mapping: API category key -> Chinese display name
+    const CAT_MAP = {
+      'ai-intelligence': 'AI智能',
+      'developer-tools': '开发工具',
+      'productivity': '效率提升',
+      'data-analysis': '数据分析',
+      'content-creation': '内容创作',
+      'security-compliance': '安全合规',
+      'communication-collaboration': '通讯协作',
     };
+    // Reverse mapping: Chinese name -> API key
+    const CAT_REVERSE = Object.fromEntries(Object.entries(CAT_MAP).map(([k, v]) => [v, k]));
     function getSkillCategory(skill) {
-      const text = [
-        ...(Array.isArray(skill.tags) ? skill.tags : (skill.tags||'').toString().split(',').map(t=>t.trim())),
-        skill.name || '', skill.description || ''
-      ].join(' ').toLowerCase();
-      for (const [cat, kws] of Object.entries(CAT_KEYWORDS)) {
-        if (kws.some(k => text.includes(k))) return cat;
-      }
-      return '通用';
+      return CAT_MAP[skill.category] || '通用';
     }
 
     function applyFilters() {
       let filtered = allSkills;
 
       if (currentCategory !== 'all') {
-        const catMap = {
-          'AI智能': ['ai', 'llm', 'chat', 'model'],
-          '开发工具': ['dev', 'code', 'git', 'api', 'deploy'],
-          '效率提升': ['productivity', 'work', 'tool'],
-          '数据分析': ['data', 'analytics', 'sql', 'search']
-        };
-        const keywords = catMap[currentCategory] || [];
-        filtered = filtered.filter(s => {
-          const text = ((s.tags || '') + ' ' + (s.name || '')).toLowerCase();
-          return keywords.some(k => text.includes(k));
-        });
+        const apiKey = CAT_REVERSE[currentCategory];
+        if (apiKey) {
+          filtered = filtered.filter(s => s.category === apiKey);
+        }
       }
 
       const q = document.getElementById('searchInput').value.toLowerCase().trim();

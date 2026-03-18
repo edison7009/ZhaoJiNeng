@@ -1017,13 +1017,10 @@
   </div>
 
   <script>
-    // Skills data URLs - hash is auto-updated by GitHub Actions sync workflow
-    // SKILLS_HASH: 2d46363b
+    // Skills data URLs - GitHub Actions syncs skills.json daily via SkillHub API
     const SKILLS_URLS = [
       './skills.json',
       'https://cdn.jsdelivr.net/gh/edison7009/ZhaoJiNeng@main/skills.json',
-      'https://cloudcache.tencentcs.com/qcloud/tea/app/data/skills.2d46363b.json',
-      'https://cloudcache.tencent-cloud.com/qcloud/tea/app/data/skills.2d46363b.json',
     ];
     const BATCH_SIZE = 8;
     let allSkills = [];
@@ -1092,24 +1089,20 @@
       return TAG_ZH[key] || t;
     }
 
-    const CAT_KEYWORDS = {
-      'AI智能': ['ai', 'llm', 'chat', 'model', 'gpt', 'agent', 'prompt', 'embedding', 'neural', 'ml'],
-      '开发工具': ['dev', 'code', 'git', 'api', 'deploy', 'debug', 'test', 'docker', 'build'],
-      '效率提升': ['productivity', 'work', 'tool', 'automat', 'workflow', 'task', 'note'],
-      '数据分析': ['data', 'analytics', 'sql', 'search', 'database', 'chart', 'query'],
-      '内容创作': ['content', 'write', 'blog', 'article', 'copy', 'image', 'video', 'creative'],
-      '安全合规': ['security', 'safe', 'auth', 'encrypt', 'compliance', 'audit', 'protect'],
-      '通讯协作': ['communic', 'collaborat', 'messag', 'email', 'slack', 'team', 'meeting'],
+    // Category mapping: API category key -> Chinese display name
+    const CAT_MAP = {
+      'ai-intelligence': 'AI智能',
+      'developer-tools': '开发工具',
+      'productivity': '效率提升',
+      'data-analysis': '数据分析',
+      'content-creation': '内容创作',
+      'security-compliance': '安全合规',
+      'communication-collaboration': '通讯协作',
     };
+    // Reverse mapping: Chinese name -> API key
+    const CAT_REVERSE = Object.fromEntries(Object.entries(CAT_MAP).map(([k, v]) => [v, k]));
     function getSkillCategory(skill) {
-      const text = [
-        ...(Array.isArray(skill.tags) ? skill.tags : (skill.tags||'').toString().split(',').map(t=>t.trim())),
-        skill.name || '', skill.description || ''
-      ].join(' ').toLowerCase();
-      for (const [cat, kws] of Object.entries(CAT_KEYWORDS)) {
-        if (kws.some(k => text.includes(k))) return cat;
-      }
-      return '通用';
+      return CAT_MAP[skill.category] || '通用';
     }
 
     function renderItem(skill, globalIndex) {
@@ -1187,26 +1180,14 @@
       }, 300);
     }
 
-    const catKeywords = {
-      'AI智能': ['ai', 'llm', 'chat', 'model', 'gpt', 'agent', 'prompt', 'embedding', 'neural', 'ml', 'deep-learning'],
-      '开发工具': ['dev', 'code', 'git', 'api', 'deploy', 'debug', 'test', 'docker', 'build', 'compiler', 'ide', 'lint'],
-      '效率提升': ['productivity', 'work', 'tool', 'automat', 'workflow', 'task', 'schedule', 'note', 'organiz'],
-      '数据分析': ['data', 'analytics', 'sql', 'search', 'database', 'chart', 'visualiz', 'statist', 'query', 'csv'],
-      '内容创作': ['content', 'write', 'blog', 'article', 'copy', 'generat', 'image', 'video', 'design', 'creative', 'markdown'],
-      '安全合规': ['security', 'safe', 'auth', 'encrypt', 'compliance', 'audit', 'protect', 'vulnerab', 'firewall', 'ssl'],
-      '通讯协作': ['communic', 'collaborat', 'chat', 'messag', 'email', 'slack', 'team', 'meeting', 'notify', 'webhook']
-    };
-
     function applyFilters() {
       let filtered = allSkills;
 
       if (currentCategory !== 'all') {
-        const keywords = catKeywords[currentCategory] || [];
-        filtered = filtered.filter(s => {
-          const tagText = Array.isArray(s.tags) ? s.tags.join(' ') : (s.tags || '');
-          const text = (tagText + ' ' + (s.name || '') + ' ' + (s.description || '')).toLowerCase();
-          return keywords.some(k => text.includes(k));
-        });
+        const apiKey = CAT_REVERSE[currentCategory];
+        if (apiKey) {
+          filtered = filtered.filter(s => s.category === apiKey);
+        }
       }
 
       const q = document.getElementById('searchInput').value.toLowerCase().trim();
