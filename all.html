@@ -1292,7 +1292,8 @@
       document.getElementById('mTitle').textContent = skill.name;
       document.getElementById('mVersion').textContent = `v${skill.version || '1.0.0'} · ${skill.updated_at ? new Date(skill.updated_at).toLocaleDateString() : 'Recently updated'}`;
 
-      const tags = Array.isArray(skill.tags) ? skill.tags : (skill.tags || 'General').toString().split(',');
+      const rawTags = Array.isArray(skill.tags) ? skill.tags : (skill.tags || 'General').toString().split(',');
+      const tags = rawTags.map(t => typeof t === 'object' ? (t.name || '') : String(t)).filter(Boolean);
       document.getElementById('mTags').innerHTML = tags.map(t => `<span class="rank-tag" style="background:${c.bg};color:${c.text}">${escapeHtml(translateTag(t.trim()))}</span>`).join('');
 
       document.getElementById('mDesc').textContent = skill.description_zh || skill.description || 'No description available';
