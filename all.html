@@ -1006,7 +1006,7 @@
         <h3 class="m-install-title">安装方式</h3>
         <p class="m-panel-tip" style="margin-bottom:10px;">把下面这句话复制给 AI Agent：</p>
         <div class="m-cmd">
-          <code id="mSkillUrl">帮我安装这个技能 https://zhaojineng.com/skills/skill-name</code>
+          <code id="mSkillUrl">请安装这个技能 https://zhaojineng.com/skills/skill-name</code>
           <button class="m-cmd-copy" onclick="copyCmd('mSkillUrl')">复制</button>
         </div>
         <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">适用所有平台 &middot; AI 会自动识别并下载安装</p>
@@ -1306,7 +1306,7 @@
 
       // Set AI installation instruction with daily-rotating hash URL
       const hashUrl = await slugToHashUrl(skill.slug);
-      document.getElementById('mSkillUrl').textContent = `帮我安装这个技能 ${hashUrl}`;
+      document.getElementById('mSkillUrl').textContent = `请安装这个技能 ${hashUrl}`;
 
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';

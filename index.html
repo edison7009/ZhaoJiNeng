@@ -1243,7 +1243,7 @@
           </div>
           <p class="hsc-desc" id="heroSkillDesc">正在获取技能信息...</p>
           <div class="hsc-cmd" style="margin-top:14px;">
-            <span id="heroInstallCmdText">帮我安装这个技能 https://zhaojineng.com/skills/...</span>
+            <span id="heroInstallCmdText">请安装这个技能 https://zhaojineng.com/skills/...</span>
             <button id="heroCardCopy">复制</button>
           </div>
           <p style="font-size:11px;color:var(--text-tertiary);margin-top:6px;text-align:center;">复制给 AI Agent，自动识别并安装</p>
@@ -1339,7 +1339,7 @@
         <h3 class="m-install-title">安装方式</h3>
         <p class="m-panel-tip" style="margin-bottom:10px;">把下面这句话复制给 AI Agent：</p>
         <div class="m-cmd">
-          <code id="mSkillUrl">帮我安装这个技能 https://zhaojineng.com/skills/skill-name</code>
+          <code id="mSkillUrl">请安装这个技能 https://zhaojineng.com/skills/skill-name</code>
           <button class="m-cmd-copy" onclick="copyCmd('mSkillUrl')">复制</button>
         </div>
         <p style="font-size:12px;color:var(--text-tertiary);margin-top:8px;text-align:center;">适用所有平台 · AI 会自动识别并下载安装</p>
@@ -1670,7 +1670,7 @@
 
       // Set AI installation instruction with daily-rotating hash URL
       const hashUrl = await slugToHashUrl(skill.slug);
-      const aiInstallCmd = `帮我安装这个技能 ${hashUrl}`;
+      const aiInstallCmd = `请安装这个技能 ${hashUrl}`;
       document.getElementById('mSkillUrl').textContent = aiInstallCmd;
 
       modal.classList.add('open');
@@ -1760,14 +1760,14 @@
       const btn = document.getElementById('heroCardCopy');
       // Use fallback URL immediately so the button is always ready
       const fallbackUrl = `https://zhaojineng.com/skills/${slug}`;
-      heroInstallUrl = `帮我安装这个技能 ${fallbackUrl}`;
+      heroInstallUrl = `请安装这个技能 ${fallbackUrl}`;
       document.getElementById('heroInstallCmdText').textContent = heroInstallUrl;
       btn.disabled = false;
       btn.textContent = '复制';
       // Silently upgrade to hash URL in background if available
       slugToHashUrl(slug).then(url => {
         if (url && url !== fallbackUrl) {
-          heroInstallUrl = `帮我安装这个技能 ${url}`;
+          heroInstallUrl = `请安装这个技能 ${url}`;
           document.getElementById('heroInstallCmdText').textContent = heroInstallUrl;
         }
       }).catch(() => {});
