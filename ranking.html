@@ -559,6 +559,20 @@
       'TinyClaw':     { bg: '#f5f3ff', text: '#7c3aed' },
     };
 
+    // Static project metadata (these 10 tracked repos are stable)
+    const PROJECT_DATA = {
+      'OpenClaw': { repo: 'openclaw/openclaw', language: 'TypeScript' },
+      'Nanobot': { repo: 'HKUDS/nanobot', language: 'Python' },
+      'ZeroClaw': { repo: 'zeroclaw-labs/zeroclaw', language: 'Rust' },
+      'PicoClaw': { repo: 'sipeed/picoclaw', language: 'Go' },
+      'NanoClaw': { repo: 'qwibitai/nanoclaw', language: 'TypeScript' },
+      'OpenFang': { repo: 'RightNow-AI/openfang', language: 'Rust' },
+      'IronClaw': { repo: 'nearai/ironclaw', language: 'Rust' },
+      'Hermes Agent': { repo: 'NousResearch/hermes-agent', language: 'Python' },
+      'NullClaw': { repo: 'nullclaw/nullclaw', language: 'Zig' },
+      'TinyClaw': { repo: 'TinyAGI/tinyclaw', language: 'TypeScript' },
+    };
+
     // Get local icon path from project name
     const PROJECT_ICONS = {
       'OpenClaw': './public/ico/openclaw.svg',
@@ -663,7 +677,7 @@
                 <div class="t-project-name">
                   ${r.name} ${statusBadge}
                 </div>
-                <div class="t-project-repo">${r.repo || ''} · ${LANG_MAP[r.language] || r.language || ''}</div>
+                <div class="t-project-repo">${(PROJECT_DATA[r.name] || {}).repo || ''} · ${LANG_MAP[(PROJECT_DATA[r.name] || {}).language] || (PROJECT_DATA[r.name] || {}).language || ''}</div>
               </div>
             </div>
             <div class="t-num ${stars7dFire ? 'fire' : ''}">${stars7dFire ? '<span class="fire-icon">🔥</span>' : ''}${r.stars7d}</div>
