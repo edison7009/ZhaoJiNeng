@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>全球龙虾实时排名 — 找技能 · 龙虾OpenClaw中文技能库</title>
+  <meta name="description" content="全球龙虾 Agent 生态实时排行榜，追踪 Star 增长、贡献者活跃度和项目发展趋势。">
+  <link rel="icon" href="./ico.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f8fa;
+      --card-bg: rgba(255, 255, 255, 0.4);
+      --card-bg-hover: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.6);
+      --text-main: #111111;
+      --text-secondary: #555555;
+      --text-tertiary: #888888;
+      --accent-color: #D94025;
+      --accent-hover: #b83520;
+      --border-color: rgba(0, 0, 0, 0.04);
+      --nav-bg: rgba(255, 255, 255, 0.55);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.08);
+      --green: #10b981;
+      --green-bg: #ecfdf5;
+      --red: #ef4444;
+      --red-bg: #fef2f2;
+      --cyan: #06b6d4;
+      --cyan-bg: #ecfeff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Brand watermark */
+    .brand-watermark {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px; height: 450px;
+      background: url('./ico.png') no-repeat center / contain;
+      opacity: 0.10; filter: blur(20px);
+      pointer-events: none; z-index: 1;
+    }
+
+    .bg-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(140px); z-index: -1;
+      opacity: 0.7; pointer-events: none;
+    }
+    .blob-1 {
+      top: -10vh; left: -10vw;
+      width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+    .blob-2 {
+      top: 10vh; right: -10vw;
+      width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    /* ===== Pill-shaped Navigation (same as index/all) ===== */
+    .nav-wrapper {
+      position: fixed; top: 24px; left: 0; width: 100%;
+      display: flex; justify-content: center;
+      z-index: 100; pointer-events: none;
+    }
+    .navbar {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 9999px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px 10px 24px;
+      width: 100%; max-width: 1120px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: #111;
+      font-size: 18px; font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: #4e5969; font-weight: 500; font-size: 14px;
+      padding: 8px 16px; border-radius: 999px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.04);
+    }
+    .nav-links a:active { transform: scale(0.96); }
+    .nav-search-btn {
+      background: #f2f3f5; border: none;
+      padding: 8px 16px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px;
+      cursor: pointer; color: #4e5969;
+      font-size: 14px; font-weight: 500;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-search-btn svg { width: 14px; height: 14px; }
+    .badge-soon {
+      background: var(--accent-color); color: #fff;
+      font-size: 10px; padding: 2px 6px; border-radius: 999px;
+      font-weight: 800; transform: scale(0.9); margin-left: 4px;
+    }
+
+    /* ===== Page Header ===== */
+    .page-header {
+      padding: 130px 0 40px;
+      max-width: 1120px; margin: 0 auto;
+    }
+    .page-header h1 {
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -1px;
+    }
+    .page-header h1 span {
+      background: linear-gradient(90deg, #D94025 0%, #f5734a 100%);
+      background-clip: text; -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+    }
+    .page-header-meta {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; color: var(--text-tertiary); font-weight: 500;
+      flex-shrink: 0;
+    }
+    .update-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); display: inline-block;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    .refresh-btn {
+      background: none; border: 1px solid var(--border-color);
+      padding: 4px 12px; border-radius: 999px; cursor: pointer;
+      font-size: 13px; color: var(--text-secondary); font-weight: 600;
+      transition: all 0.2s; display: flex; align-items: center; gap: 4px;
+    }
+    .refresh-btn:hover { background: rgba(0,0,0,0.03); color: #111; }
+    .refresh-btn:active { transform: scale(0.96); }
+    .refresh-btn.spinning svg { animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== Summary Cards ===== */
+    .summary-cards {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px; max-width: 1120px; margin: 0 auto 32px;
+    }
+    .summary-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px; padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .summary-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .sc-label {
+      font-size: 15px; font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-tertiary); margin-bottom: 12px;
+    }
+    .sc-value {
+      font-size: clamp(28px, 3.5vw, 42px); font-weight: 800;
+      color: var(--text-main); line-height: 1.1;
+      letter-spacing: -1px; white-space: nowrap;
+    }
+    .sc-value.green { color: var(--green); }
+    .sc-desc {
+      font-size: 15px; color: var(--text-tertiary);
+      margin-top: 6px; font-weight: 500;
+    }
+    .sc-project {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 4px; min-width: 0; overflow: hidden;
+    }
+    .sc-project-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+    }
+    .sc-project-icon img {
+      width: 100%; height: 100%; object-fit: contain;
+    }
+    .sc-project-name {
+      font-size: clamp(20px, 2.8vw, 30px); font-weight: 800; color: var(--text-main);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* ===== Ranking Table ===== */
+    .ranking-wrapper {
+      max-width: 1120px; margin: 0 auto 80px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(32px) saturate(180%);
+      -webkit-backdrop-filter: blur(32px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px; overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Table header */
+    .table-header {
+      display: grid;
+      grid-template-columns: 52px 1fr 100px 72px 90px 72px 90px 72px 110px;
+      padding: 16px 24px; border-bottom: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.3);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.5px; color: var(--text-tertiary);
+    }
+    .th-right { text-align: right; }
+
+    /* Table rows */
+    .table-row {
+      display: grid;
+      grid-template-columns: 52px 1fr 100px 72px 90px 72px 90px 72px 110px;
+      padding: 20px 24px; align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.2s;
+    }
+    .table-row:last-child { border-bottom: none; }
+    .table-row:hover { background: rgba(255, 255, 255, 0.5); }
+
+    /* Rank number */
+    .t-rank {
+      font-size: 22px; font-weight: 800; color: var(--text-tertiary);
+    }
+    .t-rank.gold { color: #f5222d; }
+    .t-rank.silver { color: #fa541c; }
+    .t-rank.bronze { color: #fa8c16; }
+
+    /* Project cell */
+    .t-project {
+      display: flex; align-items: center; gap: 14px;
+      min-width: 0;
+    }
+    .t-project-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .t-project-icon img {
+      width: 100%; height: 100%; object-fit: contain;
+    }
+    .table-row:hover .t-project-icon { transform: scale(1.05); }
+    .t-project-info { min-width: 0; }
+    .t-project-name {
+      font-size: 18px; font-weight: 700; color: var(--text-main);
+      display: flex; align-items: center; gap: 6px;
+      white-space: nowrap;
+    }
+    .t-project-repo {
+      font-size: 12px; color: var(--text-tertiary); font-weight: 500;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* Status badge */
+    .badge {
+      font-size: 10px; font-weight: 800; padding: 2px 8px;
+      border-radius: 999px; text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-rising { background: var(--green-bg); color: var(--green); }
+    .badge-cooling { background: var(--red-bg); color: var(--red); }
+
+    /* Data cells */
+    .t-num {
+      font-size: 15px; font-weight: 700; text-align: right;
+      color: var(--text-main);
+    }
+    .t-num.fire { color: var(--accent-color); }
+    .t-change {
+      font-size: 13px; font-weight: 600; text-align: right;
+    }
+    .t-change.up { color: var(--green); }
+    .t-change.down { color: var(--red); }
+    .fire-icon { margin-right: 2px; }
+    .t-total {
+      font-size: 16px; font-weight: 800; text-align: right;
+      color: var(--text-main);
+    }
+    .t-total.fire { color: var(--accent-color); }
+
+    /* Skeleton loading */
+    .skeleton-row {
+      display: grid;
+      grid-template-columns: 52px 1fr 100px 72px 90px 72px 90px 72px 110px;
+      padding: 20px 24px; align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      animation: skeleton-pulse 1.5s ease-in-out infinite;
+    }
+    .sk-block {
+      background: #e8e8e8; border-radius: 6px;
+    }
+    .sk-rank { width: 28px; height: 20px; }
+    .sk-proj { display: flex; gap: 12px; align-items: center; }
+    .sk-proj-icon { width: 44px; height: 44px; border-radius: 12px; background: #e8e8e8; flex-shrink: 0; }
+    .sk-proj-text { display: flex; flex-direction: column; gap: 6px; }
+    .sk-proj-name { width: 120px; height: 16px; }
+    .sk-proj-repo { width: 160px; height: 12px; }
+    .sk-cell { width: 70px; height: 16px; margin-left: auto; }
+    @keyframes skeleton-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 40px 20px 60px;
+      color: var(--text-tertiary); font-size: 14px; font-weight: 500;
+    }
+
+    /* Back to top */
+    .back-top {
+      position: fixed; bottom: 40px; right: 40px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent-color); color: #fff;
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(217, 64, 37, 0.3);
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.3s; pointer-events: none; z-index: 900;
+    }
+    .back-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-top:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 64, 37, 0.4); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 32px; right: 32px;
+      background: #333; color: #fff; padding: 12px 24px;
+      border-radius: 12px; font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none; z-index: 999;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .summary-cards { grid-template-columns: repeat(2, 1fr); }
+      .table-header, .table-row, .skeleton-row {
+        grid-template-columns: 50px 1fr 100px 80px 120px;
+      }
+      .hide-mobile { display: none; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .summary-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .sc-value { font-size: 24px; }
+      .table-header, .table-row, .skeleton-row {
+        grid-template-columns: 40px 1fr 120px;
+      }
+      .hide-tablet { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="brand-watermark"></div>
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <!-- Navbar -->
+  <div class="nav-wrapper">
+    <nav class="navbar">
+      <a href="./" class="nav-logo">
+        <img src="./ico.png" alt="找技能">
+        <img src="./logo.png" alt="找技能" style="height:24px;width:auto;">
+      </a>
+      <div class="nav-links">
+        <a href="./">官方推荐</a>
+        <a href="./all.html">全部技能</a>
+        <a href="https://echobird.ai/" target="_blank" style="display:flex;align-items:center;">一键安装OpenClaw<span
+            class="badge-soon">推荐</span></a>
+        <a href="./ranking.html" class="active" style="display:flex;align-items:center;gap:4px;">全球龙虾实时排名<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+      </div>
+      <button class="nav-search-btn" style="pointer-events:none;cursor:default;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        搜索
+      </button>
+    </nav>
+  </div>
+
+  <div class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-header-row">
+        <h1>全球龙虾<span>实时排名</span></h1>
+        <div class="page-header-meta">
+          <span class="update-dot"></span>
+          <span id="updateTime">数据加载中...</span>
+          <button class="refresh-btn" id="refreshBtn" onclick="refreshData()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+              <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+            刷新
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary Stats Cards -->
+    <div class="summary-cards" id="summaryCards">
+      <div class="summary-card">
+        <div class="sc-label">🏆 领跑者</div>
+        <div class="sc-project">
+          <div class="sc-project-icon" id="leaderIcon"><img src="./public/ico/openclaw.svg" alt=""></div>
+          <div class="sc-project-name" id="leaderName">加载中...</div>
+        </div>
+        <div class="sc-desc" id="leaderStars">--</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">⭐ 生态总收藏</div>
+        <div class="sc-value" id="ecoStars">--</div>
+        <div class="sc-desc" id="ecoStarsDesc">--</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">📈 7日生态增长</div>
+        <div class="sc-value green" id="ecoGrowth">--</div>
+        <div class="sc-desc" id="ecoGrowthDesc">--</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">🚀 7日最快增长</div>
+        <div class="sc-project">
+          <div class="sc-project-icon" id="topGrowthIcon"><img src="./public/ico/hermes.png" alt=""></div>
+          <div class="sc-project-name" id="topGrowthName">加载中...</div>
+        </div>
+        <div class="sc-desc" id="topGrowthDesc">--</div>
+      </div>
+    </div>
+
+    <!-- Ranking Table -->
+    <div class="ranking-wrapper">
+      <div class="table-header">
+        <div>排名</div>
+        <div>项目</div>
+        <div class="th-right">7日收藏</div>
+        <div class="th-right hide-mobile">变化</div>
+        <div class="th-right hide-mobile">7日贡献者</div>
+        <div class="th-right hide-mobile hide-tablet">变化</div>
+        <div class="th-right hide-mobile hide-tablet">7日提交</div>
+        <div class="th-right hide-mobile hide-tablet">变化</div>
+        <div class="th-right">总收藏 ↓</div>
+      </div>
+      <div id="rankingBody">
+        <!-- Skeleton loading -->
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>GitHub API 每小时同步 · © 2026 找技能 (zhaojineng.com)</p>
+  </footer>
+
+  <div class="toast" id="toast">数据已刷新</div>
+  <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script>
+    const API_URL = '/api/rankings';
+    const LANG_MAP = {
+      'TypeScript': 'TypeScript',
+      'Python': 'Python',
+      'Rust': 'Rust',
+      'Go': 'Go',
+      'Zig': 'Zig',
+    };
+
+    // Project icon colors (consistent palette)
+    const PROJECT_COLORS = {
+      'OpenClaw':     { bg: '#eef2fa', text: '#2f5fe3' },
+      'Nanobot':      { bg: '#f0f7f3', text: '#1d7b4b' },
+      'ZeroClaw':     { bg: '#fef5ed', text: '#b56011' },
+      'PicoClaw':     { bg: '#fcf0f5', text: '#b82b6b' },
+      'NanoClaw':     { bg: '#f4ecfb', text: '#722ed1' },
+      'OpenFang':     { bg: '#ecfeff', text: '#0891b2' },
+      'IronClaw':     { bg: '#fff7ed', text: '#c2410c' },
+      'Hermes Agent': { bg: '#fef2f2', text: '#dc2626' },
+      'NullClaw':     { bg: '#f0fdf4', text: '#16a34a' },
+      'TinyClaw':     { bg: '#f5f3ff', text: '#7c3aed' },
+    };
+
+    // Get local icon path from project name
+    const PROJECT_ICONS = {
+      'OpenClaw': './public/ico/openclaw.svg',
+      'Nanobot': './public/ico/nanobot.png',
+      'ZeroClaw': './public/ico/zeroclaw.png',
+      'PicoClaw': './public/ico/picoclaw.png',
+      'NanoClaw': './public/ico/nanoclaw.png',
+      'OpenFang': './public/ico/openfang.png',
+      'IronClaw': './public/ico/ironclaw.png',
+      'Hermes Agent': './public/ico/hermes.png',
+      'NullClaw': './public/ico/nullclaw.png',
+      'TinyClaw': './public/ico/tinyclaw.svg',
+    };
+
+    function getIconUrl(name) {
+      return PROJECT_ICONS[name] || './ico.png';
+    }
+
+    function getIconByRepo(repo) {
+      // Find icon by matching repo org to project name
+      for (const [name, path] of Object.entries(PROJECT_ICONS)) {
+        if (repo && repo.toLowerCase().includes(name.toLowerCase().replace(' ', ''))) return path;
+        if (repo && repo.toLowerCase().includes(name.split(' ')[0].toLowerCase())) return path;
+      }
+      return './ico.png';
+    }
+
+    function isPositive(val) {
+      if (!val) return null;
+      const s = String(val).replace(/[,%\s]/g, '');
+      if (s.startsWith('+')) return true;
+      if (s.startsWith('-')) return false;
+      const n = parseFloat(s);
+      return n > 0 ? true : n < 0 ? false : null;
+    }
+
+    function hasFire(val) {
+      // Show fire emoji for values with + prefix over 1000 or over 50%
+      const s = String(val).replace(/[,\s]/g, '');
+      if (s.startsWith('+')) {
+        const n = parseFloat(s.replace('+', '').replace('%', ''));
+        if (s.includes('%')) return n >= 50;
+        return n >= 2000;
+      }
+      return false;
+    }
+
+    function translateDesc(desc) {
+      return desc
+        .replace(/Across (\d+) tracked repos/, '追踪 $1 个项目')
+        .replace('Stars', '收藏')
+        .replace('stars', '收藏')
+        .replace('over 7 days', '（7天）');
+    }
+
+    function renderSummary(summary) {
+      // Leader
+      document.getElementById('leaderIcon').innerHTML = `<img src="${getIconUrl(summary.leader.name)}" alt="${summary.leader.name}">`;
+      document.getElementById('leaderName').textContent = summary.leader.name;
+      document.getElementById('leaderStars').textContent = translateDesc(summary.leader.stars);
+
+      // Ecosystem Stars
+      document.getElementById('ecoStars').textContent = summary.ecosystemStars.total;
+      document.getElementById('ecoStarsDesc').textContent = translateDesc(summary.ecosystemStars.desc);
+
+      // Growth
+      document.getElementById('ecoGrowth').textContent = summary.growth7d.value;
+      document.getElementById('ecoGrowthDesc').textContent = translateDesc(summary.growth7d.percentage);
+
+      // Top Growth
+      document.getElementById('topGrowthIcon').innerHTML = `<img src="${getIconUrl(summary.topGrowth.name)}" alt="${summary.topGrowth.name}">`;
+      document.getElementById('topGrowthName').textContent = summary.topGrowth.name;
+      document.getElementById('topGrowthDesc').textContent = translateDesc(summary.topGrowth.desc);
+    }
+
+    function renderRankings(rankings) {
+      const body = document.getElementById('rankingBody');
+      if (!rankings || rankings.length === 0) {
+        body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-tertiary)"><h3>暂无排名数据</h3></div>';
+        return;
+      }
+
+      body.innerHTML = rankings.map(r => {
+        const avatarUrl = getIconUrl(r.name);
+        const rankClass = r.rank === 1 ? 'gold' : r.rank === 2 ? 'silver' : r.rank === 3 ? 'bronze' : '';
+        const statusBadge = r.status === 'RISING'
+          ? '<span class="badge badge-rising">上升</span>'
+          : r.status === 'COOLING'
+            ? '<span class="badge badge-cooling">下降</span>'
+            : '';
+
+        const stars7dFire = hasFire(r.stars7d);
+        const changeClass = v => isPositive(v) === true ? 'up' : isPositive(v) === false ? 'down' : '';
+        const totalFire = r.rank <= 3;
+
+        return `
+          <div class="table-row">
+            <div class="t-rank ${rankClass}">#${r.rank}</div>
+            <div class="t-project">
+              <div class="t-project-icon"><img src="${avatarUrl}" alt="${r.name}"></div>
+              <div class="t-project-info">
+                <div class="t-project-name">
+                  ${r.name} ${statusBadge}
+                </div>
+                <div class="t-project-repo">${r.repo || ''} · ${LANG_MAP[r.language] || r.language || ''}</div>
+              </div>
+            </div>
+            <div class="t-num ${stars7dFire ? 'fire' : ''}">${stars7dFire ? '<span class="fire-icon">🔥</span>' : ''}${r.stars7d}</div>
+            <div class="t-change ${changeClass(r.stars7dChange)} hide-mobile">${r.stars7dChange}</div>
+            <div class="t-num hide-mobile">${hasFire(r.contribs7d) ? '<span class="fire-icon">🔥</span>' : ''}${r.contribs7d}</div>
+            <div class="t-change ${changeClass(r.contribs7dChange)} hide-mobile hide-tablet">${r.contribs7dChange}</div>
+            <div class="t-num hide-mobile hide-tablet">${hasFire(r.commits7d) ? '<span class="fire-icon">🔥</span>' : ''}${r.commits7d}</div>
+            <div class="t-change ${changeClass(r.commits7dChange)} hide-mobile hide-tablet">${r.commits7dChange}</div>
+            <div class="t-total ${totalFire ? 'fire' : ''}">${totalFire ? '<span class="fire-icon">🔥</span>' : ''}${r.totalStars}</div>
+          </div>`;
+      }).join('');
+    }
+
+    function updateTimestamp(isoStr) {
+      const d = isoStr ? new Date(isoStr) : new Date();
+      const now = new Date();
+      const diffMs = now - d;
+      const diffMin = Math.floor(diffMs / 60000);
+      let text;
+      if (diffMin < 1) text = '刚刚更新';
+      else if (diffMin < 60) text = `${diffMin} 分钟前更新`;
+      else text = `${Math.floor(diffMin / 60)} 小时前更新`;
+      document.getElementById('updateTime').textContent = text;
+    }
+
+    // Fallback data in case API is unavailable
+    const FALLBACK_DATA = {
+      updatedAt: new Date().toISOString(),
+      summary: {
+        leader: { name: 'OpenClaw', stars: '324,938 stars' },
+        ecosystemStars: { total: '481,982', desc: 'Across 10 tracked repos' },
+        growth7d: { value: '+30,496', percentage: 'Stars · +6.8%' },
+        topGrowth: { name: 'Hermes Agent', desc: '+74.6% over 7 days' },
+      },
+      rankings: [
+        { rank: 1, name: 'OpenClaw', status: 'RISING', repo: 'openclaw/openclaw', language: 'TypeScript', stars7d: '+17,366', stars7dChange: '+5.6%', contribs7d: '120', contribs7dChange: '25.9%', commits7d: '2,276', commits7dChange: '+85.5%', totalStars: '324,938' },
+        { rank: 2, name: 'Nanobot', status: 'COOLING', repo: 'HKUDS/nanobot', language: 'Python', stars7d: '+2,075', stars7dChange: '+6.3%', contribs7d: '26', contribs7dChange: '+0.0%', commits7d: '114', commits7dChange: '42.1%', totalStars: '34,927' },
+        { rank: 3, name: 'ZeroClaw', status: '', repo: 'zeroclaw-labs/zeroclaw', language: 'Rust', stars7d: '+1,522', stars7dChange: '+5.7%', contribs7d: '34', contribs7dChange: '+61.9%', commits7d: '335', commits7dChange: '+58.0%', totalStars: '28,016' },
+        { rank: 4, name: 'PicoClaw', status: 'COOLING', repo: 'sipeed/picoclaw', language: 'Go', stars7d: '+1,193', stars7dChange: '+4.9%', contribs7d: '41', contribs7dChange: '+7.9%', commits7d: '106', commits7dChange: '2.8%', totalStars: '25,485' },
+        { rank: 5, name: 'NanoClaw', status: '', repo: 'qwibitai/nanoclaw', language: 'TypeScript', stars7d: '+2,293', stars7dChange: '+10.4%', contribs7d: '3', contribs7dChange: '62.5%', commits7d: '25', commits7dChange: '3.8%', totalStars: '24,322' },
+        { rank: 6, name: 'OpenFang', status: 'RISING', repo: 'RightNow-AI/openfang', language: 'Rust', stars7d: '+951', stars7dChange: '+6.8%', contribs7d: '19', contribs7dChange: '+1.8%', commits7d: '51', commits7dChange: '+41.7%', totalStars: '14,983' },
+        { rank: 7, name: 'IronClaw', status: 'COOLING', repo: 'nearai/ironclaw', language: 'Rust', stars7d: '+781', stars7dChange: '+8.0%', contribs7d: '15', contribs7dChange: '58.3%', commits7d: '117', commits7dChange: '38.4%', totalStars: '10,485' },
+        { rank: 8, name: 'Hermes Agent', status: 'RISING', repo: 'NousResearch/hermes-agent', language: 'Python', stars7d: '+3,880', stars7dChange: '+74.6%', contribs7d: '63', contribs7dChange: '+46.5%', commits7d: '843', commits7dChange: '+35.1%', totalStars: '9,081' },
+        { rank: 9, name: 'NullClaw', status: '', repo: 'nullclaw/nullclaw', language: 'Zig', stars7d: '+346', stars7dChange: '+5.6%', contribs7d: '17', contribs7dChange: '+30.8%', commits7d: '275', commits7dChange: '+11.8%', totalStars: '6,575' },
+        { rank: 10, name: 'TinyClaw', status: '', repo: 'TinyAGI/tinyclaw', language: 'TypeScript', stars7d: '+89', stars7dChange: '+2.9%', contribs7d: '1', contribs7dChange: '50.0%', commits7d: '26', commits7dChange: '35.0%', totalStars: '3,170' },
+      ],
+    };
+
+    let isRefreshing = false;
+
+    async function fetchData() {
+      try {
+        const res = await fetch(API_URL, { signal: AbortSignal.timeout(10000) });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+        // Validate that rankings exist and have data
+        if (!data.rankings || data.rankings.length === 0) throw new Error('Empty rankings');
+        return data;
+      } catch (err) {
+        console.warn('API failed, using fallback:', err.message);
+        return FALLBACK_DATA;
+      }
+    }
+
+    async function refreshData() {
+      if (isRefreshing) return;
+      isRefreshing = true;
+      const btn = document.getElementById('refreshBtn');
+      btn.classList.add('spinning');
+
+      const data = await fetchData();
+      renderSummary(data.summary);
+      renderRankings(data.rankings);
+      updateTimestamp(data.updatedAt);
+
+      btn.classList.remove('spinning');
+      isRefreshing = false;
+
+      // Show toast
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    async function init() {
+      const data = await fetchData();
+      renderSummary(data.summary);
+      renderRankings(data.rankings);
+      updateTimestamp(data.updatedAt);
+    }
+
+    // Back to top
+    window.addEventListener('scroll', () => {
+      document.getElementById('backTop').classList.toggle('show', window.scrollY > 300);
+    });
+
+    init();
+  </script>
+</body>
+
+</html>
