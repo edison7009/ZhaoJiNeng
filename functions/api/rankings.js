@@ -1,5 +1,5 @@
 // Cloudflare Pages Function - GET /api/rankings
-// Extracts data from clawcharts.com Next.js RSC payload
+// Hybrid parsing: RSC payload for stars + HTML table for details
 // Cached for 5 minutes
 
 const UPSTREAM = 'https://clawcharts.com/';
@@ -13,11 +13,14 @@ function fmt(n) {
   return Number(n).toLocaleString('en-US');
 }
 
-function fmtPct(n) {
-  if (n === undefined || n === null) return '0%';
-  const v = Number(n);
-  return (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
-}
+const PROJECT_NAMES = ['OpenClaw', 'Nanobot', 'ZeroClaw', 'PicoClaw', 'NanoClaw', 'OpenFang', 'IronClaw', 'Hermes Agent', 'NullClaw', 'TinyClaw'];
+const PROJECT_REPOS = {
+  'OpenClaw': 'openclaw/openclaw', 'Nanobot': 'HKUDS/nanobot',
+  'ZeroClaw': 'zeroclaw-labs/zeroclaw', 'PicoClaw': 'sipeed/picoclaw',
+  'NanoClaw': 'qwibitai/nanoclaw', 'OpenFang': 'RightNow-AI/openfang',
+  'IronClaw': 'nearai/ironclaw', 'Hermes Agent': 'NousResearch/hermes-agent',
+  'NullClaw': 'nullclaw/nullclaw', 'TinyClaw': 'TinyAGI/tinyclaw',
+};
 
 function parseRankingData(html) {
   const result = {
@@ -31,96 +34,125 @@ function parseRankingData(html) {
     rankings: [],
   };
 
-  // ---- Strategy 1: Extract from RSC script payload (most reliable) ----
-  // The RSC payload contains escaped JSON like: \"latestStars\":325002,\"delta7d\":17430
-  // Find project data blocks in the RSC payload
+  // ---- Step 1: Get stars data from RSC payload (reliable) ----
+  const rscNames = [];
+  const rscStars = [];
+  const rscDeltas = [];
 
-  const projectNames = ['OpenClaw', 'Nanobot', 'ZeroClaw', 'PicoClaw', 'NanoClaw', 'OpenFang', 'IronClaw', 'Hermes Agent', 'NullClaw', 'TinyClaw'];
-  const projectRepos = {
-    'OpenClaw': 'openclaw/openclaw',
-    'Nanobot': 'HKUDS/nanobot',
-    'ZeroClaw': 'zeroclaw-labs/zeroclaw',
-    'PicoClaw': 'sipeed/picoclaw',
-    'NanoClaw': 'qwibitai/nanoclaw',
-    'OpenFang': 'RightNow-AI/openfang',
-    'IronClaw': 'nearai/ironclaw',
-    'Hermes Agent': 'NousResearch/hermes-agent',
-    'NullClaw': 'nullclaw/nullclaw',
-    'TinyClaw': 'TinyAGI/tinyclaw',
-  };
-
-  // Try to extract latestStars and delta7d from RSC payload
-  const latestStarsRegex = /\\?"latestStars\\?"\s*:\s*(\d+)/g;
-  const delta7dRegex = /\\?"delta7d\\?"\s*:\s*(-?\d+)/g;
-  const nameRegex = /\\?"name\\?"\s*:\s*\\?"([^"\\]+)\\?"/g;
-
-  const names = [];
-  const stars = [];
-  const deltas = [];
+  const nameRx = /\\?"name\\?"\s*:\s*\\?"([^"\\]+)\\?"/g;
+  const starsRx = /\\?"latestStars\\?"\s*:\s*(\d+)/g;
+  const deltaRx = /\\?"delta7d\\?"\s*:\s*(-?\d+)/g;
 
   let m;
-  while ((m = nameRegex.exec(html)) !== null) {
-    const n = m[1];
-    if (projectNames.includes(n)) names.push({ name: n, pos: m.index });
+  while ((m = nameRx.exec(html)) !== null) {
+    if (PROJECT_NAMES.includes(m[1])) rscNames.push(m[1]);
   }
-  while ((m = latestStarsRegex.exec(html)) !== null) {
-    stars.push({ val: parseInt(m[1]), pos: m.index });
-  }
-  while ((m = delta7dRegex.exec(html)) !== null) {
-    deltas.push({ val: parseInt(m[1]), pos: m.index });
-  }
+  while ((m = starsRx.exec(html)) !== null) rscStars.push(parseInt(m[1]));
+  while ((m = deltaRx.exec(html)) !== null) rscDeltas.push(parseInt(m[1]));
 
-  // Also try to extract percentage changes and contributor/commit data
-  const starsPctRegex = /\\?"starsPctChange7d\\?"\s*:\s*(-?[\d.]+)/g;
-  const contribs7dRegex = /\\?"contributors7d\\?"\s*:\s*(\d+)/g;
-  const contribsPctRegex = /\\?"contribsPctChange7d\\?"\s*:\s*(-?[\d.]+)/g;
-  const commits7dRegex = /\\?"commits7d\\?"\s*:\s*(\d+)/g;
-  const commitsPctRegex = /\\?"commitsPctChange7d\\?"\s*:\s*(-?[\d.]+)/g;
-  const statusRegex = /\\?"status\\?"\s*:\s*\\?"(RISING|COOLING|)\\?"/g;
+  // ---- Step 2: Parse HTML table rows for detailed data ----
+  // Each project appears in an <a> tag with its GitHub URL, followed by data cells
+  // We split the HTML by project anchors to isolate each row's data
 
-  const starsPcts = [];
-  const contribs = [];
-  const contribsPcts = [];
-  const commits = [];
-  const commitsPcts = [];
-  const statuses = [];
+  const rowData = {};
+  for (let i = 0; i < PROJECT_NAMES.length; i++) {
+    const name = PROJECT_NAMES[i];
+    rowData[name] = {
+      status: '',
+      stars7dPct: '0%',
+      contribs7d: '0',
+      contribs7dPct: '0%',
+      commits7d: '0',
+      commits7dPct: '0%',
+    };
 
-  while ((m = starsPctRegex.exec(html)) !== null) starsPcts.push(parseFloat(m[1]));
-  while ((m = contribs7dRegex.exec(html)) !== null) contribs.push(parseInt(m[1]));
-  while ((m = contribsPctRegex.exec(html)) !== null) contribsPcts.push(parseFloat(m[1]));
-  while ((m = commits7dRegex.exec(html)) !== null) commits.push(parseInt(m[1]));
-  while ((m = commitsPctRegex.exec(html)) !== null) commitsPcts.push(parseFloat(m[1]));
-  while ((m = statusRegex.exec(html)) !== null) statuses.push(m[1]);
+    // Find the project's section in the HTML by looking for its GitHub link
+    const repo = PROJECT_REPOS[name];
+    const repoIdx = html.indexOf(`github.com/${repo}`);
+    if (repoIdx === -1) continue;
 
-  if (names.length >= 10 && stars.length >= 10 && deltas.length >= 10) {
-    // Build rankings from RSC data
-    for (let i = 0; i < Math.min(names.length, 10); i++) {
-      const name = names[i].name;
-      result.rankings.push({
-        rank: i + 1,
-        name,
-        status: statuses[i] || '',
-        repo: projectRepos[name] || '',
-        language: '',
-        stars7d: '+' + fmt(deltas[i]?.val),
-        stars7dChange: fmtPct(starsPcts[i]),
-        contribs7d: String(contribs[i] || 0),
-        contribs7dChange: fmtPct(contribsPcts[i]),
-        commits7d: fmt(commits[i] || 0),
-        commits7dChange: fmtPct(commitsPcts[i]),
-        totalStars: fmt(stars[i]?.val),
-      });
+    // Get a chunk after the repo link - this contains the row data
+    // Look for the next project or end of table
+    let endIdx = html.length;
+    for (let j = i + 1; j < PROJECT_NAMES.length; j++) {
+      const nextRepo = PROJECT_REPOS[PROJECT_NAMES[j]];
+      const nextIdx = html.indexOf(`github.com/${nextRepo}`, repoIdx + 50);
+      if (nextIdx > -1) { endIdx = nextIdx; break; }
+    }
+    const chunk = html.substring(repoIdx, endIdx);
+
+    // Status: Rising or Cooling
+    if (/Rising/i.test(chunk)) rowData[name].status = 'RISING';
+    else if (/Cooling/i.test(chunk)) rowData[name].status = 'COOLING';
+
+    // Extract all numbers with optional +/- and % from the chunk
+    // Strip HTML tags first
+    const text = chunk.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+
+    // Find percentage values (e.g., +5.7%, 25.9%, +88.1%)
+    const pcts = [];
+    const pctRx = /([+-]?[\d.]+%)/g;
+    while ((m = pctRx.exec(text)) !== null) pcts.push(m[1]);
+
+    // Find plain numbers (contributor/commit counts)
+    // These appear after the project repo info
+    const langIdx = text.indexOf('TypeScript') > -1 ? text.indexOf('TypeScript') :
+      text.indexOf('Python') > -1 ? text.indexOf('Python') :
+      text.indexOf('Rust') > -1 ? text.indexOf('Rust') :
+      text.indexOf('Go ') > -1 ? text.indexOf('Go ') :
+      text.indexOf('Zig') > -1 ? text.indexOf('Zig') : 0;
+
+    const afterLang = text.substring(langIdx);
+    const nums = [];
+    const numRx = /(?:^|\s)([+-]?[\d,]+)(?:\s|$)/g;
+    while ((m = numRx.exec(afterLang)) !== null) {
+      const v = m[1].replace(/,/g, '');
+      if (v && parseInt(v) !== 0) nums.push(m[1]);
+    }
+
+    // Map extracted data:
+    // pcts order: stars7dPct, contribs7dPct, commits7dPct
+    if (pcts[0]) rowData[name].stars7dPct = pcts[0].startsWith('+') || pcts[0].startsWith('-') ? pcts[0] : '+' + pcts[0];
+    if (pcts[1]) rowData[name].contribs7dPct = pcts[1];
+    if (pcts[2]) rowData[name].commits7dPct = pcts[2];
+
+    // nums: stars7d (skip, from RSC), contribs count, commits count, total stars (skip, from RSC)
+    if (nums.length >= 2) {
+      rowData[name].contribs7d = nums[0];
+      rowData[name].commits7d = nums[1];
     }
   }
 
-  // ---- Parse summary from plain text ----
-  const text = html.replace(/<[^>]*>/g, '').trim();
+  // ---- Step 3: Build rankings ----
+  const hasRsc = rscNames.length >= 10 && rscStars.length >= 10;
 
-  // Leader
+  for (let i = 0; i < (hasRsc ? rscNames.length : PROJECT_NAMES.length); i++) {
+    const name = hasRsc ? rscNames[i] : PROJECT_NAMES[i];
+    const rd = rowData[name] || {};
+
+    result.rankings.push({
+      rank: i + 1,
+      name,
+      status: rd.status || '',
+      repo: PROJECT_REPOS[name] || '',
+      language: '',
+      stars7d: hasRsc ? '+' + fmt(rscDeltas[i]) : '0',
+      stars7dChange: rd.stars7dPct || '0%',
+      contribs7d: rd.contribs7d || '0',
+      contribs7dChange: rd.contribs7dPct || '0%',
+      commits7d: rd.commits7d || '0',
+      commits7dChange: rd.commits7dPct || '0%',
+      totalStars: hasRsc ? fmt(rscStars[i]) : '0',
+    });
+  }
+
+  // ---- Step 4: Parse summary from text ----
+  const text = html.replace(/<[^>]*>/g, '');
+
   const leaderIdx = text.indexOf('Leader');
   if (leaderIdx !== -1) {
     const after = text.substring(leaderIdx, leaderIdx + 200);
-    for (const name of projectNames) {
+    for (const name of PROJECT_NAMES) {
       if (after.includes(name)) {
         result.summary.leader.name = name;
         const sm = after.match(/([\d,]+)\s*stars/i);
@@ -130,7 +162,6 @@ function parseRankingData(html) {
     }
   }
 
-  // Ecosystem Stars
   const ecoIdx = text.indexOf('Ecosystem Stars');
   if (ecoIdx !== -1) {
     const after = text.substring(ecoIdx + 15, ecoIdx + 200);
@@ -140,7 +171,6 @@ function parseRankingData(html) {
     if (rm) result.summary.ecosystemStars.desc = rm[1];
   }
 
-  // 7D Growth
   const growthIdx = text.indexOf('Ecosystem 7D Growth');
   if (growthIdx !== -1) {
     const after = text.substring(growthIdx + 19, growthIdx + 200);
@@ -150,11 +180,10 @@ function parseRankingData(html) {
     if (pm) result.summary.growth7d.percentage = pm[1];
   }
 
-  // Top Growth
   const topIdx = text.indexOf('Top 7D Growth');
   if (topIdx !== -1) {
     const after = text.substring(topIdx + 13, topIdx + 300);
-    for (const name of projectNames) {
+    for (const name of PROJECT_NAMES) {
       if (after.includes(name)) {
         result.summary.topGrowth.name = name;
         const dm = after.match(/(\+[\d.]+%\s*over 7 days)/i);
@@ -164,7 +193,6 @@ function parseRankingData(html) {
     }
   }
 
-  // Fill summary leader from rankings if needed
   if (!result.summary.leader.name && result.rankings.length > 0) {
     result.summary.leader.name = result.rankings[0].name;
     result.summary.leader.stars = result.rankings[0].totalStars + ' stars';
@@ -203,7 +231,6 @@ export async function onRequest(context) {
     const html = await res.text();
     const data = parseRankingData(html);
 
-    // Only cache if we got meaningful data
     if (data.rankings.length >= 5) {
       cachedData = data;
       cachedAt = now;
