@@ -425,14 +425,7 @@
         <h1>全球龙虾<span>实时排名</span></h1>
         <div class="page-header-meta">
           <span class="update-dot"></span>
-          <span id="updateTime">数据加载中...</span>
-          <button class="refresh-btn" id="refreshBtn" onclick="refreshData()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
-              <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
-              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-            </svg>
-            刷新
-          </button>
+          <span id="updateTime">刚刚更新</span>
         </div>
       </div>
     </div>
@@ -536,7 +529,7 @@
   </button>
 
   <script>
-    const API_URL = '/api/rankings';
+    // Data is hardcoded and updated via workflow every 3 days
     const LANG_MAP = {
       'TypeScript': 'TypeScript',
       'Python': 'Python',
@@ -691,83 +684,44 @@
       }).join('');
     }
 
-    function updateTimestamp(isoStr) {
-      const d = isoStr ? new Date(isoStr) : new Date();
-      const now = new Date();
-      const diffMs = now - d;
-      const diffMin = Math.floor(diffMs / 60000);
+    // Session-based timestamp (shows time since page was opened)
+    const pageOpenTime = Date.now();
+    function updateTimestamp() {
+      const diffMin = Math.floor((Date.now() - pageOpenTime) / 60000);
       let text;
       if (diffMin < 1) text = '刚刚更新';
       else if (diffMin < 60) text = `${diffMin} 分钟前更新`;
       else text = `${Math.floor(diffMin / 60)} 小时前更新`;
       document.getElementById('updateTime').textContent = text;
     }
+    setInterval(updateTimestamp, 30000);
 
-    // Fallback data in case API is unavailable
-    const FALLBACK_DATA = {
-      updatedAt: new Date().toISOString(),
+    // Ranking data (updated via /sync-ranking workflow every 3 days)
+    // Last synced: 2026-03-20
+    const RANKING_DATA = {
       summary: {
-        leader: { name: 'OpenClaw', stars: '324,938 stars' },
-        ecosystemStars: { total: '481,982', desc: 'Across 10 tracked repos' },
-        growth7d: { value: '+30,496', percentage: 'Stars · +6.8%' },
-        topGrowth: { name: 'Hermes Agent', desc: '+74.6% over 7 days' },
+        leader: { name: 'OpenClaw', stars: '325,050 stars' },
+        ecosystemStars: { total: '482,164', desc: 'Across 10 tracked repos' },
+        growth7d: { value: '+30,678', percentage: 'Stars · +6.8%' },
+        topGrowth: { name: 'Hermes Agent', desc: '+75.0% over 7 days' },
       },
       rankings: [
-        { rank: 1, name: 'OpenClaw', status: 'RISING', repo: 'openclaw/openclaw', language: 'TypeScript', stars7d: '+17,366', stars7dChange: '+5.6%', contribs7d: '120', contribs7dChange: '25.9%', commits7d: '2,276', commits7dChange: '+85.5%', totalStars: '324,938' },
-        { rank: 2, name: 'Nanobot', status: 'COOLING', repo: 'HKUDS/nanobot', language: 'Python', stars7d: '+2,075', stars7dChange: '+6.3%', contribs7d: '26', contribs7dChange: '+0.0%', commits7d: '114', commits7dChange: '42.1%', totalStars: '34,927' },
-        { rank: 3, name: 'ZeroClaw', status: '', repo: 'zeroclaw-labs/zeroclaw', language: 'Rust', stars7d: '+1,522', stars7dChange: '+5.7%', contribs7d: '34', contribs7dChange: '+61.9%', commits7d: '335', commits7dChange: '+58.0%', totalStars: '28,016' },
-        { rank: 4, name: 'PicoClaw', status: 'COOLING', repo: 'sipeed/picoclaw', language: 'Go', stars7d: '+1,193', stars7dChange: '+4.9%', contribs7d: '41', contribs7dChange: '+7.9%', commits7d: '106', commits7dChange: '2.8%', totalStars: '25,485' },
-        { rank: 5, name: 'NanoClaw', status: '', repo: 'qwibitai/nanoclaw', language: 'TypeScript', stars7d: '+2,293', stars7dChange: '+10.4%', contribs7d: '3', contribs7dChange: '62.5%', commits7d: '25', commits7dChange: '3.8%', totalStars: '24,322' },
-        { rank: 6, name: 'OpenFang', status: 'RISING', repo: 'RightNow-AI/openfang', language: 'Rust', stars7d: '+951', stars7dChange: '+6.8%', contribs7d: '19', contribs7dChange: '+1.8%', commits7d: '51', commits7dChange: '+41.7%', totalStars: '14,983' },
-        { rank: 7, name: 'IronClaw', status: 'COOLING', repo: 'nearai/ironclaw', language: 'Rust', stars7d: '+781', stars7dChange: '+8.0%', contribs7d: '15', contribs7dChange: '58.3%', commits7d: '117', commits7dChange: '38.4%', totalStars: '10,485' },
-        { rank: 8, name: 'Hermes Agent', status: 'RISING', repo: 'NousResearch/hermes-agent', language: 'Python', stars7d: '+3,880', stars7dChange: '+74.6%', contribs7d: '63', contribs7dChange: '+46.5%', commits7d: '843', commits7dChange: '+35.1%', totalStars: '9,081' },
-        { rank: 9, name: 'NullClaw', status: '', repo: 'nullclaw/nullclaw', language: 'Zig', stars7d: '+346', stars7dChange: '+5.6%', contribs7d: '17', contribs7dChange: '+30.8%', commits7d: '275', commits7dChange: '+11.8%', totalStars: '6,575' },
+        { rank: 1, name: 'OpenClaw', status: 'RISING', repo: 'openclaw/openclaw', language: 'TypeScript', stars7d: '+17,478', stars7dChange: '+5.7%', contribs7d: '120', contribs7dChange: '25.9%', commits7d: '2,308', commits7dChange: '+88.1%', totalStars: '325,050' },
+        { rank: 2, name: 'Nanobot', status: 'COOLING', repo: 'HKUDS/nanobot', language: 'Python', stars7d: '+2,082', stars7dChange: '+6.3%', contribs7d: '26', contribs7dChange: '+0.0%', commits7d: '114', commits7dChange: '42.1%', totalStars: '34,934' },
+        { rank: 3, name: 'ZeroClaw', status: '', repo: 'zeroclaw-labs/zeroclaw', language: 'Rust', stars7d: '+1,534', stars7dChange: '+5.8%', contribs7d: '35', contribs7dChange: '+66.7%', commits7d: '368', commits7dChange: '+73.6%', totalStars: '28,028' },
+        { rank: 4, name: 'PicoClaw', status: 'COOLING', repo: 'sipeed/picoclaw', language: 'Go', stars7d: '+1,199', stars7dChange: '+4.9%', contribs7d: '41', contribs7dChange: '+7.9%', commits7d: '106', commits7dChange: '2.8%', totalStars: '25,491' },
+        { rank: 5, name: 'NanoClaw', status: '', repo: 'qwibitai/nanoclaw', language: 'TypeScript', stars7d: '+2,308', stars7dChange: '+10.5%', contribs7d: '5', contribs7dChange: '37.5%', commits7d: '29', commits7dChange: '+11.5%', totalStars: '24,337' },
+        { rank: 6, name: 'OpenFang', status: 'RISING', repo: 'RightNow-AI/openfang', language: 'Rust', stars7d: '+952', stars7dChange: '+6.8%', contribs7d: '19', contribs7dChange: '+1.8K%', commits7d: '51', commits7dChange: '+41.7%', totalStars: '14,984' },
+        { rank: 7, name: 'IronClaw', status: 'COOLING', repo: 'nearai/ironclaw', language: 'Rust', stars7d: '+786', stars7dChange: '+8.1%', contribs7d: '17', contribs7dChange: '52.8%', commits7d: '119', commits7dChange: '37.4%', totalStars: '10,490' },
+        { rank: 8, name: 'Hermes Agent', status: 'RISING', repo: 'NousResearch/hermes-agent', language: 'Python', stars7d: '+3,903', stars7dChange: '+75.0%', contribs7d: '63', contribs7dChange: '+46.5%', commits7d: '844', commits7dChange: '+35.3%', totalStars: '9,104' },
+        { rank: 9, name: 'NullClaw', status: '', repo: 'nullclaw/nullclaw', language: 'Zig', stars7d: '+347', stars7dChange: '+5.6%', contribs7d: '17', contribs7dChange: '+30.8%', commits7d: '275', commits7dChange: '+11.8%', totalStars: '6,576' },
         { rank: 10, name: 'TinyClaw', status: '', repo: 'TinyAGI/tinyclaw', language: 'TypeScript', stars7d: '+89', stars7dChange: '+2.9%', contribs7d: '1', contribs7dChange: '50.0%', commits7d: '26', commits7dChange: '35.0%', totalStars: '3,170' },
       ],
     };
 
-    let isRefreshing = false;
-
-    async function fetchData() {
-      try {
-        const res = await fetch(API_URL, { signal: AbortSignal.timeout(10000) });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (data.error) throw new Error(data.error);
-        // Validate that rankings exist and have data
-        if (!data.rankings || data.rankings.length === 0) throw new Error('Empty rankings');
-        return data;
-      } catch (err) {
-        console.warn('API failed, using fallback:', err.message);
-        return FALLBACK_DATA;
-      }
-    }
-
-    async function refreshData() {
-      if (isRefreshing) return;
-      isRefreshing = true;
-      const btn = document.getElementById('refreshBtn');
-      btn.classList.add('spinning');
-
-      const data = await fetchData();
-      renderSummary(data.summary);
-      renderRankings(data.rankings);
-      updateTimestamp(data.updatedAt);
-
-      btn.classList.remove('spinning');
-      isRefreshing = false;
-
-      // Show toast
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2000);
-    }
-
-    async function init() {
-      const data = await fetchData();
-      renderSummary(data.summary);
-      renderRankings(data.rankings);
-      updateTimestamp(data.updatedAt);
+    function init() {
+      renderSummary(RANKING_DATA.summary);
+      renderRankings(RANKING_DATA.rankings);
     }
 
     // Back to top
