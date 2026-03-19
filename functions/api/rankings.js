@@ -1,5 +1,5 @@
 // Cloudflare Pages Function - GET /api/rankings
-// Proxies clawcharts.com HTML, parses SSR data, returns structured JSON
+// Proxies clawcharts.com, extracts data from Next.js RSC payload, returns JSON
 // Cached for 5 minutes to avoid excessive upstream requests
 
 const UPSTREAM = 'https://clawcharts.com/';
@@ -7,15 +7,6 @@ const CACHE_TTL = 300; // 5 minutes
 
 let cachedData = null;
 let cachedAt = 0;
-
-function extractText(html, startMark, endMark) {
-  const i = html.indexOf(startMark);
-  if (i === -1) return '';
-  const begin = i + startMark.length;
-  const end = html.indexOf(endMark, begin);
-  if (end === -1) return '';
-  return html.substring(begin, end).trim();
-}
 
 function stripTags(s) {
   return s.replace(/<[^>]*>/g, '').trim();
@@ -33,106 +24,172 @@ function parseRankingData(html) {
     rankings: [],
   };
 
-  // --- Summary cards parsing ---
-  // Leader
-  const leaderMatch = html.match(/LEADER[\s\S]*?<[^>]*>([A-Za-z][A-Za-z0-9 ]*?)<\/[^>]*>[\s\S]*?([\d,]+ stars)/i);
-  if (leaderMatch) {
-    result.summary.leader.name = leaderMatch[1].trim();
-    result.summary.leader.stars = leaderMatch[2].trim();
-  }
-
-  // Ecosystem Stars
-  const ecoMatch = html.match(/ECOSYSTEM STARS[\s\S]*?>([\d,]+)<[\s\S]*?>(Across \d+ tracked repos)/i);
-  if (ecoMatch) {
-    result.summary.ecosystemStars.total = ecoMatch[1].trim();
-    result.summary.ecosystemStars.desc = ecoMatch[2].trim();
-  }
-
-  // Ecosystem 7D Growth
-  const growthMatch = html.match(/ECOSYSTEM 7D GROWTH[\s\S]*?>(\+[\d,]+)<[\s\S]*?>(Stars[\s·]*\+[\d.]+%)/i);
-  if (growthMatch) {
-    result.summary.growth7d.value = growthMatch[1].trim();
-    result.summary.growth7d.percentage = growthMatch[2].trim();
-  }
-
-  // Top 7D Growth
-  const topMatch = html.match(/TOP 7D GROWTH[\s\S]*?<[^>]*>([A-Za-z][A-Za-z0-9 ]*?)<\/[^>]*>[\s\S]*?(\+[\d.]+% over 7 days)/i);
-  if (topMatch) {
-    result.summary.topGrowth.name = topMatch[1].trim();
-    result.summary.topGrowth.desc = topMatch[2].trim();
-  }
-
-  // --- Ranking rows parsing ---
-  // Each row: #N, ProjectName, status(RISING/COOLING), repo/path, Language, 7D Stars, % change, 7D contribs, % change, 7D commits, % change, total stars
-  const rowRegex = /#(\d+)[\s\S]*?<[^>]*?>((?:OpenClaw|Nanobot|ZeroClaw|PicoClaw|NanoClaw|OpenFang|IronClaw|Hermes Agent|NullClaw|TinyClaw)[^<]*)<\/[^>]*>/gi;
-  const rows = html.matchAll(rowRegex);
-
-  // More robust: split into table-row-like chunks
-  const projectNames = ['OpenClaw', 'Nanobot', 'ZeroClaw', 'PicoClaw', 'NanoClaw', 'OpenFang', 'IronClaw', 'Hermes Agent', 'NullClaw', 'TinyClaw'];
-
-  // Extract all numbers that appear in the table area
-  const tableArea = html.substring(html.indexOf('RANK'));
-  if (!tableArea) return result;
-
-  for (let rank = 1; rank <= 10; rank++) {
-    const startMark = `#${rank}`;
-    const endMark = rank < 10 ? `#${rank + 1}` : 'Active Contributors';
-    const startIdx = tableArea.indexOf(startMark);
-    if (startIdx === -1) continue;
-    const endIdx = rank < 10 ? tableArea.indexOf(endMark, startIdx + 3) : tableArea.indexOf('</section', startIdx);
-    if (endIdx === -1) continue;
-
-    const chunk = tableArea.substring(startIdx, endIdx > 0 ? endIdx : undefined);
-
-    // Extract project name
-    let projectName = '';
-    for (const name of projectNames) {
-      if (chunk.includes(name)) { projectName = name; break; }
+  // Strategy 1: Try to extract from Next.js RSC payload (self.__next_f.push)
+  // Look for series data in script tags
+  const seriesMatch = html.match(/"series"\s*:\s*(\[[\s\S]*?\])\s*,\s*"(?:eco|updated)/);
+  if (seriesMatch) {
+    try {
+      const seriesData = JSON.parse(seriesMatch[1]);
+      // Process series into rankings
+      seriesData.forEach((item, idx) => {
+        if (idx >= 10) return;
+        const repo = item.repo || {};
+        result.rankings.push({
+          rank: idx + 1,
+          name: repo.name || '',
+          status: item.status || '',
+          repo: repo.fullName || '',
+          language: repo.language || '',
+          stars7d: formatNum(item.delta7d),
+          stars7dChange: formatPct(item.starsPctChange7d),
+          contribs7d: String(item.contributors7d || 0),
+          contribs7dChange: formatPct(item.contribsPctChange7d),
+          commits7d: String(item.commits7d || 0),
+          commits7dChange: formatPct(item.commitsPctChange7d),
+          totalStars: formatNum(item.latestStars),
+        });
+      });
+    } catch (e) {
+      // Fall through to Strategy 2
     }
-    if (!projectName) continue;
+  }
 
-    // Status badge
-    let status = '';
-    if (/RISING/i.test(chunk)) status = 'RISING';
-    else if (/COOLING/i.test(chunk)) status = 'COOLING';
+  // Strategy 2: Parse plain text from the rendered HTML
+  if (result.rankings.length === 0) {
+    const projectNames = ['OpenClaw', 'Nanobot', 'ZeroClaw', 'PicoClaw', 'NanoClaw', 'OpenFang', 'IronClaw', 'Hermes Agent', 'NullClaw', 'TinyClaw'];
 
-    // Repo path (e.g., openclaw/openclaw)
-    const repoMatch = chunk.match(/([a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+)\s*·\s*(TypeScript|Python|Rust|Go|Zig)/i);
-    const repo = repoMatch ? repoMatch[1] : '';
-    const language = repoMatch ? repoMatch[2] : '';
+    // Get plain text version
+    const text = stripTags(html);
 
-    // Extract numbers: look for patterns like +17,366 or 120 or +5.6% or 25.9%
-    const nums = [];
-    const numRegex = /[+]?[\d,]+(?:\.[\d]+)?(?:%)?/g;
-    const plainChunk = stripTags(chunk);
-    let m;
-    while ((m = numRegex.exec(plainChunk)) !== null) {
-      const v = m[0];
-      // Skip the rank number itself
-      if (v === String(rank)) continue;
-      nums.push(v);
+    // Parse summary from text
+    // Leader
+    const leaderIdx = text.indexOf('Leader');
+    if (leaderIdx !== -1) {
+      const afterLeader = text.substring(leaderIdx + 6, leaderIdx + 200);
+      for (const name of projectNames) {
+        const nIdx = afterLeader.indexOf(name);
+        if (nIdx !== -1) {
+          result.summary.leader.name = name;
+          const starsMatch = afterLeader.match(/([\d,]+)\s*stars/i);
+          if (starsMatch) result.summary.leader.stars = starsMatch[1] + ' stars';
+          break;
+        }
+      }
     }
 
-    // Typical order in the row: 7dStars, %change, 7dContribs, %change, 7dCommits, %change, totalStars
-    const entry = {
-      rank,
-      name: projectName,
-      status,
-      repo,
-      language,
-      stars7d: nums[0] || '0',
-      stars7dChange: nums[1] || '0%',
-      contribs7d: nums[2] || '0',
-      contribs7dChange: nums[3] || '0%',
-      commits7d: nums[4] || '0',
-      commits7dChange: nums[5] || '0%',
-      totalStars: nums[6] || '0',
-    };
+    // Ecosystem Stars
+    const ecoIdx = text.indexOf('Ecosystem Stars');
+    if (ecoIdx !== -1) {
+      const afterEco = text.substring(ecoIdx + 15, ecoIdx + 200);
+      const totalMatch = afterEco.match(/([\d,]+)/);
+      if (totalMatch) result.summary.ecosystemStars.total = totalMatch[1];
+      const reposMatch = afterEco.match(/(Across \d+ tracked repos)/i);
+      if (reposMatch) result.summary.ecosystemStars.desc = reposMatch[1];
+    }
 
-    result.rankings.push(entry);
+    // 7D Growth
+    const growthIdx = text.indexOf('Ecosystem 7D Growth');
+    if (growthIdx !== -1) {
+      const afterGrowth = text.substring(growthIdx + 19, growthIdx + 200);
+      const valMatch = afterGrowth.match(/(\+[\d,]+)/);
+      if (valMatch) result.summary.growth7d.value = valMatch[1];
+      const pctMatch = afterGrowth.match(/(Stars[\s·]*\+[\d.]+%)/i);
+      if (pctMatch) result.summary.growth7d.percentage = pctMatch[1];
+    }
+
+    // Top Growth
+    const topIdx = text.indexOf('Top 7D Growth');
+    if (topIdx !== -1) {
+      const afterTop = text.substring(topIdx + 13, topIdx + 300);
+      for (const name of projectNames) {
+        const nIdx = afterTop.indexOf(name);
+        if (nIdx !== -1) {
+          result.summary.topGrowth.name = name;
+          const descMatch = afterTop.match(/(\+[\d.]+%\s*over 7 days)/i);
+          if (descMatch) result.summary.topGrowth.desc = descMatch[1];
+          break;
+        }
+      }
+    }
+
+    // Parse ranking table from text
+    // Look for the table section with #1, #2... patterns
+    const rankSection = text.substring(text.indexOf('#1'));
+    if (rankSection) {
+      for (let rank = 1; rank <= 10; rank++) {
+        const startMark = `#${rank}`;
+        const nextMark = rank < 10 ? `#${rank + 1}` : 'Active Contributors';
+        const startIdx = rankSection.indexOf(startMark);
+        if (startIdx === -1) continue;
+        const endIdx = rankSection.indexOf(nextMark, startIdx + 3);
+        const chunk = rankSection.substring(startIdx, endIdx > 0 ? endIdx : startIdx + 500);
+
+        let projectName = '';
+        for (const name of projectNames) {
+          if (chunk.includes(name)) { projectName = name; break; }
+        }
+        if (!projectName) continue;
+
+        let status = '';
+        if (/RISING/i.test(chunk)) status = 'RISING';
+        else if (/COOLING/i.test(chunk)) status = 'COOLING';
+
+        const repoMatch = chunk.match(/([a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+)\s*·\s*(TypeScript|Python|Rust|Go|Zig)/i);
+        const repo = repoMatch ? repoMatch[1] : '';
+        const language = repoMatch ? repoMatch[2] : '';
+
+        // Extract numeric data from the chunk
+        // Remove project name, repo path, and language to isolate stats
+        let statsText = chunk;
+        statsText = statsText.replace(startMark, '');
+        statsText = statsText.replace(projectName, '');
+        if (repo) statsText = statsText.replace(repo, '');
+        if (language) statsText = statsText.replace(language, '');
+        statsText = statsText.replace(/RISING|COOLING|·/gi, '');
+
+        const nums = [];
+        const numRegex = /[+-]?[\d,]+(?:\.[\d]+)?(?:%)?/g;
+        let m;
+        while ((m = numRegex.exec(statsText)) !== null) {
+          const v = m[0].trim();
+          if (v && v !== String(rank) && v.length > 0) nums.push(v);
+        }
+
+        result.rankings.push({
+          rank,
+          name: projectName,
+          status,
+          repo,
+          language,
+          stars7d: nums[0] || '0',
+          stars7dChange: nums[1] || '0%',
+          contribs7d: nums[2] || '0',
+          contribs7dChange: nums[3] || '0%',
+          commits7d: nums[4] || '0',
+          commits7dChange: nums[5] || '0%',
+          totalStars: nums[6] || '0',
+        });
+      }
+    }
+  }
+
+  // Fill summary from rankings if not parsed from text
+  if (!result.summary.leader.name && result.rankings.length > 0) {
+    result.summary.leader.name = result.rankings[0].name;
+    result.summary.leader.stars = result.rankings[0].totalStars + ' stars';
   }
 
   return result;
+}
+
+function formatNum(n) {
+  if (n === undefined || n === null) return '0';
+  return Number(n).toLocaleString('en-US');
+}
+
+function formatPct(n) {
+  if (n === undefined || n === null) return '0%';
+  return (n >= 0 ? '+' : '') + Number(n).toFixed(1) + '%';
 }
 
 export async function onRequest(context) {
@@ -154,10 +211,12 @@ export async function onRequest(context) {
   try {
     const res = await fetch(UPSTREAM, {
       headers: {
-        'User-Agent': 'ZhaoJiNeng-Ranking/1.0 (zhaojineng.com)',
-        'Accept': 'text/html',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://www.google.com/',
       },
-      signal: AbortSignal.timeout(10000),
+      signal: AbortSignal.timeout(15000),
     });
 
     if (!res.ok) throw new Error(`Upstream ${res.status}`);
@@ -178,7 +237,6 @@ export async function onRequest(context) {
       },
     });
   } catch (err) {
-    // Return cached data if available, else error
     if (cachedData) {
       return new Response(JSON.stringify(cachedData), {
         status: 200,
