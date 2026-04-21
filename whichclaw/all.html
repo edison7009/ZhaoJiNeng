@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>All Skills — WhichClaw</title>
+  <meta name="description" content="Browse every Claude skill aggregated from the top awesome-claude-skills lists. Search by name or description, filter by category.">
+  <link rel="icon" href="./ico.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f8fa;
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.8);
+      --text-main: #111111;
+      --text-secondary: #4e5969;
+      --text-tertiary: #86909c;
+      --accent-color: #D94025;
+      --border-color: rgba(0, 0, 0, 0.06);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .brand-watermark {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px; height: 450px;
+      background: url('./ico.png') no-repeat center / contain;
+      opacity: 0.08; filter: blur(24px);
+      pointer-events: none; z-index: 1;
+    }
+    .bg-blob { position: absolute; border-radius: 50%; filter: blur(140px); z-index: -1; opacity: 0.7; pointer-events: none; }
+    .blob-1 { top: -10vh; left: -10vw; width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+    .blob-2 { top: 10vh; right: -10vw; width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+    .nav-wrapper { position: fixed; top: 24px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 100; pointer-events: none; }
+    .navbar {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 9999px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px 10px 24px; width: 100%; max-width: 1120px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #111; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 14px;
+      padding: 8px 14px; border-radius: 999px;
+      transition: background .2s, color .2s;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .nav-links a:hover { color: #111; background: rgba(0, 0, 0, 0.04); }
+    .nav-links a.active { color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.05); }
+    .nav-search-btn {
+      background: #f2f3f5; border: none; padding: 8px 16px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px;
+      cursor: default; color: var(--text-secondary);
+      font-size: 14px; font-weight: 500; pointer-events: none;
+    }
+    .nav-search-btn svg { width: 14px; height: 14px; }
+
+    .page-head { padding: 140px 0 28px; max-width: 1120px; margin: 0 auto; }
+    .page-head h1 { font-size: clamp(32px, 4vw, 44px); font-weight: 900; letter-spacing: -1.2px; }
+    .page-head h1 span {
+      background: linear-gradient(90deg, #D94025 0%, #f5734a 100%);
+      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .page-head p { font-size: 15px; color: var(--text-secondary); margin-top: 10px; max-width: 680px; }
+
+    .filter-row {
+      max-width: 1120px; margin: 0 auto 20px;
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+    }
+    .pill {
+      padding: 8px 16px; border-radius: 999px; cursor: pointer;
+      font-size: 13px; font-weight: 600; color: var(--text-secondary);
+      background: rgba(255,255,255,0.7); border: 1px solid var(--border-color);
+      transition: all .2s; white-space: nowrap;
+      font-family: inherit;
+    }
+    .pill:hover { background: #fff; color: #111; }
+    .pill.active { background: var(--accent-color); color: #fff; border-color: transparent; }
+
+    .search-box {
+      max-width: 1120px; margin: 0 auto 14px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 4px 20px 4px 56px;
+      display: flex; align-items: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .search-box svg {
+      position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+      color: var(--text-tertiary);
+    }
+    #searchInput {
+      width: 100%; border: none; background: transparent;
+      font-size: 15px; padding: 14px 0; color: var(--text-main);
+      outline: none; font-family: inherit;
+    }
+    #searchInput::placeholder { color: var(--text-tertiary); }
+
+    .result-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; max-width: 1120px; margin: 0 auto 12px;
+      padding: 0 8px;
+      font-size: 13px; color: var(--text-tertiary); font-weight: 500;
+      flex-wrap: wrap;
+    }
+    .result-bar .result-count { margin-left: auto; text-align: right; }
+
+    .grid {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px; padding: 18px;
+      cursor: pointer; transition: background .2s, box-shadow .2s;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 10px;
+      min-height: 140px;
+    }
+    .card:hover { background: rgba(255, 255, 255, 0.9); box-shadow: var(--shadow-md); }
+    .card-head { display: flex; align-items: center; gap: 10px; }
+    .card-icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .card-title { font-size: 15px; font-weight: 700; color: #111; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
+    .card-desc {
+      font-size: 13px; color: var(--text-secondary); line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1;
+    }
+    .card-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 11px; color: var(--text-tertiary); font-weight: 600;
+      margin-top: auto;
+    }
+    .card-tag { background: #f2f3f5; color: var(--text-secondary); padding: 2px 8px; border-radius: 999px; max-width: 65%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .card-sources { color: var(--accent-color); font-weight: 700; flex-shrink: 0; }
+
+    .empty-state { text-align: center; padding: 80px 24px; color: var(--text-tertiary); font-size: 15px; font-weight: 500; }
+    .pulse-dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: #10b981; margin-right: 6px;
+      animation: pulse-dot 2s ease-in-out infinite; vertical-align: middle;
+    }
+    @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer { text-align: center; padding: 40px 24px 80px; color: var(--text-tertiary); font-size: 13px; font-weight: 500; }
+    footer a { color: var(--text-main); font-weight: 600; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 820px) { .nav-links { display: none; } }
+  </style>
+</head>
+
+<body>
+  <div class="brand-watermark"></div>
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <div class="nav-wrapper">
+    <nav class="navbar">
+      <a href="./" class="nav-logo">
+        <img src="./ico.png" alt="WhichClaw">
+        WhichClaw
+      </a>
+      <div class="nav-links">
+        <a href="./">Featured</a>
+        <a href="./all.html" class="active">All Skills</a>
+        <a href="https://coffeecli.com/" target="_blank" rel="noopener">Coffee CLI</a>
+        <a href="./ranking.html">Lobster Leaderboard
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+        <a href="./models.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          LLM Leaderboard
+        </a>
+      </div>
+      <button class="nav-search-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+        Search
+      </button>
+    </nav>
+  </div>
+
+  <div class="container">
+    <header class="page-head">
+      <h1>All <span>Claude Skills</span></h1>
+      <p>Every skill aggregated from the top awesome-claude-skills lists on GitHub. Deduped, categorized, searchable.</p>
+    </header>
+
+    <div class="filter-row" id="categoryFilter">
+      <button class="pill active" data-category="all">All</button>
+    </div>
+
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Search skills by name or description…">
+    </div>
+
+    <div class="result-bar">
+      <span id="hydrationIndicator" style="display:none;"><span class="pulse-dot"></span><span id="hydrationText"></span></span>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+
+    <div id="skillsList" class="grid">
+      <div class="empty-state" style="grid-column:1/-1;">
+        <div style="width:32px;height:32px;border:3px solid var(--border-color);border-top-color:var(--accent-color);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;"></div>
+        Loading skills…
+      </div>
+    </div>
+    <div id="scrollSentinel" style="height:40px;"></div>
+  </div>
+
+  <footer>
+    <p>Business: <a href="mailto:hi@whichclaw.com">hi@whichclaw.com</a> · © 2026 WhichClaw (whichclaw.com)</p>
+  </footer>
+
+  <script>
+    const COLORS = [
+      { bg: '#1d39c4' }, { bg: '#1d7b4b' }, { bg: '#b56011' }, { bg: '#b82b6b' },
+      { bg: '#722ed1' }, { bg: '#0891b2' }, { bg: '#c2410c' }, { bg: '#dc2626' },
+    ];
+    function colorFor(str) {
+      let h = 0; for (const c of (str||'')) h = ((h << 5) - h + c.charCodeAt(0)) | 0;
+      return COLORS[Math.abs(h) % COLORS.length];
+    }
+    function initials(name) {
+      const words = (name||'').split(/[\s\-_/]+/).filter(Boolean);
+      return (words.slice(0, 2).map(w => w[0]).join('') || '?').toUpperCase().slice(0, 2);
+    }
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    let allSkills = [];
+    let filteredSkills = [];
+    let loadedCount = 0;
+    let currentCategory = 'all';
+    let isLoading = false;
+    const BATCH_SIZE = 24;
+    const hydrationStatus = { loaded: 0, total: 0, done: false };
+
+    async function initData() {
+      try {
+        const firstRes = await fetch('./public/skills_pages/1.json', { cache: 'default' });
+        if (!firstRes.ok) throw new Error('HTTP ' + firstRes.status);
+        const firstPage = await firstRes.json();
+        allSkills = firstPage.skills || [];
+        hydrationStatus.total = firstPage.total || allSkills.length;
+        hydrationStatus.loaded = allSkills.length;
+        buildCategoryFilter();
+        applyFilters(true);
+        hydrateRemaining(firstPage.total_pages || 1);
+      } catch (err) {
+        console.warn('page 1 fetch failed, trying skills.json:', err);
+        try {
+          const res = await fetch('./public/skills.json');
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const data = await res.json();
+          allSkills = data.skills || [];
+          hydrationStatus.total = allSkills.length;
+          hydrationStatus.loaded = allSkills.length;
+          hydrationStatus.done = true;
+          updateHydrationIndicator();
+          buildCategoryFilter();
+          applyFilters(true);
+        } catch (err2) {
+          document.getElementById('skillsList').innerHTML =
+            '<div class="empty-state" style="grid-column:1/-1;color:#e43d4d;">Failed to load skills. Please refresh.</div>';
+        }
+      }
+    }
+
+    async function hydrateRemaining(totalPages) {
+      if (totalPages <= 1) { hydrationStatus.done = true; updateHydrationIndicator(); return; }
+      const CONCURRENCY = 4;
+      const seen = new Set(allSkills.map(s => s.slug));
+      let next = 2;
+      const worker = async () => {
+        while (next <= totalPages) {
+          const p = next++;
+          try {
+            const r = await fetch(`./public/skills_pages/${p}.json`, { cache: 'default' });
+            if (!r.ok) continue;
+            const d = await r.json();
+            for (const s of (d.skills || [])) {
+              if (!seen.has(s.slug)) { seen.add(s.slug); allSkills.push(s); }
+            }
+            hydrationStatus.loaded = allSkills.length;
+            updateHydrationIndicator();
+            silentRefilter();
+          } catch (err) { console.warn('hydrate page', p, err); }
+        }
+      };
+      await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+      hydrationStatus.done = true;
+      updateHydrationIndicator();
+      buildCategoryFilter();
+      silentRefilter();
+    }
+
+    function updateHydrationIndicator() {
+      const el = document.getElementById('hydrationIndicator');
+      const txt = document.getElementById('hydrationText');
+      if (!el || !txt) return;
+      if (hydrationStatus.done || hydrationStatus.total === 0 ||
+          hydrationStatus.loaded >= hydrationStatus.total) {
+        el.style.display = 'none';
+        return;
+      }
+      el.style.display = '';
+      txt.textContent = `Loading ${hydrationStatus.loaded.toLocaleString()} / ${hydrationStatus.total.toLocaleString()}`;
+    }
+
+    function buildCategoryFilter() {
+      const counts = new Map();
+      for (const s of allSkills) {
+        const cat = s.category || 'Uncategorized';
+        counts.set(cat, (counts.get(cat) || 0) + 1);
+      }
+      const top = [...counts.entries()].sort((a,b) => b[1] - a[1]).slice(0, 10);
+      const row = document.getElementById('categoryFilter');
+      row.innerHTML = [
+        `<button class="pill ${currentCategory === 'all' ? 'active' : ''}" data-category="all">All</button>`,
+        ...top.map(([c, n]) =>
+          `<button class="pill ${currentCategory === c ? 'active' : ''}" data-category="${esc(c)}">${esc(c)} <span style="opacity:.6">(${n})</span></button>`
+        ),
+      ].join('');
+      row.querySelectorAll('.pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentCategory = btn.dataset.category;
+          row.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          applyFilters(true);
+        });
+      });
+    }
+
+    function applyFilters(reset = true) {
+      let filtered = allSkills;
+      if (currentCategory !== 'all') filtered = filtered.filter(s => (s.category || 'Uncategorized') === currentCategory);
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      if (q) {
+        filtered = filtered.filter(s => {
+          const text = `${s.name||''} ${s.description||''} ${s.ownerName||''}`.toLowerCase();
+          return text.includes(q);
+        });
+      }
+      filtered.sort((a,b) => (b.score||0) - (a.score||0));
+      filteredSkills = filtered;
+      if (reset) {
+        loadedCount = 0;
+        document.getElementById('skillsList').innerHTML = '';
+      }
+      const c = document.getElementById('resultCount');
+      if (c) {
+        c.textContent = (!q && currentCategory === 'all')
+          ? `${allSkills.length.toLocaleString()} skills`
+          : `${filteredSkills.length.toLocaleString()} match${filteredSkills.length===1?'':'es'}`;
+      }
+      if (!filteredSkills.length) {
+        document.getElementById('skillsList').innerHTML =
+          '<div class="empty-state" style="grid-column:1/-1;">No skills match. Try a different search.</div>';
+        return;
+      }
+      loadMore();
+    }
+
+    function silentRefilter() {
+      let filtered = allSkills;
+      if (currentCategory !== 'all') filtered = filtered.filter(s => (s.category || 'Uncategorized') === currentCategory);
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      if (q) filtered = filtered.filter(s => `${s.name||''} ${s.description||''}`.toLowerCase().includes(q));
+      filtered.sort((a,b) => (b.score||0) - (a.score||0));
+      filteredSkills = filtered;
+      const c = document.getElementById('resultCount');
+      if (c) {
+        c.textContent = (!q && currentCategory === 'all')
+          ? `${allSkills.length.toLocaleString()} skills`
+          : `${filteredSkills.length.toLocaleString()} match${filteredSkills.length===1?'':'es'}`;
+      }
+    }
+
+    function cardHtml(s) {
+      const c = colorFor(s.name);
+      const tag = (s.tags && s.tags[0]) || s.category || 'Skill';
+      const sources = (s.sources || []).length;
+      return `
+        <a class="card" href="${esc(s.homepage || '#')}" target="_blank" rel="noopener">
+          <div class="card-head">
+            <div class="card-icon" style="background:${c.bg}">${esc(initials(s.name))}</div>
+            <div class="card-title">${esc(s.name)}</div>
+          </div>
+          <div class="card-desc">${esc(s.description || 'Curated Claude skill.')}</div>
+          <div class="card-foot">
+            <span class="card-tag">${esc(tag)}</span>
+            <span class="card-sources">${sources > 1 ? sources + ' lists' : '1 list'}</span>
+          </div>
+        </a>`;
+    }
+
+    function loadMore() {
+      if (isLoading) return;
+      const remaining = filteredSkills.length - loadedCount;
+      if (remaining <= 0) return;
+      isLoading = true;
+      const list = document.getElementById('skillsList');
+      const batch = Math.min(BATCH_SIZE, remaining);
+      list.insertAdjacentHTML('beforeend',
+        filteredSkills.slice(loadedCount, loadedCount + batch).map(cardHtml).join(''));
+      loadedCount += batch;
+      isLoading = false;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !isLoading && loadedCount < filteredSkills.length) {
+        loadMore();
+      }
+    }, { rootMargin: '400px' });
+    observer.observe(document.getElementById('scrollSentinel'));
+
+    let searchTimer = 0;
+    document.getElementById('searchInput').addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => applyFilters(true), 200);
+    });
+
+    initData();
+  </script>
+</body>
+</html>

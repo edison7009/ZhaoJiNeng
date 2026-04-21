@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>Global Lobster Leaderboard — WhichClaw</title>
+  <meta name="description" content="A live leaderboard of lobster-inspired AI agents across GitHub — stars, contributors, commits.">
+  <link rel="icon" href="./ico.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f8fa;
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.8);
+      --text-main: #111111;
+      --text-secondary: #4e5969;
+      --text-tertiary: #86909c;
+      --accent-color: #D94025;
+      --border-color: rgba(0, 0, 0, 0.06);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.08);
+      --green: #10b981;
+      --red: #ef4444;
+      --gray: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .brand-watermark {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px; height: 450px;
+      background: url('./ico.png') no-repeat center / contain;
+      opacity: 0.08; filter: blur(24px);
+      pointer-events: none; z-index: 1;
+    }
+    .bg-blob { position: absolute; border-radius: 50%; filter: blur(140px); z-index: -1; opacity: 0.7; pointer-events: none; }
+    .blob-1 { top: -10vh; left: -10vw; width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+    .blob-2 { top: 10vh; right: -10vw; width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+    .nav-wrapper { position: fixed; top: 24px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 100; pointer-events: none; }
+    .navbar {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 9999px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px 10px 24px; width: 100%; max-width: 1120px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #111; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 14px;
+      padding: 8px 14px; border-radius: 999px;
+      transition: background .2s, color .2s;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .nav-links a:hover { color: #111; background: rgba(0, 0, 0, 0.04); }
+    .nav-links a.active { color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.05); }
+    .nav-search-btn {
+      background: #f2f3f5; border: none; padding: 8px 16px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px;
+      cursor: default; color: var(--text-secondary);
+      font-size: 14px; font-weight: 500; pointer-events: none;
+    }
+    .nav-search-btn svg { width: 14px; height: 14px; }
+
+    .page-header {
+      padding: 140px 0 32px; max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    .page-header h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; }
+    .page-header h1 span {
+      background: linear-gradient(90deg, #D94025 0%, #f5734a 100%);
+      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .meta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-tertiary); font-weight: 500; }
+    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+    .summary-cards {
+      max-width: 1120px; margin: 0 auto 32px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .summary-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px; padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sc-label { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; color: var(--text-tertiary); margin-bottom: 12px; }
+    .sc-value {
+      font-size: clamp(24px, 3vw, 36px); font-weight: 800;
+      color: var(--text-main); line-height: 1.1; letter-spacing: -0.8px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .sc-desc { font-size: 13px; color: var(--text-tertiary); margin-top: 6px; font-weight: 500; }
+    .sc-project { display: flex; align-items: center; gap: 10px; margin-top: 4px; min-width: 0; overflow: hidden; }
+    .sc-project-icon { width: 40px; height: 40px; flex-shrink: 0; }
+    .sc-project-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+    .ranking-wrapper {
+      max-width: 1120px; margin: 0 auto 60px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(32px) saturate(180%);
+      -webkit-backdrop-filter: blur(32px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px; overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .table-header, .table-row {
+      display: grid;
+      grid-template-columns: 52px 1fr 100px 72px 90px 72px 90px 72px 110px;
+      padding: 16px 24px;
+      font-size: 13px; align-items: center;
+    }
+    .table-header { background: rgba(255, 255, 255, 0.3); border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-tertiary); letter-spacing: 0.5px; }
+    .th-right { text-align: right; }
+    .table-row { border-bottom: 1px solid var(--border-color); transition: background 0.2s; }
+    .table-row:last-child { border-bottom: none; }
+    .table-row:hover { background: rgba(255, 255, 255, 0.5); }
+    .t-rank { font-size: 22px; font-weight: 800; color: var(--text-tertiary); }
+    .t-rank.gold { color: #f5222d; }
+    .t-rank.silver { color: #fa541c; }
+    .t-rank.bronze { color: #fa8c16; }
+    .t-project { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .t-project-icon { width: 40px; height: 40px; flex-shrink: 0; }
+    .t-project-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .t-project-name { font-size: 16px; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .t-project-repo { font-size: 12px; color: var(--text-tertiary); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-rising { background: #ecfdf5; color: var(--green); }
+    .badge-cooling { background: #fef2f2; color: var(--red); }
+    .t-num { font-size: 15px; font-weight: 700; color: var(--text-main); font-variant-numeric: tabular-nums; text-align: right; }
+    .t-num.fire { color: #ea580c; }
+    .fire-icon { margin-right: 2px; }
+    .t-change { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+    .t-change.up { color: var(--green); }
+    .t-change.down { color: var(--red); }
+    .t-total { font-size: 15px; font-weight: 800; color: var(--text-main); font-variant-numeric: tabular-nums; text-align: right; letter-spacing: -0.3px; }
+    .t-total.fire { color: #ea580c; }
+
+    footer { text-align: center; padding: 40px 24px 80px; color: var(--text-tertiary); font-size: 13px; font-weight: 500; }
+    footer a { color: var(--text-main); font-weight: 600; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .summary-cards { grid-template-columns: repeat(2, 1fr); }
+      .table-header, .table-row { grid-template-columns: 52px 1fr 100px 110px; }
+      .hide-tablet { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hide-mobile { display: none; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="brand-watermark"></div>
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <div class="nav-wrapper">
+    <nav class="navbar">
+      <a href="./" class="nav-logo">
+        <img src="./ico.png" alt="WhichClaw">
+        WhichClaw
+      </a>
+      <div class="nav-links">
+        <a href="./">Featured</a>
+        <a href="./all.html">All Skills</a>
+        <a href="https://coffeecli.com/" target="_blank" rel="noopener">Coffee CLI</a>
+        <a href="./ranking.html" class="active">Lobster Leaderboard
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+        <a href="./models.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          LLM Leaderboard
+        </a>
+      </div>
+      <button class="nav-search-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        Search
+      </button>
+    </nav>
+  </div>
+
+  <div class="container">
+    <header class="page-header">
+      <h1>Global <span>Lobster Leaderboard</span></h1>
+      <div class="meta"><span class="pulse-dot"></span><span id="updateTime">Just updated</span></div>
+    </header>
+
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="sc-label">🏆 LEADER</div>
+        <div class="sc-project">
+          <div class="sc-project-icon" id="leaderIcon"><img src="./ico.png" alt=""></div>
+          <div style="min-width:0;">
+            <div class="sc-value" id="leaderName">—</div>
+            <div class="sc-desc" id="leaderStars">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">⭐ ECOSYSTEM STARS</div>
+        <div class="sc-value" id="ecoStars">—</div>
+        <div class="sc-desc" id="ecoStarsDesc">—</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">📈 7D GROWTH</div>
+        <div class="sc-value" id="ecoGrowth" style="color:var(--green)">—</div>
+        <div class="sc-desc" id="ecoGrowthDesc">—</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">🚀 TOP GROWTH</div>
+        <div class="sc-project">
+          <div class="sc-project-icon" id="topGrowthIcon"><img src="./ico.png" alt=""></div>
+          <div style="min-width:0;">
+            <div class="sc-value" id="topGrowthName">—</div>
+            <div class="sc-desc" id="topGrowthDesc">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ranking-wrapper">
+      <div class="table-header">
+        <div>RANK</div>
+        <div>PROJECT</div>
+        <div class="th-right">7D STARS</div>
+        <div class="th-right hide-mobile">CHANGE</div>
+        <div class="th-right hide-mobile">7D CONTRIBS</div>
+        <div class="th-right hide-mobile hide-tablet">CHANGE</div>
+        <div class="th-right hide-mobile hide-tablet">7D COMMITS</div>
+        <div class="th-right hide-mobile hide-tablet">CHANGE</div>
+        <div class="th-right">TOTAL STARS ↓</div>
+      </div>
+      <div id="rankingBody"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Business: <a href="mailto:hi@whichclaw.com">hi@whichclaw.com</a> · © 2026 WhichClaw (whichclaw.com)</p>
+  </footer>
+
+  <script>
+    const LANG_MAP = { 'TypeScript':'TypeScript','Python':'Python','Rust':'Rust','Go':'Go','Zig':'Zig' };
+    const PROJECT_ICONS = {
+      'OpenClaw': './public/ico/openclaw.svg',
+      'Nanobot': './public/ico/nanobot.png',
+      'ZeroClaw': './public/ico/zeroclaw.png',
+      'PicoClaw': './public/ico/picoclaw.png',
+      'NanoClaw': './public/ico/nanoclaw.png',
+      'OpenFang': './public/ico/openfang.png',
+      'IronClaw': './public/ico/ironclaw.png',
+      'Hermes Agent': './public/ico/hermes.png',
+      'NullClaw': './public/ico/nullclaw.png',
+      'TinyClaw': './public/ico/tinyclaw.svg',
+      'Paperclip': './public/ico/paperclip.png',
+    };
+    function iconFor(name) { return PROJECT_ICONS[name] || './ico.png'; }
+
+    function isPositive(val) {
+      if (!val || val === '—') return null;
+      const s = String(val).replace(/[,%\s]/g,'');
+      if (s.startsWith('+')) return true;
+      if (s.startsWith('-')) return false;
+      const n = parseFloat(s);
+      return n > 0 ? true : n < 0 ? false : null;
+    }
+    function hasFire(val) {
+      const s = String(val||'').replace(/[,\s]/g,'');
+      if (s.startsWith('+')) {
+        const n = parseFloat(s.replace('+','').replace('%',''));
+        if (s.includes('%')) return n >= 50;
+        return n >= 2000;
+      }
+      return false;
+    }
+
+    function renderSummary(summary) {
+      document.getElementById('leaderIcon').innerHTML = `<img src="${iconFor(summary.leader.name)}" alt="">`;
+      document.getElementById('leaderName').textContent = summary.leader.name;
+      document.getElementById('leaderStars').textContent = summary.leader.stars;
+      document.getElementById('ecoStars').textContent = summary.ecosystemStars.total;
+      document.getElementById('ecoStarsDesc').textContent = summary.ecosystemStars.desc;
+      document.getElementById('ecoGrowth').textContent = summary.growth7d.value;
+      document.getElementById('ecoGrowthDesc').textContent = summary.growth7d.percentage;
+      document.getElementById('topGrowthIcon').innerHTML = `<img src="${iconFor(summary.topGrowth.name)}" alt="">`;
+      document.getElementById('topGrowthName').textContent = summary.topGrowth.name;
+      document.getElementById('topGrowthDesc').textContent = summary.topGrowth.desc;
+    }
+
+    function renderRankings(rankings) {
+      const body = document.getElementById('rankingBody');
+      if (!rankings || !rankings.length) {
+        body.innerHTML = '<div style="text-align:center;padding:60px;color:var(--text-tertiary)">No data yet.</div>';
+        return;
+      }
+      body.innerHTML = rankings.map(r => {
+        const rankClass = r.rank === 1 ? 'gold' : r.rank === 2 ? 'silver' : r.rank === 3 ? 'bronze' : '';
+        const statusBadge = r.status === 'RISING' ? '<span class="badge badge-rising">Rising</span>'
+                          : r.status === 'COOLING' ? '<span class="badge badge-cooling">Cooling</span>' : '';
+        const changeClass = v => isPositive(v) === true ? 'up' : isPositive(v) === false ? 'down' : '';
+        const stars7dFire = hasFire(r.stars7d);
+        const totalFire = r.rank <= 3;
+        return `
+          <div class="table-row">
+            <div class="t-rank ${rankClass}">#${r.rank}</div>
+            <div class="t-project">
+              <div class="t-project-icon"><img src="${iconFor(r.name)}" alt=""></div>
+              <div style="min-width:0;">
+                <div class="t-project-name">${r.name} ${statusBadge}</div>
+                <div class="t-project-repo">${r.repo} · ${LANG_MAP[r.language] || r.language || ''}</div>
+              </div>
+            </div>
+            <div class="t-num ${stars7dFire ? 'fire' : ''}">${stars7dFire ? '<span class="fire-icon">🔥</span>' : ''}${r.stars7d}</div>
+            <div class="t-change ${changeClass(r.stars7dChange)} hide-mobile">${r.stars7dChange}</div>
+            <div class="t-num hide-mobile">${hasFire(r.contribs7d) ? '<span class="fire-icon">🔥</span>' : ''}${r.contribs7d}</div>
+            <div class="t-change ${changeClass(r.contribs7dChange)} hide-mobile hide-tablet">${r.contribs7dChange}</div>
+            <div class="t-num hide-mobile hide-tablet">${hasFire(r.commits7d) ? '<span class="fire-icon">🔥</span>' : ''}${r.commits7d}</div>
+            <div class="t-change ${changeClass(r.commits7dChange)} hide-mobile hide-tablet">${r.commits7dChange}</div>
+            <div class="t-total ${totalFire ? 'fire' : ''}">${totalFire ? '<span class="fire-icon">🔥</span>' : ''}${r.totalStars}</div>
+          </div>`;
+      }).join('');
+    }
+
+    // Fallback hardcoded data used until ranking_sync.py has a 7d baseline.
+    const RANKING_DATA = {
+      summary: {
+        leader: { name: 'OpenClaw', stars: '361,411 stars' },
+        ecosystemStars: { total: '690,831', desc: 'Across 11 tracked repos' },
+        growth7d: { value: '+32,189', percentage: 'Stars · +4.9%' },
+        topGrowth: { name: 'Hermes Agent', desc: '+27.0% over 7 days' },
+      },
+      rankings: [
+        { rank: 1, name: 'OpenClaw',     status: '',        repo: 'openclaw/openclaw',           language: 'TypeScript', stars7d: '+4,158',  stars7dChange: '+1.2%',  contribs7d: '125', contribs7dChange: '+21.4%',  commits7d: '1,691', commits7dChange: '+29.5%', totalStars: '361,411' },
+        { rank: 2, name: 'Hermes Agent', status: 'RISING',  repo: 'NousResearch/hermes-agent',    language: 'Python',     stars7d: '+22,567', stars7dChange: '+27.0%', contribs7d: '154', contribs7dChange: '+12.5%',  commits7d: '806',   commits7dChange: '+12.9%', totalStars: '106,262' },
+        { rank: 3, name: 'Paperclip',    status: 'RISING',  repo: 'paperclipai/paperclip',        language: 'TypeScript', stars7d: '+3,423',  stars7dChange: '+6.4%',  contribs7d: '13',  contribs7dChange: '+116.7%', commits7d: '40',    commits7dChange: '+77.8%', totalStars: '56,970' },
+        { rank: 4, name: 'Nanobot',      status: 'COOLING', repo: 'HKUDS/nanobot',                language: 'Python',     stars7d: '+776',    stars7dChange: '+2.0%',  contribs7d: '32',  contribs7dChange: '+11.1%',  commits7d: '143',   commits7dChange: '+0.7%',  totalStars: '40,280' },
+        { rank: 5, name: 'ZeroClaw',     status: 'RISING',  repo: 'zeroclaw-labs/zeroclaw',       language: 'Rust',       stars7d: '+239',    stars7dChange: '+0.8%',  contribs7d: '26',  contribs7dChange: '+116.7%', commits7d: '65',    commits7dChange: '+27.8%', totalStars: '30,380' },
+        { rank: 6, name: 'PicoClaw',     status: 'COOLING', repo: 'sipeed/picoclaw',              language: 'Go',         stars7d: '+225',    stars7dChange: '+0.8%',  contribs7d: '11',  contribs7dChange: '+38.9%',  commits7d: '57',    commits7dChange: '+32.1%', totalStars: '28,365' },
+        { rank: 7, name: 'NanoClaw',     status: '',        repo: 'qwibitai/nanoclaw',            language: 'TypeScript', stars7d: '+334',    stars7dChange: '+1.2%',  contribs7d: '1',   contribs7dChange: '+0.0%',   commits7d: '3',     commits7dChange: '+50.0%', totalStars: '27,603' },
+        { rank: 8, name: 'OpenFang',     status: 'COOLING', repo: 'RightNow-AI/openfang',         language: 'Rust',       stars7d: '+227',    stars7dChange: '+1.4%',  contribs7d: '1',   contribs7dChange: '+87.5%',  commits7d: '16',    commits7dChange: '+68.0%', totalStars: '16,859' },
+        { rank: 9, name: 'IronClaw',     status: '',        repo: 'nearai/ironclaw',              language: 'Rust',       stars7d: '+133',    stars7dChange: '+1.1%',  contribs7d: '18',  contribs7dChange: '+0.0%',   commits7d: '133',   commits7dChange: '+51.1%', totalStars: '11,894' },
+        { rank: 10,name: 'NullClaw',     status: 'RISING',  repo: 'nullclaw/nullclaw',            language: 'Zig',        stars7d: '+89',     stars7dChange: '+1.2%',  contribs7d: '3',   contribs7dChange: '+0.0%',   commits7d: '79',    commits7dChange: '+8.2%',  totalStars: '7,282' },
+      ],
+    };
+
+    async function init() {
+      try {
+        const res = await fetch('./public/ranking_snapshot.json', { cache: 'no-cache' });
+        if (res.ok) {
+          const live = await res.json();
+          if (live && live.has_full_data && live.summary && Array.isArray(live.rankings) && live.rankings.length) {
+            renderSummary(live.summary);
+            renderRankings(live.rankings);
+            return;
+          }
+        }
+      } catch (err) { console.warn('live snapshot unavailable, fallback:', err); }
+      renderSummary(RANKING_DATA.summary);
+      renderRankings(RANKING_DATA.rankings);
+    }
+
+    init();
+  </script>
+</body>
+</html>

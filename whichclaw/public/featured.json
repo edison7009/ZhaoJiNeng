@@ -1,0 +1,1068 @@
+[
+  {
+    "slug": "docx",
+    "name": "docx",
+    "description": "Create, edit, analyze Word docs with tracked changes, comments, formatting.",
+    "description_zh": "",
+    "homepage": "https://github.com/anthropics/skills",
+    "tags": [
+      "Document Processing"
+    ],
+    "category": "Document Processing",
+    "ownerName": "anthropics",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "travisvn/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1300,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "article-extractor",
+    "name": "article-extractor",
+    "description": "Extract full article text and metadata from web pages.",
+    "description_zh": "",
+    "homepage": "https://github.com/michalparkola/tapestry-skills-for-claude-code",
+    "tags": [
+      "Communication & Writing"
+    ],
+    "category": "Communication & Writing",
+    "ownerName": "michalparkola",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1199,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "aws-skills",
+    "name": "aws-skills",
+    "description": "AWS development with CDK best practices, cost optimization MCP servers, and serverless/event-driven architecture patterns.",
+    "description_zh": "",
+    "homepage": "https://github.com/zxkane/aws-skills",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "zxkane",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1198,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "claude-code-terminal-title",
+    "name": "Claude Code Terminal Title",
+    "description": "Gives each Claud-Code terminal window a dynamic title that describes the work being done so you don't lose track of what window is doing what.",
+    "description_zh": "",
+    "homepage": "https://github.com/bluzername/claude-code-terminal-title",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "bluzername",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1197,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "csv-data-summarizer",
+    "name": "CSV Data Summarizer",
+    "description": "Automatically analyzes CSV files and generates comprehensive insights with visualizations without requiring user prompts. By [@coffeefuelbump](https://github.com/coffeefuelbump)",
+    "description_zh": "",
+    "homepage": "https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill",
+    "tags": [
+      "Data & Analysis"
+    ],
+    "category": "Data & Analysis",
+    "ownerName": "coffeefuelbump",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1196,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "family-history-research",
+    "name": "family-history-research",
+    "description": "Provides assistance with planning family history and genealogy research projects.",
+    "description_zh": "",
+    "homepage": "https://github.com/emaynard/claude-family-history-research-skill",
+    "tags": [
+      "Communication & Writing"
+    ],
+    "category": "Communication & Writing",
+    "ownerName": "emaynard",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1195,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "ffuf-web-fuzzing",
+    "name": "FFUF Web Fuzzing",
+    "description": "Integrates the ffuf web fuzzer so Claude can run fuzzing tasks and analyze results for vulnerabilities. By [@jthack](https://github.com/jthack)",
+    "description_zh": "",
+    "homepage": "https://github.com/jthack/ffuf_claude_skill",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "jthack",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1194,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "finishing-a-development-branch",
+    "name": "finishing-a-development-branch",
+    "description": "Guides completion of development work by presenting clear options and handling chosen workflow.",
+    "description_zh": "",
+    "homepage": "https://github.com/obra/superpowers",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "obra",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1193,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "git-pushing",
+    "name": "git-pushing",
+    "description": "Automate git operations and repository interactions.",
+    "description_zh": "",
+    "homepage": "https://github.com/mhattingpete/claude-skills-marketplace",
+    "tags": [
+      "Collaboration & Project Management"
+    ],
+    "category": "Collaboration & Project Management",
+    "ownerName": "mhattingpete",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1192,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "jules",
+    "name": "jules",
+    "description": "Delegate coding tasks to Google Jules AI agent for async bug fixes, documentation, tests, and feature implementation on GitHub repos. By [@sanjay3290](https://github.com/sanjay3290)",
+    "description_zh": "",
+    "homepage": "https://github.com/sanjay3290/ai-skills",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "sanjay3290",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1191,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "markdown-to-epub-converter",
+    "name": "Markdown to EPUB Converter",
+    "description": "Converts markdown documents and chat summaries into professional EPUB ebook files. By [@smerchek](https://github.com/smerchek)",
+    "description_zh": "",
+    "homepage": "https://github.com/smerchek/claude-epub-skill",
+    "tags": [
+      "Document Processing"
+    ],
+    "category": "Document Processing",
+    "ownerName": "smerchek",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1190,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "move-code-quality-skill",
+    "name": "move-code-quality-skill",
+    "description": "Analyzes Move language packages against the official Move Book Code Quality Checklist for Move 2024 Edition compliance and best practices.",
+    "description_zh": "",
+    "homepage": "https://github.com/1NickPappas/move-code-quality-skill",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "1NickPappas",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1189,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "pypict-claude-skill",
+    "name": "pypict-claude-skill",
+    "description": "Design comprehensive test cases using PICT (Pairwise Independent Combinatorial Testing) for requirements or code, generating optimized test suites with pairwise coverage.",
+    "description_zh": "",
+    "homepage": "https://github.com/omkamal/pypict-claude-skill",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "omkamal",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1188,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "reddit-fetch",
+    "name": "reddit-fetch",
+    "description": "Fetches Reddit content via Gemini CLI when WebFetch is blocked or returns 403 errors.",
+    "description_zh": "",
+    "homepage": "https://github.com/ykdojo/claude-code-tips",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "ykdojo",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1187,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "using-git-worktrees",
+    "name": "using-git-worktrees",
+    "description": "Creates isolated git worktrees with smart directory selection and safety verification.",
+    "description_zh": "",
+    "homepage": "https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees",
+    "tags": [
+      "Development & Code Tools"
+    ],
+    "category": "Development & Code Tools",
+    "ownerName": "obra",
+    "sources": [
+      "ComposioHQ/awesome-claude-skills",
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1186,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "0xrohitgarg",
+    "name": "@0xrohitgarg",
+    "description": "[@tejasashinde](https://github.com/tejasashinde)",
+    "description_zh": "",
+    "homepage": "https://github.com/0xrohitgarg",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1085,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "8144225309",
+    "name": "@8144225309",
+    "description": "[@sharmanilay](https://github.com/sharmanilay)",
+    "description_zh": "",
+    "homepage": "https://github.com/8144225309",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1084,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "abdulrahmansoliman",
+    "name": "@Abdulrahmansoliman",
+    "description": "[@ALEKGG1](https://github.com/ALEKGG1)",
+    "description_zh": "",
+    "homepage": "https://github.com/Abdulrahmansoliman",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1083,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "acbhatt12",
+    "name": "@acbhatt12",
+    "description": "[@Andruia](https://github.com/Andruia)",
+    "description_zh": "",
+    "homepage": "https://github.com/acbhatt12",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1082,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "al-garadi",
+    "name": "@Al-Garadi",
+    "description": "[@olgasafonova](https://github.com/olgasafonova)",
+    "description_zh": "",
+    "homepage": "https://github.com/Al-Garadi",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1081,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "alexmvie",
+    "name": "@alexmvie",
+    "description": "[@Sayeem3051](https://github.com/Sayeem3051)",
+    "description_zh": "",
+    "homepage": "https://github.com/alexmvie",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1080,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "almogbaku",
+    "name": "@AlmogBaku",
+    "description": "[@Allen930311](https://github.com/Allen930311)",
+    "description_zh": "",
+    "homepage": "https://github.com/AlmogBaku",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1079,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "amalsam",
+    "name": "@amalsam",
+    "description": "[@ziuus](https://github.com/ziuus)",
+    "description_zh": "",
+    "homepage": "https://github.com/amalsam",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1078,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "avimak",
+    "name": "@avimak",
+    "description": "[@antbotlab](https://github.com/antbotlab)",
+    "description_zh": "",
+    "homepage": "https://github.com/avimak",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1077,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "babysor",
+    "name": "@babysor",
+    "description": "[@code-vj](https://github.com/code-vj)",
+    "description_zh": "",
+    "homepage": "https://github.com/babysor",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1076,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "buzzbysolcex",
+    "name": "@buzzbysolcex",
+    "description": "[@BenZinaDaze](https://github.com/BenZinaDaze)",
+    "description_zh": "",
+    "homepage": "https://github.com/buzzbysolcex",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1075,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "cerdore",
+    "name": "@Cerdore",
+    "description": "[@MetcalfSolutions](https://github.com/MetcalfSolutions)",
+    "description_zh": "",
+    "homepage": "https://github.com/Cerdore",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1074,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "chauey",
+    "name": "@chauey",
+    "description": "[@itsmeares](https://github.com/itsmeares)",
+    "description_zh": "",
+    "homepage": "https://github.com/chauey",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1073,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "christopherlhammer11-ai",
+    "name": "@christopherlhammer11-ai",
+    "description": "[@c1c3ru](https://github.com/c1c3ru)",
+    "description_zh": "",
+    "homepage": "https://github.com/christopherlhammer11-ai",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1072,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "ckdwns9121",
+    "name": "@ckdwns9121",
+    "description": "[@dependabot[bot]](https://github.com/apps/dependabot)",
+    "description_zh": "",
+    "homepage": "https://github.com/ckdwns9121",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1071,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "clawfu-mcp-skills",
+    "name": "@clawfu/mcp-skills",
+    "description": "169 expert-sourced marketing skills (Dunford, Schwartz, Ogilvy, Cialdini) as MCP server with brand memory.",
+    "description_zh": "",
+    "homepage": "https://github.com/guia-matthieu/clawfu-skills",
+    "tags": [
+      "🗂️ Collections"
+    ],
+    "category": "🗂️ Collections",
+    "ownerName": "guia-matthieu",
+    "sources": [
+      "BehiSecc/awesome-claude-skills"
+    ],
+    "score": 1070,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "conspirafi",
+    "name": "@conspirafi",
+    "description": "[@shubhamdevx](https://github.com/shubhamdevx)",
+    "description_zh": "",
+    "homepage": "https://github.com/conspirafi",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1069,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "copilot",
+    "name": "@Copilot",
+    "description": "[@8hrsk](https://github.com/8hrsk)",
+    "description_zh": "",
+    "homepage": "https://github.com/apps/copilot-swe-agent",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "apps",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1068,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "decentraliser",
+    "name": "@decentraliser",
+    "description": "[@MAIOStudio](https://github.com/MAIOStudio)",
+    "description_zh": "",
+    "homepage": "https://github.com/decentraliser",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1067,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "derricke",
+    "name": "@derricke",
+    "description": "[@sebastiondev](https://github.com/sebastiondev)",
+    "description_zh": "",
+    "homepage": "https://github.com/derricke",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1066,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "digidai",
+    "name": "@Digidai",
+    "description": "[@dbhat93](https://github.com/dbhat93)",
+    "description_zh": "",
+    "homepage": "https://github.com/Digidai",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1065,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "digitamaz",
+    "name": "@digitamaz",
+    "description": "[@cryptoque](https://github.com/cryptoque)",
+    "description_zh": "",
+    "homepage": "https://github.com/digitamaz",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1064,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "dokhacgiakhoa",
+    "name": "@Dokhacgiakhoa",
+    "description": "[@sx4im](https://github.com/sx4im)",
+    "description_zh": "",
+    "homepage": "https://github.com/Dokhacgiakhoa",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1063,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "elkidogz",
+    "name": "@Elkidogz",
+    "description": "[@qcwssss](https://github.com/qcwssss)",
+    "description_zh": "",
+    "homepage": "https://github.com/Elkidogz",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1062,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "emanoelcarvalho",
+    "name": "@emanoelCarvalho",
+    "description": "[@unitedideas](https://github.com/unitedideas)",
+    "description_zh": "",
+    "homepage": "https://github.com/emanoelCarvalho",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1061,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "evozim",
+    "name": "@Evozim",
+    "description": "[@Imasaikiran](https://github.com/Imasaikiran)",
+    "description_zh": "",
+    "homepage": "https://github.com/Evozim",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1060,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "fbientrigo",
+    "name": "@fbientrigo",
+    "description": "[@developer-victor](https://github.com/developer-victor)",
+    "description_zh": "",
+    "homepage": "https://github.com/fbientrigo",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1059,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "fernandezbaptiste",
+    "name": "@fernandezbaptiste",
+    "description": "[@Gizzant](https://github.com/Gizzant)",
+    "description_zh": "",
+    "homepage": "https://github.com/fernandezbaptiste",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1058,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "fernandorych",
+    "name": "@fernandorych",
+    "description": "[@nikolasdehor](https://github.com/nikolasdehor)",
+    "description_zh": "",
+    "homepage": "https://github.com/fernandorych",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1057,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "francyjglisboa",
+    "name": "@FrancyJGLisboa",
+    "description": "[@framunoz](https://github.com/framunoz)",
+    "description_zh": "",
+    "homepage": "https://github.com/FrancyJGLisboa",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1056,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "fullstackcrew-alpha",
+    "name": "@fullstackcrew-alpha",
+    "description": "[@dz3ai](https://github.com/dz3ai)",
+    "description_zh": "",
+    "homepage": "https://github.com/fullstackcrew-alpha",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1055,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "globalchatapp",
+    "name": "@globalchatapp",
+    "description": "[@edudeftones-cloud](https://github.com/edudeftones-cloud)",
+    "description_zh": "",
+    "homepage": "https://github.com/globalchatapp",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1054,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "hazemezz123",
+    "name": "@hazemezz123",
+    "description": "[@yang1002378395-cmyk](https://github.com/yang1002378395-cmyk)",
+    "description_zh": "",
+    "homepage": "https://github.com/hazemezz123",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1053,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "htafolla",
+    "name": "@htafolla",
+    "description": "[@playbookTV](https://github.com/playbookTV)",
+    "description_zh": "",
+    "homepage": "https://github.com/htafolla",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1052,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  },
+  {
+    "slug": "hvasconcelos",
+    "name": "@hvasconcelos",
+    "description": "[@Guilherme-ruy](https://github.com/Guilherme-ruy)",
+    "description_zh": "",
+    "homepage": "https://github.com/hvasconcelos",
+    "tags": [
+      "Repo Contributors"
+    ],
+    "category": "Repo Contributors",
+    "ownerName": "",
+    "sources": [
+      "sickn33/antigravity-awesome-skills"
+    ],
+    "score": 1051,
+    "downloads": 0,
+    "stars": 0,
+    "installs": 0,
+    "version": "",
+    "updated_at": 0
+  }
+]

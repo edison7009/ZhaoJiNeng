@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>WhichClaw — The Curated Index of Claude Skills</title>
+  <meta name="description" content="A community-curated index of Claude Code and Claude.ai skills, aggregated from the top awesome-claude-skills lists on GitHub.">
+  <link rel="icon" href="./ico.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f8fa;
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.8);
+      --text-main: #111111;
+      --text-secondary: #4e5969;
+      --text-tertiary: #86909c;
+      --accent-color: #D94025;
+      --accent-hover: #b83520;
+      --border-color: rgba(0, 0, 0, 0.06);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .brand-watermark {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px; height: 450px;
+      background: url('./ico.png') no-repeat center / contain;
+      opacity: 0.08; filter: blur(24px);
+      pointer-events: none; z-index: 1;
+    }
+    .bg-blob { position: absolute; border-radius: 50%; filter: blur(140px); z-index: -1; opacity: 0.7; pointer-events: none; }
+    .blob-1 { top: -10vh; left: -10vw; width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+    .blob-2 { top: 10vh; right: -10vw; width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+    /* Nav */
+    .nav-wrapper { position: fixed; top: 24px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 100; pointer-events: none; }
+    .navbar {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 9999px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px 10px 24px; width: 100%; max-width: 1120px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #111; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 14px;
+      padding: 8px 14px; border-radius: 999px;
+      transition: background .2s, color .2s;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .nav-links a:hover { color: #111; background: rgba(0, 0, 0, 0.04); }
+    .nav-links a.active { color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.05); }
+    .nav-search-btn {
+      background: #f2f3f5; border: none;
+      padding: 8px 16px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px;
+      cursor: pointer; color: var(--text-secondary);
+      font-size: 14px; font-weight: 500;
+      transition: background .2s, color .2s;
+    }
+    .nav-search-btn:hover { background: #e5e6eb; color: #111; }
+    .nav-search-btn svg { width: 14px; height: 14px; }
+
+    /* Hero */
+    .hero {
+      padding: 180px 0 80px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 60px; max-width: 1060px; margin: 0 auto;
+    }
+    .hero-content { flex: 1.1; max-width: 560px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; background: #fff; color: var(--text-secondary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border-radius: 9999px; font-size: 13px; font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-size: 64px; font-weight: 900; line-height: 1.1;
+      letter-spacing: -2.5px; margin-bottom: 20px; color: #111;
+    }
+    .hero-title span {
+      background: linear-gradient(90deg, #D94025 0%, #f5734a 100%);
+      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 16px; color: var(--text-secondary);
+      margin-bottom: 36px; line-height: 1.65; max-width: 520px;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 12px 24px; font-size: 15px; font-weight: 600;
+      border-radius: 9999px; text-decoration: none; transition: all 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary { background: #D94025; color: #fff; box-shadow: 0 8px 20px rgba(217, 64, 37, 0.2); }
+    .btn-primary:hover { background: var(--accent-hover); box-shadow: 0 8px 24px rgba(217, 64, 37, 0.3); }
+    .btn-secondary { background: #fff; color: #111; border: 1px solid var(--border-color); }
+    .btn-secondary:hover { background: #f2f3f5; }
+
+    .hero-card { flex: 0.9; max-width: 440px; }
+    .mock-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-lg);
+      border-radius: 24px; padding: 24px;
+    }
+    .hsc-header { display: flex; gap: 14px; align-items: flex-start; }
+    .hsc-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 800; color: #fff;
+      background: #1d39c4; flex-shrink: 0;
+    }
+    .hsc-meta { flex: 1; min-width: 0; }
+    .hsc-name { font-size: 18px; font-weight: 700; color: #111; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .hsc-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .hsc-tag {
+      font-size: 11px; font-weight: 600; color: var(--text-secondary);
+      background: #f2f3f5; padding: 2px 8px; border-radius: 999px;
+    }
+    .hsc-desc {
+      font-size: 13px; color: var(--text-secondary);
+      margin-top: 14px; line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .hsc-sources { margin-top: 14px; font-size: 11px; color: var(--text-tertiary); font-weight: 500; }
+    .hsc-link {
+      margin-top: 16px;
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 13px; font-weight: 600; color: var(--accent-color);
+      text-decoration: none;
+    }
+    .hsc-link:hover { color: var(--accent-hover); }
+
+    /* Featured grid */
+    .section { padding: 40px 0 80px; }
+    .section-header { max-width: 1120px; margin: 0 auto 32px; padding: 0 8px; }
+    .section-title { font-size: 32px; font-weight: 800; letter-spacing: -1px; color: #111; }
+    .section-subtitle { font-size: 15px; color: var(--text-secondary); margin-top: 6px; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px; max-width: 1120px; margin: 0 auto;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 20px;
+      cursor: pointer; transition: background .2s, box-shadow .2s;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 10px;
+      min-height: 140px;
+    }
+    .card:hover { background: rgba(255, 255, 255, 0.85); box-shadow: var(--shadow-md); }
+    .card-head { display: flex; align-items: center; gap: 10px; }
+    .card-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .card-title { font-size: 15px; font-weight: 700; color: #111; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
+    .card-desc {
+      font-size: 13px; color: var(--text-secondary); line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1;
+    }
+    .card-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 11px; color: var(--text-tertiary); font-weight: 600;
+      margin-top: auto;
+    }
+    .card-tag { background: #f2f3f5; color: var(--text-secondary); padding: 2px 8px; border-radius: 999px; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .card-sources { color: var(--accent-color); font-weight: 700; flex-shrink: 0; }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 40px 24px; color: var(--text-tertiary);
+      font-size: 13px; font-weight: 500;
+    }
+    footer a { color: var(--text-main); font-weight: 600; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 820px) {
+      .hero { flex-direction: column; padding: 140px 0 40px; gap: 32px; }
+      .hero-title { font-size: 44px; letter-spacing: -1.5px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="brand-watermark"></div>
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <div class="nav-wrapper">
+    <nav class="navbar">
+      <a href="./" class="nav-logo">
+        <img src="./ico.png" alt="WhichClaw">
+        WhichClaw
+      </a>
+      <div class="nav-links">
+        <a href="./" class="active">Featured</a>
+        <a href="./all.html">All Skills</a>
+        <a href="https://coffeecli.com/" target="_blank" rel="noopener">Coffee CLI</a>
+        <a href="./ranking.html">Lobster Leaderboard
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M2 12h20" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        </a>
+        <a href="./models.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          LLM Leaderboard
+        </a>
+      </div>
+      <button class="nav-search-btn" onclick="location.href='./all.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        Search
+      </button>
+    </nav>
+  </div>
+
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">🦞 The community-curated Claude skills index</div>
+        <h1 class="hero-title">Pick the right <span>Claude Skill</span></h1>
+        <p class="hero-desc">
+          WhichClaw aggregates every major awesome-claude-skills list on GitHub into one searchable index.
+          Skills are deduped by repo URL and ranked by how many curated lists include them —
+          the more lists, the stronger the signal.
+        </p>
+        <div class="hero-buttons">
+          <a href="./all.html" class="btn btn-primary">Browse all skills</a>
+          <a href="./models.html" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            LLM Leaderboard
+          </a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="mock-card">
+          <div class="hsc-header">
+            <div class="hsc-icon" id="heroIcon">SK</div>
+            <div class="hsc-meta">
+              <div class="hsc-name" id="heroName">Loading…</div>
+              <div class="hsc-tags" id="heroTags"></div>
+            </div>
+          </div>
+          <p class="hsc-desc" id="heroDesc">Fetching a featured skill…</p>
+          <div class="hsc-sources" id="heroSources"></div>
+          <a id="heroLink" class="hsc-link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="section-header">
+        <div class="section-title">Featured skills</div>
+        <div class="section-subtitle" id="featuredSubtitle">Top 50 skills by curation consensus across 6 awesome lists.</div>
+      </div>
+      <div class="grid" id="featuredGrid">
+        <div style="grid-column:1/-1;text-align:center;color:var(--text-tertiary);padding:60px 0;">Loading featured skills…</div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Business: <a href="mailto:hi@whichclaw.com">hi@whichclaw.com</a> · © 2026 WhichClaw (whichclaw.com)</p>
+  </footer>
+
+  <script>
+    const COLORS = [
+      { bg: '#1d39c4' }, { bg: '#1d7b4b' }, { bg: '#b56011' }, { bg: '#b82b6b' },
+      { bg: '#722ed1' }, { bg: '#0891b2' }, { bg: '#c2410c' }, { bg: '#dc2626' },
+    ];
+    function colorFor(str) {
+      let h = 0; for (const c of (str||'')) h = ((h << 5) - h + c.charCodeAt(0)) | 0;
+      return COLORS[Math.abs(h) % COLORS.length];
+    }
+    function initials(name) {
+      const words = (name||'').split(/[\s\-_/]+/).filter(Boolean);
+      return (words.slice(0, 2).map(w => w[0]).join('') || '?').toUpperCase().slice(0, 2);
+    }
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    async function initHome() {
+      try {
+        const res = await fetch('./public/featured.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const skills = await res.json();
+        if (!Array.isArray(skills) || !skills.length) throw new Error('empty');
+        renderHeroCard(skills);
+        renderFeaturedGrid(skills);
+      } catch (err) {
+        console.warn('featured load failed', err);
+        document.getElementById('featuredGrid').innerHTML =
+          '<div style="grid-column:1/-1;text-align:center;color:#e43d4d;padding:60px 0;">Failed to load skills. Please refresh.</div>';
+      }
+    }
+
+    function renderHeroCard(skills) {
+      const s = skills[Math.floor(Math.random() * Math.min(10, skills.length))];
+      const c = colorFor(s.name);
+      document.getElementById('heroIcon').textContent = initials(s.name);
+      document.getElementById('heroIcon').style.background = c.bg;
+      document.getElementById('heroName').textContent = s.name;
+      document.getElementById('heroName').title = s.name;
+      document.getElementById('heroTags').innerHTML =
+        (s.tags || []).slice(0, 2).map(t => `<span class="hsc-tag">${esc(t)}</span>`).join('');
+      document.getElementById('heroDesc').textContent =
+        s.description || 'A curated Claude skill from the awesome-claude-skills ecosystem.';
+      document.getElementById('heroSources').textContent =
+        (s.sources || []).length > 1
+          ? `Listed in ${s.sources.length} curated awesome lists`
+          : (s.sources && s.sources[0]) || '';
+      document.getElementById('heroLink').href = s.homepage || '#';
+    }
+
+    function renderFeaturedGrid(skills) {
+      const grid = document.getElementById('featuredGrid');
+      grid.innerHTML = skills.map(s => {
+        const c = colorFor(s.name);
+        const tag = (s.tags && s.tags[0]) || s.category || '';
+        const sources = (s.sources || []).length;
+        return `
+          <a class="card" href="${esc(s.homepage || '#')}" target="_blank" rel="noopener">
+            <div class="card-head">
+              <div class="card-icon" style="background:${c.bg}">${esc(initials(s.name))}</div>
+              <div class="card-title">${esc(s.name)}</div>
+            </div>
+            <div class="card-desc">${esc(s.description || 'Curated Claude skill.')}</div>
+            <div class="card-foot">
+              <span class="card-tag">${esc(tag || 'Skill')}</span>
+              <span class="card-sources">${sources > 1 ? sources + ' lists' : '1 list'}</span>
+            </div>
+          </a>`;
+      }).join('');
+      document.getElementById('featuredSubtitle').textContent =
+        `Top ${skills.length} skills by curation consensus across 6 awesome lists.`;
+    }
+
+    initHome();
+  </script>
+</body>
+</html>

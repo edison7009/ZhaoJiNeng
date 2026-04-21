@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>LLM Leaderboard — WhichClaw</title>
+  <meta name="description" content="A global LLM leaderboard tracking Claude, GPT, Gemini, and more by real-world call volume. Today, this week, and this month.">
+  <link rel="icon" href="./ico.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f8fa;
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.8);
+      --text-main: #111111;
+      --text-secondary: #4e5969;
+      --text-tertiary: #86909c;
+      --accent-color: #D94025;
+      --border-color: rgba(0, 0, 0, 0.06);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.08);
+      --green: #0ea371;
+      --red: #e43d4d;
+      --gray: #86909c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .brand-watermark {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px; height: 450px;
+      background: url('./ico.png') no-repeat center / contain;
+      opacity: 0.08; filter: blur(24px);
+      pointer-events: none; z-index: 1;
+    }
+    .bg-blob { position: absolute; border-radius: 50%; filter: blur(140px); z-index: -1; opacity: 0.7; pointer-events: none; }
+    .blob-1 { top: -10vh; left: -10vw; width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+    .blob-2 { top: 10vh; right: -10vw; width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+    .nav-wrapper { position: fixed; top: 24px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 100; pointer-events: none; }
+    .navbar {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 9999px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px 10px 24px; width: 100%; max-width: 1120px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #111; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 14px;
+      padding: 8px 14px; border-radius: 999px;
+      transition: background .2s, color .2s;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .nav-links a:hover { color: #111; background: rgba(0, 0, 0, 0.04); }
+    .nav-links a.active { color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.05); }
+    .nav-search-btn {
+      background: #f2f3f5; border: none; padding: 8px 16px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px;
+      cursor: default; color: var(--text-secondary);
+      font-size: 14px; font-weight: 500; pointer-events: none;
+    }
+    .nav-search-btn svg { width: 14px; height: 14px; }
+
+    .page-header { padding: 140px 0 32px; max-width: 1120px; margin: 0 auto; }
+    .page-header h1 {
+      font-size: clamp(36px, 5vw, 56px); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.1;
+    }
+    .page-header h1 span {
+      background: linear-gradient(90deg, #1d39c4 0%, #06b6d4 100%);
+      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .period-bar {
+      max-width: 1120px; margin: 8px auto 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .period-tabs {
+      display: inline-flex; padding: 4px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 999px;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+    }
+    .period-tab {
+      padding: 10px 22px; border: none; background: transparent; cursor: pointer;
+      font-weight: 700; font-size: 14px; color: var(--text-secondary);
+      border-radius: 999px; transition: background .25s, color .25s;
+      font-family: inherit;
+    }
+    .period-tab:hover { color: #111; }
+    .period-tab.active { background: #111; color: #fff; }
+    .meta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-tertiary); font-weight: 500;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); display: inline-block;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+    .board {
+      max-width: 1120px; margin: 0 auto 40px;
+      background: var(--card-bg);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px; padding: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+    .board-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      padding: 8px 16px 20px; border-bottom: 1px solid var(--border-color);
+      margin-bottom: 8px;
+    }
+    .board-title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 18px; font-weight: 800; color: #111;
+    }
+    .board-title svg { width: 22px; height: 22px; color: var(--accent-color); }
+    .board-subtitle { font-size: 13px; font-weight: 500; color: var(--text-tertiary); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(10, auto);
+      grid-auto-flow: column;
+      gap: 4px 24px;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 56px 56px 1fr auto;
+      align-items: center; gap: 16px;
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 12px;
+      transition: background .2s;
+    }
+    .row:hover { background: rgba(255, 255, 255, 0.55); }
+    .row-rank {
+      font-size: 22px; font-weight: 800; font-variant-numeric: tabular-nums;
+      color: var(--text-tertiary); text-align: right; letter-spacing: -0.5px;
+    }
+    .row-rank.top-1 { color: #eab308; font-size: 26px; }
+    .row-rank.top-2 { color: #64748b; font-size: 24px; }
+    .row-rank.top-3 { color: #c2410c; font-size: 24px; }
+    .row-avatar { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .row-avatar img { width: 100%; height: 100%; object-fit: contain; image-rendering: -webkit-optimize-contrast; }
+    .row-avatar .fallback {
+      font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
+      color: #fff; text-transform: uppercase;
+      width: 100%; height: 100%; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .row-info { min-width: 0; }
+    .row-name {
+      font-size: 16px; font-weight: 700; color: #111;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      letter-spacing: -0.2px;
+    }
+    .row-author { font-size: 12px; color: var(--text-tertiary); font-weight: 500; margin-top: 2px; }
+    .row-stats { text-align: right; flex-shrink: 0; min-width: 110px; }
+    .row-tokens {
+      font-size: 15px; font-weight: 700; color: #111;
+      font-variant-numeric: tabular-nums; letter-spacing: -0.3px;
+    }
+    .row-tokens .unit { font-size: 11px; color: var(--text-tertiary); font-weight: 600; margin-left: 3px; letter-spacing: 0.5px; }
+    .row-change { margin-top: 3px; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; display: inline-flex; align-items: center; gap: 2px; }
+    .row-change.up { color: var(--green); }
+    .row-change.down { color: var(--red); }
+    .row-change.flat { color: var(--gray); }
+    .row-change.new {
+      color: var(--accent-color); background: rgba(217, 64, 37, 0.08);
+      padding: 2px 8px; border-radius: 999px;
+      font-size: 10px; letter-spacing: 0.8px;
+    }
+    .state-block { padding: 80px 24px; text-align: center; color: var(--text-tertiary); font-size: 15px; font-weight: 500; }
+    .state-block.error { color: var(--red); }
+    .loader {
+      width: 28px; height: 28px; margin: 0 auto 16px;
+      border: 3px solid rgba(0, 0, 0, 0.08); border-top-color: var(--accent-color);
+      border-radius: 50%; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer { text-align: center; padding: 40px 24px 80px; color: var(--text-tertiary); font-size: 13px; font-weight: 500; }
+    footer a { color: var(--text-main); font-weight: 600; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 820px) { .nav-links { display: none; } }
+  </style>
+</head>
+
+<body>
+  <div class="brand-watermark"></div>
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <div class="nav-wrapper">
+    <nav class="navbar">
+      <a href="./" class="nav-logo">
+        <img src="./ico.png" alt="WhichClaw">
+        WhichClaw
+      </a>
+      <div class="nav-links">
+        <a href="./">Featured</a>
+        <a href="./all.html">All Skills</a>
+        <a href="https://coffeecli.com/" target="_blank" rel="noopener">Coffee CLI</a>
+        <a href="./ranking.html">Lobster Leaderboard
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+        <a href="./models.html" class="active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          LLM Leaderboard
+        </a>
+      </div>
+      <button class="nav-search-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        Search
+      </button>
+    </nav>
+  </div>
+
+  <div class="container">
+    <header class="page-header">
+      <h1>Global <span>LLM Leaderboard</span></h1>
+    </header>
+
+    <div class="period-bar">
+      <div class="period-tabs" role="tablist">
+        <button class="period-tab" data-period="day" role="tab">Today</button>
+        <button class="period-tab active" data-period="week" role="tab">This Week</button>
+        <button class="period-tab" data-period="month" role="tab">This Month</button>
+      </div>
+      <div class="meta">
+        <span class="pulse-dot"></span><span id="updateTime">Loading…</span>
+      </div>
+    </div>
+
+    <section class="board">
+      <div class="board-header">
+        <div class="board-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+            <path d="M4 22h16"/>
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+          </svg>
+          LLM Leaderboard · <span id="periodLabel">This Week</span>
+        </div>
+        <div class="board-subtitle">Top 20</div>
+      </div>
+      <div id="board" class="grid">
+        <div class="state-block" style="grid-column: 1 / -1;">
+          <div class="loader"></div>
+          Loading leaderboard…
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Business: <a href="mailto:hi@whichclaw.com">hi@whichclaw.com</a> · © 2026 WhichClaw (whichclaw.com)</p>
+  </footer>
+
+  <script>
+    const PERIOD_LABEL = { day: 'Today', week: 'This Week', month: 'This Month' };
+    const AUTHOR_COLORS = {
+      anthropic: '#d97757', openai: '#10a37f', google: '#4285f4',
+      deepseek: '#4f6bed', xiaomi: '#ff6900', minimax: '#1d4ed8',
+      'x-ai': '#111827', moonshotai: '#8b5cf6', 'z-ai': '#0ea5e9',
+      openrouter: '#6b7280', stepfun: '#dc2626', nvidia: '#76b900',
+      qwen: '#615ced', alibaba: '#ff6a00', mistralai: '#ff7000',
+      'meta-llama': '#0866ff'
+    };
+    let rankingsData = null;
+    let currentPeriod = 'week';
+
+    function initData() {
+      fetch('./public/models_ranking.json', { cache: 'no-cache' })
+        .then(r => r.ok ? r.json() : Promise.reject(r.status))
+        .then(data => {
+          rankingsData = data;
+          if (data.updated_at) {
+            const d = new Date(data.updated_at);
+            document.getElementById('updateTime').textContent =
+              `Updated ${d.toLocaleString('en-US', { hour12: false })}`;
+          }
+          renderBoard();
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById('board').innerHTML =
+            '<div class="state-block error" style="grid-column: 1 / -1;">Failed to load leaderboard. Please refresh.</div>';
+        });
+    }
+
+    function formatTokens(n) {
+      if (n >= 1e12) return { value: (n / 1e12).toFixed(2), unit: 'T' };
+      if (n >= 1e9)  return { value: (n / 1e9).toFixed(1),  unit: 'B' };
+      if (n >= 1e6)  return { value: (n / 1e6).toFixed(1),  unit: 'M' };
+      return { value: n.toLocaleString(), unit: '' };
+    }
+
+    function formatChange(change) {
+      if (change === null || change === undefined) return { text: 'NEW', cls: 'new' };
+      const pct = change * 100;
+      const abs = Math.abs(pct);
+      const display = abs >= 100 ? Math.round(abs).toLocaleString() : abs.toFixed(abs >= 10 ? 0 : 1);
+      if (pct > 0.5)  return { text: '\u2191' + display + '%', cls: 'up' };
+      if (pct < -0.5) return { text: '\u2193' + display + '%', cls: 'down' };
+      return { text: '\u2014 0%', cls: 'flat' };
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+    function renderFallback(author) {
+      const color = AUTHOR_COLORS[author] || '#64748b';
+      const letter = (author || '?').charAt(0);
+      return '<span class="fallback" style="background:' + color + '">' + escapeHtml(letter) + '</span>';
+    }
+    window.renderFallback = renderFallback;
+
+    function avatarHtml(m) {
+      if (m.author_icon) {
+        return '<img src="' + escapeHtml(m.author_icon) + '" alt="' + escapeHtml(m.author) + '" loading="lazy" ' +
+               'onerror="this.outerHTML=renderFallback(\'' + escapeHtml(m.author) + '\')">';
+      }
+      return renderFallback(m.author);
+    }
+
+    function renderBoard() {
+      if (!rankingsData) return;
+      const list = rankingsData[currentPeriod] || [];
+      document.getElementById('periodLabel').textContent = PERIOD_LABEL[currentPeriod];
+      if (!list.length) {
+        document.getElementById('board').innerHTML = '<div class="state-block" style="grid-column: 1 / -1;">No data for this period.</div>';
+        return;
+      }
+      const html = list.map(m => {
+        const tok = formatTokens(m.total_tokens);
+        const chg = formatChange(m.change);
+        const rankClass = m.rank <= 3 ? ('top-' + m.rank) : '';
+        const displayName = escapeHtml(m.short_name || m.name || m.permaslug);
+        return `
+          <div class="row">
+            <div class="row-rank ${rankClass}">${m.rank}</div>
+            <div class="row-avatar">${avatarHtml(m)}</div>
+            <div class="row-info">
+              <div class="row-name">${displayName}</div>
+              <div class="row-author">by ${escapeHtml(m.author)}</div>
+            </div>
+            <div class="row-stats">
+              <div class="row-tokens">${tok.value}<span class="unit">${tok.unit} tokens</span></div>
+              <div class="row-change ${chg.cls}">${chg.text}</div>
+            </div>
+          </div>`;
+      }).join('');
+      document.getElementById('board').innerHTML = html;
+    }
+
+    document.querySelectorAll('.period-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.period-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPeriod = btn.dataset.period;
+        renderBoard();
+      });
+    });
+
+    initData();
+  </script>
+</body>
+</html>

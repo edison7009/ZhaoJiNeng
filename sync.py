@@ -7,12 +7,14 @@ not abort the others — every stage prints its own log):
   2. generate_pages.py        paginated skills JSON      -> public/skills_pages/*.json
   3. sync_openrouter_models   LLM leaderboard + icons    -> public/models_ranking.json, public/models_icons/
   4. ranking_sync.py          lobster-agents leaderboard -> public/ranking_snapshot.json, public/ranking_history/
+  5. sync_whichclaw.py        English site aggregator    -> whichclaw/public/skills.json, paginated + mirrors (3)+(4)
 
 Usage:
     python sync.py             # run everything
     python sync.py skills      # only stages 1 & 2
     python sync.py models      # only stage 3
     python sync.py ranking     # only stage 4
+    python sync.py whichclaw   # only stage 5 (run after stages 3 and 4 so mirrors are fresh)
 
 Each stage exits non-zero on error but we keep going so you can still commit
 whatever got refreshed. The final line reports which stages failed.
@@ -26,10 +28,11 @@ from pathlib import Path
 HERE = Path(__file__).parent
 
 STAGES = {
-    "skills":  [("scratch_sync.py",           "fetch skills"),
-                ("generate_pages.py",         "paginate skills")],
-    "models":  [("sync_openrouter_models.py", "LLM leaderboard")],
-    "ranking": [("ranking_sync.py",           "lobster ranking")],
+    "skills":    [("scratch_sync.py",           "fetch skills"),
+                  ("generate_pages.py",         "paginate skills")],
+    "models":    [("sync_openrouter_models.py", "LLM leaderboard")],
+    "ranking":   [("ranking_sync.py",           "lobster ranking")],
+    "whichclaw": [("sync_whichclaw.py",         "english site aggregator")],
 }
 
 
