@@ -37,6 +37,9 @@ STAGES = {
     "models":    [("sync_openrouter_models.py", "LLM leaderboard")],
     "ranking":   [("ranking_sync.py",           "lobster ranking")],
     "whichclaw": [("sync_whichclaw.py",         "english filter + mirror")],
+    # Manual-only: rewrites whichclaw/*.html from Chinese HTML via a
+    # translation dictionary. Destructive, so it is NOT chained.
+    # Run with: python sync_html.py   (after editing Chinese HTML)
 }
 
 

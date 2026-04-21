@@ -14,13 +14,36 @@ git add -A && git commit -m "data: refresh" && git push origin main
 
 ```bash
 python sync.py                 # 全量（skills + models + ranking + whichclaw）
-python sync.py skills          # 仅 skills（scratch_sync + generate_pages）
+python sync.py skills          # 仅 skills（含英文数据自动同步）
 python sync.py models          # 仅大模型排行榜
 python sync.py ranking         # 仅龙虾排行榜
-python sync.py whichclaw       # 仅英文站聚合（务必在 models + ranking 之后跑，会 mirror 它们的产物）
+python sync.py whichclaw       # 仅英文站数据筛选（models + ranking 之后跑）
+python sync_html.py            # 手动：把中文 HTML 镜像到英文站（见下方 §4）
 ```
 
 单步也可以直接跑对应脚本——`sync.py` 只是编排器。
+
+---
+
+## 中英双站一图看懂
+
+```
+           ┌────── 中文站 zhaojineng.com ──────┐   ┌────── 英文站 whichclaw.com ──────┐
+           │                                  │   │                                 │
+  data  →  │ skills.json (25MB)               │──►│ public/skills.json (14.6MB 筛英文) │
+           │ public/featured.json             │──►│ public/featured.json              │
+           │ public/skills_pages/*.json       │──►│ public/skills_pages/*.json        │
+           │ public/models_ranking.json       │──►│ public/models_ranking.json (mirror) │
+           │ public/ranking_snapshot.json     │──►│ public/ranking_snapshot.json (mirror) │
+           │                                  │   │                                 │
+  html  →  │ index/all/models/ranking.html    │── sync_html.py（手动）──►│ 同四个 HTML    │
+           └──────────────────────────────────┘   └─────────────────────────────────┘
+                    改什么 → 跑什么
+                    ─────────────────────────────────────────
+                    改 skill 数据  → python sync.py skills    （自动双站）
+                    改榜单数据    → python sync.py models/ranking
+                    改 HTML 结构/文案 → 改中文 + python sync_html.py（见 §4）
+```
 
 ---
 
@@ -72,9 +95,36 @@ python sync.py whichclaw       # 仅英文站聚合（务必在 models + ranking
 | 无须鉴权 | 标准库 urllib 即可 |
 | 排序 | 出现在越多 awesome 列表 = `score` 越高；同一个 URL 会被 dedupe，合并 `sources` 数组 |
 
-追踪的 awesome 列表在 `sync_whichclaw.py` 顶部 `AWESOME_REPOS` 里，添加新列表只要加 `(repo, branch)` 一行。
-
 ⚠️ **顺序依赖**：`whichclaw/public/models_ranking.json` 和 `ranking_snapshot.json` 是从顶层 `public/` mirror 过去的，所以 `sync.py` 默认先跑 models/ranking 再跑 whichclaw（stage 顺序就是这样）。如果单独跑 `python sync.py whichclaw` 而没先更新 models/ranking，mirror 的就是上次的旧数据。
+
+### 4. 英文 HTML 镜像（`sync_html.py`）
+
+| 项目 | 内容 |
+|---|---|
+| 脚本 | `sync_html.py` |
+| 输入 | `index.html`、`all.html`、`models.html`、`ranking.html`（中文站根目录） |
+| 输出 | `whichclaw/index.html` 等 4 个对应文件 |
+| 触发方式 | **手动**，不在 `sync.py` 链路里（破坏性覆盖，自动跑会踩掉已调好的英文） |
+| 翻译字典 | 脚本顶部 `TRANSLATIONS` 数组，长条目在前，短条目在后 |
+
+**典型流程**（改了中文 HTML 想同步到英文）：
+```bash
+# 1) 改完中文 HTML (index/all/models/ranking)
+# 2) 镜像到英文站
+python sync_html.py
+#    whichclaw/index.html:  OK
+#    whichclaw/all.html:    WARN 12 CN chars   ← 说明字典没覆盖到
+# 3) 如果提示 WARN，Grep 出残留中文
+grep -oE '[\u4e00-\u9fff]+' whichclaw/all.html | sort -u
+# 4) 把新中文 → 英文 的映射补到 sync_html.py 的 TRANSLATIONS 最前
+# 5) 再跑一次 python sync_html.py 直到全部 OK
+# 6) commit + push
+```
+
+**什么情况 _不_ 需要跑**：
+- 只改了数据（skills/models/ranking JSON）—— `python sync.py skills` 自动处理英文数据
+- 只改了英文独有文案（比如 whichclaw hero badge）—— 直接改英文文件
+- 只改了 CSS override（nav 布局之类全局样式）—— 已经用 `!important` 块保护，两边都生效
 
 ---
 
