@@ -1271,8 +1271,9 @@
         totalSkillsCount = data.total || 0;
         const newSkills = data.skills || [];
         allLoadedSkills = allLoadedSkills.concat(newSkills);
+        const isFirstPage = (currentPage === 1);
         currentPage++;
-        applyFilters(false);
+        applyFilters(isFirstPage);
       } catch (err) {
         console.warn('Fetch page error:', err);
       } finally {
