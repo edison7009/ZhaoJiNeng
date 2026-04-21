@@ -896,6 +896,53 @@
         justify-content: center;
       }
     }
+  
+    /* === full-width nav (overrides floating-island rules above) === */
+    .nav-wrapper {
+      position: fixed !important;
+      top: 0 !important; left: 0 !important; right: 0 !important;
+      width: 100% !important;
+      background: rgba(255,255,255,0.88) !important;
+      backdrop-filter: blur(16px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+      border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+      box-shadow: none !important;
+      display: block !important;
+      pointer-events: auto !important;
+      z-index: 100 !important;
+    }
+    .navbar {
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      max-width: 1120px !important;
+      margin: 0 auto !important;
+      padding: 12px 24px !important;
+      display: grid !important;
+      grid-template-columns: 1fr auto 1fr !important;
+      align-items: center !important;
+    }
+    .navbar > .nav-logo { justify-self: start; }
+    .navbar > .nav-links { justify-self: center; }
+    .navbar > .nav-lang { justify-self: end; }
+    @media (max-width: 720px) {
+      .navbar { grid-template-columns: auto 1fr auto !important; gap: 8px; }
+      .navbar > .nav-links { justify-self: center; font-size: 13px; }
+    }
+    .nav-lang {
+      color: var(--text-secondary, #4e5969);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: background .2s, color .2s;
+    }
+    .nav-lang:hover { color: #111; background: rgba(0,0,0,0.04); }
+
   </style>
 </head>
 
@@ -920,13 +967,7 @@
         <a href="./ranking.html" style="display:flex;align-items:center;gap:4px;">龙虾排行榜</a>
         <a href="./models.html" style="display:flex;align-items:center;gap:4px;">大模型排行榜</a>
       </div>
-      <button class="nav-search-btn" onclick="document.getElementById('searchInput').focus();window.scrollTo({top:200,behavior:'smooth'})">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.3-4.3" />
-        </svg>
-        搜索
-      </button>
+      <a href="https://whichclaw.com/all.html" class="nav-lang" hreflang="en">English</a>
     </nav>
   </div>
 
