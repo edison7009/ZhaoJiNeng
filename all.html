@@ -1235,7 +1235,7 @@
       if (entries[0].isIntersecting && !isLoading && loadedCount < filteredSkills.length) {
         loadMore();
       }
-    }, { rootMargin: '2000px' });
+    }, { rootMargin: '200px' });
     scrollObserver.observe(document.getElementById('scrollSentinel'));
 
     // Fallback scroll listener for scaled viewport
@@ -1243,7 +1243,7 @@
       if (!isLoading && loadedCount < filteredSkills.length) {
         const sentinel = document.getElementById('scrollSentinel');
         const rect = sentinel.getBoundingClientRect();
-        if (rect.top < window.innerHeight + 500) {
+        if (rect.top < window.innerHeight + 200) {
           loadMore();
         }
       }
@@ -1285,7 +1285,7 @@
     }
 
     async function openModal(slug) {
-      const skill = allLoadedSkills.find(s => s.slug === slug);
+      const skill = allSkills.find(s => s.slug === slug);
       if (!skill) return;
 
       const c = getColor(skill.name);
