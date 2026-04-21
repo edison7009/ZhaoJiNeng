@@ -383,10 +383,14 @@
       document.getElementById('heroLink').href = s.homepage || '#';
     }
 
-    function installCommand(homepage) {
-      if (!homepage) return '';
-      if (/github\.com\//.test(homepage)) return `git clone ${homepage}.git`;
-      return homepage;
+    // Ask the server for an AES-CTR encrypted short link for this slug.
+    // Fall back to the plain slug URL if the function is offline.
+    async function slugToHashUrl(slug) {
+      try {
+        const r = await fetch(`/api/skill-hash?slug=${encodeURIComponent(slug)}`);
+        if (r.ok) { const d = await r.json(); return d.url; }
+      } catch {}
+      return `https://whichclaw.com/skills/${slug}`;
     }
 
     function showToast(msg, isError) {
@@ -417,10 +421,10 @@
       ev.preventDefault();
       const s = skills.find(x => x.slug === slug);
       if (!s) return;
-      const cmd = installCommand(s.homepage);
-      if (!cmd) { showToast('No install URL', true); return; }
-      const ok = await copyText(cmd);
-      showToast(ok ? `Copied: ${cmd.slice(0, 60)}${cmd.length > 60 ? '…' : ''}` : 'Copy failed', !ok);
+      const url = await slugToHashUrl(slug);
+      const text = `Install this skill: ${url}`;
+      const ok = await copyText(text);
+      showToast(ok ? 'Copied — paste to your agent' : 'Copy failed', !ok);
     }
     window.handleCardClick = handleCardClick;
 

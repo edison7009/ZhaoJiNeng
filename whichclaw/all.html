@@ -447,10 +447,12 @@
       }
     }
 
-    function installCommand(homepage) {
-      if (!homepage) return '';
-      if (/github\.com\//.test(homepage)) return `git clone ${homepage}.git`;
-      return homepage;
+    async function slugToHashUrl(slug) {
+      try {
+        const r = await fetch(`/api/skill-hash?slug=${encodeURIComponent(slug)}`);
+        if (r.ok) { const d = await r.json(); return d.url; }
+      } catch {}
+      return `https://whichclaw.com/skills/${slug}`;
     }
     function showToast(msg, isError) {
       const t = document.getElementById('toast');
@@ -474,10 +476,10 @@
       ev.preventDefault();
       const s = allSkills.find(x => x.slug === slug);
       if (!s) return;
-      const cmd = installCommand(s.homepage);
-      if (!cmd) { showToast('No install URL', true); return; }
-      const ok = await copyText(cmd);
-      showToast(ok ? `Copied: ${cmd.slice(0, 60)}${cmd.length > 60 ? '…' : ''}` : 'Copy failed', !ok);
+      const url = await slugToHashUrl(slug);
+      const text = `Install this skill: ${url}`;
+      const ok = await copyText(text);
+      showToast(ok ? 'Copied — paste to your agent' : 'Copy failed', !ok);
     }
     window.copyInstallBySlug = copyInstallBySlug;
 
