@@ -57,8 +57,10 @@ NON_SKILL_HEADINGS = {
 UA = "Mozilla/5.0 (compatible; WhichClaw-Sync/1.0)"
 
 # Markdown bullet with a named link (skills pattern).
+# Matches plain `- [name](url) — desc`, bold `- **[name](url)**`, and the
+# common "bold name then dash desc" variant `- **[name](url)** - desc`.
 LIST_RE = re.compile(
-    r"^\s*[-*+]\s+\[([^\]]+)\]\(([^)]+)\)\s*(?:[-—–:]\s*(.*))?$",
+    r"^\s*[-*+]\s+\*{0,2}\[([^\]]+)\]\(([^)]+)\)\*{0,2}\s*(?:[-—–:]\s*(.*))?$",
     re.MULTILINE,
 )
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$", re.MULTILINE)
