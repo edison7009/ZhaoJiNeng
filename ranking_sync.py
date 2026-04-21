@@ -246,6 +246,7 @@ def build_snapshot(raw_rows, baseline):
 
     return {
         "updated_at": datetime.now(tz=timezone.utc).isoformat(),
+        "has_full_data": baseline is not None,
         "summary": {
             "leader": {
                 "name": leader["name"] if leader else "—",

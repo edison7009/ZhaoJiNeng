@@ -722,13 +722,16 @@
     };
 
     async function init() {
-      // Prefer the live snapshot produced by ranking_sync.py; fall back to
-      // the hardcoded RANKING_DATA if the file is missing or fails to parse.
+      // Prefer the live snapshot produced by ranking_sync.py — BUT only if it
+      // has a full dataset (a baseline snapshot ≥6 days old was available so
+      // every 7d delta could actually be computed). Without that, half the
+      // columns would render as "—" and we'd be downgrading the page. In that
+      // case we silently fall back to the hardcoded RANKING_DATA.
       try {
         const res = await fetch('./public/ranking_snapshot.json', { cache: 'no-cache' });
         if (res.ok) {
           const live = await res.json();
-          if (live && live.summary && Array.isArray(live.rankings) && live.rankings.length) {
+          if (live && live.has_full_data && live.summary && Array.isArray(live.rankings) && live.rankings.length) {
             renderSummary(live.summary);
             renderRankings(live.rankings);
             return;
