@@ -438,6 +438,23 @@
     .nav-wrapper .nav-links { gap: 28px !important; }
     @media (max-width: 960px) { .nav-wrapper .nav-links { gap: 18px !important; } }
 
+    /* === EN-only ranking table columns ===
+       English headers ("7D CONTRIBS", "TOTAL STARS ↓") are 2-3x wider than the
+       Chinese originals and wrapped inside the base CN-sized columns. This
+       lang-gated override leaves the Chinese table untouched. */
+    html[lang="en"] .table-header,
+    html[lang="en"] .table-row,
+    html[lang="en"] .skeleton-row {
+      grid-template-columns: 52px 1fr 105px 80px 120px 80px 110px 80px 135px !important;
+    }
+    @media (max-width: 960px) {
+      html[lang="en"] .table-header,
+      html[lang="en"] .table-row,
+      html[lang="en"] .skeleton-row {
+        grid-template-columns: 50px 1fr 105px 90px 130px !important;
+      }
+    }
+
   </style>
 </head>
 
