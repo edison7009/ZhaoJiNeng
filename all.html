@@ -807,13 +807,25 @@
     }
 
     /* Result count */
-    .result-count {
-      text-align: right;
+    .result-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
       padding: 12px 32px 0;
       font-size: 13px;
       color: var(--text-tertiary);
       font-weight: 500;
+      flex-wrap: wrap;
     }
+    .result-bar #hydrationIndicator { display: none; }
+    .result-bar #hydrationIndicator.active { display: inline-flex; align-items: center; }
+    .result-bar #hydrationIndicator .dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: #10b981; margin-right: 6px;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .result-bar .result-count { text-align: right; margin-left: auto; }
 
     @media (max-width: 768px) {
       .nav-links {
@@ -945,9 +957,9 @@
         <input type="text" id="searchInput" placeholder="搜索技能名称或功能描述（支持中英文）...">
       </div>
 
-      <div class="result-count" id="resultCount"></div>
-      <div id="hydrationIndicator" style="font-size:12px;color:var(--text-tertiary);font-weight:500;margin-top:-8px;margin-bottom:8px;display:none;">
-        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10b981;margin-right:6px;animation:pulse-dot 2s ease-in-out infinite;vertical-align:middle;"></span>
+      <div class="result-bar">
+        <span id="hydrationIndicator"><span class="dot"></span><span id="hydrationText"></span></span>
+        <span class="result-count" id="resultCount"></span>
       </div>
 
       <div id="skillsList">
@@ -1369,14 +1381,14 @@
 
     function updateHydrationIndicator() {
       const el = document.getElementById('hydrationIndicator');
-      if (!el) return;
+      const txt = document.getElementById('hydrationText');
+      if (!el || !txt) return;
       if (hydrationStatus.done || hydrationStatus.total === 0) {
-        el.style.display = 'none';
+        el.classList.remove('active');
         return;
       }
-      el.style.display = '';
-      const dot = '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10b981;margin-right:6px;animation:pulse-dot 2s ease-in-out infinite;vertical-align:middle;"></span>';
-      el.innerHTML = `${dot}全库加载中 ${hydrationStatus.loaded.toLocaleString()} / ${hydrationStatus.total.toLocaleString()}`;
+      el.classList.add('active');
+      txt.textContent = `全库加载中 ${hydrationStatus.loaded.toLocaleString()} / ${hydrationStatus.total.toLocaleString()}`;
     }
 
     // Modal
