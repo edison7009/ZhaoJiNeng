@@ -1025,6 +1025,7 @@
     let isFetchingPage = false;
     let currentPage = 1;
     let totalPages = 1;
+    let totalSkillsCount = 0;
 
     const colorPalette = [
       { bg: 'var(--cat-1)', text: 'var(--cat-1-text)' },
@@ -1219,9 +1220,11 @@
       document.getElementById('scrollSentinel').innerHTML = '';
       
       // 更新数量提示，如果是搜索状态，提示是在已加载的部分里搜索
-      let countText = `共 ${filteredSkills.length} 个技能`;
-      if ((q || currentCategory !== 'all') && currentPage <= totalPages) {
-        countText += ` (仅在当前加载的 ${allLoadedSkills.length} 个热门技能中匹配)`;
+      let countText = "";
+      if (!q && currentCategory === 'all') {
+        countText = `共 ${totalSkillsCount.toLocaleString()} 个技能（当前展示前 ${allLoadedSkills.length} 个热门）`;
+      } else {
+        countText = `匹配到 ${filteredSkills.length} 个技能（在当前已加载的 ${allLoadedSkills.length} 个热门技能中过滤）`;
       }
       document.getElementById('resultCount').textContent = countText;
 
@@ -1265,6 +1268,7 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         totalPages = data.total_pages;
+        totalSkillsCount = data.total || 0;
         const newSkills = data.skills || [];
         allLoadedSkills = allLoadedSkills.concat(newSkills);
         currentPage++;
