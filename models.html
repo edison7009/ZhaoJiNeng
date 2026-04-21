@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>大模型实力榜 — 找技能 · 龙虾OpenClaw中文技能库</title>
+  <meta name="description" content="实时追踪全球顶级大语言模型 (LLM) 的调用量与热度趋势。">
+  <link rel="icon" href="./ico.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f8fa;
+      --card-bg: rgba(255, 255, 255, 0.4);
+      --card-bg-hover: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.6);
+      --text-main: #111111;
+      --text-secondary: #555555;
+      --text-tertiary: #888888;
+      --accent-color: #D94025;
+      --accent-hover: #b83520;
+      --border-color: rgba(0, 0, 0, 0.04);
+      --nav-bg: rgba(255, 255, 255, 0.55);
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.08);
+      --green: #10b981;
+      --red: #ef4444;
+      --gray: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Brand watermark */
+    .brand-watermark {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px; height: 450px;
+      background: url('./ico.png') no-repeat center / contain;
+      opacity: 0.10; filter: blur(20px);
+      pointer-events: none; z-index: 1;
+    }
+
+    .bg-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(140px); z-index: -1;
+      opacity: 0.7; pointer-events: none;
+    }
+    .blob-1 {
+      top: -10vh; left: -10vw;
+      width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+    .blob-2 {
+      top: 10vh; right: -10vw;
+      width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== Pill-shaped Navigation ===== */
+    .nav-wrapper {
+      position: fixed; top: 24px; left: 0; width: 100%;
+      display: flex; justify-content: center;
+      z-index: 100; pointer-events: none;
+    }
+    .navbar {
+      pointer-events: auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border-radius: 9999px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px 10px 24px;
+      width: 100%; max-width: 1120px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: #111;
+      font-size: 18px; font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: #4e5969; font-weight: 500; font-size: 14px;
+      padding: 8px 16px; border-radius: 999px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.04);
+    }
+    .nav-links a:active { transform: scale(0.96); }
+    .nav-search-btn {
+      background: #f2f3f5; border: none;
+      padding: 8px 16px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px;
+      cursor: pointer; color: #4e5969;
+      font-size: 14px; font-weight: 500;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .badge-soon {
+      background: var(--accent-color); color: #fff;
+      font-size: 10px; padding: 2px 6px; border-radius: 999px;
+      font-weight: 800; transform: scale(0.9); margin-left: 4px;
+    }
+
+    /* ===== Page Header ===== */
+    .page-header {
+      padding: 140px 0 60px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 64px; font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+    .page-header h1 span {
+      background: linear-gradient(90deg, #1d39c4 0%, #06b6d4 100%);
+      background-clip: text; -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-header p {
+      font-size: 20px; font-weight: 500; color: var(--text-secondary);
+      max-width: 600px; margin: 0 auto;
+    }
+
+    /* ===== Time Period Tabs ===== */
+    .time-tabs {
+      display: flex; gap: 12px; justify-content: center; margin-bottom: 48px;
+    }
+    .time-tab {
+      padding: 16px 32px; border-radius: 999px;
+      font-weight: 800; font-size: 18px; letter-spacing: 0.5px;
+      cursor: pointer; border: none;
+      background: rgba(0, 0, 0, 0.04); color: var(--text-secondary);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .time-tab:hover { background: rgba(0, 0, 0, 0.08); color: #111; }
+    .time-tab.active { background: #111; color: #fff; transform: scale(1.05); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+
+    /* ===== Models Board ===== */
+    .models-board {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(40px) saturate(200%);
+      -webkit-backdrop-filter: blur(40px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 32px; padding: 16px;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 100px;
+    }
+    .models-header {
+      display: flex; align-items: center;
+      padding: 16px 32px; font-weight: 700; color: var(--text-tertiary);
+      border-bottom: 2px solid var(--border-color);
+      font-size: 14px; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .mh-rank { width: 120px; text-align: center; }
+    .mh-info { flex: 1; }
+    .mh-trend { width: 150px; text-align: right; }
+
+    .model-item {
+      display: flex; align-items: center; padding: 24px 32px;
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.2s;
+      border-radius: 20px;
+    }
+    .model-item:hover { background: rgba(255,255,255,0.8); transform: translateX(8px); }
+    .model-item:last-child { border-bottom: none; }
+
+    /* BIG FONTS */
+    .model-rank {
+      width: 120px; text-align: center;
+      font-size: 64px; font-weight: 900;
+      color: #cbd5e1; font-family: 'Inter', sans-serif;
+      letter-spacing: -3px; font-variant-numeric: tabular-nums;
+      text-shadow: 2px 2px 0 #fff;
+    }
+    .model-rank.top-1 { color: #f59e0b; font-size: 72px; text-shadow: 0 4px 16px rgba(245, 158, 11, 0.3); }
+    .model-rank.top-2 { color: #94a3b8; font-size: 68px; }
+    .model-rank.top-3 { color: #d97706; font-size: 68px; }
+
+    .model-info { flex: 1; padding-left: 24px; }
+    .model-provider {
+      font-size: 14px; font-weight: 800; color: #1d39c4;
+      text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 8px; display: inline-block;
+      background: #f0f5ff; padding: 4px 12px; border-radius: 8px;
+    }
+    .model-name {
+      font-size: 32px; font-weight: 800; color: #111;
+      letter-spacing: -1px; margin-bottom: 12px; line-height: 1.2;
+    }
+    .model-desc {
+      font-size: 16px; color: var(--text-secondary); margin-bottom: 16px;
+      font-weight: 500; max-width: 80%;
+    }
+    .model-stats {
+      display: flex; gap: 24px; font-size: 15px; font-weight: 600;
+    }
+    .stat-pill {
+      display: flex; align-items: center; gap: 6px;
+      background: #f1f5f9; padding: 6px 16px; border-radius: 999px; color: #334155;
+    }
+
+    .model-trend {
+      width: 150px; text-align: right;
+      font-size: 28px; font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+    .trend-up { color: var(--green); }
+    .trend-down { color: var(--red); }
+    .trend-flat { color: var(--gray); }
+
+    .update-time {
+      text-align: center; margin-top: 24px;
+      font-size: 14px; color: var(--text-tertiary); font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background effects -->
+  <div class="brand-watermark"></div>
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <!-- Navigation -->
+  <div class="nav-wrapper">
+    <div class="navbar">
+      <a href="./index.html" class="nav-logo">
+        <img src="./logo.png" alt="Logo"> 找技能
+      </a>
+      <div class="nav-links">
+        <a href="./index.html">官方推荐</a>
+        <a href="./all.html">全部技能</a>
+        <a href="https://coffee-cli.com" target="_blank">Coffee CLI <span class="badge-soon">推荐</span></a>
+        <a href="./ranking.html">全球龙虾实时排名 🌐</a>
+        <a href="./models.html" class="active">大模型排行榜 🏆</a>
+      </div>
+      <button class="nav-search-btn" onclick="location.href='./all.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        探索生态
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>🏆 <span>全球大模型实力榜</span></h1>
+      <p>实时追踪开源与商业大语言模型 (LLM) 的调用热度、能力表现与社区趋势</p>
+    </div>
+
+    <div class="time-tabs">
+      <button class="time-tab active" data-period="day">今日 (24h)</button>
+      <button class="time-tab" data-period="week">本周 (7d)</button>
+      <button class="time-tab" data-period="month">本月 (30d)</button>
+    </div>
+
+    <div class="models-board">
+      <div class="models-header">
+        <div class="mh-rank">RANK</div>
+        <div class="mh-info">MODEL DETAILS</div>
+        <div class="mh-trend">TREND</div>
+      </div>
+      <div id="modelsList">
+        <!-- Rendered by JS -->
+        <div style="padding: 100px; text-align: center; color: var(--text-tertiary); font-weight: 600; font-size: 18px;">
+          加载榜单数据中...
+        </div>
+      </div>
+    </div>
+    
+    <div class="update-time" id="updateTime"></div>
+  </div>
+
+  <script>
+    let rankingsData = null;
+    let currentPeriod = 'day';
+
+    async function initData() {
+      try {
+        const res = await fetch('./public/models_ranking.json');
+        rankingsData = await res.json();
+        
+        if(rankingsData.updated_at) {
+          document.getElementById('updateTime').textContent = `数据最近更新：${new Date(rankingsData.updated_at).toLocaleString()}`;
+        }
+        
+        renderRankings();
+      } catch (err) {
+        document.getElementById('modelsList').innerHTML = `
+          <div style="padding: 100px; text-align: center; color: #ef4444; font-weight: 600; font-size: 18px;">
+            排行榜数据加载失败，请联系管理员运行工作流脚本。
+          </div>
+        `;
+      }
+    }
+
+    function renderRankings() {
+      if (!rankingsData || !rankingsData[currentPeriod]) return;
+      const list = rankingsData[currentPeriod];
+      
+      let html = '';
+      list.forEach((m) => {
+        const rankClass = m.rank <= 3 ? `top-${m.rank}` : '';
+        const trendClass = m.trend === 'up' ? 'trend-up' : (m.trend === 'down' ? 'trend-down' : 'trend-flat');
+        const trendIcon = m.trend === 'up' ? '↗' : (m.trend === 'down' ? '↘' : '→');
+        
+        // Formatter for prices
+        const priceFmt = (p) => {
+          if(!p || p === '0') return 'Free';
+          return `$${parseFloat(p).toFixed(2)}`; // For display simplicity we might want raw string if it's too small
+        };
+
+        const rawPrice = m.pricing_prompt;
+        const displayPrice = (rawPrice === '0' || !rawPrice) ? 'Free' : `$${Number(rawPrice).toExponential(2)}/T`;
+
+        html += `
+          <div class="model-item">
+            <div class="model-rank ${rankClass}">${m.rank}</div>
+            <div class="model-info">
+              <div class="model-provider">${m.provider}</div>
+              <div class="model-name">${m.name.replace(/^[^:]+:\s*/, '')}</div>
+              <div class="model-desc">${m.description || 'Powerful large language model for advanced reasoning and creative generation.'}</div>
+              <div class="model-stats">
+                <span class="stat-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M2 15h10"/><path d="M6 12l-4 3 4 3"/></svg>
+                  Context: ${m.context_length > 0 ? m.context_length.toLocaleString() : 'N/A'}
+                </span>
+                <span class="stat-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  ${displayPrice}
+                </span>
+              </div>
+            </div>
+            <div class="model-trend ${trendClass}">
+              ${trendIcon} ${m.trend_val}
+            </div>
+          </div>
+        `;
+      });
+      document.getElementById('modelsList').innerHTML = html;
+    }
+
+    document.querySelectorAll('.time-tab').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.time-tab').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentPeriod = e.target.dataset.period;
+        renderRankings();
+      });
+    });
+
+    initData();
+  </script>
+</body>
+</html>
