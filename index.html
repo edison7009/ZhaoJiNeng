@@ -1357,10 +1357,13 @@
   </div>
 
   <script>
-    // Skills data URLs - GitHub Actions syncs skills.json daily via SkillHub API
+    // Featured 50 skills (~46KB). Relative path — same origin as the page,
+    // works regardless of WebView wrapping or deploy sub-paths.
+    // skills.json (25MB) is intentionally NOT in this list: too big for
+    // mobile networks and the homepage only needs the top 50.
     const SKILLS_URLS = [
-      '/public/featured.json',
-      './skills.json',
+      './public/featured.json',
+      './public/skills_pages/1.json',
       'https://cdn.jsdelivr.net/gh/edison7009/ZhaoJiNeng@main/public/featured.json',
     ];
     const BATCH_SIZE = 50;
