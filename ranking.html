@@ -538,7 +538,6 @@
       'Zig': 'Zig',
     };
 
-    // Project icon colors (consistent palette)
     const PROJECT_COLORS = {
       'OpenClaw':     { bg: '#eef2fa', text: '#2f5fe3' },
       'Nanobot':      { bg: '#f0f7f3', text: '#1d7b4b' },
@@ -550,9 +549,9 @@
       'Hermes Agent': { bg: '#fef2f2', text: '#dc2626' },
       'NullClaw':     { bg: '#f0fdf4', text: '#16a34a' },
       'TinyClaw':     { bg: '#f5f3ff', text: '#7c3aed' },
+      'Paperclip':    { bg: '#f0f5ff', text: '#1d39c4' },
     };
 
-    // Static project metadata (these 10 tracked repos are stable)
     const PROJECT_DATA = {
       'OpenClaw': { repo: 'openclaw/openclaw', language: 'TypeScript' },
       'Nanobot': { repo: 'HKUDS/nanobot', language: 'Python' },
@@ -564,6 +563,7 @@
       'Hermes Agent': { repo: 'NousResearch/hermes-agent', language: 'Python' },
       'NullClaw': { repo: 'nullclaw/nullclaw', language: 'Zig' },
       'TinyClaw': { repo: 'TinyAGI/tinyclaw', language: 'TypeScript' },
+      'Paperclip': { repo: 'paperclipai/paperclip', language: 'TypeScript' },
     };
 
     // Get local icon path from project name
@@ -578,6 +578,7 @@
       'Hermes Agent': './public/ico/hermes.png',
       'NullClaw': './public/ico/nullclaw.png',
       'TinyClaw': './public/ico/tinyclaw.svg',
+      'Paperclip': './public/ico/paperclip.png',
     };
 
     function getIconUrl(name) {
@@ -697,25 +698,25 @@
     setInterval(updateTimestamp, 30000);
 
     // Ranking data (updated via /sync-ranking workflow every 3 days)
-    // Last synced: 2026-03-21
+    // Last synced: 2026-04-21
     const RANKING_DATA = {
       summary: {
-        leader: { name: 'OpenClaw', stars: '327,159 stars' },
-        ecosystemStars: { total: '485,631', desc: 'Across 10 tracked repos' },
-        growth7d: { value: '+23,957', percentage: 'Stars · +5.2%' },
-        topGrowth: { name: 'Hermes Agent', desc: '+39.2% over 7 days' },
+        leader: { name: 'OpenClaw', stars: '361,411 stars' },
+        ecosystemStars: { total: '690,831', desc: 'Across 11 tracked repos' },
+        growth7d: { value: '+32,189', percentage: 'Stars · +4.9%' },
+        topGrowth: { name: 'Hermes Agent', desc: '+27.0% over 7 days' },
       },
       rankings: [
-        { rank: 1, name: 'OpenClaw', status: 'RISING', repo: 'openclaw/openclaw', language: 'TypeScript', stars7d: '+14,229', stars7dChange: '+4.5%', contribs7d: '94', contribs7dChange: '44.0%', commits7d: '1,660', commits7dChange: '1.3%', totalStars: '327,159' },
-        { rank: 2, name: 'Nanobot', status: 'COOLING', repo: 'HKUDS/nanobot', language: 'Python', stars7d: '+1,666', stars7dChange: '+5.0%', contribs7d: '29', contribs7dChange: '+52.6%', commits7d: '97', commits7dChange: '38.2%', totalStars: '35,150' },
-        { rank: 3, name: 'ZeroClaw', status: '', repo: 'zeroclaw-labs/zeroclaw', language: 'Rust', stars7d: '+1,122', stars7dChange: '+4.1%', contribs7d: '49', contribs7dChange: '+63.3%', commits7d: '366', commits7dChange: '+24.9%', totalStars: '28,174' },
-        { rank: 4, name: 'PicoClaw', status: 'COOLING', repo: 'sipeed/picoclaw', language: 'Go', stars7d: '+921', stars7dChange: '+3.7%', contribs7d: '39', contribs7dChange: '+18.2%', commits7d: '104', commits7dChange: '+13.0%', totalStars: '25,629' },
-        { rank: 5, name: 'NanoClaw', status: '', repo: 'qwibitai/nanoclaw', language: 'TypeScript', stars7d: '+1,728', stars7dChange: '+7.6%', contribs7d: '5', contribs7dChange: '+0.0%', commits7d: '15', commits7dChange: '50.0%', totalStars: '24,598' },
-        { rank: 6, name: 'OpenFang', status: 'RISING', repo: 'RightNow-AI/openfang', language: 'Rust', stars7d: '+701', stars7dChange: '+4.9%', contribs7d: '19', contribs7dChange: '+1.8K%', commits7d: '60', commits7dChange: '+76.5%', totalStars: '15,099' },
-        { rank: 7, name: 'IronClaw', status: 'COOLING', repo: 'nearai/ironclaw', language: 'Rust', stars7d: '+562', stars7dChange: '+5.6%', contribs7d: '20', contribs7dChange: '35.5%', commits7d: '109', commits7dChange: '39.8%', totalStars: '10,570' },
-        { rank: 8, name: 'Hermes Agent', status: 'RISING', repo: 'NousResearch/hermes-agent', language: 'Python', stars7d: '+2,667', stars7dChange: '+39.2%', contribs7d: '50', contribs7dChange: '5.7%', commits7d: '574', commits7dChange: '30.7%', totalStars: '9,468' },
-        { rank: 9, name: 'NullClaw', status: 'RISING', repo: 'nullclaw/nullclaw', language: 'Zig', stars7d: '+299', stars7dChange: '+4.7%', contribs7d: '9', contribs7dChange: '50.0%', commits7d: '199', commits7dChange: '40.1%', totalStars: '6,609' },
-        { rank: 10, name: 'TinyClaw', status: '', repo: 'TinyAGI/tinyclaw', language: 'TypeScript', stars7d: '+62', stars7dChange: '+2.0%', contribs7d: '2', contribs7dChange: '+100.0%', commits7d: '26', commits7dChange: '42.2%', totalStars: '3,175' },
+        { rank: 1, name: 'OpenClaw', status: '', repo: 'openclaw/openclaw', language: 'TypeScript', stars7d: '+4,158', stars7dChange: '+1.2%', contribs7d: '125', contribs7dChange: '21.4%', commits7d: '1,691', commits7dChange: '29.5%', totalStars: '361,411' },
+        { rank: 2, name: 'Hermes Agent', status: 'RISING', repo: 'NousResearch/hermes-agent', language: 'Python', stars7d: '+22,567', stars7dChange: '+27.0%', contribs7d: '154', contribs7dChange: '12.5%', commits7d: '806', commits7dChange: '+12.9%', totalStars: '106,262' },
+        { rank: 3, name: 'Paperclip', status: 'RISING', repo: 'paperclipai/paperclip', language: 'TypeScript', stars7d: '+3,423', stars7dChange: '+6.4%', contribs7d: '13', contribs7dChange: '+116.7%', commits7d: '40', commits7dChange: '77.8%', totalStars: '56,970' },
+        { rank: 4, name: 'Nanobot', status: 'COOLING', repo: 'HKUDS/nanobot', language: 'Python', stars7d: '+776', stars7dChange: '+2.0%', contribs7d: '32', contribs7dChange: '11.1%', commits7d: '143', commits7dChange: '+0.7%', totalStars: '40,280' },
+        { rank: 5, name: 'ZeroClaw', status: 'RISING', repo: 'zeroclaw-labs/zeroclaw', language: 'Rust', stars7d: '+239', stars7dChange: '+0.8%', contribs7d: '26', contribs7dChange: '+116.7%', commits7d: '65', commits7dChange: '27.8%', totalStars: '30,380' },
+        { rank: 6, name: 'PicoClaw', status: 'COOLING', repo: 'sipeed/picoclaw', language: 'Go', stars7d: '+225', stars7dChange: '+0.8%', contribs7d: '11', contribs7dChange: '38.9%', commits7d: '57', commits7dChange: '32.1%', totalStars: '28,365' },
+        { rank: 7, name: 'NanoClaw', status: '', repo: 'qwibitai/nanoclaw', language: 'TypeScript', stars7d: '+334', stars7dChange: '+1.2%', contribs7d: '1', contribs7dChange: '+0.0%', commits7d: '3', commits7dChange: '+50.0%', totalStars: '27,603' },
+        { rank: 8, name: 'OpenFang', status: 'COOLING', repo: 'RightNow-AI/openfang', language: 'Rust', stars7d: '+227', stars7dChange: '+1.4%', contribs7d: '1', contribs7dChange: '87.5%', commits7d: '16', commits7dChange: '68.0%', totalStars: '16,859' },
+        { rank: 9, name: 'IronClaw', status: '', repo: 'nearai/ironclaw', language: 'Rust', stars7d: '+133', stars7dChange: '+1.1%', contribs7d: '18', contribs7dChange: '+0.0%', commits7d: '133', commits7dChange: '+51.1%', totalStars: '11,894' },
+        { rank: 10, name: 'NullClaw', status: 'RISING', repo: 'nullclaw/nullclaw', language: 'Zig', stars7d: '+89', stars7dChange: '+1.2%', contribs7d: '3', contribs7dChange: '+0.0%', commits7d: '79', commits7dChange: '+8.2%', totalStars: '7,282' },
       ],
     };
 
