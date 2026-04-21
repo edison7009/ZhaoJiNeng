@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1200">
   <title>大模型实力榜 — 找技能 · 龙虾OpenClaw中文技能库</title>
-  <meta name="description" content="基于 OpenRouter 官方调用量的全球大语言模型实时榜单，覆盖今日、本周、本月三个维度。">
+  <meta name="description" content="全球大语言模型实力榜，按今日、本周、本月三个维度追踪模型调用热度。">
   <link rel="icon" href="./ico.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -330,13 +330,8 @@
   <div class="container">
     <header class="page-header">
       <h1>全球 <span>大模型实力榜</span></h1>
-      <p class="subtitle">
-        基于 OpenRouter 全网调用量的真实榜单。排序依据为模型每期内的 prompt + completion token 总量（含 reasoning tokens）。
-      </p>
       <div class="meta">
         <span><span class="pulse-dot"></span><span id="updateTime">数据加载中…</span></span>
-        <span>·</span>
-        <span>数据源：<a href="https://openrouter.ai/rankings" target="_blank" rel="noopener">openrouter.ai/rankings</a></span>
       </div>
     </header>
 
@@ -346,13 +341,6 @@
         <button class="period-tab active" data-period="week" role="tab">本周</button>
         <button class="period-tab" data-period="month" role="tab">本月</button>
       </div>
-      <a class="source-link" href="https://openrouter.ai/rankings" target="_blank" rel="noopener">
-        在 OpenRouter 查看原始榜单
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M7 17L17 7" />
-          <path d="M7 7h10v10" />
-        </svg>
-      </a>
     </div>
 
     <section class="board">
@@ -367,7 +355,7 @@
           </svg>
           LLM Leaderboard · <span id="periodLabel">本周</span>
         </div>
-        <div class="board-subtitle">Top 20 · 按 OpenRouter token 调用量排序</div>
+        <div class="board-subtitle">Top 20</div>
       </div>
 
       <div id="board" class="grid">
@@ -378,11 +366,6 @@
       </div>
     </section>
 
-    <p class="footer-note">
-      榜单来自 OpenRouter 聚合平台实时聚合，不代表模型在闭源 API 端或本地部署中的真实调用量。
-      同一模型的 <code>free</code> 变体会单独列出以反映实际热度。
-      如需程序化消费本榜单 JSON：<a href="./public/models_ranking.json">/public/models_ranking.json</a>
-    </p>
   </div>
 
   <script>
@@ -415,7 +398,7 @@
           console.error(err);
           document.getElementById('board').innerHTML =
             '<div class="state-block error" style="grid-column: 1 / -1;">' +
-            '数据加载失败，请运行 <code>python sync_openrouter_models.py</code> 后重试。' +
+            '数据加载失败，请稍后刷新重试。' +
             '</div>';
         });
     }
