@@ -28,11 +28,15 @@ from pathlib import Path
 HERE = Path(__file__).parent
 
 STAGES = {
+    # Refreshing Chinese skills also refreshes the English side — the
+    # filter step reads the freshly-written skills.json. One command,
+    # two sites.
     "skills":    [("scratch_sync.py",           "fetch skills"),
-                  ("generate_pages.py",         "paginate skills")],
+                  ("generate_pages.py",         "paginate skills"),
+                  ("sync_whichclaw.py",         "english filter + mirror")],
     "models":    [("sync_openrouter_models.py", "LLM leaderboard")],
     "ranking":   [("ranking_sync.py",           "lobster ranking")],
-    "whichclaw": [("sync_whichclaw.py",         "english site aggregator")],
+    "whichclaw": [("sync_whichclaw.py",         "english filter + mirror")],
 }
 
 
