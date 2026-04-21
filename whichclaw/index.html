@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1200">
-  <title>WhichClaw — The Curated Index of Claude Skills</title>
-  <meta name="description" content="A community-curated index of Claude Code and Claude.ai skills, aggregated from the top awesome-claude-skills lists on GitHub.">
+  <title>WhichClaw — The Curated Index of Agent Skills</title>
+  <meta name="description" content="A community-curated index of AI agent skills — Claude, GPT, Hermes, and beyond. Aggregated from the top skill lists on GitHub. One-click copy to install.">
+
   <link rel="icon" href="./ico.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -179,11 +180,13 @@
       border: 1px solid var(--glass-border);
       border-radius: 16px; padding: 20px;
       cursor: pointer; transition: background .2s, box-shadow .2s;
-      text-decoration: none; color: inherit;
+      color: inherit;
       display: flex; flex-direction: column; gap: 10px;
       min-height: 140px;
+      user-select: none;
     }
     .card:hover { background: rgba(255, 255, 255, 0.85); box-shadow: var(--shadow-md); }
+    .card:active { background: rgba(255, 255, 255, 0.95); }
     .card-head { display: flex; align-items: center; gap: 10px; }
     .card-icon {
       width: 36px; height: 36px; border-radius: 10px;
@@ -202,6 +205,29 @@
     }
     .card-tag { background: #f2f3f5; color: var(--text-secondary); padding: 2px 8px; border-radius: 999px; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .card-sources { color: var(--accent-color); font-weight: 700; flex-shrink: 0; }
+
+    .card-source-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; border-radius: 6px;
+      color: var(--text-tertiary); text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .card-source-btn:hover { background: rgba(0,0,0,0.06); color: var(--text-main); }
+    .card-source-btn svg { width: 14px; height: 14px; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(16px);
+      background: #111; color: #fff; padding: 12px 18px; border-radius: 999px;
+      font-size: 13px; font-weight: 600;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s, transform .2s;
+      z-index: 9999;
+      max-width: 90vw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast.error { background: #e43d4d; }
 
     /* Footer */
     footer {
@@ -259,12 +285,12 @@
   <div class="container">
     <section class="hero">
       <div class="hero-content">
-        <div class="hero-badge">🦞 The community-curated Claude skills index</div>
-        <h1 class="hero-title">Pick the right <span>Claude Skill</span></h1>
+        <div class="hero-badge">🦞 The community-curated agent skills index</div>
+        <h1 class="hero-title">Pick the right <span>Agent Skill</span></h1>
         <p class="hero-desc">
-          WhichClaw aggregates every major awesome-claude-skills list on GitHub into one searchable index.
-          Skills are deduped by repo URL and ranked by how many curated lists include them —
-          the more lists, the stronger the signal.
+          WhichClaw aggregates every major agent-skills list on GitHub — Claude, GPT, Hermes, and
+          beyond — into one searchable index. Click any skill to copy its install command.
+          Ranked by how many curated lists include it.
         </p>
         <div class="hero-buttons">
           <a href="./all.html" class="btn btn-primary">Browse all skills</a>
@@ -300,6 +326,8 @@
       </div>
     </section>
   </div>
+
+  <div class="toast" id="toast"></div>
 
   <footer>
     <p>Business: <a href="mailto:hi@whichclaw.com">hi@whichclaw.com</a> · © 2026 WhichClaw (whichclaw.com)</p>
@@ -347,13 +375,54 @@
       document.getElementById('heroTags').innerHTML =
         (s.tags || []).slice(0, 2).map(t => `<span class="hsc-tag">${esc(t)}</span>`).join('');
       document.getElementById('heroDesc').textContent =
-        s.description || 'A curated Claude skill from the awesome-claude-skills ecosystem.';
+        s.description || 'A curated agent skill from the community ecosystem.';
       document.getElementById('heroSources').textContent =
         (s.sources || []).length > 1
           ? `Listed in ${s.sources.length} curated awesome lists`
           : (s.sources && s.sources[0]) || '';
       document.getElementById('heroLink').href = s.homepage || '#';
     }
+
+    function installCommand(homepage) {
+      if (!homepage) return '';
+      if (/github\.com\//.test(homepage)) return `git clone ${homepage}.git`;
+      return homepage;
+    }
+
+    function showToast(msg, isError) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.toggle('error', !!isError);
+      t.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    async function copyText(text) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); ta.remove();
+        }
+        return true;
+      } catch (e) { return false; }
+    }
+
+    async function handleCardClick(ev, slug, skills) {
+      if (ev.target.closest('.card-source-btn')) return;  // source icon handled separately
+      ev.preventDefault();
+      const s = skills.find(x => x.slug === slug);
+      if (!s) return;
+      const cmd = installCommand(s.homepage);
+      if (!cmd) { showToast('No install URL', true); return; }
+      const ok = await copyText(cmd);
+      showToast(ok ? `Copied: ${cmd.slice(0, 60)}${cmd.length > 60 ? '…' : ''}` : 'Copy failed', !ok);
+    }
+    window.handleCardClick = handleCardClick;
 
     function renderFeaturedGrid(skills) {
       const grid = document.getElementById('featuredGrid');
@@ -362,20 +431,24 @@
         const tag = (s.tags && s.tags[0]) || s.category || '';
         const sources = (s.sources || []).length;
         return `
-          <a class="card" href="${esc(s.homepage || '#')}" target="_blank" rel="noopener">
+          <div class="card" onclick="handleCardClick(event, '${esc(s.slug)}', window.__featured)">
             <div class="card-head">
               <div class="card-icon" style="background:${c.bg}">${esc(initials(s.name))}</div>
               <div class="card-title">${esc(s.name)}</div>
+              <a class="card-source-btn" href="${esc(s.homepage || '#')}" target="_blank" rel="noopener" title="Open source">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
             </div>
-            <div class="card-desc">${esc(s.description || 'Curated Claude skill.')}</div>
+            <div class="card-desc">${esc(s.description || 'Curated agent skill.')}</div>
             <div class="card-foot">
               <span class="card-tag">${esc(tag || 'Skill')}</span>
               <span class="card-sources">${sources > 1 ? sources + ' lists' : '1 list'}</span>
             </div>
-          </a>`;
+          </div>`;
       }).join('');
+      window.__featured = skills;
       document.getElementById('featuredSubtitle').textContent =
-        `Top ${skills.length} skills by curation consensus across 6 awesome lists.`;
+        `Top ${skills.length} skills by curation consensus. Click any card to copy its install command.`;
     }
 
     initHome();
