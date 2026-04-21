@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1200">
-  <title>LLM Leaderboard — WhichClaw</title>
+  <title>LLM Rankings — WhichClaw</title>
   <meta name="description" content="A global LLM leaderboard by day, week, and month.">
   <link rel="icon" href="./ico.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -163,7 +163,7 @@
     .source-link:hover { color: var(--text-secondary); }
     .source-link svg { width: 13px; height: 13px; }
 
-    /* ===== Leaderboard Board ===== */
+    /* ===== Rankings Board ===== */
     .board {
       max-width: 1120px; margin: 0 auto 40px;
       background: var(--card-bg);
@@ -316,14 +316,14 @@
         <a href="./">Featured</a>
         <a href="./all.html">All Skills</a>
         <a href="https://coffeecli.com/" target="_blank" rel="noopener">Coffee CLI<span class="badge-soon">Hot</span></a>
-        <a href="./ranking.html">Agent Leaderboard
+        <a href="./ranking.html">Agent Rankings
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
             <circle cx="12" cy="12" r="10" />
             <path d="M2 12h20" />
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
           </svg>
         </a>
-        <a href="./models.html" class="active">LLM Leaderboard</a>
+        <a href="./models.html" class="active">LLM Rankings</a>
       </div>
       <button class="nav-search-btn" style="pointer-events:none;cursor:default;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -337,7 +337,7 @@
 
   <div class="container">
     <header class="page-header">
-      <h1>Global <span>LLM Leaderboard</span></h1>
+      <h1>Global <span>LLM Rankings</span></h1>
     </header>
 
     <div class="period-bar">
@@ -361,7 +361,7 @@
             <path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34" />
             <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
           </svg>
-          LLM Leaderboard · <span id="periodLabel">This Week</span>
+          LLM Rankings · <span id="periodLabel">This Week</span>
         </div>
         <div class="board-subtitle">Top 20</div>
       </div>
