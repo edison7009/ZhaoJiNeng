@@ -164,10 +164,14 @@ TRANSLATIONS: list[tuple[str, str]] = [
      "PERIOD_LABEL = { day: 'Today', week: 'This Week', month: 'This Month' }"),
 
     # ---- ranking summary cards + table ----
-    ("\ud83c\udfc6 \u9886\u8dd1\u8005", "\ud83c\udfc6 LEADER"),
-    ("\u2b50 \u751f\u6001\u603b\u6536\u85cf", "\u2b50 ECOSYSTEM STARS"),
-    ("\ud83d\udcc8 7\u65e5\u751f\u6001\u589e\u957f", "\ud83d\udcc8 7D GROWTH"),
-    ("\ud83d\ude80 7\u65e5\u6700\u5feb\u589e\u957f", "\ud83d\ude80 TOP GROWTH"),
+    # Emoji stripped on EN side: English labels (ECOSYSTEM STARS,
+    # 7D GROWTH, TOP GROWTH) are long enough that the leading emoji
+    # pushes them onto two lines inside the summary cards. CN labels
+    # are short, so emojis still fit there.
+    (" \u9886\u8dd1\u8005", "LEADER"),
+    ("\u2b50 \u751f\u6001\u603b\u6536\u85cf", "ECOSYSTEM STARS"),
+    ("\ud83d\udcc8 7\u65e5\u751f\u6001\u589e\u957f", "7D GROWTH"),
+    ("\ud83d\ude80 7\u65e5\u6700\u5feb\u589e\u957f", "TOP GROWTH"),
     ("\u8ffd\u8e2a ", "Across "),
     (" \u4e2a\u9879\u76ee", " tracked repos"),
     (">\u6392\u540d<", ">RANK<"),
