@@ -760,6 +760,10 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.4; }
     }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.35; transform: scale(1.25); }
+    }
 
     .load-end {
       text-align: center;
@@ -942,6 +946,9 @@
       </div>
 
       <div class="result-count" id="resultCount"></div>
+      <div id="hydrationIndicator" style="font-size:12px;color:var(--text-tertiary);font-weight:500;margin-top:-8px;margin-bottom:8px;display:none;">
+        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10b981;margin-right:6px;animation:pulse-dot 2s ease-in-out infinite;vertical-align:middle;"></span>
+      </div>
 
       <div id="skillsList">
         <div class="empty-state">
@@ -1248,6 +1255,8 @@
       }
     });
 
+    const hydrationStatus = { loaded: 0, total: 0, done: false };
+
     async function initData() {
       document.getElementById('skillsList').innerHTML = `
         <div class="empty-state">
@@ -1255,21 +1264,119 @@
           <h3>正在加载技能库数据，请稍候...</h3>
         </div>`;
       try {
-        const res = await fetch('./skills.json');
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        allSkills = Array.isArray(data) ? data : (data.skills || []);
+        const firstRes = await fetch('./public/skills_pages/1.json', { cache: 'default' });
+        if (!firstRes.ok) throw new Error(`HTTP ${firstRes.status}`);
+        const firstPage = await firstRes.json();
+        allSkills = firstPage.skills || [];
+        hydrationStatus.total = firstPage.total || allSkills.length;
+        hydrationStatus.loaded = allSkills.length;
         applyFilters(true);
+        hydrateRemaining(firstPage.total_pages || 1);
       } catch (err) {
-        console.warn('Fetch all data error:', err);
-        document.getElementById('skillsList').innerHTML = `
-          <div class="empty-state">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <h3>数据加载失败</h3>
-            <p>请刷新页面重试。(${err.message || '网络或解析错误'})</p>
-          </div>
-        `;
+        console.warn('Fetch first page error, falling back to full skills.json:', err);
+        try {
+          const res = await fetch('./skills.json');
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          allSkills = Array.isArray(data) ? data : (data.skills || []);
+          hydrationStatus.total = allSkills.length;
+          hydrationStatus.loaded = allSkills.length;
+          hydrationStatus.done = true;
+          updateHydrationIndicator();
+          applyFilters(true);
+        } catch (err2) {
+          document.getElementById('skillsList').innerHTML = `
+            <div class="empty-state">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <h3>数据加载失败</h3>
+              <p>请刷新页面重试。(${err2.message || '网络或解析错误'})</p>
+            </div>`;
+        }
       }
+    }
+
+    async function hydrateRemaining(totalPages) {
+      if (totalPages <= 1) {
+        hydrationStatus.done = true;
+        updateHydrationIndicator();
+        return;
+      }
+      const CONCURRENCY = 6;
+      const seen = new Set(allSkills.map(s => s.slug));
+      let next = 2;
+
+      const worker = async () => {
+        while (next <= totalPages) {
+          const p = next++;
+          try {
+            const r = await fetch(`./public/skills_pages/${p}.json`, { cache: 'default' });
+            if (!r.ok) continue;
+            const d = await r.json();
+            for (const s of (d.skills || [])) {
+              if (!seen.has(s.slug)) { seen.add(s.slug); allSkills.push(s); }
+            }
+            hydrationStatus.loaded = allSkills.length;
+            updateHydrationIndicator();
+            silentRefilter();
+          } catch (err) {
+            console.warn(`hydrate page ${p} failed:`, err);
+          }
+        }
+      };
+
+      const workers = Array.from({ length: CONCURRENCY }, worker);
+      await Promise.all(workers);
+      hydrationStatus.done = true;
+      updateHydrationIndicator();
+      silentRefilter();
+    }
+
+    function silentRefilter() {
+      // Recompute filteredSkills from the current allSkills under current search/category,
+      // but do NOT clear DOM or reset loadedCount — the already-rendered rows stay,
+      // and the next loadMore() call naturally pulls from the expanded list.
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      let filtered = allSkills;
+      if (currentCategory !== 'all') {
+        const apiKey = CAT_REVERSE[currentCategory];
+        if (apiKey) filtered = filtered.filter(s => s.category === apiKey);
+      }
+      if (q) {
+        filtered = filtered.filter(s => {
+          const text = ((s.name || '') + ' ' + (s.description_zh || '') + ' ' + (s.description || '')).toLowerCase();
+          return text.includes(q);
+        });
+      }
+      filtered.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
+      filteredSkills = filtered;
+
+      const countEl = document.getElementById('resultCount');
+      if (countEl) {
+        if (!q && currentCategory === 'all') {
+          countEl.textContent = `共 ${allSkills.length.toLocaleString()} 个技能`;
+        } else {
+          countEl.textContent = `匹配到 ${filteredSkills.length.toLocaleString()} 个技能`;
+        }
+      }
+
+      // If the sentinel was showing "end of data" but new rows have arrived, clear it.
+      const sentinel = document.getElementById('scrollSentinel');
+      if (sentinel && loadedCount < filteredSkills.length) {
+        const note = sentinel.querySelector('.load-end');
+        if (note) sentinel.innerHTML = '';
+      }
+    }
+
+    function updateHydrationIndicator() {
+      const el = document.getElementById('hydrationIndicator');
+      if (!el) return;
+      if (hydrationStatus.done || hydrationStatus.total === 0) {
+        el.style.display = 'none';
+        return;
+      }
+      el.style.display = '';
+      const dot = '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10b981;margin-right:6px;animation:pulse-dot 2s ease-in-out infinite;vertical-align:middle;"></span>';
+      el.innerHTML = `${dot}全库加载中 ${hydrationStatus.loaded.toLocaleString()} / ${hydrationStatus.total.toLocaleString()}`;
     }
 
     // Modal
