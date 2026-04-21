@@ -5,11 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1200">
   <title>LLM Leaderboard — WhichClaw</title>
-  <meta name="description" content="A global LLM leaderboard tracking Claude, GPT, Gemini, and more by real-world call volume. Today, this week, and this month.">
+  <meta name="description" content="A global LLM leaderboard by day, week, and month.">
   <link rel="icon" href="./ico.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg-color: #f7f8fa;
@@ -27,15 +29,18 @@
       --red: #e43d4d;
       --gray: #86909c;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif;
       background-color: var(--bg-color);
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+
     .brand-watermark {
       position: fixed; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
@@ -44,7 +49,10 @@
       opacity: 0.08; filter: blur(24px);
       pointer-events: none; z-index: 1;
     }
-    .bg-blob { position: absolute; border-radius: 50%; filter: blur(140px); z-index: -1; opacity: 0.7; pointer-events: none; }
+    .bg-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(140px); z-index: -1; opacity: 0.7; pointer-events: none;
+    }
     .blob-1 { top: -10vh; left: -10vw; width: 60vw; height: 80vh;
       background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
     .blob-2 { top: 10vh; right: -10vw; width: 60vw; height: 80vh;
@@ -52,7 +60,11 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
-    .nav-wrapper { position: fixed; top: 24px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 100; pointer-events: none; }
+    /* ===== Navigation (unified with index/all/ranking) ===== */
+    .nav-wrapper {
+      position: fixed; top: 24px; left: 0; width: 100%;
+      display: flex; justify-content: center; z-index: 100; pointer-events: none;
+    }
     .navbar {
       pointer-events: auto;
       background: rgba(255, 255, 255, 0.85);
@@ -64,8 +76,12 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 10px 16px 10px 24px; width: 100%; max-width: 1120px;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #111; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
-    .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: #111;
+      font-size: 18px; font-weight: 700;
+    }
+    .nav-logo img:first-child { width: 32px; height: 32px; object-fit: contain; }
     .nav-links { display: flex; gap: 4px; align-items: center; }
     .nav-links a {
       text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 14px;
@@ -75,14 +91,22 @@
     }
     .nav-links a:hover { color: #111; background: rgba(0, 0, 0, 0.04); }
     .nav-links a.active { color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.05); }
-    .nav-search-btn {
-      background: #f2f3f5; border: none; padding: 8px 16px; border-radius: 999px;
-      display: flex; align-items: center; gap: 6px;
-      cursor: default; color: var(--text-secondary);
-      font-size: 14px; font-weight: 500; pointer-events: none;
+    .badge-soon {
+      background: var(--accent-color); color: #fff;
+      font-size: 10px; padding: 2px 6px; border-radius: 999px;
+      font-weight: 800; margin-left: 4px;
     }
+    .nav-search-btn {
+      background: #f2f3f5; border: none;
+      padding: 8px 16px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px;
+      cursor: pointer; color: var(--text-secondary);
+      font-size: 14px; font-weight: 500; transition: background .2s, color .2s;
+    }
+    .nav-search-btn:hover { background: #e5e6eb; color: #111; }
     .nav-search-btn svg { width: 14px; height: 14px; }
 
+    /* ===== Page Header ===== */
     .page-header { padding: 140px 0 32px; max-width: 1120px; margin: 0 auto; }
     .page-header h1 {
       font-size: clamp(36px, 5vw, 56px); font-weight: 900;
@@ -92,7 +116,26 @@
       background: linear-gradient(90deg, #1d39c4 0%, #06b6d4 100%);
       background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
+    .page-header .subtitle {
+      margin-top: 16px;
+      font-size: 16px; color: var(--text-secondary); font-weight: 500;
+      max-width: 720px;
+    }
+    .meta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-tertiary); font-weight: 500;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); display: inline-block; margin-right: 6px;
+      animation: pulse-dot 2s ease-in-out infinite; vertical-align: middle;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.35; }
+    }
 
+    /* ===== Period Tabs ===== */
     .period-bar {
       max-width: 1120px; margin: 8px auto 32px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
@@ -113,17 +156,14 @@
     }
     .period-tab:hover { color: #111; }
     .period-tab.active { background: #111; color: #fff; }
-    .meta {
-      display: inline-flex; align-items: center; gap: 6px;
+    .source-link {
       font-size: 13px; color: var(--text-tertiary); font-weight: 500;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
     }
-    .pulse-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--green); display: inline-block;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+    .source-link:hover { color: var(--text-secondary); }
+    .source-link svg { width: 13px; height: 13px; }
 
+    /* ===== Leaderboard Board ===== */
     .board {
       max-width: 1120px; margin: 0 auto 40px;
       background: var(--card-bg);
@@ -153,7 +193,11 @@
       gap: 4px 24px;
     }
     @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
+      .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-auto-flow: row;
+      }
     }
 
     .row {
@@ -164,6 +208,7 @@
       border-bottom: 1px solid var(--border-color);
       border-radius: 12px;
       transition: background .2s;
+      text-decoration: none; color: inherit;
     }
     .row:hover { background: rgba(255, 255, 255, 0.55); }
     .row-rank {
@@ -173,28 +218,49 @@
     .row-rank.top-1 { color: #eab308; font-size: 26px; }
     .row-rank.top-2 { color: #64748b; font-size: 24px; }
     .row-rank.top-3 { color: #c2410c; font-size: 24px; }
-    .row-avatar { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .row-avatar img { width: 100%; height: 100%; object-fit: contain; image-rendering: -webkit-optimize-contrast; }
+
+    .row-avatar {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .row-avatar img {
+      width: 100%; height: 100%; object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
     .row-avatar .fallback {
       font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
       color: #fff; text-transform: uppercase;
       width: 100%; height: 100%; border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
     }
+
     .row-info { min-width: 0; }
     .row-name {
       font-size: 16px; font-weight: 700; color: #111;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       letter-spacing: -0.2px;
     }
-    .row-author { font-size: 12px; color: var(--text-tertiary); font-weight: 500; margin-top: 2px; }
+    .row-author {
+      font-size: 12px; color: var(--text-tertiary); font-weight: 500;
+      margin-top: 2px;
+    }
+
     .row-stats { text-align: right; flex-shrink: 0; min-width: 110px; }
     .row-tokens {
       font-size: 15px; font-weight: 700; color: #111;
       font-variant-numeric: tabular-nums; letter-spacing: -0.3px;
     }
-    .row-tokens .unit { font-size: 11px; color: var(--text-tertiary); font-weight: 600; margin-left: 3px; letter-spacing: 0.5px; }
-    .row-change { margin-top: 3px; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; display: inline-flex; align-items: center; gap: 2px; }
+    .row-tokens .unit {
+      font-size: 11px; color: var(--text-tertiary); font-weight: 600;
+      margin-left: 3px; letter-spacing: 0.5px;
+    }
+    .row-change {
+      margin-top: 3px;
+      font-size: 12px; font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      display: inline-flex; align-items: center; gap: 2px;
+    }
     .row-change.up { color: var(--green); }
     .row-change.down { color: var(--red); }
     .row-change.flat { color: var(--gray); }
@@ -203,7 +269,12 @@
       padding: 2px 8px; border-radius: 999px;
       font-size: 10px; letter-spacing: 0.8px;
     }
-    .state-block { padding: 80px 24px; text-align: center; color: var(--text-tertiary); font-size: 15px; font-weight: 500; }
+
+    /* ===== States ===== */
+    .state-block {
+      padding: 80px 24px; text-align: center; color: var(--text-tertiary);
+      font-size: 15px; font-weight: 500;
+    }
     .state-block.error { color: var(--red); }
     .loader {
       width: 28px; height: 28px; margin: 0 auto 16px;
@@ -212,11 +283,21 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    footer { text-align: center; padding: 40px 24px 80px; color: var(--text-tertiary); font-size: 13px; font-weight: 500; }
-    footer a { color: var(--text-main); font-weight: 600; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 820px) { .nav-links { display: none; } }
+    /* ===== Footer ===== */
+    .footer-note {
+      max-width: 1120px; margin: 0 auto 80px;
+      padding: 16px 24px; text-align: center;
+      font-size: 12px; color: var(--text-tertiary); font-weight: 500;
+    }
+    .footer-note code {
+      font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+      background: rgba(0,0,0,0.04); padding: 1px 6px; border-radius: 4px; font-size: 11px;
+    }
+    .footer-note a {
+      color: var(--text-secondary); text-decoration: none;
+      border-bottom: 1px dotted var(--text-tertiary);
+    }
+    .footer-note a:hover { color: #111; }
   </style>
 </head>
 
@@ -229,22 +310,26 @@
     <nav class="navbar">
       <a href="./" class="nav-logo">
         <img src="./ico.png" alt="WhichClaw">
-        WhichClaw
+        <img src="./logo.png" alt="WhichClaw" style="height:24px;width:auto;">
       </a>
       <div class="nav-links">
         <a href="./">Featured</a>
         <a href="./all.html">All Skills</a>
-        <a href="https://coffeecli.com/" target="_blank" rel="noopener">Coffee CLI</a>
+        <a href="https://coffeecli.com/" target="_blank" rel="noopener">Coffee CLI<span class="badge-soon">Hot</span></a>
         <a href="./ranking.html">Lobster Leaderboard
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M2 12h20" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
         </a>
-        <a href="./models.html" class="active">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-          LLM Leaderboard
-        </a>
+        <a href="./models.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>LLM Leaderboard</a>
       </div>
-      <button class="nav-search-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <button class="nav-search-btn" style="pointer-events:none;cursor:default;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
         Search
       </button>
     </nav>
@@ -270,16 +355,17 @@
       <div class="board-header">
         <div class="board-title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
-            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-            <path d="M4 22h16"/>
-            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/>
-            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+            <path d="M4 22h16" />
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34" />
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
           </svg>
           LLM Leaderboard · <span id="periodLabel">This Week</span>
         </div>
         <div class="board-subtitle">Top 20</div>
       </div>
+
       <div id="board" class="grid">
         <div class="state-block" style="grid-column: 1 / -1;">
           <div class="loader"></div>
@@ -287,11 +373,8 @@
         </div>
       </div>
     </section>
-  </div>
 
-  <footer>
-    <p>Business: <a href="mailto:hi@whichclaw.com">hi@whichclaw.com</a> · © 2026 WhichClaw (whichclaw.com)</p>
-  </footer>
+  </div>
 
   <script>
     const PERIOD_LABEL = { day: 'Today', week: 'This Week', month: 'This Month' };
@@ -303,6 +386,7 @@
       qwen: '#615ced', alibaba: '#ff6a00', mistralai: '#ff7000',
       'meta-llama': '#0866ff'
     };
+
     let rankingsData = null;
     let currentPeriod = 'week';
 
@@ -321,7 +405,9 @@
         .catch(err => {
           console.error(err);
           document.getElementById('board').innerHTML =
-            '<div class="state-block error" style="grid-column: 1 / -1;">Failed to load leaderboard. Please refresh.</div>';
+            '<div class="state-block error" style="grid-column: 1 / -1;">' +
+            'Failed to load. Please refresh.' +
+            '</div>';
         });
     }
 
@@ -336,15 +422,20 @@
       if (change === null || change === undefined) return { text: 'NEW', cls: 'new' };
       const pct = change * 100;
       const abs = Math.abs(pct);
-      const display = abs >= 100 ? Math.round(abs).toLocaleString() : abs.toFixed(abs >= 10 ? 0 : 1);
+      let display;
+      if (abs >= 100) display = Math.round(abs).toLocaleString();
+      else display = abs.toFixed(abs >= 10 ? 0 : 1);
       if (pct > 0.5)  return { text: '\u2191' + display + '%', cls: 'up' };
       if (pct < -0.5) return { text: '\u2193' + display + '%', cls: 'down' };
       return { text: '\u2014 0%', cls: 'flat' };
     }
 
     function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      return String(s).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
     }
+
     function renderFallback(author) {
       const color = AUTHOR_COLORS[author] || '#64748b';
       const letter = (author || '?').charAt(0);
@@ -354,7 +445,9 @@
 
     function avatarHtml(m) {
       if (m.author_icon) {
-        return '<img src="' + escapeHtml(m.author_icon) + '" alt="' + escapeHtml(m.author) + '" loading="lazy" ' +
+        const esc = escapeHtml(m.author_icon);
+        const alt = escapeHtml(m.author);
+        return '<img src="' + esc + '" alt="' + alt + '" loading="lazy" ' +
                'onerror="this.outerHTML=renderFallback(\'' + escapeHtml(m.author) + '\')">';
       }
       return renderFallback(m.author);
@@ -365,7 +458,8 @@
       const list = rankingsData[currentPeriod] || [];
       document.getElementById('periodLabel').textContent = PERIOD_LABEL[currentPeriod];
       if (!list.length) {
-        document.getElementById('board').innerHTML = '<div class="state-block" style="grid-column: 1 / -1;">No data for this period.</div>';
+        document.getElementById('board').innerHTML =
+          '<div class="state-block" style="grid-column: 1 / -1;">No data for this period.</div>';
         return;
       }
       const html = list.map(m => {

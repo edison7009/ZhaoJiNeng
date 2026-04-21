@@ -5,54 +5,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1200">
   <title>Global Lobster Leaderboard — WhichClaw</title>
-  <meta name="description" content="A live leaderboard of lobster-inspired AI agents across GitHub — stars, contributors, commits.">
+  <meta name="description" content="A leaderboard of lobster-inspired AI agents across GitHub — stars, contributors, commits.">
   <link rel="icon" href="./ico.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg-color: #f7f8fa;
-      --card-bg: rgba(255, 255, 255, 0.7);
-      --glass-border: rgba(255, 255, 255, 0.8);
+      --card-bg: rgba(255, 255, 255, 0.4);
+      --card-bg-hover: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.6);
       --text-main: #111111;
-      --text-secondary: #4e5969;
-      --text-tertiary: #86909c;
+      --text-secondary: #555555;
+      --text-tertiary: #888888;
       --accent-color: #D94025;
-      --border-color: rgba(0, 0, 0, 0.06);
+      --accent-hover: #b83520;
+      --border-color: rgba(0, 0, 0, 0.04);
+      --nav-bg: rgba(255, 255, 255, 0.55);
       --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
       --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.05);
       --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.08);
       --green: #10b981;
+      --green-bg: #ecfdf5;
       --red: #ef4444;
-      --gray: #94a3b8;
+      --red-bg: #fef2f2;
+      --cyan: #06b6d4;
+      --cyan-bg: #ecfeff;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+
+    /* Brand watermark */
     .brand-watermark {
       position: fixed; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       width: 450px; height: 450px;
       background: url('./ico.png') no-repeat center / contain;
-      opacity: 0.08; filter: blur(24px);
+      opacity: 0.10; filter: blur(20px);
       pointer-events: none; z-index: 1;
     }
-    .bg-blob { position: absolute; border-radius: 50%; filter: blur(140px); z-index: -1; opacity: 0.7; pointer-events: none; }
-    .blob-1 { top: -10vh; left: -10vw; width: 60vw; height: 80vh;
-      background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
-    .blob-2 { top: 10vh; right: -10vw; width: 60vw; height: 80vh;
-      background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%); }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+    .bg-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(140px); z-index: -1;
+      opacity: 0.7; pointer-events: none;
+    }
+    .blob-1 {
+      top: -10vh; left: -10vw;
+      width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(173, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+    .blob-2 {
+      top: 10vh; right: -10vw;
+      width: 60vw; height: 80vh;
+      background: radial-gradient(ellipse at center, rgba(230, 216, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    }
 
-    .nav-wrapper { position: fixed; top: 24px; left: 0; width: 100%; display: flex; justify-content: center; z-index: 100; pointer-events: none; }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    /* ===== Pill-shaped Navigation (same as index/all) ===== */
+    .nav-wrapper {
+      position: fixed; top: 24px; left: 0; width: 100%;
+      display: flex; justify-content: center;
+      z-index: 100; pointer-events: none;
+    }
     .navbar {
       pointer-events: auto;
       background: rgba(255, 255, 255, 0.85);
@@ -62,43 +95,88 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
       border-radius: 9999px;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 16px 10px 24px; width: 100%; max-width: 1120px;
+      padding: 10px 16px 10px 24px;
+      width: 100%; max-width: 1120px;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #111; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: #111;
+      font-size: 18px; font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
     .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
-    .nav-links { display: flex; gap: 4px; align-items: center; }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 14px;
-      padding: 8px 14px; border-radius: 999px;
-      transition: background .2s, color .2s;
-      display: flex; align-items: center; gap: 4px;
+      text-decoration: none; color: #4e5969; font-weight: 500; font-size: 14px;
+      padding: 8px 16px; border-radius: 999px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .nav-links a:hover { color: #111; background: rgba(0, 0, 0, 0.04); }
-    .nav-links a.active { color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.05); }
+    .nav-links a:hover, .nav-links a.active {
+      color: #111; font-weight: 600; background: rgba(0, 0, 0, 0.04);
+    }
+    .nav-links a:active { transform: scale(0.96); }
     .nav-search-btn {
-      background: #f2f3f5; border: none; padding: 8px 16px; border-radius: 999px;
+      background: #f2f3f5; border: none;
+      padding: 8px 16px; border-radius: 999px;
       display: flex; align-items: center; gap: 6px;
-      cursor: default; color: var(--text-secondary);
-      font-size: 14px; font-weight: 500; pointer-events: none;
+      cursor: pointer; color: #4e5969;
+      font-size: 14px; font-weight: 500;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .nav-search-btn svg { width: 14px; height: 14px; }
-
-    .page-header {
-      padding: 140px 0 32px; max-width: 1120px; margin: 0 auto;
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    .badge-soon {
+      background: var(--accent-color); color: #fff;
+      font-size: 10px; padding: 2px 6px; border-radius: 999px;
+      font-weight: 800; transform: scale(0.9); margin-left: 4px;
     }
-    .page-header h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; }
+
+    /* ===== Page Header ===== */
+    .page-header {
+      padding: 130px 0 40px;
+      max-width: 1120px; margin: 0 auto;
+    }
+    .page-header h1 {
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -1px;
+    }
     .page-header h1 span {
       background: linear-gradient(90deg, #D94025 0%, #f5734a 100%);
-      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .meta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-tertiary); font-weight: 500; }
-    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse-dot 2s ease-in-out infinite; }
-    @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+    .page-header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+    }
+    .page-header-meta {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; color: var(--text-tertiary); font-weight: 500;
+      flex-shrink: 0;
+    }
+    .update-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); display: inline-block;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    .refresh-btn {
+      background: none; border: 1px solid var(--border-color);
+      padding: 4px 12px; border-radius: 999px; cursor: pointer;
+      font-size: 13px; color: var(--text-secondary); font-weight: 600;
+      transition: all 0.2s; display: flex; align-items: center; gap: 4px;
+    }
+    .refresh-btn:hover { background: rgba(0,0,0,0.03); color: #111; }
+    .refresh-btn:active { transform: scale(0.96); }
+    .refresh-btn.spinning svg { animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ===== Summary Cards ===== */
     .summary-cards {
-      max-width: 1120px; margin: 0 auto 32px;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px; max-width: 1120px; margin: 0 auto 32px;
     }
     .summary-card {
       background: rgba(255, 255, 255, 0.7);
@@ -107,20 +185,45 @@
       border: 1px solid rgba(255, 255, 255, 0.8);
       border-radius: 20px; padding: 24px;
       box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .sc-label { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; color: var(--text-tertiary); margin-bottom: 12px; }
+    .summary-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .sc-label {
+      font-size: 15px; font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-tertiary); margin-bottom: 12px;
+    }
     .sc-value {
-      font-size: clamp(24px, 3vw, 36px); font-weight: 800;
-      color: var(--text-main); line-height: 1.1; letter-spacing: -0.8px;
+      font-size: clamp(28px, 3.5vw, 42px); font-weight: 800;
+      color: var(--text-main); line-height: 1.1;
+      letter-spacing: -1px; white-space: nowrap;
+    }
+    .sc-value.green { color: var(--green); }
+    .sc-desc {
+      font-size: 15px; color: var(--text-tertiary);
+      margin-top: 6px; font-weight: 500;
+    }
+    .sc-project {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 4px; min-width: 0; overflow: hidden;
+    }
+    .sc-project-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+    }
+    .sc-project-icon img {
+      width: 100%; height: 100%; object-fit: contain;
+    }
+    .sc-project-name {
+      font-size: clamp(20px, 2.8vw, 30px); font-weight: 800; color: var(--text-main);
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .sc-desc { font-size: 13px; color: var(--text-tertiary); margin-top: 6px; font-weight: 500; }
-    .sc-project { display: flex; align-items: center; gap: 10px; margin-top: 4px; min-width: 0; overflow: hidden; }
-    .sc-project-icon { width: 40px; height: 40px; flex-shrink: 0; }
-    .sc-project-icon img { width: 100%; height: 100%; object-fit: contain; }
 
+    /* ===== Ranking Table ===== */
     .ranking-wrapper {
-      max-width: 1120px; margin: 0 auto 60px;
+      max-width: 1120px; margin: 0 auto 80px;
       background: rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(32px) saturate(180%);
       -webkit-backdrop-filter: blur(32px) saturate(180%);
@@ -128,50 +231,160 @@
       border-radius: 24px; overflow: hidden;
       box-shadow: var(--shadow-md);
     }
-    .table-header, .table-row {
+
+    /* Table header */
+    .table-header {
       display: grid;
       grid-template-columns: 52px 1fr 100px 72px 90px 72px 90px 72px 110px;
-      padding: 16px 24px;
-      font-size: 13px; align-items: center;
+      padding: 16px 24px; border-bottom: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.3);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.5px; color: var(--text-tertiary);
     }
-    .table-header { background: rgba(255, 255, 255, 0.3); border-bottom: 1px solid var(--border-color); font-weight: 700; color: var(--text-tertiary); letter-spacing: 0.5px; }
     .th-right { text-align: right; }
-    .table-row { border-bottom: 1px solid var(--border-color); transition: background 0.2s; }
+
+    /* Table rows */
+    .table-row {
+      display: grid;
+      grid-template-columns: 52px 1fr 100px 72px 90px 72px 90px 72px 110px;
+      padding: 20px 24px; align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.2s;
+    }
     .table-row:last-child { border-bottom: none; }
     .table-row:hover { background: rgba(255, 255, 255, 0.5); }
-    .t-rank { font-size: 22px; font-weight: 800; color: var(--text-tertiary); }
+
+    /* Rank number */
+    .t-rank {
+      font-size: 22px; font-weight: 800; color: var(--text-tertiary);
+    }
     .t-rank.gold { color: #f5222d; }
     .t-rank.silver { color: #fa541c; }
     .t-rank.bronze { color: #fa8c16; }
-    .t-project { display: flex; align-items: center; gap: 14px; min-width: 0; }
-    .t-project-icon { width: 40px; height: 40px; flex-shrink: 0; }
-    .t-project-icon img { width: 100%; height: 100%; object-fit: contain; }
-    .t-project-name { font-size: 16px; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
-    .t-project-repo { font-size: 12px; color: var(--text-tertiary); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .badge-rising { background: #ecfdf5; color: var(--green); }
-    .badge-cooling { background: #fef2f2; color: var(--red); }
-    .t-num { font-size: 15px; font-weight: 700; color: var(--text-main); font-variant-numeric: tabular-nums; text-align: right; }
-    .t-num.fire { color: #ea580c; }
-    .fire-icon { margin-right: 2px; }
-    .t-change { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+
+    /* Project cell */
+    .t-project {
+      display: flex; align-items: center; gap: 14px;
+      min-width: 0;
+    }
+    .t-project-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .t-project-icon img {
+      width: 100%; height: 100%; object-fit: contain;
+    }
+    .table-row:hover .t-project-icon { transform: scale(1.05); }
+    .t-project-info { min-width: 0; }
+    .t-project-name {
+      font-size: 18px; font-weight: 700; color: var(--text-main);
+      display: flex; align-items: center; gap: 6px;
+      white-space: nowrap;
+    }
+    .t-project-repo {
+      font-size: 12px; color: var(--text-tertiary); font-weight: 500;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* Status badge */
+    .badge {
+      font-size: 10px; font-weight: 800; padding: 2px 8px;
+      border-radius: 999px; text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-rising { background: var(--green-bg); color: var(--green); }
+    .badge-cooling { background: var(--red-bg); color: var(--red); }
+
+    /* Data cells */
+    .t-num {
+      font-size: 15px; font-weight: 700; text-align: right;
+      color: var(--text-main);
+    }
+    .t-num.fire { color: var(--accent-color); }
+    .t-change {
+      font-size: 13px; font-weight: 600; text-align: right;
+    }
     .t-change.up { color: var(--green); }
     .t-change.down { color: var(--red); }
-    .t-total { font-size: 15px; font-weight: 800; color: var(--text-main); font-variant-numeric: tabular-nums; text-align: right; letter-spacing: -0.3px; }
-    .t-total.fire { color: #ea580c; }
-
-    footer { text-align: center; padding: 40px 24px 80px; color: var(--text-tertiary); font-size: 13px; font-weight: 500; }
-    footer a { color: var(--text-main); font-weight: 600; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 900px) {
-      .summary-cards { grid-template-columns: repeat(2, 1fr); }
-      .table-header, .table-row { grid-template-columns: 52px 1fr 100px 110px; }
-      .hide-tablet { display: none; }
+    .fire-icon { margin-right: 2px; }
+    .t-total {
+      font-size: 16px; font-weight: 800; text-align: right;
+      color: var(--text-main);
     }
-    @media (max-width: 600px) {
+    .t-total.fire { color: var(--accent-color); }
+
+    /* Skeleton loading */
+    .skeleton-row {
+      display: grid;
+      grid-template-columns: 52px 1fr 100px 72px 90px 72px 90px 72px 110px;
+      padding: 20px 24px; align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      animation: skeleton-pulse 1.5s ease-in-out infinite;
+    }
+    .sk-block {
+      background: #e8e8e8; border-radius: 6px;
+    }
+    .sk-rank { width: 28px; height: 20px; }
+    .sk-proj { display: flex; gap: 12px; align-items: center; }
+    .sk-proj-icon { width: 44px; height: 44px; border-radius: 12px; background: #e8e8e8; flex-shrink: 0; }
+    .sk-proj-text { display: flex; flex-direction: column; gap: 6px; }
+    .sk-proj-name { width: 120px; height: 16px; }
+    .sk-proj-repo { width: 160px; height: 12px; }
+    .sk-cell { width: 70px; height: 16px; margin-left: auto; }
+    @keyframes skeleton-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 40px 20px 60px;
+      color: var(--text-tertiary); font-size: 14px; font-weight: 500;
+    }
+
+    /* Back to top */
+    .back-top {
+      position: fixed; bottom: 40px; right: 40px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent-color); color: #fff;
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(217, 64, 37, 0.3);
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.3s; pointer-events: none; z-index: 900;
+    }
+    .back-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-top:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 64, 37, 0.4); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 32px; right: 32px;
+      background: #333; color: #fff; padding: 12px 24px;
+      border-radius: 12px; font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none; z-index: 999;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .summary-cards { grid-template-columns: repeat(2, 1fr); }
+      .table-header, .table-row, .skeleton-row {
+        grid-template-columns: 50px 1fr 100px 80px 120px;
+      }
       .hide-mobile { display: none; }
+    }
+    @media (max-width: 768px) {
       .nav-links { display: none; }
+      .summary-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .sc-value { font-size: 24px; }
+      .table-header, .table-row, .skeleton-row {
+        grid-template-columns: 40px 1fr 120px;
+      }
+      .hide-tablet { display: none; }
     }
   </style>
 </head>
@@ -181,71 +394,75 @@
   <div class="bg-blob blob-1"></div>
   <div class="bg-blob blob-2"></div>
 
+  <!-- Navbar -->
   <div class="nav-wrapper">
     <nav class="navbar">
       <a href="./" class="nav-logo">
         <img src="./ico.png" alt="WhichClaw">
-        WhichClaw
+        <img src="./logo.png" alt="WhichClaw" style="height:24px;width:auto;">
       </a>
       <div class="nav-links">
         <a href="./">Featured</a>
         <a href="./all.html">All Skills</a>
-        <a href="https://coffeecli.com/" target="_blank" rel="noopener">Coffee CLI</a>
-        <a href="./ranking.html" class="active">Lobster Leaderboard
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </a>
-        <a href="./models.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-          LLM Leaderboard
-        </a>
+        <a href="https://coffeecli.com/" target="_blank" style="display:flex;align-items:center;">Coffee CLI<span
+            class="badge-soon">Hot</span></a>
+        <a href="./ranking.html" class="active" style="display:flex;align-items:center;gap:4px;">Lobster Leaderboard<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+        <a href="./models.html" style="display:flex;align-items:center;gap:4px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>LLM Leaderboard</a>
       </div>
-      <button class="nav-search-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <button class="nav-search-btn" style="pointer-events:none;cursor:default;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
         Search
       </button>
     </nav>
   </div>
 
   <div class="container">
-    <header class="page-header">
-      <h1>Global <span>Lobster Leaderboard</span></h1>
-      <div class="meta"><span class="pulse-dot"></span><span id="updateTime">Just updated</span></div>
-    </header>
-
-    <div class="summary-cards">
-      <div class="summary-card">
-        <div class="sc-label">🏆 LEADER</div>
-        <div class="sc-project">
-          <div class="sc-project-icon" id="leaderIcon"><img src="./ico.png" alt=""></div>
-          <div style="min-width:0;">
-            <div class="sc-value" id="leaderName">—</div>
-            <div class="sc-desc" id="leaderStars">—</div>
-          </div>
-        </div>
-      </div>
-      <div class="summary-card">
-        <div class="sc-label">⭐ ECOSYSTEM STARS</div>
-        <div class="sc-value" id="ecoStars">—</div>
-        <div class="sc-desc" id="ecoStarsDesc">—</div>
-      </div>
-      <div class="summary-card">
-        <div class="sc-label">📈 7D GROWTH</div>
-        <div class="sc-value" id="ecoGrowth" style="color:var(--green)">—</div>
-        <div class="sc-desc" id="ecoGrowthDesc">—</div>
-      </div>
-      <div class="summary-card">
-        <div class="sc-label">🚀 TOP GROWTH</div>
-        <div class="sc-project">
-          <div class="sc-project-icon" id="topGrowthIcon"><img src="./ico.png" alt=""></div>
-          <div style="min-width:0;">
-            <div class="sc-value" id="topGrowthName">—</div>
-            <div class="sc-desc" id="topGrowthDesc">—</div>
-          </div>
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-header-row">
+        <h1>Global <span>Lobster Leaderboard</span></h1>
+        <div class="page-header-meta">
+          <span class="update-dot"></span>
+          <span id="updateTime">Just updated</span>
         </div>
       </div>
     </div>
 
-    <section class="ranking-wrapper">
+    <!-- Summary Stats Cards -->
+    <div class="summary-cards" id="summaryCards">
+      <div class="summary-card">
+        <div class="sc-label">🏆 LEADER</div>
+        <div class="sc-project">
+          <div class="sc-project-icon" id="leaderIcon"><img src="./public/ico/openclaw.svg" alt=""></div>
+          <div class="sc-project-name" id="leaderName">Loading…</div>
+        </div>
+        <div class="sc-desc" id="leaderStars">--</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">⭐ ECOSYSTEM STARS</div>
+        <div class="sc-value" id="ecoStars">--</div>
+        <div class="sc-desc" id="ecoStarsDesc">--</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">📈 7D GROWTH</div>
+        <div class="sc-value green" id="ecoGrowth">--</div>
+        <div class="sc-desc" id="ecoGrowthDesc">--</div>
+      </div>
+      <div class="summary-card">
+        <div class="sc-label">🚀 TOP GROWTH</div>
+        <div class="sc-project">
+          <div class="sc-project-icon" id="topGrowthIcon"><img src="./public/ico/hermes.png" alt=""></div>
+          <div class="sc-project-name" id="topGrowthName">Loading…</div>
+        </div>
+        <div class="sc-desc" id="topGrowthDesc">--</div>
+      </div>
+    </div>
+
+    <!-- Ranking Table -->
+    <div class="ranking-wrapper">
       <div class="table-header">
         <div>RANK</div>
         <div>PROJECT</div>
@@ -257,16 +474,100 @@
         <div class="th-right hide-mobile hide-tablet">CHANGE</div>
         <div class="th-right">TOTAL STARS ↓</div>
       </div>
-      <div id="rankingBody"></div>
-    </section>
+      <div id="rankingBody">
+        <!-- Skeleton loading -->
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+        <div class="skeleton-row">
+          <div class="sk-block sk-rank"></div>
+          <div class="sk-proj"><div class="sk-proj-icon"></div><div class="sk-proj-text"><div class="sk-block sk-proj-name"></div><div class="sk-block sk-proj-repo"></div></div></div>
+          <div class="sk-block sk-cell"></div><div class="sk-block sk-cell hide-mobile"></div>
+          <div class="sk-block sk-cell hide-mobile"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell hide-mobile hide-tablet"></div><div class="sk-block sk-cell hide-mobile hide-tablet"></div>
+          <div class="sk-block sk-cell"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer>
-    <p>Business: <a href="mailto:hi@whichclaw.com">hi@whichclaw.com</a> · © 2026 WhichClaw (whichclaw.com)</p>
+    <p>Synced hourly via GitHub API · © 2026 WhichClaw (whichclaw.com)</p>
   </footer>
 
+  <div class="toast" id="toast">Data refreshed</div>
+  <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
   <script>
-    const LANG_MAP = { 'TypeScript':'TypeScript','Python':'Python','Rust':'Rust','Go':'Go','Zig':'Zig' };
+    // Data is hardcoded and updated via workflow every 3 days
+    const LANG_MAP = {
+      'TypeScript': 'TypeScript',
+      'Python': 'Python',
+      'Rust': 'Rust',
+      'Go': 'Go',
+      'Zig': 'Zig',
+    };
+
+    const PROJECT_COLORS = {
+      'OpenClaw':     { bg: '#eef2fa', text: '#2f5fe3' },
+      'Nanobot':      { bg: '#f0f7f3', text: '#1d7b4b' },
+      'ZeroClaw':     { bg: '#fef5ed', text: '#b56011' },
+      'PicoClaw':     { bg: '#fcf0f5', text: '#b82b6b' },
+      'NanoClaw':     { bg: '#f4ecfb', text: '#722ed1' },
+      'OpenFang':     { bg: '#ecfeff', text: '#0891b2' },
+      'IronClaw':     { bg: '#fff7ed', text: '#c2410c' },
+      'Hermes Agent': { bg: '#fef2f2', text: '#dc2626' },
+      'NullClaw':     { bg: '#f0fdf4', text: '#16a34a' },
+      'TinyClaw':     { bg: '#f5f3ff', text: '#7c3aed' },
+      'Paperclip':    { bg: '#f0f5ff', text: '#1d39c4' },
+    };
+
+    const PROJECT_DATA = {
+      'OpenClaw': { repo: 'openclaw/openclaw', language: 'TypeScript' },
+      'Nanobot': { repo: 'HKUDS/nanobot', language: 'Python' },
+      'ZeroClaw': { repo: 'zeroclaw-labs/zeroclaw', language: 'Rust' },
+      'PicoClaw': { repo: 'sipeed/picoclaw', language: 'Go' },
+      'NanoClaw': { repo: 'qwibitai/nanoclaw', language: 'TypeScript' },
+      'OpenFang': { repo: 'RightNow-AI/openfang', language: 'Rust' },
+      'IronClaw': { repo: 'nearai/ironclaw', language: 'Rust' },
+      'Hermes Agent': { repo: 'NousResearch/hermes-agent', language: 'Python' },
+      'NullClaw': { repo: 'nullclaw/nullclaw', language: 'Zig' },
+      'TinyClaw': { repo: 'TinyAGI/tinyclaw', language: 'TypeScript' },
+      'Paperclip': { repo: 'paperclipai/paperclip', language: 'TypeScript' },
+    };
+
+    // Get local icon path from project name
     const PROJECT_ICONS = {
       'OpenClaw': './public/ico/openclaw.svg',
       'Nanobot': './public/ico/nanobot.png',
@@ -280,60 +581,98 @@
       'TinyClaw': './public/ico/tinyclaw.svg',
       'Paperclip': './public/ico/paperclip.png',
     };
-    function iconFor(name) { return PROJECT_ICONS[name] || './ico.png'; }
+
+    function getIconUrl(name) {
+      return PROJECT_ICONS[name] || './ico.png';
+    }
+
+    function getIconByRepo(repo) {
+      // Find icon by matching repo org to project name
+      for (const [name, path] of Object.entries(PROJECT_ICONS)) {
+        if (repo && repo.toLowerCase().includes(name.toLowerCase().replace(' ', ''))) return path;
+        if (repo && repo.toLowerCase().includes(name.split(' ')[0].toLowerCase())) return path;
+      }
+      return './ico.png';
+    }
 
     function isPositive(val) {
-      if (!val || val === '—') return null;
-      const s = String(val).replace(/[,%\s]/g,'');
+      if (!val) return null;
+      const s = String(val).replace(/[,%\s]/g, '');
       if (s.startsWith('+')) return true;
       if (s.startsWith('-')) return false;
       const n = parseFloat(s);
       return n > 0 ? true : n < 0 ? false : null;
     }
+
     function hasFire(val) {
-      const s = String(val||'').replace(/[,\s]/g,'');
+      // Show fire emoji for values with + prefix over 1000 or over 50%
+      const s = String(val).replace(/[,\s]/g, '');
       if (s.startsWith('+')) {
-        const n = parseFloat(s.replace('+','').replace('%',''));
+        const n = parseFloat(s.replace('+', '').replace('%', ''));
         if (s.includes('%')) return n >= 50;
         return n >= 2000;
       }
       return false;
     }
 
+    function translateDesc(desc) {
+      return desc
+        .replace(/Across (\d+) tracked repos/, 'Across $1 tracked repos')
+        .replace('Stars', 'stars')
+        .replace('stars', 'stars')
+        .replace('over 7 days', '(7d)');
+    }
+
     function renderSummary(summary) {
-      document.getElementById('leaderIcon').innerHTML = `<img src="${iconFor(summary.leader.name)}" alt="">`;
+      // Leader
+      document.getElementById('leaderIcon').innerHTML = `<img src="${getIconUrl(summary.leader.name)}" alt="${summary.leader.name}">`;
       document.getElementById('leaderName').textContent = summary.leader.name;
-      document.getElementById('leaderStars').textContent = summary.leader.stars;
+      document.getElementById('leaderStars').textContent = translateDesc(summary.leader.stars);
+
+      // Ecosystem Stars
       document.getElementById('ecoStars').textContent = summary.ecosystemStars.total;
-      document.getElementById('ecoStarsDesc').textContent = summary.ecosystemStars.desc;
+      document.getElementById('ecoStarsDesc').textContent = translateDesc(summary.ecosystemStars.desc);
+
+      // Growth
       document.getElementById('ecoGrowth').textContent = summary.growth7d.value;
-      document.getElementById('ecoGrowthDesc').textContent = summary.growth7d.percentage;
-      document.getElementById('topGrowthIcon').innerHTML = `<img src="${iconFor(summary.topGrowth.name)}" alt="">`;
+      document.getElementById('ecoGrowthDesc').textContent = translateDesc(summary.growth7d.percentage);
+
+      // Top Growth
+      document.getElementById('topGrowthIcon').innerHTML = `<img src="${getIconUrl(summary.topGrowth.name)}" alt="${summary.topGrowth.name}">`;
       document.getElementById('topGrowthName').textContent = summary.topGrowth.name;
-      document.getElementById('topGrowthDesc').textContent = summary.topGrowth.desc;
+      document.getElementById('topGrowthDesc').textContent = translateDesc(summary.topGrowth.desc);
     }
 
     function renderRankings(rankings) {
       const body = document.getElementById('rankingBody');
-      if (!rankings || !rankings.length) {
-        body.innerHTML = '<div style="text-align:center;padding:60px;color:var(--text-tertiary)">No data yet.</div>';
+      if (!rankings || rankings.length === 0) {
+        body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-tertiary)"><h3>No data yet.</h3></div>';
         return;
       }
+
       body.innerHTML = rankings.map(r => {
+        const avatarUrl = getIconUrl(r.name);
         const rankClass = r.rank === 1 ? 'gold' : r.rank === 2 ? 'silver' : r.rank === 3 ? 'bronze' : '';
-        const statusBadge = r.status === 'RISING' ? '<span class="badge badge-rising">Rising</span>'
-                          : r.status === 'COOLING' ? '<span class="badge badge-cooling">Cooling</span>' : '';
-        const changeClass = v => isPositive(v) === true ? 'up' : isPositive(v) === false ? 'down' : '';
+        const statusBadge = r.status === 'RISING'
+          ? '<span class="badge badge-rising">Rising</span>'
+          : r.status === 'COOLING'
+            ? '<span class="badge badge-cooling">Cooling</span>'
+            : '';
+
         const stars7dFire = hasFire(r.stars7d);
+        const changeClass = v => isPositive(v) === true ? 'up' : isPositive(v) === false ? 'down' : '';
         const totalFire = r.rank <= 3;
+
         return `
           <div class="table-row">
             <div class="t-rank ${rankClass}">#${r.rank}</div>
             <div class="t-project">
-              <div class="t-project-icon"><img src="${iconFor(r.name)}" alt=""></div>
-              <div style="min-width:0;">
-                <div class="t-project-name">${r.name} ${statusBadge}</div>
-                <div class="t-project-repo">${r.repo} · ${LANG_MAP[r.language] || r.language || ''}</div>
+              <div class="t-project-icon"><img src="${avatarUrl}" alt="${r.name}"></div>
+              <div class="t-project-info">
+                <div class="t-project-name">
+                  ${r.name} ${statusBadge}
+                </div>
+                <div class="t-project-repo">${(PROJECT_DATA[r.name] || {}).repo || ''} · ${LANG_MAP[(PROJECT_DATA[r.name] || {}).language] || (PROJECT_DATA[r.name] || {}).language || ''}</div>
               </div>
             </div>
             <div class="t-num ${stars7dFire ? 'fire' : ''}">${stars7dFire ? '<span class="fire-icon">🔥</span>' : ''}${r.stars7d}</div>
@@ -347,7 +686,20 @@
       }).join('');
     }
 
-    // Fallback hardcoded data used until ranking_sync.py has a 7d baseline.
+    // Session-based timestamp (shows time since page was opened)
+    const pageOpenTime = Date.now();
+    function updateTimestamp() {
+      const diffMin = Math.floor((Date.now() - pageOpenTime) / 60000);
+      let text;
+      if (diffMin < 1) text = 'Just updated';
+      else if (diffMin < 60) text = `${diffMin}  min ago`;
+      else text = `${Math.floor(diffMin / 60)}  h ago`;
+      document.getElementById('updateTime').textContent = text;
+    }
+    setInterval(updateTimestamp, 30000);
+
+    // Ranking data (updated via /sync-ranking workflow every 3 days)
+    // Last synced: 2026-04-21
     const RANKING_DATA = {
       summary: {
         leader: { name: 'OpenClaw', stars: '361,411 stars' },
@@ -356,20 +708,25 @@
         topGrowth: { name: 'Hermes Agent', desc: '+27.0% over 7 days' },
       },
       rankings: [
-        { rank: 1, name: 'OpenClaw',     status: '',        repo: 'openclaw/openclaw',           language: 'TypeScript', stars7d: '+4,158',  stars7dChange: '+1.2%',  contribs7d: '125', contribs7dChange: '+21.4%',  commits7d: '1,691', commits7dChange: '+29.5%', totalStars: '361,411' },
-        { rank: 2, name: 'Hermes Agent', status: 'RISING',  repo: 'NousResearch/hermes-agent',    language: 'Python',     stars7d: '+22,567', stars7dChange: '+27.0%', contribs7d: '154', contribs7dChange: '+12.5%',  commits7d: '806',   commits7dChange: '+12.9%', totalStars: '106,262' },
-        { rank: 3, name: 'Paperclip',    status: 'RISING',  repo: 'paperclipai/paperclip',        language: 'TypeScript', stars7d: '+3,423',  stars7dChange: '+6.4%',  contribs7d: '13',  contribs7dChange: '+116.7%', commits7d: '40',    commits7dChange: '+77.8%', totalStars: '56,970' },
-        { rank: 4, name: 'Nanobot',      status: 'COOLING', repo: 'HKUDS/nanobot',                language: 'Python',     stars7d: '+776',    stars7dChange: '+2.0%',  contribs7d: '32',  contribs7dChange: '+11.1%',  commits7d: '143',   commits7dChange: '+0.7%',  totalStars: '40,280' },
-        { rank: 5, name: 'ZeroClaw',     status: 'RISING',  repo: 'zeroclaw-labs/zeroclaw',       language: 'Rust',       stars7d: '+239',    stars7dChange: '+0.8%',  contribs7d: '26',  contribs7dChange: '+116.7%', commits7d: '65',    commits7dChange: '+27.8%', totalStars: '30,380' },
-        { rank: 6, name: 'PicoClaw',     status: 'COOLING', repo: 'sipeed/picoclaw',              language: 'Go',         stars7d: '+225',    stars7dChange: '+0.8%',  contribs7d: '11',  contribs7dChange: '+38.9%',  commits7d: '57',    commits7dChange: '+32.1%', totalStars: '28,365' },
-        { rank: 7, name: 'NanoClaw',     status: '',        repo: 'qwibitai/nanoclaw',            language: 'TypeScript', stars7d: '+334',    stars7dChange: '+1.2%',  contribs7d: '1',   contribs7dChange: '+0.0%',   commits7d: '3',     commits7dChange: '+50.0%', totalStars: '27,603' },
-        { rank: 8, name: 'OpenFang',     status: 'COOLING', repo: 'RightNow-AI/openfang',         language: 'Rust',       stars7d: '+227',    stars7dChange: '+1.4%',  contribs7d: '1',   contribs7dChange: '+87.5%',  commits7d: '16',    commits7dChange: '+68.0%', totalStars: '16,859' },
-        { rank: 9, name: 'IronClaw',     status: '',        repo: 'nearai/ironclaw',              language: 'Rust',       stars7d: '+133',    stars7dChange: '+1.1%',  contribs7d: '18',  contribs7dChange: '+0.0%',   commits7d: '133',   commits7dChange: '+51.1%', totalStars: '11,894' },
-        { rank: 10,name: 'NullClaw',     status: 'RISING',  repo: 'nullclaw/nullclaw',            language: 'Zig',        stars7d: '+89',     stars7dChange: '+1.2%',  contribs7d: '3',   contribs7dChange: '+0.0%',   commits7d: '79',    commits7dChange: '+8.2%',  totalStars: '7,282' },
+        { rank: 1, name: 'OpenClaw', status: '', repo: 'openclaw/openclaw', language: 'TypeScript', stars7d: '+4,158', stars7dChange: '+1.2%', contribs7d: '125', contribs7dChange: '21.4%', commits7d: '1,691', commits7dChange: '29.5%', totalStars: '361,411' },
+        { rank: 2, name: 'Hermes Agent', status: 'RISING', repo: 'NousResearch/hermes-agent', language: 'Python', stars7d: '+22,567', stars7dChange: '+27.0%', contribs7d: '154', contribs7dChange: '12.5%', commits7d: '806', commits7dChange: '+12.9%', totalStars: '106,262' },
+        { rank: 3, name: 'Paperclip', status: 'RISING', repo: 'paperclipai/paperclip', language: 'TypeScript', stars7d: '+3,423', stars7dChange: '+6.4%', contribs7d: '13', contribs7dChange: '+116.7%', commits7d: '40', commits7dChange: '77.8%', totalStars: '56,970' },
+        { rank: 4, name: 'Nanobot', status: 'COOLING', repo: 'HKUDS/nanobot', language: 'Python', stars7d: '+776', stars7dChange: '+2.0%', contribs7d: '32', contribs7dChange: '11.1%', commits7d: '143', commits7dChange: '+0.7%', totalStars: '40,280' },
+        { rank: 5, name: 'ZeroClaw', status: 'RISING', repo: 'zeroclaw-labs/zeroclaw', language: 'Rust', stars7d: '+239', stars7dChange: '+0.8%', contribs7d: '26', contribs7dChange: '+116.7%', commits7d: '65', commits7dChange: '27.8%', totalStars: '30,380' },
+        { rank: 6, name: 'PicoClaw', status: 'COOLING', repo: 'sipeed/picoclaw', language: 'Go', stars7d: '+225', stars7dChange: '+0.8%', contribs7d: '11', contribs7dChange: '38.9%', commits7d: '57', commits7dChange: '32.1%', totalStars: '28,365' },
+        { rank: 7, name: 'NanoClaw', status: '', repo: 'qwibitai/nanoclaw', language: 'TypeScript', stars7d: '+334', stars7dChange: '+1.2%', contribs7d: '1', contribs7dChange: '+0.0%', commits7d: '3', commits7dChange: '+50.0%', totalStars: '27,603' },
+        { rank: 8, name: 'OpenFang', status: 'COOLING', repo: 'RightNow-AI/openfang', language: 'Rust', stars7d: '+227', stars7dChange: '+1.4%', contribs7d: '1', contribs7dChange: '87.5%', commits7d: '16', commits7dChange: '68.0%', totalStars: '16,859' },
+        { rank: 9, name: 'IronClaw', status: '', repo: 'nearai/ironclaw', language: 'Rust', stars7d: '+133', stars7dChange: '+1.1%', contribs7d: '18', contribs7dChange: '+0.0%', commits7d: '133', commits7dChange: '+51.1%', totalStars: '11,894' },
+        { rank: 10, name: 'NullClaw', status: 'RISING', repo: 'nullclaw/nullclaw', language: 'Zig', stars7d: '+89', stars7dChange: '+1.2%', contribs7d: '3', contribs7dChange: '+0.0%', commits7d: '79', commits7dChange: '+8.2%', totalStars: '7,282' },
       ],
     };
 
     async function init() {
+      // Prefer the live snapshot produced by ranking_sync.py — BUT only if it
+      // has a full dataset (a baseline snapshot ≥6 days old was available so
+      // every 7d delta could actually be computed). Without that, half the
+      // columns would render as "—" and we'd be downgrading the page. In that
+      // case we silently fall back to the hardcoded RANKING_DATA.
       try {
         const res = await fetch('./public/ranking_snapshot.json', { cache: 'no-cache' });
         if (res.ok) {
@@ -380,12 +737,20 @@
             return;
           }
         }
-      } catch (err) { console.warn('live snapshot unavailable, fallback:', err); }
+      } catch (err) {
+        console.warn('live ranking snapshot unavailable, using fallback:', err);
+      }
       renderSummary(RANKING_DATA.summary);
       renderRankings(RANKING_DATA.rankings);
     }
 
+    // Back to top
+    window.addEventListener('scroll', () => {
+      document.getElementById('backTop').classList.toggle('show', window.scrollY > 300);
+    });
+
     init();
   </script>
 </body>
+
 </html>
