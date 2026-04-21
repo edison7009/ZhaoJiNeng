@@ -9,8 +9,6 @@
   <link rel="icon" href="./ico.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://openrouter.ai">
-  <link rel="preconnect" href="https://t0.gstatic.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
@@ -123,11 +121,10 @@
       font-size: 16px; color: var(--text-secondary); font-weight: 500;
       max-width: 720px;
     }
-    .page-header .meta {
-      margin-top: 20px; display: flex; gap: 16px; flex-wrap: wrap;
+    .meta {
+      display: inline-flex; align-items: center; gap: 6px;
       font-size: 13px; color: var(--text-tertiary); font-weight: 500;
     }
-    .page-header .meta a { color: var(--text-secondary); text-decoration: underline; text-underline-offset: 3px; }
     .pulse-dot {
       width: 8px; height: 8px; border-radius: 50%;
       background: var(--green); display: inline-block; margin-right: 6px;
@@ -330,9 +327,6 @@
   <div class="container">
     <header class="page-header">
       <h1>全球 <span>大模型实力榜</span></h1>
-      <div class="meta">
-        <span><span class="pulse-dot"></span><span id="updateTime">数据加载中…</span></span>
-      </div>
     </header>
 
     <div class="period-bar">
@@ -340,6 +334,9 @@
         <button class="period-tab" data-period="day" role="tab">今日</button>
         <button class="period-tab active" data-period="week" role="tab">本周</button>
         <button class="period-tab" data-period="month" role="tab">本月</button>
+      </div>
+      <div class="meta">
+        <span class="pulse-dot"></span><span id="updateTime">数据加载中…</span>
       </div>
     </div>
 
@@ -459,9 +456,8 @@
         const chg = formatChange(m.change);
         const rankClass = m.rank <= 3 ? ('top-' + m.rank) : '';
         const displayName = escapeHtml(m.short_name || m.name || m.permaslug);
-        const modelHref = 'https://openrouter.ai/' + encodeURI(m.permaslug);
         return `
-          <a class="row" href="${modelHref}" target="_blank" rel="noopener">
+          <div class="row">
             <div class="row-rank ${rankClass}">${m.rank}</div>
             <div class="row-avatar">${avatarHtml(m)}</div>
             <div class="row-info">
@@ -472,7 +468,7 @@
               <div class="row-tokens">${tok.value}<span class="unit">${tok.unit} tokens</span></div>
               <div class="row-change ${chg.cls}">${chg.text}</div>
             </div>
-          </a>`;
+          </div>`;
       }).join('');
       document.getElementById('board').innerHTML = html;
     }

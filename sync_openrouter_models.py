@@ -28,6 +28,8 @@ MODELS_API = "https://openrouter.ai/api/v1/models"
 RANKINGS_URL = "https://openrouter.ai/rankings?view={view}"
 VIEWS = ["day", "week", "month"]
 OUTPUT_FILE = "public/models_ranking.json"
+ICON_DIR = "public/models_icons"
+ICON_WEB_PREFIX = "./public/models_icons"
 TOP_N = 20
 UA = "Mozilla/5.0 (compatible; ZhaoJiNeng-Sync/1.0)"
 
@@ -82,7 +84,7 @@ def extract_ranking_data(html: str) -> list:
 
 
 def extract_author_icons(html: str) -> dict:
-    """Return {author_slug: icon_url}. Uses OpenRouter's rendered icons."""
+    """Return {author_slug: remote_icon_url}. Uses OpenRouter's rendered icons."""
     icons: dict = {}
     pattern = re.compile(r'alt="Favicon for ([a-z0-9][a-z0-9\-]*)"\s+src="([^"]+)"')
     for slug, src in pattern.findall(html):
@@ -93,6 +95,52 @@ def extract_author_icons(html: str) -> dict:
         src = src.replace("&amp;", "&")
         icons[slug] = src
     return icons
+
+
+def _guess_ext(url: str, content_type: str) -> str:
+    """Pick a file extension from URL or Content-Type."""
+    low = url.lower()
+    for ext in (".svg", ".png", ".jpg", ".jpeg", ".ico", ".webp"):
+        if ext in low:
+            return ext
+    ct = (content_type or "").lower()
+    if "svg" in ct: return ".svg"
+    if "png" in ct: return ".png"
+    if "jpeg" in ct or "jpg" in ct: return ".jpg"
+    if "webp" in ct: return ".webp"
+    if "icon" in ct: return ".ico"
+    return ".png"
+
+
+def localize_icons(remote_icons: dict) -> dict:
+    """Download each author icon into ICON_DIR. Return {author: local_path}.
+
+    Idempotent: existing files with the same author + extension are reused.
+    """
+    os.makedirs(ICON_DIR, exist_ok=True)
+    existing = {}
+    for fname in os.listdir(ICON_DIR):
+        stem, dot, ext = fname.partition(".")
+        if dot:
+            existing[stem] = f"{ICON_WEB_PREFIX}/{fname}"
+    local_map: dict = dict(existing)
+    for author, url in remote_icons.items():
+        if author in existing:
+            continue
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                ct = resp.headers.get("Content-Type", "")
+                ext = _guess_ext(url, ct)
+                data = resp.read()
+            fname = f"{author}{ext}"
+            with open(os.path.join(ICON_DIR, fname), "wb") as fh:
+                fh.write(data)
+            local_map[author] = f"{ICON_WEB_PREFIX}/{fname}"
+            print(f"[{_now()}] icon saved: {fname} ({len(data)} bytes)")
+        except Exception as exc:
+            print(f"[{_now()}] icon skipped for {author}: {exc}")
+    return local_map
 
 
 def build_period_ranking(rows: list, meta_index: dict, icon_map: dict) -> list:
@@ -185,13 +233,23 @@ def main() -> None:
         print(f"[{_now()}] view={view}: {len(rows)} raw rows")
         ranking_by_view[view] = rows
 
+    try:
+        home_html = http_get("https://openrouter.ai/")
+        extra = extract_author_icons(home_html)
+        for author, url in extra.items():
+            icon_accumulator.setdefault(author, url)
+        print(f"[{_now()}] homepage icon supplement: +{len(extra)} authors")
+    except Exception as exc:
+        print(f"[{_now()}] homepage icon fetch failed: {exc}")
+
+    local_icons = localize_icons(icon_accumulator)
+
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
-        "source": "https://openrouter.ai/rankings",
         "top_n": TOP_N,
     }
     for view, rows in ranking_by_view.items():
-        output[view] = build_period_ranking(rows, meta_index, icon_accumulator)
+        output[view] = build_period_ranking(rows, meta_index, local_icons)
 
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as fh:
