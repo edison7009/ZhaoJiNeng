@@ -1,0 +1,115 @@
+{
+  "updated_at": "2026-04-21T14:29:56.178250+00:00",
+  "_raw": [
+    {
+      "repo": "openclaw/openclaw",
+      "error": null,
+      "stars": 361671,
+      "forks": 73809,
+      "subscribers": 1782,
+      "default_branch": "main",
+      "commits_7d": 1899,
+      "contribs_7d": 30
+    },
+    {
+      "repo": "NousResearch/hermes-agent",
+      "error": null,
+      "stars": 107391,
+      "forks": 15414,
+      "subscribers": 417,
+      "default_branch": "main",
+      "commits_7d": 970,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "paperclipai/paperclip",
+      "error": null,
+      "stars": 57133,
+      "forks": 9796,
+      "subscribers": 324,
+      "default_branch": "master",
+      "commits_7d": 46,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "HKUDS/nanobot",
+      "error": null,
+      "stars": 40380,
+      "forks": 7105,
+      "subscribers": 199,
+      "default_branch": "main",
+      "commits_7d": 163,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "zeroclaw-labs/zeroclaw",
+      "error": "commits: Remote end closed connection without response",
+      "stars": 30396,
+      "forks": 4405,
+      "subscribers": 66,
+      "default_branch": "master",
+      "commits_7d": null,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "sipeed/picoclaw",
+      "error": null,
+      "stars": 28382,
+      "forks": 4052,
+      "subscribers": 145,
+      "default_branch": "main",
+      "commits_7d": 84,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "qwibitai/nanoclaw",
+      "error": null,
+      "stars": 27622,
+      "forks": 12530,
+      "subscribers": 120,
+      "default_branch": "main",
+      "commits_7d": 7,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "RightNow-AI/openfang",
+      "error": null,
+      "stars": 16873,
+      "forks": 2138,
+      "subscribers": 120,
+      "default_branch": "main",
+      "commits_7d": 16,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "nearai/ironclaw",
+      "error": null,
+      "stars": 11902,
+      "forks": 1373,
+      "subscribers": 81,
+      "default_branch": "staging",
+      "commits_7d": 152,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "nullclaw/nullclaw",
+      "error": null,
+      "stars": 7287,
+      "forks": 851,
+      "subscribers": 58,
+      "default_branch": "main",
+      "commits_7d": 85,
+      "contribs_7d": 0
+    },
+    {
+      "repo": "TinyAGI/tinyclaw",
+      "error": null,
+      "stars": 3525,
+      "forks": 500,
+      "subscribers": 21,
+      "default_branch": "main",
+      "commits_7d": 0,
+      "contribs_7d": null
+    }
+  ]
+}

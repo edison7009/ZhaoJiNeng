@@ -721,7 +721,22 @@
       ],
     };
 
-    function init() {
+    async function init() {
+      // Prefer the live snapshot produced by ranking_sync.py; fall back to
+      // the hardcoded RANKING_DATA if the file is missing or fails to parse.
+      try {
+        const res = await fetch('./public/ranking_snapshot.json', { cache: 'no-cache' });
+        if (res.ok) {
+          const live = await res.json();
+          if (live && live.summary && Array.isArray(live.rankings) && live.rankings.length) {
+            renderSummary(live.summary);
+            renderRankings(live.rankings);
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('live ranking snapshot unavailable, using fallback:', err);
+      }
       renderSummary(RANKING_DATA.summary);
       renderRankings(RANKING_DATA.rankings);
     }

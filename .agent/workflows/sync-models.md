@@ -1,38 +1,77 @@
-# Sync OpenRouter Models Workflow
+---
+description: Refresh the LLM leaderboard (models.html) from openrouter.ai/rankings
+---
 
-This workflow describes how to update the LLM Leaderboard (`models.html`) using the synchronization script.
-Due to the lack of an official daily/weekly/monthly ranking API from OpenRouter, we use a local Python script to fetch the latest available models, compute simulated scores based on context windows and provider tiers, and generate realistic ranking JSON files.
+# Sync LLM Leaderboard
 
-## Prerequisites
-- Python 3.x installed
-- Stable internet connection
+## One-shot command
 
-## Steps to Sync Data
-
-### 1. Run the Synchronization Script
-Navigate to the root directory of the project and execute the Python sync script:
-```powershell
-python sync_openrouter_models.py
+```bash
+python sync.py models
 ```
 
-### 2. Verify Data Generation
-Check the terminal output. It should indicate successful fetch and processing, similar to:
-```
-[20:39:04] Fetching models from OpenRouter...
-[20:39:05] Processing 343 models into rankings...
-[20:39:05] Rankings successfully saved to public/models_ranking.json
-```
-Ensure that `public/models_ranking.json` has been updated with the current timestamp.
+Single-stage wrapper around `sync_openrouter_models.py`. See
+[MAINTAINING.md](../../MAINTAINING.md) for the bigger picture.
 
-### 3. Test Locally (Optional)
-If you are running a local dev server, navigate to `/models.html` and verify that the models populate correctly across the `Day`, `Week`, and `Month` tabs.
+## What it does
 
-### 4. Commit and Push
-Commit the generated `.json` file to the repository.
-```powershell
-// turbo
-git add public/models_ranking.json
-git commit -m "data: sync openrouter models ranking YYYY-MM-DD"
+`sync_openrouter_models.py`:
+
+1. Fetches `https://openrouter.ai/rankings?view={day,week,month}` and extracts
+   the inline `rankingData` array from the Next.js RSC payload via regex.
+2. Joins with `https://openrouter.ai/api/v1/models` for display names,
+   descriptions, context length, pricing.
+3. Scrapes author favicon URLs from both the rankings pages and the homepage.
+4. Downloads every author icon into `public/models_icons/` (idempotent,
+   keyed by author slug). Only **local** relative paths are written to the
+   JSON — the runtime has zero outbound URLs.
+5. Writes `public/models_ranking.json` with 20 ranked rows per period.
+
+## Output shape
+
+```json
+{
+  "updated_at": "2026-04-21T13:05:10+00:00",
+  "top_n": 20,
+  "week": [
+    {
+      "rank": 1,
+      "permaslug": "anthropic/claude-4.6-sonnet-20260217",
+      "variant": "standard",
+      "author": "anthropic",
+      "author_icon": "./public/models_icons/anthropic.svg",
+      "short_name": "Claude Sonnet 4.6",
+      "description": "...",
+      "context_length": 200000,
+      "pricing_prompt": "0.000003",
+      "pricing_completion": "0.000015",
+      "total_tokens": 1393050756216,
+      "request_count": 41155663,
+      "change": 0.15
+    }
+  ],
+  "day":   [ ... ],
+  "month": [ ... ]
+}
+```
+
+`change` is a float delta (0.15 = +15%). `null` means "new entry".
+
+## Commit
+
+```bash
+git add public/models_ranking.json public/models_icons/
+git commit -m "data: sync LLM leaderboard $(date +%F)"
 git push origin main
 ```
-This will trigger the automatic Cloudflare Pages deployment to update the live website.
+
+## Troubleshooting
+
+- **`rankingData not found in HTML`** — OpenRouter changed their frontend.
+  Fix the regex in `extract_ranking_data()`. The data source itself (the
+  rankings page) is stable.
+- **Missing author icon** — the sync writes `author_icon: ""` and the
+  frontend falls back to a letter-in-a-colored-circle. If you want a proper
+  icon, it usually means OpenRouter no longer renders a `Favicon for <slug>`
+  `<img>` on either the rankings page or the homepage for that author.
+  Extend `extract_author_icons()` to look in more pages.

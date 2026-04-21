@@ -1,99 +1,39 @@
 ---
-description: how to manually sync skills data from SkillHub
+description: Refresh skills.json, public/featured.json, and public/skills_pages/*.json from SkillHub
 ---
 
 # Sync Skills Data
 
-## Architecture (Updated 2026-03)
+## One-shot command
 
-SkillHub (skillhub.tencent.com) migrated from static CDN JSON files to a backend API:
-- **API Base**: `https://lightmake.site`
-- **Featured (Top 50)**: `GET /api/skills/top`
-- **All Skills (paginated)**: `GET /api/skills?page=N&size=20` (max 20 per page)
-- **Skill Download**: `http://lightmake.site/api/v1/download?slug={slug}`
-- **Required Headers**: `Referer: https://skillhub.tencent.com/` and `Origin: https://skillhub.tencent.com`
-
-The old static `skills.{hash}.json` CDN approach no longer works.
-
-## How to Sync
-
-Run this workflow manually when skills data needs updating. No auto-trigger — all syncs are manual.
-
-## Steps
-
-// turbo
-1. Run the sync script (fetches all 25000+ skills paginated):
-```powershell
-powershell -ExecutionPolicy Bypass -File "C:\tmp\sync-skills.ps1"
-```
-
-// turbo
-2. Update the 50 featured skills from SkillHub API:
-```powershell
-python C:\tmp\update-featured.py
-```
-This fetches the latest top 50 from `GET /api/skills/top` and updates both `public/featured.json` (full skill objects for the homepage) and the `featured` slugs array in `skills.json`.
-
-3. Generate paginated JSON files for frontend loading (to prevent 15MB huge file lag):
-```powershell
-python d:\ZhaoJiNeng\generate_pages.py
-```
-This splits the skills into 50-item chunks inside `public/skills_pages`.
-
-4. Commit and push:
 ```bash
-git add skills.json public/featured.json public/skills_pages/
-git commit -m "chore: sync skills data YYYY-MM-DD"
-git push origin main
+python sync.py skills
 ```
 
-// turbo
-2. Fetch featured skills:
-```powershell
-$headers = @{"Referer"="https://skillhub.tencent.com/";"Origin"="https://skillhub.tencent.com"}
-$resp = Invoke-WebRequest -Uri "https://lightmake.site/api/skills/top" -UseBasicParsing -Headers $headers
-$json = [System.Text.Encoding]::UTF8.GetString($resp.RawContentStream.ToArray()) | ConvertFrom-Json
-Write-Host "Got $($json.data.skills.Count) featured skills"
-```
+That runs `scratch_sync.py` then `generate_pages.py`. See
+[MAINTAINING.md](../../MAINTAINING.md) for the unified entry.
 
-// turbo
-3. Fetch all skills (paginated, 20 per page):
-```powershell
-# Loop through pages 1..N until all skills fetched
-$page = 1; $all = @()
-do {
-  $r = Invoke-WebRequest -Uri "https://lightmake.site/api/skills?page=$page&size=20" -UseBasicParsing -Headers $headers
-  $j = [System.Text.Encoding]::UTF8.GetString($r.RawContentStream.ToArray()) | ConvertFrom-Json
-  $all += $j.data.skills; $page++
-  Start-Sleep -Milliseconds 100
-} while ($all.Count -lt $j.data.total)
-```
+## What each script does
 
-4. Commit and push:
-```bash
-git add skills.json
-git commit -m "chore: manual sync skills.json"
-git push
-```
+1. `scratch_sync.py`
+   - `GET https://lightmake.site/api/skills/top` → `public/featured.json` (50 full skill objects)
+   - `GET https://lightmake.site/api/skills?page=N&size=20` (≈685 pages, concurrency 50) → `skills.json`
+   - Required headers: `Referer: https://skillhub.tencent.com/`, `Origin: https://skillhub.tencent.com`
 
-## API Endpoints
+2. `generate_pages.py`
+   - Reads `skills.json`
+   - Sorts by `(stars, downloads)` descending
+   - Writes `public/skills_pages/1.json` .. `public/skills_pages/<N>.json`, 50 items per page
+   - Frontend (`all.html`) loads page 1 for first paint, hydrates the rest in the background
 
-| Resource | URL |
-|----------|-----|
-| Featured Top 50 | `https://lightmake.site/api/skills/top` |
-| All Skills (paginated) | `https://lightmake.site/api/skills?page=N&size=20` |
-| Skill Download | `http://lightmake.site/api/v1/download?slug={slug}` |
-| SkillHub Frontend | `https://skillhub.tencent.com/` |
+## Skill object schema
 
-## Data Format
-
-Each skill object from the API:
 ```json
 {
   "slug": "skill-name",
   "name": "Skill Name",
   "description": "English description",
-  "description_zh": "Chinese description",
+  "description_zh": "中文描述",
   "version": "1.0.0",
   "homepage": "https://clawhub.ai/skill-name",
   "tags": [],
@@ -107,4 +47,20 @@ Each skill object from the API:
 }
 ```
 
-Categories: `ai-intelligence`, `developer-tools`, `productivity`, `data-analysis`, `content-creation`, `security-compliance`, `communication-collaboration`
+Categories: `ai-intelligence`, `developer-tools`, `productivity`, `data-analysis`, `content-creation`, `security-compliance`, `communication-collaboration`.
+
+## Commit
+
+```bash
+git add skills.json public/featured.json public/skills_pages/
+git commit -m "data: sync skills $(date +%F)"
+git push origin main
+```
+
+`skills.json` is ≈25 MB — don't churn it.
+
+## First-time setup
+
+```bash
+pip install -r requirements.txt    # installs aiohttp
+```
