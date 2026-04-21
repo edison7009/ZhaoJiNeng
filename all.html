@@ -1195,10 +1195,8 @@
         });
       }
 
-      // 仅在有搜索词时进行排序，否则保持默认原始顺序
-      if (q) {
-        filtered.sort((a, b) => (b.stars || 0) - (a.stars || 0));
-      }
+      // 始终按照下载量从高到低排序
+      filtered.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
 
       filteredSkills = filtered;
       
