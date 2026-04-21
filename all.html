@@ -1256,7 +1256,7 @@
           <h3>正在加载技能库数据，请稍候...</h3>
         </div>`;
       try {
-        const res = await fetch('./skills.json', { signal: AbortSignal.timeout(30000) });
+        const res = await fetch('./skills.json');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         allSkills = await res.json();
         applyFilters(true);
@@ -1266,7 +1266,7 @@
           <div class="empty-state">
             <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             <h3>数据加载失败</h3>
-            <p>请刷新页面重试</p>
+            <p>请刷新页面重试。(${err.message || '网络或解析错误'})</p>
           </div>
         `;
       }
