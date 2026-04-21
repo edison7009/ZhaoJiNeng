@@ -1017,15 +1017,11 @@
   </div>
 
   <script>
-    let allLoadedSkills = [];
+    let allSkills = [];
     let filteredSkills = [];
     let loadedCount = 0;
     let currentCategory = 'all';
     let isLoading = false;
-    let isFetchingPage = false;
-    let currentPage = 1;
-    let totalPages = 1;
-    let totalSkillsCount = 0;
 
     const colorPalette = [
       { bg: 'var(--cat-1)', text: 'var(--cat-1-text)' },
@@ -1148,13 +1144,8 @@
       if (isLoading) return;
       const remaining = filteredSkills.length - loadedCount;
       
-      // 如果当前渲染完毕，但还有分页未加载，去加载下一页 API
-      if (remaining <= 0) {
-        if (currentPage <= totalPages && !isFetchingPage && currentCategory === 'all' && !document.getElementById('searchInput').value) {
-          fetchNextPage().then(() => loadMore());
-        }
-        return;
-      }
+      // 如果当前渲染完毕，不需要再加载了
+      if (remaining <= 0) return;
 
       isLoading = true;
       const container = document.getElementById('skillsList');
@@ -1178,11 +1169,7 @@
         loadedCount += batch;
 
         if (loadedCount >= filteredSkills.length) {
-          if (currentPage > totalPages) {
-            sentinel.innerHTML = `<div class="load-end">— 已加载全部数据 —</div>`;
-          } else {
-            sentinel.innerHTML = `<div class="load-end" style="cursor:pointer;" onclick="fetchNextPage().then(()=>loadMore())">加载更多</div>`;
-          }
+          sentinel.innerHTML = `<div class="load-end">— 已加载全部数据 —</div>`;
         } else {
           sentinel.innerHTML = '';
         }
@@ -1191,7 +1178,7 @@
     }
 
     function applyFilters(resetCount = true) {
-      let filtered = allLoadedSkills;
+      let filtered = allSkills;
 
       if (currentCategory !== 'all') {
         const apiKey = CAT_REVERSE[currentCategory];
@@ -1208,7 +1195,10 @@
         });
       }
 
-      filtered.sort((a, b) => (b.stars || 0) - (a.stars || 0));
+      // 仅在有搜索词时进行排序，否则保持默认原始顺序
+      if (q) {
+        filtered.sort((a, b) => (b.stars || 0) - (a.stars || 0));
+      }
 
       filteredSkills = filtered;
       
@@ -1219,12 +1209,11 @@
       
       document.getElementById('scrollSentinel').innerHTML = '';
       
-      // 更新数量提示，如果是搜索状态，提示是在已加载的部分里搜索
       let countText = "";
       if (!q && currentCategory === 'all') {
-        countText = `共 ${totalSkillsCount.toLocaleString()} 个技能（当前展示前 ${allLoadedSkills.length} 个热门）`;
+        countText = `共 ${allSkills.length.toLocaleString()} 个技能`;
       } else {
-        countText = `匹配到 ${filteredSkills.length} 个技能（在当前已加载的 ${allLoadedSkills.length} 个热门技能中过滤）`;
+        countText = `匹配到 ${filteredSkills.length.toLocaleString()} 个技能`;
       }
       document.getElementById('resultCount').textContent = countText;
 
@@ -1260,40 +1249,24 @@
       }
     });
 
-    async function fetchNextPage() {
-      if (isFetchingPage || currentPage > totalPages) return;
-      isFetchingPage = true;
-      try {
-        const res = await fetch(`./public/skills_pages/${currentPage}.json`, { signal: AbortSignal.timeout(10000) });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        totalPages = data.total_pages;
-        totalSkillsCount = data.total || 0;
-        const newSkills = data.skills || [];
-        allLoadedSkills = allLoadedSkills.concat(newSkills);
-        const isFirstPage = (currentPage === 1);
-        currentPage++;
-        applyFilters(isFirstPage);
-      } catch (err) {
-        console.warn('Fetch page error:', err);
-      } finally {
-        isFetchingPage = false;
-      }
-    }
-
     async function initData() {
       document.getElementById('skillsList').innerHTML = `
         <div class="empty-state">
           <div style="width: 40px; height: 40px; border: 3px solid var(--border-color); border-top-color: var(--accent-color); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px;"></div>
-          <h3>加载中...</h3>
+          <h3>正在加载技能库数据，请稍候...</h3>
         </div>`;
-      await fetchNextPage();
-      if (allLoadedSkills.length === 0) {
+      try {
+        const res = await fetch('./skills.json', { signal: AbortSignal.timeout(30000) });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        allSkills = await res.json();
+        applyFilters(true);
+      } catch (err) {
+        console.warn('Fetch all data error:', err);
         document.getElementById('skillsList').innerHTML = `
           <div class="empty-state">
             <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <h3>暂无数据</h3>
-            <p>请联系管理员同步技能库</p>
+            <h3>数据加载失败</h3>
+            <p>请刷新页面重试</p>
           </div>
         `;
       }
