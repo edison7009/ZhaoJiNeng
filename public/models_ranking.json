@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-22T19:16:48.898051+00:00",
+  "updated_at": "2026-04-22T21:53:01.700272+00:00",
   "top_n": 20,
   "day": [
     {
@@ -46,8 +46,8 @@
       "short_name": "Kimi K2.6",
       "description": "Kimi K2.6 is Moonshot AI's next-generation multimodal model, designed for long-horizon coding, coding-driven UI/UX generation, and multi-agent orchestration. It handles complex end",
       "context_length": 262144,
-      "pricing_prompt": "0.0000008",
-      "pricing_completion": "0.0000035",
+      "pricing_prompt": "0.00000055",
+      "pricing_completion": "0.0000025",
       "total_tokens": 189156716124,
       "request_count": 2889870,
       "change": 6.821279431030305,
