@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-23T19:13:06.746829+00:00",
+  "updated_at": "2026-04-23T21:48:03.463723+00:00",
   "top_n": 20,
   "day": [
     {
@@ -98,7 +98,7 @@
       "description": "MiniMax-M2.5 is a SOTA large language model designed for real-world productivity. Trained in a diverse range of complex real-world digital working environments, M2.5 builds upon th",
       "context_length": 196608,
       "pricing_prompt": "0.00000015",
-      "pricing_completion": "0.0000012",
+      "pricing_completion": "0.00000115",
       "total_tokens": 134824967776,
       "request_count": 3222893,
       "change": -0.05123458661520477,
@@ -423,7 +423,7 @@
       "description": "MiniMax-M2.5 is a SOTA large language model designed for real-world productivity. Trained in a diverse range of complex real-world digital working environments, M2.5 builds upon th",
       "context_length": 196608,
       "pricing_prompt": "0.00000015",
-      "pricing_completion": "0.0000012",
+      "pricing_completion": "0.00000115",
       "total_tokens": 965355890315,
       "request_count": 22357579,
       "change": -0.12113427942496546,
@@ -816,7 +816,7 @@
       "description": "MiniMax-M2.5 is a SOTA large language model designed for real-world productivity. Trained in a diverse range of complex real-world digital working environments, M2.5 builds upon th",
       "context_length": 196608,
       "pricing_prompt": "0.00000015",
-      "pricing_completion": "0.0000012",
+      "pricing_completion": "0.00000115",
       "total_tokens": 4148632007082,
       "request_count": 99461378,
       "change": -0.4022427947958584,
@@ -1002,7 +1002,7 @@
       "short_name": "GLM 5",
       "description": "GLM-5 is Z.ai’s flagship open-source foundation model engineered for complex systems design and long-horizon agent workflows. Built for expert developers, it delivers production-gr",
       "context_length": 202752,
-      "pricing_prompt": "0.00000065",
+      "pricing_prompt": "0.0000006",
       "pricing_completion": "0.00000208",
       "total_tokens": 1562853079541,
       "request_count": 73446157,
