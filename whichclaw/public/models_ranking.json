@@ -1,24 +1,7 @@
 {
-  "updated_at": "2026-05-02T15:49:42.053566+00:00",
+  "updated_at": "2026-05-02T19:02:14.886383+00:00",
   "top_n": 20,
   "day": [
-    {
-      "permaslug": "openai/gpt-5.5-20260423",
-      "variant": "standard",
-      "variant_permaslug": "openai/gpt-5.5-20260423",
-      "author": "openai",
-      "author_icon": "./public/models_icons/openai.svg",
-      "name": "OpenAI: GPT-5.5",
-      "short_name": "GPT-5.5",
-      "description": "GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads, building on GPT-5.4 with stronger reasoning, higher reliability, and improved token efficiency on ha",
-      "context_length": 1050000,
-      "pricing_prompt": "0.000005",
-      "pricing_completion": "0.00003",
-      "total_tokens": 625824354496,
-      "request_count": 2048123,
-      "change": 1.8243502779698533,
-      "rank": 1
-    },
     {
       "permaslug": "tencent/hy3-preview-20260421",
       "variant": "free",
@@ -34,7 +17,7 @@
       "total_tokens": 464169204938,
       "request_count": 8539545,
       "change": 0.028706946823601903,
-      "rank": 2
+      "rank": 1
     },
     {
       "permaslug": "moonshotai/kimi-k2.6-20260420",
@@ -51,7 +34,7 @@
       "total_tokens": 240146647966,
       "request_count": 4186441,
       "change": 0.003927015753521815,
-      "rank": 3
+      "rank": 2
     },
     {
       "permaslug": "anthropic/claude-4.6-sonnet-20260217",
@@ -68,7 +51,7 @@
       "total_tokens": 180415034611,
       "request_count": 5207464,
       "change": -0.1713904902864988,
-      "rank": 4
+      "rank": 3
     },
     {
       "permaslug": "google/gemini-3-flash-preview-20251217",
@@ -85,7 +68,7 @@
       "total_tokens": 129063690900,
       "request_count": 16954587,
       "change": -0.02569439154185757,
-      "rank": 5
+      "rank": 4
     },
     {
       "permaslug": "deepseek/deepseek-v4-flash-20260423",
@@ -102,7 +85,7 @@
       "total_tokens": 123631400606,
       "request_count": 7968470,
       "change": 0.1546251968735232,
-      "rank": 6
+      "rank": 5
     },
     {
       "permaslug": "anthropic/claude-4.7-opus-20260416",
@@ -119,7 +102,7 @@
       "total_tokens": 121719787921,
       "request_count": 1725354,
       "change": -0.13180285444922749,
-      "rank": 7
+      "rank": 6
     },
     {
       "permaslug": "deepseek/deepseek-v3.2-20251201",
@@ -136,7 +119,7 @@
       "total_tokens": 111864534484,
       "request_count": 13083180,
       "change": -0.007032088086665869,
-      "rank": 8
+      "rank": 7
     },
     {
       "permaslug": "stepfun/step-3.5-flash",
@@ -153,7 +136,7 @@
       "total_tokens": 101768052232,
       "request_count": 1912427,
       "change": -0.05338913574762505,
-      "rank": 9
+      "rank": 8
     },
     {
       "permaslug": "minimax/minimax-m2.7-20260318",
@@ -170,7 +153,7 @@
       "total_tokens": 101688256679,
       "request_count": 3754911,
       "change": 0.05329907070757444,
-      "rank": 10
+      "rank": 9
     },
     {
       "permaslug": "google/gemini-2.5-flash-lite",
@@ -187,7 +170,7 @@
       "total_tokens": 85391819421,
       "request_count": 29589044,
       "change": -0.001426622254251372,
-      "rank": 11
+      "rank": 10
     },
     {
       "permaslug": "x-ai/grok-4.1-fast",
@@ -204,7 +187,7 @@
       "total_tokens": 83346164985,
       "request_count": 12976626,
       "change": -0.27309057115241325,
-      "rank": 12
+      "rank": 11
     },
     {
       "permaslug": "google/gemini-2.5-flash",
@@ -221,7 +204,7 @@
       "total_tokens": 81637172824,
       "request_count": 20420164,
       "change": -0.10433297445231017,
-      "rank": 13
+      "rank": 12
     },
     {
       "permaslug": "nvidia/nemotron-3-super-120b-a12b-20230311",
@@ -238,7 +221,7 @@
       "total_tokens": 79116352973,
       "request_count": 1921467,
       "change": -0.1426918567464961,
-      "rank": 14
+      "rank": 13
     },
     {
       "permaslug": "deepseek/deepseek-v4-pro-20260423",
@@ -255,7 +238,7 @@
       "total_tokens": 77603740106,
       "request_count": 1846457,
       "change": 0.20045403255330727,
-      "rank": 15
+      "rank": 14
     },
     {
       "permaslug": "inclusionai/ling-2.6-1t-20260423",
@@ -272,7 +255,7 @@
       "total_tokens": 66017633972,
       "request_count": 1138997,
       "change": -0.1423830883433697,
-      "rank": 16
+      "rank": 15
     },
     {
       "permaslug": "anthropic/claude-4.6-opus-20260205",
@@ -289,7 +272,7 @@
       "total_tokens": 55711002360,
       "request_count": 1343594,
       "change": -0.24632365595230077,
-      "rank": 17
+      "rank": 16
     },
     {
       "permaslug": "openai/gpt-oss-120b",
@@ -306,7 +289,7 @@
       "total_tokens": 50244792032,
       "request_count": 10217401,
       "change": -0.07962115812217709,
-      "rank": 18
+      "rank": 17
     },
     {
       "permaslug": "z-ai/glm-5.1-20260406",
@@ -323,7 +306,7 @@
       "total_tokens": 44557624586,
       "request_count": 1900692,
       "change": -0.25096216435300944,
-      "rank": 19
+      "rank": 18
     },
     {
       "permaslug": "moonshotai/kimi-k2.5-0127",
@@ -340,6 +323,23 @@
       "total_tokens": 43292578401,
       "request_count": 1505349,
       "change": 0.03221047699105632,
+      "rank": 19
+    },
+    {
+      "permaslug": "google/gemini-3.1-pro-preview-20260219",
+      "variant": "standard",
+      "variant_permaslug": "google/gemini-3.1-pro-preview-20260219",
+      "author": "google",
+      "author_icon": "./public/models_icons/google.svg",
+      "name": "Google: Gemini 3.1 Pro Preview",
+      "short_name": "Gemini 3.1 Pro Preview",
+      "description": "Gemini 3.1 Pro Preview is Google’s frontier reasoning model, delivering enhanced software engineering performance, improved agentic reliability, and more efficient token usage acro",
+      "context_length": 1048576,
+      "pricing_prompt": "0.000002",
+      "pricing_completion": "0.000012",
+      "total_tokens": 43216077799,
+      "request_count": 2087789,
+      "change": -0.08680457777145603,
       "rank": 20
     }
   ],
@@ -396,23 +396,6 @@
       "rank": 3
     },
     {
-      "permaslug": "openai/gpt-5.5-20260423",
-      "variant": "standard",
-      "variant_permaslug": "openai/gpt-5.5-20260423",
-      "author": "openai",
-      "author_icon": "./public/models_icons/openai.svg",
-      "name": "OpenAI: GPT-5.5",
-      "short_name": "GPT-5.5",
-      "description": "GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads, building on GPT-5.4 with stronger reasoning, higher reliability, and improved token efficiency on ha",
-      "context_length": 1050000,
-      "pricing_prompt": "0.000005",
-      "pricing_completion": "0.00003",
-      "total_tokens": 1001808264347,
-      "request_count": 7789288,
-      "change": 260.4430231299691,
-      "rank": 4
-    },
-    {
       "permaslug": "deepseek/deepseek-v3.2-20251201",
       "variant": "standard",
       "variant_permaslug": "deepseek/deepseek-v3.2-20251201",
@@ -427,7 +410,7 @@
       "total_tokens": 986327766222,
       "request_count": 119116870,
       "change": -0.2541527563685793,
-      "rank": 5
+      "rank": 4
     },
     {
       "permaslug": "google/gemini-3-flash-preview-20251217",
@@ -444,7 +427,7 @@
       "total_tokens": 981535930350,
       "request_count": 123947728,
       "change": -0.0819914047588353,
-      "rank": 6
+      "rank": 5
     },
     {
       "permaslug": "anthropic/claude-4.7-opus-20260416",
@@ -461,7 +444,7 @@
       "total_tokens": 941637700447,
       "request_count": 14114457,
       "change": -0.11719294713679222,
-      "rank": 7
+      "rank": 6
     },
     {
       "permaslug": "stepfun/step-3.5-flash",
@@ -478,7 +461,7 @@
       "total_tokens": 809144389266,
       "request_count": 14335971,
       "change": 0.27751794806457764,
-      "rank": 8
+      "rank": 7
     },
     {
       "permaslug": "minimax/minimax-m2.7-20260318",
@@ -495,7 +478,7 @@
       "total_tokens": 711396566482,
       "request_count": 25809600,
       "change": -0.12105328936391709,
-      "rank": 9
+      "rank": 8
     },
     {
       "permaslug": "x-ai/grok-4.1-fast",
@@ -512,7 +495,7 @@
       "total_tokens": 648608374729,
       "request_count": 101095991,
       "change": -0.124841193209392,
-      "rank": 10
+      "rank": 9
     },
     {
       "permaslug": "nvidia/nemotron-3-super-120b-a12b-20230311",
@@ -529,7 +512,7 @@
       "total_tokens": 643993199139,
       "request_count": 15569749,
       "change": 0.014204256378408624,
-      "rank": 11
+      "rank": 10
     },
     {
       "permaslug": "deepseek/deepseek-v4-flash-20260423",
@@ -546,7 +529,7 @@
       "total_tokens": 615866589442,
       "request_count": 36593024,
       "change": 21.800836125755577,
-      "rank": 12
+      "rank": 11
     },
     {
       "permaslug": "google/gemini-2.5-flash",
@@ -563,7 +546,7 @@
       "total_tokens": 603183350670,
       "request_count": 150843743,
       "change": 0.02822208245207189,
-      "rank": 13
+      "rank": 12
     },
     {
       "permaslug": "google/gemini-2.5-flash-lite",
@@ -580,7 +563,7 @@
       "total_tokens": 600643615075,
       "request_count": 214708095,
       "change": -0.06897086918880027,
-      "rank": 14
+      "rank": 13
     },
     {
       "permaslug": "anthropic/claude-4.6-opus-20260205",
@@ -597,7 +580,7 @@
       "total_tokens": 572432479816,
       "request_count": 12036236,
       "change": -0.19739629428543345,
-      "rank": 15
+      "rank": 14
     },
     {
       "permaslug": "inclusionai/ling-2.6-1t-20260423",
@@ -614,7 +597,7 @@
       "total_tokens": 538067147414,
       "request_count": 8667096,
       "change": 4.483227717268575,
-      "rank": 16
+      "rank": 15
     },
     {
       "permaslug": "z-ai/glm-5.1-20260406",
@@ -631,7 +614,7 @@
       "total_tokens": 366721112665,
       "request_count": 12914136,
       "change": -0.12953102361571636,
-      "rank": 17
+      "rank": 16
     },
     {
       "permaslug": "openai/gpt-oss-120b",
@@ -648,7 +631,7 @@
       "total_tokens": 360905173056,
       "request_count": 79940745,
       "change": -0.1875144761030523,
-      "rank": 18
+      "rank": 17
     },
     {
       "permaslug": "minimax/minimax-m2.5-20260211",
@@ -665,7 +648,7 @@
       "total_tokens": 350643740027,
       "request_count": 10825765,
       "change": -0.5472630422222429,
-      "rank": 19
+      "rank": 18
     },
     {
       "permaslug": "openai/gpt-5.4-20260305",
@@ -682,6 +665,23 @@
       "total_tokens": 345591050649,
       "request_count": 17801315,
       "change": -0.44031900800134666,
+      "rank": 19
+    },
+    {
+      "permaslug": "google/gemini-3.1-pro-preview-20260219",
+      "variant": "standard",
+      "variant_permaslug": "google/gemini-3.1-pro-preview-20260219",
+      "author": "google",
+      "author_icon": "./public/models_icons/google.svg",
+      "name": "Google: Gemini 3.1 Pro Preview",
+      "short_name": "Gemini 3.1 Pro Preview",
+      "description": "Gemini 3.1 Pro Preview is Google’s frontier reasoning model, delivering enhanced software engineering performance, improved agentic reliability, and more efficient token usage acro",
+      "context_length": 1048576,
+      "pricing_prompt": "0.000002",
+      "pricing_completion": "0.000012",
+      "total_tokens": 340033589141,
+      "request_count": 16736021,
+      "change": 0.037365552484402625,
       "rank": 20
     }
   ],
