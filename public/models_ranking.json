@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-08T16:14:34.874690+00:00",
+  "updated_at": "2026-05-08T19:20:58.395937+00:00",
   "top_n": 20,
   "day": [
     {
@@ -165,7 +165,7 @@
       "short_name": "MiniMax M2.7",
       "description": "MiniMax-M2.7 is a next-generation large language model designed for autonomous, real-world productivity and continuous improvement. Built to actively participate in its own evoluti",
       "context_length": 196608,
-      "pricing_prompt": "0.0000003",
+      "pricing_prompt": "0.000000299",
       "pricing_completion": "0.0000012",
       "total_tokens": 107730803244,
       "request_count": 3693985,
@@ -473,7 +473,7 @@
       "short_name": "MiniMax M2.7",
       "description": "MiniMax-M2.7 is a next-generation large language model designed for autonomous, real-world productivity and continuous improvement. Built to actively participate in its own evoluti",
       "context_length": 196608,
-      "pricing_prompt": "0.0000003",
+      "pricing_prompt": "0.000000299",
       "pricing_completion": "0.0000012",
       "total_tokens": 756338756830,
       "request_count": 25714632,
@@ -781,7 +781,7 @@
       "short_name": "MiniMax M2.7",
       "description": "MiniMax-M2.7 is a next-generation large language model designed for autonomous, real-world productivity and continuous improvement. Built to actively participate in its own evoluti",
       "context_length": 196608,
-      "pricing_prompt": "0.0000003",
+      "pricing_prompt": "0.000000299",
       "pricing_completion": "0.0000012",
       "total_tokens": 3738023240613,
       "request_count": 116006469,
