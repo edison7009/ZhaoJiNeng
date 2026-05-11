@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-11T03:40:47.554697+00:00",
+  "updated_at": "2026-05-11T09:42:40.172158+00:00",
   "top_n": 20,
   "day": [
     {
@@ -885,9 +885,9 @@
       "context_length": 196608,
       "pricing_prompt": "0.00000015",
       "pricing_completion": "0.00000115",
-      "total_tokens": 2481867372492,
-      "request_count": 65860342,
-      "change": -0.47188294694858873,
+      "total_tokens": 2481867576679,
+      "request_count": 65860344,
+      "change": -0.4718829034995963,
       "rank": 12
     },
     {
