@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T11:13:48.295275+00:00",
+  "updated_at": "2026-05-14T14:17:17.886584+00:00",
   "top_n": 20,
   "day": [
     {
@@ -1002,8 +1002,8 @@
       "short_name": "GLM 5.1",
       "description": "GLM-5.1 delivers a major leap in coding capability, with particularly significant gains in handling long-horizon tasks. Unlike previous models built around minute-level interaction",
       "context_length": 202752,
-      "pricing_prompt": "0.00000105",
-      "pricing_completion": "0.0000035",
+      "pricing_prompt": "0.00000098",
+      "pricing_completion": "0.00000308",
       "total_tokens": 1725380899093,
       "request_count": 56682228,
       "change": 4.045688565013763,
