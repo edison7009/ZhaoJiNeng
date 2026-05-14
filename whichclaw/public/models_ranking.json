@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T14:17:17.886584+00:00",
+  "updated_at": "2026-05-14T17:02:38.815266+00:00",
   "top_n": 20,
   "day": [
     {
@@ -79,7 +79,7 @@
       "name": "MoonshotAI: Kimi K2.6",
       "short_name": "Kimi K2.6",
       "description": "Kimi K2.6 is Moonshot AI's next-generation multimodal model, designed for long-horizon coding, coding-driven UI/UX generation, and multi-agent orchestration. It handles complex end",
-      "context_length": 262142,
+      "context_length": 262144,
       "pricing_prompt": "0.00000074",
       "pricing_completion": "0.0000035",
       "total_tokens": 209198648347,
@@ -404,7 +404,7 @@
       "name": "MoonshotAI: Kimi K2.6",
       "short_name": "Kimi K2.6",
       "description": "Kimi K2.6 is Moonshot AI's next-generation multimodal model, designed for long-horizon coding, coding-driven UI/UX generation, and multi-agent orchestration. It handles complex end",
-      "context_length": 262142,
+      "context_length": 262144,
       "pricing_prompt": "0.00000074",
       "pricing_completion": "0.0000035",
       "total_tokens": 1373399109943,
@@ -729,7 +729,7 @@
       "name": "MoonshotAI: Kimi K2.6",
       "short_name": "Kimi K2.6",
       "description": "Kimi K2.6 is Moonshot AI's next-generation multimodal model, designed for long-horizon coding, coding-driven UI/UX generation, and multi-agent orchestration. It handles complex end",
-      "context_length": 262142,
+      "context_length": 262144,
       "pricing_prompt": "0.00000074",
       "pricing_completion": "0.0000035",
       "total_tokens": 5658528491915,
