@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T03:38:30.179061+00:00",
+  "updated_at": "2026-05-15T08:50:49.900693+00:00",
   "top_n": 20,
   "day": [
     {
@@ -133,9 +133,9 @@
       "context_length": 1048576,
       "pricing_prompt": "0.000000435",
       "pricing_completion": "0.00000087",
-      "total_tokens": 133668078564,
-      "request_count": 4137267,
-      "change": -0.043964202991281114,
+      "total_tokens": 133668310517,
+      "request_count": 4137269,
+      "change": -0.043962543991065015,
       "rank": 8
     },
     {
@@ -970,8 +970,8 @@
       "context_length": 1048576,
       "pricing_prompt": "0.000000435",
       "pricing_completion": "0.00000087",
-      "total_tokens": 1788614847852,
-      "request_count": 46654450,
+      "total_tokens": 1788614865459,
+      "request_count": 46654451,
       "change": null,
       "rank": 17
     },
