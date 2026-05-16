@@ -1275,7 +1275,11 @@
       
       let countText = "";
       if (!q && currentCategory === 'all') {
-        countText = `共 ${allSkills.length.toLocaleString()} 个技能`;
+        // Show full catalogue size from the server (hydrationStatus.total),
+        // not the locally-loaded subset — lazy hydrate means allSkills only
+        // holds the first page until the user scrolls/searches.
+        const grand = hydrationStatus.total || allSkills.length;
+        countText = `共 ${grand.toLocaleString()} 个技能`;
       } else {
         countText = `匹配到 ${filteredSkills.length.toLocaleString()} 个技能`;
       }
@@ -1416,7 +1420,8 @@
       const countEl = document.getElementById('resultCount');
       if (countEl) {
         if (!q && currentCategory === 'all') {
-          countEl.textContent = `共 ${allSkills.length.toLocaleString()} 个技能`;
+          const grand = hydrationStatus.total || allSkills.length;
+          countEl.textContent = `共 ${grand.toLocaleString()} 个技能`;
         } else {
           countEl.textContent = `匹配到 ${filteredSkills.length.toLocaleString()} 个技能`;
         }
