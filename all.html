@@ -1294,26 +1294,42 @@
       loadMore();
     }
 
-    // IntersectionObserver for infinite scroll
+    // IntersectionObserver for infinite scroll. When the sentinel comes into view:
+    // - if we still have rendered-but-unshown rows, render more
+    // - otherwise the user has consumed the first page and clearly wants more,
+    //   so kick off background hydration of the full catalogue (idempotent)
     const scrollObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !isLoading && loadedCount < filteredSkills.length) {
+      if (!entries[0].isIntersecting || isLoading) return;
+      if (loadedCount < filteredSkills.length) {
         loadMore();
+      } else if (!hydrationStatus.done) {
+        triggerHydrate();
       }
     }, { rootMargin: '200px' });
     scrollObserver.observe(document.getElementById('scrollSentinel'));
 
     // Fallback scroll listener for scaled viewport
     window.addEventListener('scroll', () => {
-      if (!isLoading && loadedCount < filteredSkills.length) {
-        const sentinel = document.getElementById('scrollSentinel');
-        const rect = sentinel.getBoundingClientRect();
-        if (rect.top < window.innerHeight + 200) {
-          loadMore();
-        }
+      if (isLoading) return;
+      const sentinel = document.getElementById('scrollSentinel');
+      const rect = sentinel.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 200) {
+        if (loadedCount < filteredSkills.length) loadMore();
+        else if (!hydrationStatus.done) triggerHydrate();
       }
     });
 
-    const hydrationStatus = { loaded: 0, total: 0, done: false };
+    const hydrationStatus = { loaded: 0, total: 0, done: false, pages: 1, started: false };
+
+    // Idempotent — first interaction that needs the full catalogue calls this.
+    // Triggered by infinite-scroll past the first page, search input, or any
+    // non-"all" category click. Cheap visitors who only see the first page
+    // (38KB) never pay for the remaining ~50MB.
+    function triggerHydrate() {
+      if (hydrationStatus.started || hydrationStatus.done) return;
+      hydrationStatus.started = true;
+      hydrateRemaining(hydrationStatus.pages);
+    }
 
     async function initData() {
       document.getElementById('skillsList').innerHTML = `
@@ -1328,28 +1344,17 @@
         allSkills = firstPage.skills || [];
         hydrationStatus.total = firstPage.total || allSkills.length;
         hydrationStatus.loaded = allSkills.length;
+        hydrationStatus.pages = firstPage.total_pages || 1;
+        hydrationStatus.done = hydrationStatus.pages <= 1;
         applyFilters(true);
-        hydrateRemaining(firstPage.total_pages || 1);
       } catch (err) {
-        console.warn('Fetch first page error, falling back to full skills.json:', err);
-        try {
-          const res = await fetch('./skills.json');
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const data = await res.json();
-          allSkills = Array.isArray(data) ? data : (data.skills || []);
-          hydrationStatus.total = allSkills.length;
-          hydrationStatus.loaded = allSkills.length;
-          hydrationStatus.done = true;
-          updateHydrationIndicator();
-          applyFilters(true);
-        } catch (err2) {
-          document.getElementById('skillsList').innerHTML = `
-            <div class="empty-state">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <h3>数据加载失败</h3>
-              <p>请刷新页面重试。(${err2.message || '网络或解析错误'})</p>
-            </div>`;
-        }
+        console.warn('Fetch first page error:', err);
+        document.getElementById('skillsList').innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <h3>数据加载失败</h3>
+            <p>请刷新页面重试。(${err.message || '网络或解析错误'})</p>
+          </div>`;
       }
     }
 
@@ -1501,6 +1506,8 @@
     let searchTimer;
     document.getElementById('searchInput').addEventListener('input', () => {
       clearTimeout(searchTimer);
+      // Any search intent is a strong signal the user wants the full catalogue.
+      triggerHydrate();
       searchTimer = setTimeout(applyFilters, 300);
     });
 
@@ -1509,6 +1516,9 @@
         document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentCategory = btn.dataset.cat;
+        // Picking a non-default category implies the user wants to browse
+        // deeper than the first page. "all" remains the cheap default.
+        if (currentCategory !== 'all') triggerHydrate();
         applyFilters();
       });
     });

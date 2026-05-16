@@ -2,30 +2,44 @@
 Sync real LLM leaderboard data from openrouter.ai/rankings.
 
 Data flow:
-  1. Scrape https://openrouter.ai/rankings?view={day|week|month} — Next.js SSR
-     embeds the leaderboard into __next_f.push("45:...rankingData:[...]...") RSC
-     payload inline in the HTML. OpenRouter exposes no public ranking API, so
-     the page HTML is the source of truth.
-  2. Each rankingData row: date, model_permaslug, variant,
-     total_prompt_tokens, total_completion_tokens, count, change (percent
-     delta as a float, e.g. 0.15 == +15%).
+  1. Call the Next.js Server Action `getModelRankingsCached` via POST to
+     https://openrouter.ai/rankings with header `Next-Action: <RANKINGS_ACTION_ID>`
+     and body `["day"|"week"|"month"]`. The response is an RSC stream whose
+     second line (`1:`) is the JSON array of rankings rows. OpenRouter's page
+     bailed out to client-side rendering in 2026, so the previous HTML scrape
+     of `rankingData` from `__next_f.push(...)` no longer works.
+  2. Each row: date, model_permaslug, variant, total_prompt_tokens,
+     total_completion_tokens, count, change (percent delta as a float, e.g.
+     0.15 == +15%), variant_permaslug.
   3. Fetch https://openrouter.ai/api/v1/models for metadata (display name,
      description, context_length, pricing).
-  4. Scrape author icon URLs per author from the rendered HTML (OpenRouter
-     uses /images/icons/<Vendor>.svg for big brands and a gstatic favicon
-     proxy for smaller ones).
+  4. Build per-author icon URLs from `AUTHOR_ICON_HOMEPAGES`. Unknown
+     authors fall back to the gstatic favicon proxy keyed on a best-guess
+     homepage. Already-cached icons in ICON_DIR are reused unchanged.
   5. Emit public/models_ranking.json consumed by models.html.
 
 No API keys required. Safe to run as a scheduled workflow.
+
+Maintenance note: if Server Action calls start returning 404, the action
+ID hash changed in an OpenRouter deploy. Reproduce by curl-ing
+https://openrouter.ai/rankings, grep the loaded JS chunks for
+`getModelRankingsCached` to find the new hash, and update
+RANKINGS_ACTION_ID below.
 """
 import json
 import os
 import re
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
 MODELS_API = "https://openrouter.ai/api/v1/models"
-RANKINGS_URL = "https://openrouter.ai/rankings?view={view}"
+RANKINGS_PAGE = "https://openrouter.ai/rankings"
+RANKINGS_ACTION_ID = "40824635c5eb77626bdf6795ffbf382c0862b321e1"
+FAVICON_PROXY = (
+    "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON"
+    "&fallback_opts=TYPE,SIZE,URL&url={url}&size=256"
+)
 VIEWS = ["day", "week", "month"]
 OUTPUT_FILE = "public/models_ranking.json"
 ICON_DIR = "public/models_icons"
@@ -33,11 +47,106 @@ ICON_WEB_PREFIX = "./public/models_icons"
 TOP_N = 20
 UA = "Mozilla/5.0 (compatible; ZhaoJiNeng-Sync/1.0)"
 
+# Author slug → homepage URL used by OpenRouter's RemoteFavicon component.
+# Transcribed from the `getAuthorIconInfo` map in the openrouter web chunks.
+# Unmapped authors fall back to https://<slug>.com.
+AUTHOR_ICON_HOMEPAGES = {
+    "openai": "https://openai.com/",
+    "anthropic": "https://anthropic.com/",
+    "google": "https://gemini.google.com/",
+    "mistralai": "https://mistral.ai/",
+    "meta-llama": "https://www.llama.com/",
+    "deepseek": "https://www.deepseek.com/",
+    "qwen": "https://qwenlm.ai/",
+    "moonshotai": "https://www.moonshot.cn/",
+    "x-ai": "https://x.ai/",
+    "perplexity": "https://www.perplexity.ai/",
+    "cohere": "https://cohere.com/",
+    "amazon": "https://nova.amazon.com/",
+    "microsoft": "https://www.microsoft.com/",
+    "nousresearch": "https://nousresearch.com/",
+    "nvidia": "https://nvidia.com/",
+    "ai21": "https://ai21.com/",
+    "allenai": "https://allenai.org/",
+    "huggingface": "https://huggingface.co/",
+    "together": "https://www.together.ai/",
+    "infermatic": "https://infermatic.ai/",
+    "inflection": "https://inflection.ai/",
+    "featherless": "https://featherless.ai/",
+    "minimax": "https://minimaxi.com/",
+    "liquid": "https://www.liquid.ai/",
+    "inception": "https://www.inceptionlabs.ai/",
+    "arcee-ai": "https://www.arcee.ai/",
+    "z-ai": "https://z.ai/",
+    "morph": "https://morphllm.com/",
+    "databricks": "https://databricks.com/",
+    "openrouter": "https://openrouter.ai/",
+    "baidu": "https://www.baidu.com/",
+    "tencent": "https://www.tencent.com/",
+    "alibaba": "https://www.alibabacloud.com/",
+    "bytedance": "https://seed.bytedance.com/",
+    "bytedance-seed": "https://seed.bytedance.com/",
+    "stepfun": "https://stepfun.ai/",
+    "stepfun-ai": "https://stepfun.ai/",
+    "writer": "https://writer.com/",
+    "xiaomi": "https://www.mi.com/",
+    "black-forest-labs": "https://bfl.ai/",
+    "prime-intellect": "https://www.primeintellect.ai/",
+    "essentialai": "https://www.essential.ai/",
+    "deepcogito": "https://www.deepcogito.com/",
+    "aion-labs": "https://www.aionlabs.ai/",
+    "switchpoint": "https://switchpoint.dev/",
+    "inclusionai": "https://www.inclusion-ai.org/",
+    "byteplus": "https://www.byteplus.com/",
+    "recraft": "https://www.recraft.ai/",
+    "relace": "https://www.relace.ai/",
+    "sourceful": "https://www.sourceful.com/",
+    "perceptron": "https://www.perceptron.inc/",
+    "kwaipilot": "https://www.kuaishou.com/",
+    "kwaivgi": "https://www.kuaishou.com/",
+    "thedrummer": "https://huggingface.co/TheDrummer",
+    "nex-agi": "https://huggingface.co/",
+    "ibm-granite": "https://www.ibm.com/granite",
+}
+
 
 def http_get(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return resp.read().decode("utf-8", errors="replace")
+
+
+def call_rankings_action(view: str) -> list:
+    """POST the Next.js Server Action for `getModelRankingsCached`.
+
+    Response is an RSC stream where line `0:` is the action envelope and
+    line `1:` is the JSON-encoded rows array.
+    """
+    body = json.dumps([view]).encode("utf-8")
+    req = urllib.request.Request(
+        RANKINGS_PAGE,
+        data=body,
+        method="POST",
+        headers={
+            "User-Agent": UA,
+            "Next-Action": RANKINGS_ACTION_ID,
+            "Content-Type": "text/plain;charset=UTF-8",
+            "Accept": "text/x-component",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        text = resp.read().decode("utf-8", errors="replace")
+    for line in text.splitlines():
+        if line.startswith("1:"):
+            payload = json.loads(line[2:])
+            if isinstance(payload, list):
+                return payload
+            raise RuntimeError(
+                f"rankings action returned non-list payload for view={view}: {type(payload).__name__}"
+            )
+    raise RuntimeError(
+        f"rankings action returned no `1:` payload for view={view} — action ID may have rotated"
+    )
 
 
 def fetch_models_metadata() -> dict:
@@ -67,33 +176,27 @@ def fetch_models_metadata() -> dict:
     return index
 
 
-def extract_ranking_data(html: str) -> list:
-    """Extract the inline `rankingData` array from the RSC payload.
+def build_author_icon_urls(rows_by_view: dict) -> dict:
+    """Return {author_slug: remote_icon_url} for every author seen in rankings.
 
-    The stream chunk looks like:
-        self.__next_f.push([1,"45:[\\"$\\",\\"$L55\\",null,{\\"rankingData\\":[ ... ]}]"])
-    Every `"` inside is doubled to `\\"`. We capture the JSON array text and
-    unescape it once before parsing.
+    Uses the gstatic favicon proxy (same one OpenRouter uses) keyed on the
+    author homepage. Author → homepage mapping comes from AUTHOR_ICON_HOMEPAGES;
+    unknown authors fall back to `https://<slug>.com`. The localize step is
+    idempotent: existing icons in ICON_DIR are reused regardless of the URL
+    we return here.
     """
-    m = re.search(r'\\"rankingData\\":(\[.+?\])(?:,\\"|\})', html, re.DOTALL)
-    if not m:
-        raise RuntimeError("rankingData not found in HTML — OpenRouter page layout changed")
-    escaped = m.group(1)
-    decoded = escaped.encode("utf-8").decode("unicode_escape")
-    return json.loads(decoded)
-
-
-def extract_author_icons(html: str) -> dict:
-    """Return {author_slug: remote_icon_url}. Uses OpenRouter's rendered icons."""
+    authors: set = set()
+    for rows in rows_by_view.values():
+        for row in rows:
+            slug = row.get("model_permaslug") or ""
+            if "/" in slug:
+                authors.add(slug.split("/", 1)[0].lower())
+            elif slug:
+                authors.add(slug.lower())
     icons: dict = {}
-    pattern = re.compile(r'alt="Favicon for ([a-z0-9][a-z0-9\-]*)"\s+src="([^"]+)"')
-    for slug, src in pattern.findall(html):
-        if slug in icons:
-            continue
-        if src.startswith("/"):
-            src = f"https://openrouter.ai{src}"
-        src = src.replace("&amp;", "&")
-        icons[slug] = src
+    for author in authors:
+        homepage = AUTHOR_ICON_HOMEPAGES.get(author, f"https://{author}.com/")
+        icons[author] = FAVICON_PROXY.format(url=urllib.parse.quote(homepage, safe=""))
     return icons
 
 
@@ -222,26 +325,15 @@ def _now() -> str:
 def main() -> None:
     meta_index = fetch_models_metadata()
     ranking_by_view: dict = {}
-    icon_accumulator: dict = {}
 
     for view in VIEWS:
-        url = RANKINGS_URL.format(view=view)
         print(f"[{_now()}] Fetching rankings view={view} ...")
-        html = http_get(url)
-        rows = extract_ranking_data(html)
-        icon_accumulator.update(extract_author_icons(html))
+        rows = call_rankings_action(view)
         print(f"[{_now()}] view={view}: {len(rows)} raw rows")
         ranking_by_view[view] = rows
 
-    try:
-        home_html = http_get("https://openrouter.ai/")
-        extra = extract_author_icons(home_html)
-        for author, url in extra.items():
-            icon_accumulator.setdefault(author, url)
-        print(f"[{_now()}] homepage icon supplement: +{len(extra)} authors")
-    except Exception as exc:
-        print(f"[{_now()}] homepage icon fetch failed: {exc}")
-
+    icon_accumulator = build_author_icon_urls(ranking_by_view)
+    print(f"[{_now()}] author icon URLs derived for {len(icon_accumulator)} authors")
     local_icons = localize_icons(icon_accumulator)
 
     output = {

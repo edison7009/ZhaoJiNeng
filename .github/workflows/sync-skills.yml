@@ -1,0 +1,49 @@
+name: Sync skills catalogue
+
+on:
+  schedule:
+    # Daily at 03:30 UTC (11:30 Beijing). Skills catalogue grows slowly enough
+    # that more than once a day is wasted work; pick an off-peak slot so the
+    # 70K-row scrape doesn't compete with the 3-hourly model leaderboard run.
+    - cron: '30 3 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-skills
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Refresh skills catalogue + paginate + mirror to EN site
+        run: python sync.py skills
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # skills.json + whichclaw/public/skills.json are sync intermediates;
+          # they exceed Cloudflare Pages' 25 MiB file limit at 70K+ rows so
+          # they are gitignored. Only the paginated artefacts get committed.
+          git add public/featured.json public/skills_pages \
+                  whichclaw/public/featured.json \
+                  whichclaw/public/skills_pages
+          if git diff --staged --quiet; then
+            echo "No data changes — nothing to commit."
+            exit 0
+          fi
+          git commit -m "data: auto-sync skills catalogue $(date -u +'%Y-%m-%d %H:%MZ')"
+          git push origin main
