@@ -35,9 +35,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add skills.json \
-                  public/featured.json public/skills_pages \
-                  whichclaw/public/skills.json \
+          # skills.json + whichclaw/public/skills.json are sync intermediates;
+          # they exceed Cloudflare Pages' 25 MiB file limit at 70K+ rows so
+          # they are gitignored. Only the paginated artefacts get committed.
+          git add public/featured.json public/skills_pages \
                   whichclaw/public/featured.json \
                   whichclaw/public/skills_pages
           if git diff --staged --quiet; then

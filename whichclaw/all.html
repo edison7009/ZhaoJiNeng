@@ -1348,25 +1348,13 @@
         hydrationStatus.done = hydrationStatus.pages <= 1;
         applyFilters(true);
       } catch (err) {
-        console.warn('Fetch first page error, falling back to full skills.json:', err);
-        try {
-          const res = await fetch('./skills.json');
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const data = await res.json();
-          allSkills = Array.isArray(data) ? data : (data.skills || []);
-          hydrationStatus.total = allSkills.length;
-          hydrationStatus.loaded = allSkills.length;
-          hydrationStatus.done = true;
-          updateHydrationIndicator();
-          applyFilters(true);
-        } catch (err2) {
-          document.getElementById('skillsList').innerHTML = `
-            <div class="empty-state">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <h3>Failed to load</h3>
-              <p>Please refresh to retry.(${err2.message || 'Network or parse error'})</p>
-            </div>`;
-        }
+        console.warn('Fetch first page error:', err);
+        document.getElementById('skillsList').innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f5222d" stroke-width="2" width="48" height="48" style="margin-bottom:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <h3>Failed to load</h3>
+            <p>Please refresh to retry. (${err.message || 'Network or parse error'})</p>
+          </div>`;
       }
     }
 
