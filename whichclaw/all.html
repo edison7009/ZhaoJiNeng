@@ -1247,6 +1247,10 @@
           sentinel.innerHTML = '';
         }
         isLoading = false;
+
+        // Chain another render through the shared buffer check — keeps firing
+        // until there's a 1.5-viewport buffer of rendered rows below the user.
+        maybeAutoExtend();
       }, 150);
     }
 
@@ -1338,6 +1342,11 @@
     // (38KB) never pay for the remaining ~50MB.
     function triggerHydrate() {
       if (hydrationStatus.started || hydrationStatus.done) return;
+      // The IntersectionObserver can fire before initData has loaded page 1 —
+      // if `pages` is still the initial 1, kicking off hydrateRemaining(1) would
+      // short-circuit and mark hydration "done" with only the first page. Bail
+      // until we actually know the total; the next interaction will retry.
+      if (hydrationStatus.pages <= 1) return;
       hydrationStatus.started = true;
       hydrateRemaining(hydrationStatus.pages);
     }
@@ -1408,9 +1417,9 @@
     function silentRefilter() {
       // Recompute filteredSkills from the current allSkills under current search/category,
       // but do NOT clear DOM or reset loadedCount — already-rendered rows stay in place.
-      // If the user is at the bottom waiting for more, auto-extend the rendered list
-      // so each fetched page becomes visible without requiring another scroll.
-      const wasAtEnd = loadedCount >= filteredSkills.length;
+      // If the user is sitting at the bottom of the rendered list (sentinel near or
+      // in viewport) and hydration has produced more matches, auto-render them so
+      // the list grows visibly until the sentinel is pushed below the fold.
       const q = document.getElementById('searchInput').value.toLowerCase().trim();
       let filtered = allSkills;
       if (currentCategory !== 'all') {
@@ -1436,17 +1445,31 @@
         }
       }
 
-      // If the sentinel was showing "end of data" but new rows have arrived, clear it.
+      // While hydration is in flight, keep the "loading more" hint pinned to the
+      // sentinel so the user has continuous feedback. Once everything's rendered
+      // and hydration is done, loadMore will rewrite this to the final state.
       const sentinel = document.getElementById('scrollSentinel');
-      if (sentinel && loadedCount < filteredSkills.length) {
-        const note = sentinel.querySelector('.load-end');
-        if (note) sentinel.innerHTML = '';
+      if (sentinel && loadedCount < filteredSkills.length && !hydrationStatus.done) {
+        sentinel.innerHTML = `<div class="load-end">Loading more skills…</div>`;
       }
 
-      // The user already consumed everything in the previous filteredSkills set
-      // and is staring at the sentinel — pull in the next batch automatically so
-      // the page doesn't feel frozen while hydration fetches the rest.
-      if (wasAtEnd && loadedCount < filteredSkills.length && !isLoading) {
+      // Auto-extend if there isn't yet a comfortable buffer of rendered rows
+      // below the viewport. The chain inside loadMore() will keep firing until
+      // the buffer is reached, then stop until the user scrolls again.
+      if (sentinel) maybeAutoExtend();
+    }
+
+    // Keep rendering more rows while the user has fewer than ~1.5 viewports of
+    // unviewed content below their scroll position. Called from silentRefilter
+    // (per arriving page) and from loadMore's tail (to chain renders rapidly).
+    function maybeAutoExtend() {
+      if (isLoading || loadedCount >= filteredSkills.length) return;
+      const list = document.getElementById('skillsList');
+      if (!list || !list.lastElementChild) return;
+      const lastBottom = list.lastElementChild.offsetTop + list.lastElementChild.offsetHeight;
+      const viewportBottom = window.scrollY + window.innerHeight;
+      // Buffer of unrendered viewport below current view — stop when 1.5 vw ahead.
+      if (lastBottom - viewportBottom < window.innerHeight * 1.5) {
         loadMore();
       }
     }
