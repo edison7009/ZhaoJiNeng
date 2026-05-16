@@ -1275,7 +1275,11 @@
       
       let countText = "";
       if (!q && currentCategory === 'all') {
-        countText = `${allSkills.length.toLocaleString()} skills`;
+        // Show full catalogue size from the server (hydrationStatus.total),
+        // not the locally-loaded subset — lazy hydrate means allSkills only
+        // holds the first page until the user scrolls/searches.
+        const grand = hydrationStatus.total || allSkills.length;
+        countText = `${grand.toLocaleString()} skills`;
       } else {
         countText = `${filteredSkills.length.toLocaleString()} matches`;
       }
@@ -1416,7 +1420,8 @@
       const countEl = document.getElementById('resultCount');
       if (countEl) {
         if (!q && currentCategory === 'all') {
-          countEl.textContent = `${allSkills.length.toLocaleString()} skills`;
+          const grand = hydrationStatus.total || allSkills.length;
+          countEl.textContent = `${grand.toLocaleString()} skills`;
         } else {
           countEl.textContent = `${filteredSkills.length.toLocaleString()} matches`;
         }
