@@ -1235,7 +1235,14 @@
         loadedCount += batch;
 
         if (loadedCount >= filteredSkills.length) {
-          sentinel.innerHTML = `<div class="load-end">— 已加载全部数据 —</div>`;
+          if (hydrationStatus.done) {
+            sentinel.innerHTML = `<div class="load-end">— 已加载全部数据 —</div>`;
+          } else {
+            // Don't tell the user "all loaded" when there are still pages
+            // to hydrate — they'll stop scrolling and miss the catalogue.
+            sentinel.innerHTML = `<div class="load-end">正在加载更多技能…</div>`;
+            triggerHydrate();
+          }
         } else {
           sentinel.innerHTML = '';
         }
@@ -1400,8 +1407,10 @@
 
     function silentRefilter() {
       // Recompute filteredSkills from the current allSkills under current search/category,
-      // but do NOT clear DOM or reset loadedCount — the already-rendered rows stay,
-      // and the next loadMore() call naturally pulls from the expanded list.
+      // but do NOT clear DOM or reset loadedCount — already-rendered rows stay in place.
+      // If the user is at the bottom waiting for more, auto-extend the rendered list
+      // so each fetched page becomes visible without requiring another scroll.
+      const wasAtEnd = loadedCount >= filteredSkills.length;
       const q = document.getElementById('searchInput').value.toLowerCase().trim();
       let filtered = allSkills;
       if (currentCategory !== 'all') {
@@ -1432,6 +1441,13 @@
       if (sentinel && loadedCount < filteredSkills.length) {
         const note = sentinel.querySelector('.load-end');
         if (note) sentinel.innerHTML = '';
+      }
+
+      // The user already consumed everything in the previous filteredSkills set
+      // and is staring at the sentinel — pull in the next batch automatically so
+      // the page doesn't feel frozen while hydration fetches the rest.
+      if (wasAtEnd && loadedCount < filteredSkills.length && !isLoading) {
+        loadMore();
       }
     }
 
