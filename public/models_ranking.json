@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-26T15:35:05.454347+00:00",
+  "updated_at": "2026-05-26T20:10:38.246853+00:00",
   "top_n": 20,
   "day": [
     {
@@ -216,8 +216,8 @@
       "short_name": "MiMo-V2.5-Pro",
       "description": "MiMo-V2.5-Pro is Xiaomi’s flagship model, delivering strong performance in general agentic capabilities, complex software engineering, and long-horizon tasks, with top rankings on ",
       "context_length": 1048576,
-      "pricing_prompt": "0.000001",
-      "pricing_completion": "0.000003",
+      "pricing_prompt": "0.000000435",
+      "pricing_completion": "0.00000087",
       "total_tokens": 77078951365,
       "request_count": 970244,
       "change": 0.0961404180259706,
