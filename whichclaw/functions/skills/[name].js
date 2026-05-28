@@ -1,18 +1,25 @@
 // Cloudflare Pages Function - /skills/:name
-// - /skills/{hex-token} → AES-CTR daily-rotating encrypted slug URL
-// - /skills/{slug}      → human-readable (backward compat)
+// - /skills/xxx.zip    → proxy to Tencent COS (direct download)
+// - /skills/{hex-token}→ AES-CTR daily-rotating encrypted slug URL
+// - /skills/{slug}     → human-readable (backward compat)
 //
-// Mirror of the Chinese site's /skills/:name — same crypto, simplified
-// resolver because whichclaw has a single canonical source (the skill's
-// GitHub repo from public/skills.json) instead of COS + lightmake + ClawHub.
+// Mirror of the Chinese site's resolver: no skills.json index, probe
+// downstream sources (COS, ClawHub, skills.sh) directly so any slug works
+// without a deployed index file. SECRET differs to keep token domains
+// isolated between sites.
 
-const SECRET = 'WhichClaw-2026-AgentSkills';
+const COS_BASE       = 'https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/skills';
+const CLAWHUB_API    = 'https://wry-manatee-359.convex.site/api/v1/download';
+const SKILLS_SH_BASE = 'https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills';
+const SECRET         = 'WhichClaw-2026-AgentSkills'; // server-side only
 
+// UTC date string "YYYY-MM-DD"
 function utcDate(offsetDays = 0) {
   const d = new Date(Date.now() + offsetDays * 86400000);
   return d.toISOString().slice(0, 10);
 }
 
+// Derive 16-byte AES-CTR key from SECRET + dateStr
 async function getDailyKey(dateStr) {
   const raw = await crypto.subtle.digest('SHA-256',
     new TextEncoder().encode(SECRET + '|' + dateStr));
@@ -20,7 +27,7 @@ async function getDailyKey(dateStr) {
     { name: 'AES-CTR' }, false, ['encrypt', 'decrypt']);
 }
 
-// Decrypt hex token → slug. Tries today and yesterday (handle UTC rollover).
+// Decrypt hex token → slug. Tries today and yesterday.
 async function decryptToken(token) {
   const bytes = Uint8Array.from(token.match(/.{2}/g), h => parseInt(h, 16));
   for (const offset of [0, -1]) {
@@ -35,57 +42,96 @@ async function decryptToken(token) {
   return null;
 }
 
-// Load skills.json and look up the slug. The site's static asset serves
-// the canonical name/description/homepage/sources.
-async function lookupSkill(env, origin, slug) {
+// HEAD check: 404/410 = not found; any other status = exists
+async function checkUrl(url) {
   try {
-    const res = await env.ASSETS.fetch(new Request(`${origin}/public/skills.json`));
+    const res = await fetch(url, {
+      method: 'HEAD',
+      headers: { 'User-Agent': 'WhichClaw-Resolver/1.0' },
+      signal: AbortSignal.timeout(5000),
+    });
+    return res.status !== 404 && res.status !== 410;
+  } catch {
+    return false;
+  }
+}
+
+// Parse ZIP bytes, extract SKILL.md content (stored + deflate)
+async function extractSkillMdFromZip(zipBytes) {
+  const view = new DataView(zipBytes.buffer);
+  let offset = 0;
+
+  while (offset < zipBytes.length - 30) {
+    const sig = view.getUint32(offset, true);
+    if (sig !== 0x04034b50) break;
+
+    const compression    = view.getUint16(offset + 8,  true);
+    const compressedSize = view.getUint32(offset + 18, true);
+    const filenameLen    = view.getUint16(offset + 26, true);
+    const extraLen       = view.getUint16(offset + 28, true);
+    const filename       = new TextDecoder().decode(zipBytes.slice(offset + 30, offset + 30 + filenameLen));
+    const dataOffset     = offset + 30 + filenameLen + extraLen;
+
+    if (filename === 'SKILL.md' || filename.endsWith('/SKILL.md')) {
+      const fileData = zipBytes.slice(dataOffset, dataOffset + compressedSize);
+      if (compression === 0) {
+        return new TextDecoder('utf-8', { fatal: false }).decode(fileData);
+      } else if (compression === 8) {
+        const ds = new DecompressionStream('deflate-raw');
+        const writer = ds.writable.getWriter();
+        const reader = ds.readable.getReader();
+        writer.write(fileData);
+        writer.close();
+        const chunks = [];
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+        }
+        const total = chunks.reduce((a, c) => a + c.length, 0);
+        const out   = new Uint8Array(total);
+        let pos = 0;
+        for (const c of chunks) { out.set(c, pos); pos += c.length; }
+        return new TextDecoder('utf-8', { fatal: false }).decode(out);
+      }
+    }
+
+    if (compressedSize === 0 && filenameLen === 0) break;
+    offset = dataOffset + compressedSize;
+  }
+  return null;
+}
+
+// Download zip from a URL and extract SKILL.md
+async function fetchSkillMdFromZip(zipUrl) {
+  try {
+    const res = await fetch(zipUrl, {
+      headers: { 'User-Agent': 'WhichClaw-Resolver/1.0' },
+      signal: AbortSignal.timeout(12000),
+    });
     if (!res.ok) return null;
-    const data = await res.json();
-    return (data.skills || []).find(s => s.slug === slug) || null;
+    const buf = await res.arrayBuffer();
+    return await extractSkillMdFromZip(new Uint8Array(buf));
   } catch {
     return null;
   }
 }
 
-// For a GitHub homepage, try to fetch SKILL.md (or fall back to README.md)
-// from the default branch. Probe main then master.
-async function fetchSkillMdFromGitHub(homepage) {
-  const m = /^https:\/\/github\.com\/([^/]+)\/([^/]+?)(?:\.git)?$/.exec(homepage || '');
-  if (!m) return null;
-  const [, owner, repo] = m;
-  for (const branch of ['main', 'master']) {
-    for (const path of ['SKILL.md', 'skill.md', 'README.md']) {
-      const url = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
-      try {
-        const res = await fetch(url, {
-          headers: { 'User-Agent': 'WhichClaw-Resolver/1.0' },
-          signal: AbortSignal.timeout(5000),
-        });
-        if (res.ok) {
-          const text = await res.text();
-          if (text && text.length > 20) return { path, url, text };
-        }
-      } catch {}
-    }
-  }
-  return null;
-}
-
-function installCommand(homepage) {
-  if (!homepage) return null;
-  if (/^https:\/\/github\.com\/[^/]+\/[^/]+/.test(homepage)) {
-    return `git clone ${homepage.replace(/\/$/, '').replace(/\.git$/, '')}.git`;
-  }
-  return `open ${homepage}`;
-}
-
 export async function onRequest(context) {
-  const { params, request, env } = context;
+  const { params, request } = context;
   const name = params.name;
-  const origin = new URL(request.url).origin;
 
-  // Resolve token → slug (or treat as plain slug for backward compat).
+  // Proxy .zip requests directly to COS
+  if (name.endsWith('.zip')) {
+    const cosUrl   = `${COS_BASE}/${name}`;
+    const response = await fetch(cosUrl, { headers: { 'User-Agent': 'WhichClaw-Proxy/1.0' } });
+    const headers  = new Headers(response.headers);
+    headers.set('Access-Control-Allow-Origin', '*');
+    headers.set('Cache-Control', 'public, max-age=3600');
+    return new Response(response.body, { status: response.status, headers });
+  }
+
+  // Decrypt AES-CTR token → slug (daily-rotating URL, any slug supported)
   let slug = name;
   if (/^[0-9a-f]{10,160}$/.test(name) && name.length % 2 === 0) {
     const resolved = await decryptToken(name);
@@ -98,60 +144,75 @@ export async function onRequest(context) {
     slug = resolved;
   }
 
-  const skill = await lookupSkill(env, origin, slug);
-  if (!skill) {
-    return new Response(
-      `Skill "${slug}" is not in the WhichClaw index.\nVisit https://whichclaw.com to search.`,
-      { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Access-Control-Allow-Origin': '*' } }
-    );
+  const cosZip       = `${COS_BASE}/${slug}.zip`;
+  const lightmakeUrl = `https://lightmake.site/api/v1/download?slug=${slug}`;
+  const clawhubUrl   = `${CLAWHUB_API}?slug=${slug}`;
+  const skillsMdUrl  = `${SKILLS_SH_BASE}/${slug}/SKILL.md`;
+
+  // Parallel: check all download sources + fetch GitHub SKILL.md text
+  const [cosOk, lightmakeOk, clawhubOk, skillsMdRes] = await Promise.all([
+    checkUrl(cosZip),
+    checkUrl(lightmakeUrl),
+    checkUrl(clawhubUrl),
+    fetch(skillsMdUrl, { headers: { 'User-Agent': 'WhichClaw-Resolver/1.0' }, signal: AbortSignal.timeout(6000) })
+      .then(r => r.ok ? r.text() : null).catch(() => null),
+  ]);
+
+  let skillMdContent = skillsMdRes || null;
+
+  // Extract SKILL.md from zip if not found via GitHub
+  if (!skillMdContent && cosOk) {
+    skillMdContent = await fetchSkillMdFromZip(cosZip);
+  }
+  if (!skillMdContent && clawhubOk) {
+    skillMdContent = await fetchSkillMdFromZip(clawhubUrl);
   }
 
-  const cmd = installCommand(skill.homepage);
-  const sources = Array.isArray(skill.sources) ? skill.sources : [];
-  const skillMd = await fetchSkillMdFromGitHub(skill.homepage);
+  const downloadLines = [];
+  if (cosOk)       downloadLines.push(`- China Mirror (SkillHub COS): ${cosZip}`);
+  if (lightmakeOk) downloadLines.push(`- lightmake.site: ${lightmakeUrl}`);
+  if (clawhubOk)   downloadLines.push(`- ClawHub: ${clawhubUrl}`);
 
-  const skillMdSection = skillMd
-    ? `\n## SKILL.md Content\n\nSource: ${skillMd.url}\n\n${skillMd.text}\n`
+  const skillsMdOk = !!skillsMdRes;
+  const mdLines = [];
+  if (skillsMdOk) mdLines.push(`- skills.sh / GitHub: ${skillsMdUrl}`);
+
+  const downloadSection = downloadLines.length > 0
+    ? downloadLines.join('\n')
+    : '- No verified download source found. Visit https://clawhub.ai or https://whichclaw.com';
+
+  const skillMdSection = skillMdContent
+    ? `\n## SKILL.md Content\n\nThis is the full content of the skill. Read it to understand what this skill does.\n\n${skillMdContent}\n`
     : '';
 
-  const sourcesSection = sources.length > 0
-    ? sources.map(s => `- https://github.com/${s}`).join('\n')
-    : '- (unknown)';
-
-  const content = `# Skill: ${skill.name} (${slug})
+  const content = `# Skill: ${slug}
 
 This is a machine-readable skill descriptor for AI agents.
-Human users: visit https://whichclaw.com to browse skills.
-
-## Description
-
-${skill.description || '(no description)'}
-
-## Install
-
-${cmd ? '```\n' + cmd + '\n```' : 'No install URL — visit the homepage.'}
-
-## Homepage
-
-- ${skill.homepage || '(none)'}
+Human users: visit https://whichclaw.com to browse and download skills.
 ${skillMdSection}
-## Curated By
+## Download Links (zip)
 
-${sourcesSection}
+${downloadSection}
+${mdLines.length > 0 ? '\n## SKILL.md Sources (markdown format)\n\n' + mdLines.join('\n') : ''}
+
+## Official Pages
+
+- ClawHub: https://clawhub.ai/skills/${slug}
+- WhichClaw: https://whichclaw.com/skills/${slug}
 
 ## Skill Info
 
 - Slug: ${slug}
-- Category: ${skill.category || 'Uncategorized'}
 - Registry: https://whichclaw.com
+- Source: ClawHub / SkillHub / skills.sh
 
 ## Agent Instructions
 
 If you are an AI agent reading this file, please:
-1. Read the "SKILL.md Content" section above (if present) — it contains the full skill instructions.
-2. If no SKILL.md is embedded, run the "Install" command and then read the repo's README / SKILL.md manually.
-3. Install into the user's active agent skills directory.
-4. Confirm installation to the user.
+1. Read the "SKILL.md Content" section above — it contains the full skill instructions
+2. Download the zip from "Download Links" if you need additional script files
+3. Extract the zip to the appropriate skills directory
+4. Confirm installation to the user
 `;
 
   return new Response(content, {
