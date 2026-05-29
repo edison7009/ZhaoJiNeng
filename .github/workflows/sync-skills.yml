@@ -1,11 +1,10 @@
 name: Sync skills catalogue
 
+# Manual-only: the skills catalogue is treated as fixed content, so it is NOT
+# refreshed on a schedule. Run via the Actions tab ("Run workflow") when the
+# skills data actually needs regenerating. Only the LLM leaderboard
+# (sync-models.yml) auto-updates.
 on:
-  schedule:
-    # Daily at 03:30 UTC (11:30 Beijing). Skills catalogue grows slowly enough
-    # that more than once a day is wasted work; pick an off-peak slot so the
-    # 70K-row scrape doesn't compete with the 3-hourly model leaderboard run.
-    - cron: '30 3 * * *'
   workflow_dispatch: {}
 
 permissions:
