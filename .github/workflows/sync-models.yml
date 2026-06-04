@@ -2,8 +2,9 @@ name: Sync LLM leaderboard
 
 on:
   schedule:
-    # Every 3 hours on the hour (UTC). 8 runs/day.
-    - cron: '0 */3 * * *'
+    # Once a day at 06:00 UTC. The capability leaderboard moves slowly, so
+    # daily keeps it fresh without burning API quota or spamming commits.
+    - cron: '0 6 * * *'
   workflow_dispatch: {}
 
 permissions:
@@ -30,6 +31,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Refresh LLM leaderboard + mirror to EN site
+        env:
+          AA_API_KEY: ${{ secrets.AA_API_KEY }}
         run: python sync.py models whichclaw
 
       - name: Commit and push if data changed

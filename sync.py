@@ -5,7 +5,7 @@ not abort the others — every stage prints its own log):
 
   1. scratch_sync.py          skills + featured list     -> skills.json, public/featured.json
   2. generate_pages.py        paginated skills JSON      -> public/skills_pages/*.json
-  3. sync_openrouter_models   LLM leaderboard + icons    -> public/models_ranking.json, public/models_icons/
+  3. sync_artificialanalysis_models  LLM capability board -> public/models_ranking.json, public/models_icons/
   4. ranking_sync.py          lobster-agents leaderboard -> public/ranking_snapshot.json, public/ranking_history/
   5. sync_whichclaw.py        English site aggregator    -> whichclaw/public/skills.json, paginated + mirrors (3)+(4)
 
@@ -34,7 +34,7 @@ STAGES = {
     "skills":    [("scratch_sync.py",           "fetch skills"),
                   ("generate_pages.py",         "paginate skills"),
                   ("sync_whichclaw.py",         "english filter + mirror")],
-    "models":    [("sync_openrouter_models.py", "LLM leaderboard")],
+    "models":    [("sync_artificialanalysis_models.py", "LLM capability leaderboard")],
     "ranking":   [("ranking_sync.py",           "lobster ranking")],
     "whichclaw": [("sync_whichclaw.py",         "english filter + mirror")],
     # Manual-only: rewrites whichclaw/*.html from Chinese HTML via a

@@ -146,22 +146,19 @@ TRANSLATIONS: list[tuple[str, str]] = [
     ("'\u7efc\u5408\u589e\u5f3a'", "'Skill'"),
     ("\u2014 \u5df2\u5c55\u793a\u5168\u90e8\u7cbe\u9009\u6280\u80fd \u2014", "\u2014 All featured loaded \u2014"),
 
-    # ---- models period ----
-    (">\u4eca\u65e5<", ">Today<"),
-    (">\u672c\u5468<", ">This Week<"),
-    (">\u672c\u6708<", ">This Month<"),
-    ("\u4eca\u65e5 (24h)", "Today"),
-    ("\u672c\u5468 (7d)", "This Week"),
-    ("\u672c\u6708 (30d)", "This Month"),
+    # ---- models capability tabs ----
+    (">\u7efc\u5408<", ">Intelligence<"),   # \u7efc\u5408
+    (">\u7f16\u7a0b<", ">Coding<"),         # \u7f16\u7a0b
+    (">\u6570\u5b66<", ">Math<"),           # \u6570\u5b66
     ("\u6570\u636e\u66f4\u65b0\u4e8e", "Updated"),
-    ("Top 20 \u00b7 \u6309 OpenRouter token \u8c03\u7528\u91cf\u6392\u5e8f", "Top 20"),
-    ('id="periodLabel">\u672c\u5468</span>', 'id="periodLabel">This Week</span>'),
-    ('id="periodLabel">\u4eca\u65e5</span>', 'id="periodLabel">Today</span>'),
-    ('id="periodLabel">\u672c\u6708</span>', 'id="periodLabel">This Month</span>'),
+    ("\u8be5\u7ef4\u5ea6\u6682\u65e0\u6570\u636e\u3002", "No data for this dimension."),  # \u8be5\u7ef4\u5ea6\u6682\u65e0\u6570\u636e\u3002
+    ('id="periodLabel">\u7efc\u5408\u80fd\u529b</span>', 'id="periodLabel">Intelligence</span>'),  # \u7efc\u5408\u80fd\u529b
+    ('id="periodLabel">\u7f16\u7a0b\u80fd\u529b</span>', 'id="periodLabel">Coding</span>'),        # \u7f16\u7a0b\u80fd\u529b
+    ('id="periodLabel">\u6570\u5b66\u80fd\u529b</span>', 'id="periodLabel">Math</span>'),          # \u6570\u5b66\u80fd\u529b
     ("'zh-CN', { hour12: false }", "'en-US', { hour12: false }"),
     ("'zh-CN'", "'en-US'"),
-    ("PERIOD_LABEL = { day: '\u4eca\u65e5', week: '\u672c\u5468', month: '\u672c\u6708' }",
-     "PERIOD_LABEL = { day: 'Today', week: 'This Week', month: 'This Month' }"),
+    ("PERIOD_LABEL = { intelligence: '\u7efc\u5408\u80fd\u529b', coding: '\u7f16\u7a0b\u80fd\u529b', math: '\u6570\u5b66\u80fd\u529b' }",
+     "PERIOD_LABEL = { intelligence: 'Intelligence', coding: 'Coding', math: 'Math' }"),
 
     # ---- ranking summary cards + table ----
     # Emoji stripped on EN side: English labels (ECOSYSTEM STARS,

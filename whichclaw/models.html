@@ -382,9 +382,9 @@
 
     <div class="period-bar">
       <div class="period-tabs" role="tablist">
-        <button class="period-tab" data-period="day" role="tab">Today</button>
-        <button class="period-tab active" data-period="week" role="tab">This Week</button>
-        <button class="period-tab" data-period="month" role="tab">This Month</button>
+        <button class="period-tab active" data-period="intelligence" role="tab">Intelligence</button>
+        <button class="period-tab" data-period="coding" role="tab">Coding</button>
+        <button class="period-tab" data-period="math" role="tab">Math</button>
       </div>
       <div class="meta">
         <span class="pulse-dot"></span><span id="updateTime">Loading…</span>
@@ -401,7 +401,7 @@
             <path d="M10 14.66V17c0 .55-.47.98-.97 1.21L7 19h10l-2.03-.79c-.5-.23-.97-.66-.97-1.21v-2.34" />
             <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
           </svg>
-          LLM Rankings · <span id="periodLabel">This Week</span>
+          LLM Rankings · <span id="periodLabel">Intelligence</span>
         </div>
         <div class="board-subtitle">Top 20</div>
       </div>
@@ -417,7 +417,7 @@
   </div>
 
   <script>
-    const PERIOD_LABEL = { day: 'Today', week: 'This Week', month: 'This Month' };
+    const PERIOD_LABEL = { intelligence: 'Intelligence', coding: 'Coding', math: 'Math' };
     const AUTHOR_COLORS = {
       anthropic: '#d97757', openai: '#10a37f', google: '#4285f4',
       deepseek: '#4f6bed', xiaomi: '#ff6900', minimax: '#1d4ed8',
@@ -428,7 +428,7 @@
     };
 
     let rankingsData = null;
-    let currentPeriod = 'week';
+    let currentPeriod = 'intelligence';
 
     function initData() {
       fetch('./public/models_ranking.json', { cache: 'no-cache' })
@@ -451,23 +451,17 @@
         });
     }
 
-    function formatTokens(n) {
-      if (n >= 1e12) return { value: (n / 1e12).toFixed(2), unit: 'T' };
-      if (n >= 1e9)  return { value: (n / 1e9).toFixed(1),  unit: 'B' };
-      if (n >= 1e6)  return { value: (n / 1e6).toFixed(1),  unit: 'M' };
-      return { value: n.toLocaleString(), unit: '' };
-    }
-
-    function formatChange(change) {
-      if (change === null || change === undefined) return { text: 'NEW', cls: 'new' };
-      const pct = change * 100;
-      const abs = Math.abs(pct);
-      let display;
-      if (abs >= 100) display = Math.round(abs).toLocaleString();
-      else display = abs.toFixed(abs >= 10 ? 0 : 1);
-      if (pct > 0.5)  return { text: '\u2191' + display + '%', cls: 'up' };
-      if (pct < -0.5) return { text: '\u2193' + display + '%', cls: 'down' };
-      return { text: '\u2014 0%', cls: 'flat' };
+    function formatSecondary(m) {
+      const parts = [];
+      if (m.price_blended !== null && m.price_blended !== undefined) {
+        const p = +m.price_blended;
+        const dp = p < 1 ? 2 : (p < 10 ? 1 : 0);
+        parts.push('$' + p.toFixed(dp) + '/M');
+      }
+      if (m.output_speed !== null && m.output_speed !== undefined) {
+        parts.push(Math.round(m.output_speed) + ' tok/s');
+      }
+      return parts.join(' \u00b7 ') || '\u2014';
     }
 
     function escapeHtml(s) {
@@ -499,25 +493,24 @@
       document.getElementById('periodLabel').textContent = PERIOD_LABEL[currentPeriod];
       if (!list.length) {
         document.getElementById('board').innerHTML =
-          '<div class="state-block" style="grid-column: 1 / -1;">No data for this period.</div>';
+          '<div class="state-block" style="grid-column: 1 / -1;">No data for this dimension.</div>';
         return;
       }
       const html = list.map(m => {
-        const tok = formatTokens(m.total_tokens);
-        const chg = formatChange(m.change);
         const rankClass = m.rank <= 3 ? ('top-' + m.rank) : '';
-        const displayName = escapeHtml(m.short_name || m.name || m.permaslug);
+        const displayName = escapeHtml(m.short_name || m.name || m.model_id);
+        const sub = escapeHtml(formatSecondary(m));
         return `
           <div class="row">
             <div class="row-rank ${rankClass}">${m.rank}</div>
             <div class="row-avatar">${avatarHtml(m)}</div>
             <div class="row-info">
               <div class="row-name">${displayName}</div>
-              <div class="row-author">by ${escapeHtml(m.author)}</div>
+              <div class="row-author">by ${escapeHtml(m.author_name || m.author)}</div>
             </div>
             <div class="row-stats">
-              <div class="row-tokens">${tok.value}<span class="unit">${tok.unit} tokens</span></div>
-              <div class="row-change ${chg.cls}">${chg.text}</div>
+              <div class="row-tokens">${m.score}<span class="unit"> pts</span></div>
+              <div class="row-change flat">${sub}</div>
             </div>
           </div>`;
       }).join('');

@@ -63,12 +63,12 @@ python sync_html.py            # 手动：把中文 HTML 镜像到英文站（�
 
 | 项目 | 内容 |
 |---|---|
-| 脚本 | `sync_openrouter_models.py` |
-| 数据源 | `https://openrouter.ai/rankings?view={day\|week\|month}` 的 SSR 内联数据 + `https://openrouter.ai/api/v1/models`（模型元数据）+ 首页作者头像 |
-| 产物 | `public/models_ranking.json`（全本地相对路径，零外链）<br>`public/models_icons/*.{svg,png,jpg}`（作者头像，幂等落盘） |
-| 消费方 | [models.html](models.html) |
-| 频率 | **已自动化**：GitHub Actions 每 3 小时跑一次（UTC `0 */3 * * *`），见 [.github/workflows/sync-models.yml](.github/workflows/sync-models.yml)。同步会自动镜像到英文站，并在有 diff 时自动 commit push。手动触发：Actions 页点 "Run workflow"，或本地 `python sync.py models whichclaw`。 |
-| 无须鉴权 | 标准库 urllib 即可 |
+| 脚本 | `sync_artificialanalysis_models.py` |
+| 数据源 | Artificial Analysis 官方 API：`GET https://artificialanalysis.ai/api/v2/data/llms/models`，请求头 `x-api-key: <AA_API_KEY>`。每个模型返回 `evaluations`（综合/编程/数学指数等）、`pricing`、输出速度。**为什么换掉 OpenRouter**：旧源抓的是 OpenRouter 内部 Next.js Server Action，地址里那串 hash 每次部署都会轮换，于是 sync 天天 404 挂掉；带版本号的 REST API 不会随对方部署漂移。 |
+| 产物 | `public/models_ranking.json`（三个能力榜 `intelligence`/`coding`/`math`，各 Top 20，全本地相对路径）<br>`public/models_icons/*.{svg,png,jpg}`（厂商头像，幂等落盘） |
+| 消费方 | [models.html](models.html)（三个 tab：综合 / 编程 / 数学） |
+| 频率 | **已自动化**：GitHub Actions 每天跑一次（UTC `0 6 * * *`），见 [.github/workflows/sync-models.yml](.github/workflows/sync-models.yml)。同步会自动镜像到英文站，并在有 diff 时自动 commit push。手动触发：Actions 页点 "Run workflow"，或本地 `python sync.py models whichclaw`。 |
+| 鉴权 | **需要 `AA_API_KEY`**：免费 key 在 https://artificialanalysis.ai/ 注册获取。GitHub Actions 加仓库 secret `AA_API_KEY`；本地跑先设环境变量（PowerShell：`$env:AA_API_KEY="<key>"`，bash：`export AA_API_KEY=<key>`）。 |
 
 ### 3. 龙虾排行榜
 
@@ -134,7 +134,7 @@ grep -oE '[\u4e00-\u9fff]+' whichclaw/all.html | sort -u
 - **Windows 终端输出乱码**：日志里的 `—` 在 CMD 下可能显示成 `??`，但写入的 JSON 文件是 UTF-8 clean。可忽略。
 - **skills.json 特别大（25 MB）**：不要 `git add` 后又 revert；push 一次 delta 可能几 MB，多次折腾会撑大 git 仓库。
 - **龙虾榜 stats/contributors 首次返回 202**：GitHub 后台在算，脚本会把该字段写成 `0`；再跑一次一般就有了。
-- **OpenRouter 换页面结构**：`sync_openrouter_models.py` 的 `extract_ranking_data` 用正则从 RSC payload 里抠 `rankingData`；如果 OpenRouter 改了前端，这里会 raise。改正则即可，数据源没变。
+- **大模型榜报错 401 / 无数据**：`sync_artificialanalysis_models.py` 抛 `AA_API_KEY is not set` 或 HTTP 401，说明 key 没配或失效——查环境变量 / 仓库 secret `AA_API_KEY`。想换榜单维度（综合/编程/数学）只需改脚本顶部 `VIEWS` 映射到 `evaluations` 里对应的字段名。
 
 ---
 
