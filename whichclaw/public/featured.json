@@ -7,9 +7,9 @@
     "created_at": 1772739772656,
     "description": "Captures learnings, errors, and corrections to enable continuous improvement. Use when: (1) A command or operation fails unexpectedly, (2) User corrects Claude ('No, that's wrong...', 'Actually...'), (3) User requests a capability that doesn't exist, (4) An external API or tool fails, (5) Claude realizes its knowledge is outdated or incorrect, (6) A better approach is discovered for a recurring task. Also review learnings before major tasks.",
     "description_zh": "",
-    "downloads": 811610,
+    "downloads": 816652,
     "homepage": "https://api.skillhub.cn/pskoett/self-improving-agent",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
     "installs": 86140,
     "labels": {
       "requires_api_key": "false"
@@ -20,7 +20,7 @@
     "score": 100000,
     "slug": "self-improving-agent",
     "source": "clawhub",
-    "stars": 4082,
+    "stars": 4088,
     "subCategories": [
       {
         "key": "agent-workflow",
@@ -36,7 +36,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673123991,
+    "updated_at": 1781759360874,
     "upstream_owner_login": "pskoett",
     "upstream_url": "https://clawhub.ai/pskoett/self-improving-agent",
     "verified": false,
@@ -50,9 +50,9 @@
     "created_at": 1772739776608,
     "description": "Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.",
     "description_zh": "",
-    "downloads": 325568,
+    "downloads": 326042,
     "homepage": "https://api.skillhub.cn/steipete/github",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
     "installs": 35756,
     "labels": {
       "requires_api_key": "true"
@@ -63,7 +63,7 @@
     "score": 100000,
     "slug": "github",
     "source": "clawhub",
-    "stars": 676,
+    "stars": 677,
     "subCategories": [
       {
         "key": "dev-git",
@@ -71,7 +71,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673032608,
+    "updated_at": 1781759321311,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/github",
     "verified": false,
@@ -85,9 +85,9 @@
     "created_at": 1772740032992,
     "description": "Self-reflection + Self-criticism + Self-learning + Self-organizing memory. Agent evaluates its own work, catches mistakes, and improves permanently. Use when...",
     "description_zh": "",
-    "downloads": 320600,
+    "downloads": 321172,
     "homepage": "https://api.skillhub.cn/ivangdavila/self-improving",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
     "installs": 57561,
     "labels": {
       "requires_api_key": "false"
@@ -95,10 +95,10 @@
     "last_synced_at": null,
     "name": "Self-Improving + Proactive Agent",
     "ownerName": "ivangdavila",
-    "score": 100000,
+    "score": 38834.298740444254,
     "slug": "self-improving",
     "source": "clawhub",
-    "stars": 1380,
+    "stars": 1386,
     "subCategories": [
       {
         "key": "agent-framework",
@@ -114,7 +114,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672809609,
+    "updated_at": 1781759360880,
     "upstream_owner_login": "ivangdavila",
     "upstream_url": "https://clawhub.ai/ivangdavila/self-improving",
     "verified": false,
@@ -128,9 +128,9 @@
     "created_at": 1772740029553,
     "description": "Security-first skill vetting for AI agents. Use before installing any skill from ClawdHub, GitHub, or other sources. Checks for red flags, permission scope, and suspicious patterns.",
     "description_zh": "",
-    "downloads": 267971,
+    "downloads": 268483,
     "homepage": "https://api.skillhub.cn/spclaudehome/skill-vetter",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
     "installs": 37273,
     "labels": {
       "requires_api_key": "false"
@@ -141,7 +141,7 @@
     "score": 100000,
     "slug": "skill-vetter",
     "source": "clawhub",
-    "stars": 1228,
+    "stars": 1232,
     "subCategories": [
       {
         "key": "agent-workflow",
@@ -153,7 +153,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672810011,
+    "updated_at": 1781759021314,
     "upstream_owner_login": "spclaudehome",
     "upstream_url": "https://clawhub.ai/spclaudehome/skill-vetter",
     "verified": false,
@@ -167,7 +167,7 @@
     "created_at": 1773257813533,
     "description": "Typed knowledge graph for structured agent memory and composable skills. Use when creating/querying entities (Person, Project, Task, Event, Document), linking related objects, enforcing constraints, planning multi-step actions as graph transformations, or when skills need to share state. Trigger on \"remember\", \"what do I know about\", \"link X to Y\", \"show dependencies\", entity CRUD, or cross-skill data access.",
     "description_zh": "",
-    "downloads": 244934,
+    "downloads": 245251,
     "homepage": "https://api.skillhub.cn/oswalpalash/ontology",
     "iconUrl": null,
     "installs": 29080,
@@ -180,7 +180,7 @@
     "score": 100000,
     "slug": "ontology",
     "source": "clawhub",
-    "stars": 721,
+    "stars": 723,
     "subCategories": [
       {
         "key": "agent-workflow",
@@ -196,7 +196,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672809734,
+    "updated_at": 1781759021163,
     "upstream_owner_login": "oswalpalash",
     "upstream_url": "https://clawhub.ai/oswalpalash/ontology",
     "verified": false,
@@ -210,9 +210,9 @@
     "created_at": 1772739778242,
     "description": "Get current weather and forecasts (no API key required).",
     "description_zh": "",
-    "downloads": 226975,
+    "downloads": 227201,
     "homepage": "https://api.skillhub.cn/steipete/weather",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
     "installs": 21530,
     "labels": {
       "requires_api_key": "false"
@@ -223,7 +223,7 @@
     "score": 100000,
     "slug": "weather",
     "source": "clawhub",
-    "stars": 451,
+    "stars": 452,
     "subCategories": [
       {
         "key": "life-travel",
@@ -239,7 +239,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672523411,
+    "updated_at": 1781759020237,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/weather",
     "verified": false,
@@ -253,9 +253,9 @@
     "created_at": 1772739781263,
     "description": "Transform AI agents from task-followers into proactive partners that anticipate needs and continuously improve. Now with WAL Protocol, Working Buffer, Autonomous Crons, and battle-tested patterns. Part of the Hal Stack 🦞",
     "description_zh": "",
-    "downloads": 214464,
+    "downloads": 214812,
     "homepage": "https://api.skillhub.cn/halthelobster/proactive-agent",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
     "installs": 28937,
     "labels": {
       "requires_api_key": "false"
@@ -266,7 +266,7 @@
     "score": 100000,
     "slug": "proactive-agent",
     "source": "clawhub",
-    "stars": 845,
+    "stars": 851,
     "subCategories": [
       {
         "key": "agent-framework",
@@ -282,7 +282,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672735918,
+    "updated_at": 1781759020755,
     "upstream_owner_login": "halthelobster",
     "upstream_url": "https://clawhub.ai/halthelobster/proactive-agent",
     "verified": false,
@@ -296,9 +296,9 @@
     "created_at": 1772739797003,
     "description": "Remove signs of AI-generated writing from text. Use when editing or reviewing\ntext to make it sound more natural and human-written. Based on Wikipedia's\ncomprehensive \"Signs of AI writing\" guide. Detects and fixes patterns including:\ninflated symbolism, promotional language, superficial -ing analyses, vague\nattributions, em dash overuse, rule of three, AI vocabulary words, negative\nparallelisms, and excessive conjunctive phrases.",
     "description_zh": "",
-    "downloads": 202115,
+    "downloads": 202795,
     "homepage": "https://api.skillhub.cn/biostartechnology/humanizer",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/34a07e4e-fec8-4ce0-aaf8-a83e46546c2d.png",
     "installs": 33756,
     "labels": {
       "requires_api_key": "false"
@@ -309,7 +309,7 @@
     "score": 100000,
     "slug": "humanizer",
     "source": "clawhub",
-    "stars": 877,
+    "stars": 883,
     "subCategories": [
       {
         "key": "content-article",
@@ -321,7 +321,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673079838,
+    "updated_at": 1781759360914,
     "upstream_owner_login": "biostartechnology",
     "upstream_url": "https://clawhub.ai/biostartechnology/humanizer",
     "verified": false,
@@ -335,9 +335,9 @@
     "created_at": 1772739773556,
     "description": "Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs.",
     "description_zh": "",
-    "downloads": 186239,
+    "downloads": 186363,
     "homepage": "https://api.skillhub.cn/steipete/gog",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 14214,
     "labels": {
       "requires_api_key": "true"
@@ -348,7 +348,7 @@
     "score": 100000,
     "slug": "gog",
     "source": "clawhub",
-    "stars": 923,
+    "stars": 924,
     "subCategories": [
       {
         "key": "office-doc",
@@ -364,7 +364,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781671234380,
+    "updated_at": 1781758721272,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/gog",
     "verified": false,
@@ -378,7 +378,7 @@
     "created_at": 1772744592079,
     "description": "AI-powered platform for rapid full-stack app development, autonomous agents, workflow automation, and scalable product creation with low-code and AI integrat...",
     "description_zh": "",
-    "downloads": 181360,
+    "downloads": 181500,
     "homepage": "https://api.skillhub.cn/larsonreever/codeconductor",
     "iconUrl": null,
     "installs": 131480,
@@ -388,10 +388,10 @@
     "last_synced_at": null,
     "name": "CodeConductor.ai",
     "ownerName": "larsonreever",
-    "score": 77450.79344901376,
+    "score": 100000,
     "slug": "codeconductor",
     "source": "clawhub",
-    "stars": 71,
+    "stars": 72,
     "subCategories": [
       {
         "key": "dev-code-gen",
@@ -405,7 +405,7 @@
     "tags": [
       "latest code conductor skill cc ai"
     ],
-    "updated_at": 1781672510301,
+    "updated_at": 1781759020860,
     "upstream_owner_login": "larsonreever",
     "upstream_url": "https://clawhub.ai/larsonreever/codeconductor",
     "verified": false,
@@ -419,9 +419,9 @@
     "created_at": 1772740044096,
     "description": "Create, inspect, and edit Microsoft Word documents and DOCX files with reliable styles, numbering, tracked changes, tables, sections, and compatibility check...",
     "description_zh": "",
-    "downloads": 149846,
+    "downloads": 150529,
     "homepage": "https://api.skillhub.cn/ivangdavila/word-docx",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
     "installs": 23940,
     "labels": {
       "requires_api_key": "false"
@@ -432,7 +432,7 @@
     "score": 100000,
     "slug": "word-docx",
     "source": "clawhub",
-    "stars": 447,
+    "stars": 451,
     "subCategories": [
       {
         "key": "office-doc",
@@ -440,7 +440,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673123553,
+    "updated_at": 1781759320944,
     "upstream_owner_login": "ivangdavila",
     "upstream_url": "https://clawhub.ai/ivangdavila/word-docx",
     "verified": false,
@@ -454,9 +454,9 @@
     "created_at": 1772740083296,
     "description": "Create, inspect, and edit Microsoft Excel workbooks and XLSX files with reliable formulas, dates, types, formatting, recalculation, and template preservation...",
     "description_zh": "",
-    "downloads": 142569,
+    "downloads": 143199,
     "homepage": "https://api.skillhub.cn/ivangdavila/excel-xlsx",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/27205dc2-3c4b-4854-85b1-8902f05745a3.png",
     "installs": 24636,
     "labels": {
       "requires_api_key": "false"
@@ -467,7 +467,7 @@
     "score": 100000,
     "slug": "excel-xlsx",
     "source": "clawhub",
-    "stars": 372,
+    "stars": 376,
     "subCategories": [
       {
         "key": "office-spreadsheet",
@@ -475,7 +475,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673123567,
+    "updated_at": 1781759320967,
     "upstream_owner_login": "ivangdavila",
     "upstream_url": "https://clawhub.ai/ivangdavila/excel-xlsx",
     "verified": false,
@@ -489,9 +489,9 @@
     "created_at": 1772740027607,
     "description": "Headless browser automation CLI optimized for AI agents with accessibility tree snapshots and ref-based element selection",
     "description_zh": "",
-    "downloads": 118954,
+    "downloads": 119159,
     "homepage": "https://api.skillhub.cn/matrixy/agent-browser-clawdbot",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/64ea6fd6-ebe7-418c-af4f-2cafff71f2ec.png",
     "installs": 2631,
     "labels": {
       "requires_api_key": "false"
@@ -502,7 +502,7 @@
     "score": 100000,
     "slug": "agent-browser-clawdbot",
     "source": "clawhub",
-    "stars": 430,
+    "stars": 433,
     "subCategories": [
       {
         "key": "agent-task-automation",
@@ -514,7 +514,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672809823,
+    "updated_at": 1781759320336,
     "upstream_owner_login": "matrixy",
     "upstream_url": "https://clawhub.ai/matrixy/agent-browser-clawdbot",
     "verified": false,
@@ -528,10 +528,10 @@
     "created_at": 1772739803931,
     "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
     "description_zh": "",
-    "downloads": 116270,
+    "downloads": 117762,
     "homepage": "https://api.skillhub.cn/chindden/skill-creator",
-    "iconUrl": null,
-    "installs": 2487,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
+    "installs": 2497,
     "labels": {
       "requires_api_key": "false"
     },
@@ -541,7 +541,7 @@
     "score": 100000,
     "slug": "skill-creator",
     "source": "clawhub",
-    "stars": 387,
+    "stars": 392,
     "subCategories": [
       {
         "key": "agent-framework",
@@ -557,7 +557,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673124118,
+    "updated_at": 1781759320459,
     "upstream_owner_login": "chindden",
     "upstream_url": "https://clawhub.ai/chindden/skill-creator",
     "verified": false,
@@ -571,10 +571,10 @@
     "created_at": 1772739784421,
     "description": "Generate/edit images with Nano Banana Pro (Gemini 3 Pro Image). Use for image create/modify requests incl. edits. Supports text-to-image + image-to-image; 1K/2K/4K; use --input-image.",
     "description_zh": "",
-    "downloads": 115838,
+    "downloads": 116002,
     "homepage": "https://api.skillhub.cn/steipete/nano-banana-pro",
-    "iconUrl": null,
-    "installs": 1892,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/9bcddb03-161b-42cd-bf2e-cf0159d85bd7.png",
+    "installs": 1894,
     "labels": {
       "requires_api_key": "true"
     },
@@ -584,7 +584,7 @@
     "score": 100000,
     "slug": "nano-banana-pro",
     "source": "clawhub",
-    "stars": 422,
+    "stars": 423,
     "subCategories": [
       {
         "key": "design-image-gen",
@@ -596,7 +596,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781671840870,
+    "updated_at": 1781759020295,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/nano-banana-pro",
     "verified": false,
@@ -610,9 +610,9 @@
     "created_at": 1772739783611,
     "description": "Edit PDFs with natural-language instructions using the nano-pdf CLI.",
     "description_zh": "",
-    "downloads": 115402,
+    "downloads": 115583,
     "homepage": "https://api.skillhub.cn/steipete/nano-pdf",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 12773,
     "labels": {
       "requires_api_key": "false"
@@ -620,10 +620,10 @@
     "last_synced_at": null,
     "name": "Nano Pdf",
     "ownerName": "steipete",
-    "score": 100000,
+    "score": 54933.20632328593,
     "slug": "nano-pdf",
     "source": "clawhub",
-    "stars": 275,
+    "stars": 276,
     "subCategories": [
       {
         "key": "office-pdf",
@@ -631,7 +631,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673078282,
+    "updated_at": 1781759360950,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/nano-pdf",
     "verified": false,
@@ -645,10 +645,10 @@
     "created_at": 1772739813590,
     "description": "Search the web using Baidu AI Search Engine (BDSE). Use for live information, documentation, or research topics.",
     "description_zh": "",
-    "downloads": 106370,
+    "downloads": 106592,
     "homepage": "https://api.skillhub.cn/ide-rea/baidu-search",
-    "iconUrl": null,
-    "installs": 973,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/62f73a9b-1aca-4f8e-921d-6102e258c768.png",
+    "installs": 981,
     "labels": {
       "requires_api_key": "true"
     },
@@ -658,7 +658,7 @@
     "score": 100000,
     "slug": "baidu-search",
     "source": "clawhub",
-    "stars": 240,
+    "stars": 242,
     "subCategories": [
       {
         "key": "knowledge-retrieval",
@@ -666,7 +666,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673109428,
+    "updated_at": 1781759321073,
     "upstream_owner_login": "ide-rea",
     "upstream_url": "https://clawhub.ai/ide-rea/baidu-search",
     "verified": false,
@@ -680,9 +680,9 @@
     "created_at": 1772739802573,
     "description": "Automatically update Clawdbot and all installed skills once daily. Runs via cron, checks for updates, applies them, and messages the user with a summary of what changed.",
     "description_zh": "",
-    "downloads": 104353,
+    "downloads": 104564,
     "homepage": "https://api.skillhub.cn/maximeprades/auto-updater",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
     "installs": 16784,
     "labels": {
       "requires_api_key": "false"
@@ -693,7 +693,7 @@
     "score": 100000,
     "slug": "auto-updater",
     "source": "clawhub",
-    "stars": 439,
+    "stars": 441,
     "subCategories": [
       {
         "key": "agent-task-automation",
@@ -705,7 +705,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672810324,
+    "updated_at": 1781759020931,
     "upstream_owner_login": "maximeprades",
     "upstream_url": "https://clawhub.ai/maximeprades/auto-updater",
     "verified": false,
@@ -719,10 +719,10 @@
     "created_at": 1772739795427,
     "description": "Work with Obsidian vaults (plain Markdown notes) and automate via obsidian-cli.",
     "description_zh": "",
-    "downloads": 104169,
+    "downloads": 104299,
     "homepage": "https://api.skillhub.cn/steipete/obsidian",
-    "iconUrl": null,
-    "installs": 2604,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
+    "installs": 2614,
     "labels": {
       "requires_api_key": "false"
     },
@@ -732,7 +732,7 @@
     "score": 100000,
     "slug": "obsidian",
     "source": "clawhub",
-    "stars": 436,
+    "stars": 439,
     "subCategories": [
       {
         "key": "knowledge-organize",
@@ -744,50 +744,11 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673031077,
+    "updated_at": 1781759320796,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/obsidian",
     "verified": false,
     "version": "1.0.0"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772739794619,
-    "description": "Connect to external services through Maton-managed API routes. Use this skill only after the user names the target app, account, and task. Start with read/li...",
-    "description_zh": "",
-    "downloads": 103812,
-    "homepage": "https://api.skillhub.cn/byungkyu/api-gateway",
-    "iconUrl": null,
-    "installs": 11601,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": null,
-    "name": "API Gateway",
-    "ownerName": "byungkyu",
-    "score": 100000,
-    "slug": "api-gateway",
-    "source": "clawhub",
-    "stars": 392,
-    "subCategories": [
-      {
-        "key": "agent-task-automation",
-        "name": "任务自动化"
-      },
-      {
-        "key": "agent-tool-use",
-        "name": "工具调用"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1781673109539,
-    "upstream_owner_login": "byungkyu",
-    "upstream_url": "https://clawhub.ai/byungkyu/api-gateway",
-    "verified": false,
-    "version": "1.0.124"
   },
   {
     "category": "data-analysis",
@@ -797,7 +758,7 @@
     "created_at": 1772748500420,
     "description": "Web search via Tavily API (alternative to Brave). Use when the user asks to search the web / look up sources / find links and Brave web_search is unavailable...",
     "description_zh": "",
-    "downloads": 99746,
+    "downloads": 99882,
     "homepage": "https://api.skillhub.cn/jacky1n7/openclaw-tavily-search",
     "iconUrl": null,
     "installs": 8311,
@@ -810,7 +771,7 @@
     "score": 100000,
     "slug": "openclaw-tavily-search",
     "source": "clawhub",
-    "stars": 271,
+    "stars": 272,
     "subCategories": [
       {
         "key": "data-web-scraping",
@@ -818,7 +779,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673110000,
+    "updated_at": 1781759321112,
     "upstream_owner_login": "jacky1n7",
     "upstream_url": "https://clawhub.ai/jacky1n7/openclaw-tavily-search",
     "verified": false,
@@ -832,9 +793,9 @@
     "created_at": 1772740053420,
     "description": "Persistent memory for AI agents to store facts, learn from actions, recall information, and track entities across sessions.",
     "description_zh": "",
-    "downloads": 97222,
+    "downloads": 97538,
     "homepage": "https://api.skillhub.cn/dennis-da-menace/agent-memory",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
     "installs": 25555,
     "labels": {
       "requires_api_key": "false"
@@ -845,7 +806,7 @@
     "score": 100000,
     "slug": "agent-memory",
     "source": "clawhub",
-    "stars": 128,
+    "stars": 130,
     "subCategories": [
       {
         "key": "agent-context",
@@ -857,7 +818,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672730842,
+    "updated_at": 1781759021022,
     "upstream_owner_login": "dennis-da-menace",
     "upstream_url": "https://clawhub.ai/dennis-da-menace/agent-memory",
     "verified": false,
@@ -871,9 +832,9 @@
     "created_at": 1772739782913,
     "description": "Notion API for creating and managing pages, databases, and blocks.",
     "description_zh": "",
-    "downloads": 92738,
+    "downloads": 92808,
     "homepage": "https://api.skillhub.cn/steipete/notion",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
     "installs": 10208,
     "labels": {
       "requires_api_key": "true"
@@ -884,7 +845,7 @@
     "score": 100000,
     "slug": "notion",
     "source": "clawhub",
-    "stars": 259,
+    "stars": 260,
     "subCategories": [
       {
         "key": "agent-task-automation",
@@ -896,7 +857,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672140883,
+    "updated_at": 1781758162494,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/notion",
     "verified": false,
@@ -910,9 +871,9 @@
     "created_at": 1772739796115,
     "description": "Local speech-to-text with the Whisper CLI (no API key).",
     "description_zh": "",
-    "downloads": 92451,
+    "downloads": 92626,
     "homepage": "https://api.skillhub.cn/steipete/openai-whisper",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
     "installs": 11622,
     "labels": {
       "requires_api_key": "false"
@@ -931,7 +892,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672729996,
+    "updated_at": 1781759061671,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/openai-whisper",
     "verified": false,
@@ -945,9 +906,9 @@
     "created_at": 1772739782086,
     "description": "Control Sonos speakers (discover/status/play/volume/group).",
     "description_zh": "",
-    "downloads": 84835,
+    "downloads": 84866,
     "homepage": "https://api.skillhub.cn/steipete/sonoscli",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/9bcddb03-161b-42cd-bf2e-cf0159d85bd7.png",
     "installs": 6761,
     "labels": {
       "requires_api_key": "false"
@@ -966,7 +927,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781671231747,
+    "updated_at": 1781751825087,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/sonoscli",
     "verified": false,
@@ -980,7 +941,7 @@
     "created_at": 1774615276850,
     "description": "Default web search for OpenClaw. Search the web across 10 engines — Google, Reddit, GitHub, arXiv, Hacker News, and more — using Prismfy. Free tier included,...",
     "description_zh": "",
-    "downloads": 83905,
+    "downloads": 83950,
     "homepage": "https://api.skillhub.cn/uroboros1205/prismfy-search",
     "iconUrl": null,
     "installs": 18,
@@ -1001,7 +962,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672779714,
+    "updated_at": 1781755100606,
     "upstream_owner_login": "uroboros1205",
     "upstream_url": "https://clawhub.ai/uroboros1205/prismfy-search",
     "verified": false,
@@ -1015,9 +976,9 @@
     "created_at": 1772739817233,
     "description": "Design and implement automation workflows to save time and scale operations as a solopreneur. Use when identifying repetitive tasks to automate, building workflows across tools, setting up triggers and actions, or optimizing existing automations. Covers automation opportunity identification, workflow design, tool selection (Zapier, Make, n8n), testing, and maintenance. Trigger on \"automate\", \"automation\", \"workflow automation\", \"save time\", \"reduce manual work\", \"automate my business\", \"no-code automation\".",
     "description_zh": "",
-    "downloads": 82393,
+    "downloads": 82489,
     "homepage": "https://api.skillhub.cn/jk-0001/automation-workflows",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/10f9d8ff-5e7f-434f-9992-5e71e1d4e990.png",
     "installs": 10172,
     "labels": {
       "requires_api_key": "false"
@@ -1044,7 +1005,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672734401,
+    "updated_at": 1781756621265,
     "upstream_owner_login": "jk-0001",
     "upstream_url": "https://clawhub.ai/jk-0001/automation-workflows",
     "verified": false,
@@ -1058,9 +1019,9 @@
     "created_at": 1772740031000,
     "description": "A self-evolution engine for AI agents. Analyzes runtime history to identify improvements and applies protocol-constrained evolution. Communicates with EvoMap Hub via local Proxy mailbox",
     "description_zh": "",
-    "downloads": 77829,
+    "downloads": 78039,
     "homepage": "https://api.skillhub.cn/autogame-17/evolver",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
     "installs": 10547,
     "labels": {
       "requires_api_key": "false"
@@ -1068,10 +1029,10 @@
     "last_synced_at": null,
     "name": "Evolver",
     "ownerName": "autogame-17",
-    "score": 100000,
+    "score": 70520.53199745996,
     "slug": "evolver",
     "source": "clawhub",
-    "stars": 95,
+    "stars": 96,
     "subCategories": [
       {
         "key": "agent-framework",
@@ -1087,7 +1048,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672736328,
+    "updated_at": 1781759020922,
     "upstream_owner_login": "autogame-17",
     "upstream_url": "https://clawhub.ai/autogame-17/evolver",
     "verified": false,
@@ -1101,10 +1062,10 @@
     "created_at": 1772739798794,
     "description": "Manages free AI models from OpenRouter for OpenClaw. Automatically ranks models by quality, configures fallbacks for rate-limit handling, and updates opencla...",
     "description_zh": "",
-    "downloads": 77197,
+    "downloads": 77304,
     "homepage": "https://api.skillhub.cn/shaivpidadi/free-ride",
-    "iconUrl": null,
-    "installs": 523,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/64ea6fd6-ebe7-418c-af4f-2cafff71f2ec.png",
+    "installs": 528,
     "labels": {
       "requires_api_key": "true"
     },
@@ -1126,21 +1087,21 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673110247,
+    "updated_at": 1781759020372,
     "upstream_owner_login": "shaivpidadi",
     "upstream_url": "https://clawhub.ai/shaivpidadi/free-ride",
     "verified": false,
     "version": "1.0.11"
   },
   {
-    "category": "",
+    "category": "ai-agent",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
     "created_at": 1777498690167,
     "description": "Agent Phone Call gives every AI agent a phone number and the ability to get things done over the phone — finding contacts, making calls, and completing tasks...",
     "description_zh": "",
-    "downloads": 74950,
+    "downloads": 74971,
     "homepage": "https://api.skillhub.cn/mrsz/agent-phone-call",
     "iconUrl": null,
     "installs": 3,
@@ -1153,10 +1114,19 @@
     "score": 100000,
     "slug": "agent-phone-call",
     "source": "clawhub",
-    "stars": 15,
-    "subCategories": [],
+    "stars": 16,
+    "subCategories": [
+      {
+        "key": "agent-task-automation",
+        "name": "任务自动化"
+      },
+      {
+        "key": "agent-tool-use",
+        "name": "工具调用"
+      }
+    ],
     "tags": null,
-    "updated_at": 1781669427910,
+    "updated_at": 1781754850286,
     "upstream_owner_login": "mrsz",
     "upstream_url": "https://clawhub.ai/mrsz/agent-phone-call",
     "verified": false,
@@ -1170,7 +1140,7 @@
     "created_at": 1772744739088,
     "description": "Efficient, secure agent-to-agent communication protocol. 40-60% token reduction, built-in privacy, Ed25519 signatures.",
     "description_zh": "",
-    "downloads": 72451,
+    "downloads": 72486,
     "homepage": "https://api.skillhub.cn/swahilipapi/moltspeak",
     "iconUrl": null,
     "installs": 56730,
@@ -1199,7 +1169,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672725942,
+    "updated_at": 1781758720356,
     "upstream_owner_login": "swahilipapi",
     "upstream_url": "https://clawhub.ai/swahilipapi/moltspeak",
     "verified": false,
@@ -1213,10 +1183,10 @@
     "created_at": 1772739797704,
     "description": "Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), including ad-hoc servers, config edits, and CLI/type generation.",
     "description_zh": "",
-    "downloads": 67388,
+    "downloads": 67437,
     "homepage": "https://api.skillhub.cn/steipete/mcporter",
-    "iconUrl": null,
-    "installs": 2039,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7422abc7-fa86-4505-a723-0575c56e7a2d.png",
+    "installs": 2040,
     "labels": {
       "requires_api_key": "false"
     },
@@ -1226,7 +1196,7 @@
     "score": 100000,
     "slug": "mcporter",
     "source": "clawhub",
-    "stars": 194,
+    "stars": 195,
     "subCategories": [
       {
         "key": "dev-code-gen",
@@ -1238,7 +1208,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672510004,
+    "updated_at": 1781754018655,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/mcporter",
     "verified": false,
@@ -1252,9 +1222,9 @@
     "created_at": 1772740035082,
     "description": "Feishu-integrated wrapper for the capability-evolver. Manages the evolution loop lifecycle (start/stop/ensure), sends rich Feishu card reports, and provides...",
     "description_zh": "",
-    "downloads": 66885,
+    "downloads": 66944,
     "homepage": "https://api.skillhub.cn/autogame-17/feishu-evolver-wrapper",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
     "installs": 4610,
     "labels": {
       "requires_api_key": "false"
@@ -1265,7 +1235,7 @@
     "score": 100000,
     "slug": "feishu-evolver-wrapper",
     "source": "clawhub",
-    "stars": 16,
+    "stars": 17,
     "subCategories": [
       {
         "key": "agent-framework",
@@ -1277,7 +1247,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781671527287,
+    "updated_at": 1781759320483,
     "upstream_owner_login": "autogame-17",
     "upstream_url": "https://clawhub.ai/autogame-17/feishu-evolver-wrapper",
     "verified": false,
@@ -1291,9 +1261,9 @@
     "created_at": 1772740058539,
     "description": "Data analysis and visualization. Query databases, generate reports, automate spreadsheets, and turn raw data into clear, actionable insights. Use when (1) yo...",
     "description_zh": "",
-    "downloads": 65999,
+    "downloads": 66501,
     "homepage": "https://api.skillhub.cn/ivangdavila/data-analysis",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 9814,
     "labels": {
       "requires_api_key": "false"
@@ -1304,7 +1274,7 @@
     "score": 100000,
     "slug": "data-analysis",
     "source": "clawhub",
-    "stars": 204,
+    "stars": 205,
     "subCategories": [
       {
         "key": "data-visualization",
@@ -1320,7 +1290,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673110155,
+    "updated_at": 1781759320836,
     "upstream_owner_login": "ivangdavila",
     "upstream_url": "https://clawhub.ai/ivangdavila/data-analysis",
     "verified": false,
@@ -1334,9 +1304,9 @@
     "created_at": 1772739800780,
     "description": "Web search and content extraction via Brave Search API. Use for searching documentation, facts, or any web content. Lightweight, no browser required.",
     "description_zh": "",
-    "downloads": 65755,
+    "downloads": 65826,
     "homepage": "https://api.skillhub.cn/steipete/brave-search",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
     "installs": 7921,
     "labels": {
       "requires_api_key": "true"
@@ -1355,7 +1325,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672809788,
+    "updated_at": 1781756621202,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/brave-search",
     "verified": false,
@@ -1369,10 +1339,10 @@
     "created_at": 1772739815566,
     "description": "Ultimate AI agent memory system for Cursor, Claude, ChatGPT & Copilot. WAL protocol + vector search + git-notes + cloud backup. Never lose context again. Vibe-coding ready.",
     "description_zh": "",
-    "downloads": 62038,
+    "downloads": 62085,
     "homepage": "https://api.skillhub.cn/nextfrontierbuilds/elite-longterm-memory",
-    "iconUrl": null,
-    "installs": 625,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
+    "installs": 630,
     "labels": {
       "requires_api_key": "true"
     },
@@ -1382,7 +1352,7 @@
     "score": 100000,
     "slug": "elite-longterm-memory",
     "source": "clawhub",
-    "stars": 223,
+    "stars": 224,
     "subCategories": [
       {
         "key": "agent-context",
@@ -1401,7 +1371,7 @@
       "openclaw",
       "persistence"
     ],
-    "updated_at": 1781669429798,
+    "updated_at": 1781753000832,
     "upstream_owner_login": "nextfrontierbuilds",
     "upstream_url": "https://clawhub.ai/nextfrontierbuilds/elite-longterm-memory",
     "verified": false,
@@ -1415,20 +1385,20 @@
     "created_at": 1772739841488,
     "description": "Advanced desktop automation with mouse, keyboard, and screen control",
     "description_zh": "",
-    "downloads": 59671,
+    "downloads": 59751,
     "homepage": "https://api.skillhub.cn/matagul/desktop-control",
-    "iconUrl": null,
-    "installs": 508,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7422abc7-fa86-4505-a723-0575c56e7a2d.png",
+    "installs": 510,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
     "name": "Desktop Control",
     "ownerName": "matagul",
-    "score": 54081.17285440706,
+    "score": 100000,
     "slug": "desktop-control",
     "source": "clawhub",
-    "stars": 377,
+    "stars": 378,
     "subCategories": [
       {
         "key": "agent-task-automation",
@@ -1440,7 +1410,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781671877996,
+    "updated_at": 1781757521034,
     "upstream_owner_login": "matagul",
     "upstream_url": "https://clawhub.ai/matagul/desktop-control",
     "verified": false,
@@ -1454,10 +1424,10 @@
     "created_at": 1772739808791,
     "description": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock scoring, viral trend detection (Hot Scanner), and rumor/early signal detection. Use for stock analysis, portfolio tracking, earnings reactions, crypto monitoring, trending stocks, or finding rumors before they hit mainstream.",
     "description_zh": "",
-    "downloads": 57252,
+    "downloads": 57317,
     "homepage": "https://api.skillhub.cn/udiedrichsen/stock-analysis",
-    "iconUrl": null,
-    "installs": 610,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
+    "installs": 616,
     "labels": {
       "requires_api_key": "false"
     },
@@ -1467,7 +1437,7 @@
     "score": 100000,
     "slug": "stock-analysis",
     "source": "clawhub",
-    "stars": 272,
+    "stars": 274,
     "subCategories": [
       {
         "key": "pro-finance",
@@ -1475,7 +1445,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781670378311,
+    "updated_at": 1781756660915,
     "upstream_owner_login": "udiedrichsen",
     "upstream_url": "https://clawhub.ai/udiedrichsen/stock-analysis",
     "verified": false,
@@ -1489,9 +1459,9 @@
     "created_at": 1772744532909,
     "description": "Create, inspect, and edit Microsoft PowerPoint presentations and PPTX decks with reliable layouts, templates, placeholders, notes, charts, and visual QA. Use...",
     "description_zh": "",
-    "downloads": 56911,
+    "downloads": 57254,
     "homepage": "https://api.skillhub.cn/ivangdavila/powerpoint-pptx",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/62f73a9b-1aca-4f8e-921d-6102e258c768.png",
     "installs": 8062,
     "labels": {
       "requires_api_key": "false"
@@ -1502,7 +1472,7 @@
     "score": 100000,
     "slug": "powerpoint-pptx",
     "source": "clawhub",
-    "stars": 171,
+    "stars": 172,
     "subCategories": [
       {
         "key": "office-ppt",
@@ -1510,7 +1480,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673079040,
+    "updated_at": 1781755400664,
     "upstream_owner_login": "ivangdavila",
     "upstream_url": "https://clawhub.ai/ivangdavila/powerpoint-pptx",
     "verified": false,
@@ -1524,9 +1494,9 @@
     "created_at": 1772740024193,
     "description": "This skill should be used when the user asks for news updates, daily briefings, or what's happening in the world. Fetches news from trusted international RSS feeds and can create voice summaries.",
     "description_zh": "",
-    "downloads": 56280,
+    "downloads": 56417,
     "homepage": "https://api.skillhub.cn/joargp/news-summary",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7422abc7-fa86-4505-a723-0575c56e7a2d.png",
     "installs": 5466,
     "labels": {
       "requires_api_key": "true"
@@ -1549,7 +1519,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672178093,
+    "updated_at": 1781759021217,
     "upstream_owner_login": "joargp",
     "upstream_url": "https://clawhub.ai/joargp/news-summary",
     "verified": false,
@@ -1563,9 +1533,9 @@
     "created_at": 1772739826103,
     "description": "Automates browser interactions for web testing, form filling, screenshots, and data extraction. Use when the user needs to navigate websites, interact with w...",
     "description_zh": "",
-    "downloads": 55500,
+    "downloads": 55710,
     "homepage": "https://api.skillhub.cn/shawnpana/browser-use",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/9bcddb03-161b-42cd-bf2e-cf0159d85bd7.png",
     "installs": 470,
     "labels": {
       "requires_api_key": "false"
@@ -1576,7 +1546,7 @@
     "score": 100000,
     "slug": "browser-use",
     "source": "clawhub",
-    "stars": 136,
+    "stars": 137,
     "subCategories": [
       {
         "key": "agent-task-automation",
@@ -1588,7 +1558,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672725876,
+    "updated_at": 1781759320877,
     "upstream_owner_login": "shawnpana",
     "upstream_url": "https://clawhub.ai/shawnpana/browser-use",
     "verified": false,
@@ -1602,9 +1572,9 @@
     "created_at": 1772739829168,
     "description": "Read and send email via IMAP/SMTP. Check for new/unread messages, fetch content, search mailboxes, mark as read/unread, and send emails with attachments. Sup...",
     "description_zh": "",
-    "downloads": 55005,
+    "downloads": 55198,
     "homepage": "https://api.skillhub.cn/gzlicanyi/imap-smtp-email",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 4540,
     "labels": {
       "requires_api_key": "true"
@@ -1615,7 +1585,7 @@
     "score": 100000,
     "slug": "imap-smtp-email",
     "source": "clawhub",
-    "stars": 114,
+    "stars": 115,
     "subCategories": [
       {
         "key": "office-email",
@@ -1623,7 +1593,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672426505,
+    "updated_at": 1781759020779,
     "upstream_owner_login": "gzlicanyi",
     "upstream_url": "https://clawhub.ai/gzlicanyi/imap-smtp-email",
     "verified": false,
@@ -1637,9 +1607,9 @@
     "created_at": 1772740024983,
     "description": "Convert documents and files to Markdown using markitdown. Use when converting PDF, Word (.docx), PowerPoint (.pptx), Excel (.xlsx, .xls), HTML, CSV, JSON, XML, images (with EXIF/OCR), audio (with transcription), ZIP archives, YouTube URLs, or EPubs to Markdown format for LLM processing or text analysis.",
     "description_zh": "",
-    "downloads": 54755,
+    "downloads": 54857,
     "homepage": "https://api.skillhub.cn/steipete/markdown-converter",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/62f73a9b-1aca-4f8e-921d-6102e258c768.png",
     "installs": 8264,
     "labels": {
       "requires_api_key": "false"
@@ -1650,7 +1620,7 @@
     "score": 100000,
     "slug": "markdown-converter",
     "source": "clawhub",
-    "stars": 226,
+    "stars": 228,
     "subCategories": [
       {
         "key": "knowledge-base-qa",
@@ -1666,41 +1636,11 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672809481,
+    "updated_at": 1781759020499,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/markdown-converter",
     "verified": false,
     "version": "1.0.0"
-  },
-  {
-    "category": "",
-    "claim_state": "unclaimed",
-    "claimable": false,
-    "claimed_user_handle": null,
-    "created_at": 1779223488615,
-    "description": "Browser automation CLI designed for AI Agents, running a full browser engine to provide comprehensive web interaction capabilities: navigation and interaction, data extraction and network interception, screenshots, automated CAPTCHA solving, anti-detection fingerprint spoofing, session persistence, built-in network proxies, multi-account isolation, and concurrent multi-browser execution .",
-    "description_zh": "",
-    "downloads": 54074,
-    "homepage": "https://api.skillhub.cn/21551594/browser-act-cli-skill",
-    "iconUrl": null,
-    "installs": 2,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "Browser Act",
-    "ownerName": "21551594",
-    "score": 100000,
-    "slug": "browser-act-cli-skill",
-    "source": "clawhub",
-    "stars": 12,
-    "subCategories": [],
-    "tags": null,
-    "updated_at": 1781669432291,
-    "upstream_owner_login": null,
-    "upstream_url": null,
-    "verified": false,
-    "version": "1.0.2"
   },
   {
     "category": "knowledge-management",
@@ -1710,7 +1650,7 @@
     "created_at": 1773024682646,
     "description": "Search and discover OpenClaw skills from various sources. Use when: user wants to find available skills, search for specific functionality, or discover new s...",
     "description_zh": "",
-    "downloads": 52965,
+    "downloads": 53144,
     "homepage": "https://api.skillhub.cn/fangkelvin/find-skills-skill",
     "iconUrl": null,
     "installs": 446,
@@ -1723,7 +1663,7 @@
     "score": 100000,
     "slug": "find-skills-skill",
     "source": "clawhub",
-    "stars": 150,
+    "stars": 153,
     "subCategories": [
       {
         "key": "knowledge-base-qa",
@@ -1735,7 +1675,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673110295,
+    "updated_at": 1781758720863,
     "upstream_owner_login": "fangkelvin",
     "upstream_url": "https://clawhub.ai/fangkelvin/find-skills-skill",
     "verified": false,
@@ -1749,9 +1689,9 @@
     "created_at": 1772739807007,
     "description": "Fetch and read transcripts from YouTube videos. Use when you need to summarize a video, answer questions about its content, or extract information from it.",
     "description_zh": "",
-    "downloads": 52842,
+    "downloads": 52878,
     "homepage": "https://api.skillhub.cn/michaelgathara/youtube-watcher",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/10f9d8ff-5e7f-434f-9992-5e71e1d4e990.png",
     "installs": 5840,
     "labels": {
       "requires_api_key": "false"
@@ -1774,7 +1714,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673026182,
+    "updated_at": 1781759020453,
     "upstream_owner_login": "michaelgathara",
     "upstream_url": "https://clawhub.ai/michaelgathara/youtube-watcher",
     "verified": false,
@@ -1788,9 +1728,9 @@
     "created_at": 1772739819096,
     "description": "Extract frames or short clips from videos using ffmpeg.",
     "description_zh": "",
-    "downloads": 52506,
+    "downloads": 52564,
     "homepage": "https://api.skillhub.cn/steipete/video-frames",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
     "installs": 6609,
     "labels": {
       "requires_api_key": "false"
@@ -1798,7 +1738,7 @@
     "last_synced_at": null,
     "name": "Video Frames",
     "ownerName": "steipete",
-    "score": 100000,
+    "score": 92874.2132013868,
     "slug": "video-frames",
     "source": "clawhub",
     "stars": 131,
@@ -1809,7 +1749,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672809287,
+    "updated_at": 1781759020443,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/video-frames",
     "verified": false,
@@ -1823,10 +1763,10 @@
     "created_at": 1772740025897,
     "description": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. When Claude needs to fill in a PDF form or programmatically process, generate, or analyze PDF documents at scale.",
     "description_zh": "",
-    "downloads": 51383,
+    "downloads": 51731,
     "homepage": "https://api.skillhub.cn/awspace/pdf",
-    "iconUrl": null,
-    "installs": 799,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a78375f1-773e-4817-b4f3-0557b6afd777.png",
+    "installs": 803,
     "labels": {
       "requires_api_key": "false"
     },
@@ -1848,7 +1788,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781673078642,
+    "updated_at": 1781759321154,
     "upstream_owner_login": "awspace",
     "upstream_url": "https://clawhub.ai/awspace/pdf",
     "verified": false,
@@ -1862,9 +1802,9 @@
     "created_at": 1772739825296,
     "description": "Gemini CLI for one-shot Q&A, summaries, and generation.",
     "description_zh": "",
-    "downloads": 50453,
+    "downloads": 50559,
     "homepage": "https://api.skillhub.cn/steipete/gemini",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
     "installs": 11363,
     "labels": {
       "requires_api_key": "false"
@@ -1883,7 +1823,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781672735531,
+    "updated_at": 1781759020585,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/gemini",
     "verified": false,
@@ -1897,9 +1837,9 @@
     "created_at": 1772739810625,
     "description": "Use when you need to control Slack from Clawdbot via the slack tool, including reacting to messages or pinning/unpinning items in Slack channels or DMs.",
     "description_zh": "",
-    "downloads": 47946,
+    "downloads": 47989,
     "homepage": "https://api.skillhub.cn/steipete/slack",
-    "iconUrl": null,
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
     "installs": 4231,
     "labels": {
       "requires_api_key": "false"
@@ -1907,10 +1847,10 @@
     "last_synced_at": null,
     "name": "Slack",
     "ownerName": "steipete",
-    "score": 100000,
+    "score": 81451.34321703266,
     "slug": "slack",
     "source": "clawhub",
-    "stars": 157,
+    "stars": 158,
     "subCategories": [
       {
         "key": "agent-tool-use",
@@ -1918,10 +1858,83 @@
       }
     ],
     "tags": null,
-    "updated_at": 1781671236385,
+    "updated_at": 1781756660872,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/slack",
     "verified": false,
     "version": "1.0.0"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740030744,
+    "description": "Enable and configure Moltbot/Clawdbot memory search for persistent context. Use when setting up memory, fixing \"goldfish brain,\" or helping users configure memorySearch in their config. Covers MEMORY.md, daily logs, and vector search setup.",
+    "description_zh": "",
+    "downloads": 47437,
+    "homepage": "https://api.skillhub.cn/jrbobbyhansen-pixel/memory-setup",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
+    "installs": 8659,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "Memory Setup",
+    "ownerName": "jrbobbyhansen-pixel",
+    "score": 100000,
+    "slug": "memory-setup",
+    "source": "clawhub",
+    "stars": 131,
+    "subCategories": [
+      {
+        "key": "agent-context",
+        "name": "上下文管理"
+      },
+      {
+        "key": "agent-memory",
+        "name": "记忆增强"
+      },
+      {
+        "key": "agent-tool-use",
+        "name": "工具调用"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1781758121279,
+    "upstream_owner_login": "jrbobbyhansen-pixel",
+    "upstream_url": "https://clawhub.ai/jrbobbyhansen-pixel/memory-setup",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1779221592005,
+    "description": "Access ATXP paid API tools for web search, AI image generation, music creation, video generation, X/Twitter search, email, and agent account management. Use...",
+    "description_zh": "",
+    "downloads": 47359,
+    "homepage": "https://api.skillhub.cn/emilioacc/atxp",
+    "iconUrl": null,
+    "installs": 26,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "ATXP",
+    "ownerName": "emilioacc",
+    "score": 100000,
+    "slug": "atxp",
+    "source": "clawhub",
+    "stars": 30,
+    "subCategories": [],
+    "tags": null,
+    "updated_at": 1781745825161,
+    "upstream_owner_login": "emilioacc",
+    "upstream_url": "https://clawhub.ai/emilioacc/atxp",
+    "verified": false,
+    "version": "1.0.1"
   }
 ]
