@@ -7,7 +7,7 @@
     "created_at": 1772739772656,
     "description": "A skill where the agent logs it's own findings for self-improvement",
     "description_zh": "",
-    "downloads": 977675,
+    "downloads": 981466,
     "homepage": "https://api.skillhub.cn/pskoett/self-improving-agent",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
     "installs": 86140,
@@ -20,7 +20,7 @@
     "score": 100000,
     "slug": "self-improving-agent",
     "source": "clawhub",
-    "stars": 4219,
+    "stars": 4223,
     "subCategories": [
       {
         "key": "agent-context",
@@ -32,7 +32,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094837011,
+    "updated_at": 1784181571126,
     "upstream_owner_login": "pskoett",
     "upstream_url": "https://clawhub.ai/pskoett/self-improving-agent",
     "verified": false,
@@ -43,53 +43,10 @@
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772739775136,
-    "description": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express...",
-    "description_zh": "",
-    "downloads": 605171,
-    "homepage": "https://api.skillhub.cn/root/find-skills",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/62f73a9b-1aca-4f8e-921d-6102e258c768.png",
-    "installs": 75956,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": 1782827021812,
-    "name": "Find Skills",
-    "ownerName": "root",
-    "score": 100000,
-    "slug": "find-skills",
-    "source": "clawhub",
-    "stars": 1566,
-    "subCategories": [
-      {
-        "key": "agent-framework",
-        "name": "Agent 框架"
-      },
-      {
-        "key": "agent-workflow",
-        "name": "工作流编排"
-      },
-      {
-        "key": "agent-tool-use",
-        "name": "工具调用"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094836408,
-    "upstream_owner_login": "guipi888",
-    "upstream_url": "https://clawhub.ai/guipi888/find-skills",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
     "created_at": 1772739777381,
     "description": "Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, filling forms, clicking buttons, taking...",
     "description_zh": "",
-    "downloads": 365078,
+    "downloads": 366524,
     "homepage": "https://api.skillhub.cn/rez0/agent-browser",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
     "installs": 36434,
@@ -102,7 +59,7 @@
     "score": 100000,
     "slug": "agent-browser",
     "source": "clawhub",
-    "stars": 898,
+    "stars": 900,
     "subCategories": [
       {
         "key": "agent-task-automation",
@@ -119,132 +76,50 @@
       "headless",
       "web"
     ],
-    "updated_at": 1784094836535,
+    "updated_at": 1784181529133,
     "upstream_owner_login": "rez0",
     "upstream_url": "https://clawhub.ai/rez0/agent-browser",
     "verified": false,
     "version": "1.0.0"
   },
   {
-    "category": "dev-programming",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772739776608,
-    "description": "Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.",
-    "description_zh": "",
-    "downloads": 347779,
-    "homepage": "https://api.skillhub.cn/steipete/github",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
-    "installs": 35756,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": null,
-    "name": "Github",
-    "ownerName": "steipete",
-    "score": 98345.93624197585,
-    "slug": "github",
-    "source": "clawhub",
-    "stars": 689,
-    "subCategories": [
-      {
-        "key": "dev-git",
-        "name": "Git 辅助"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094701386,
-    "upstream_owner_login": "steipete",
-    "upstream_url": "https://clawhub.ai/steipete/github",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
     "category": "ai-agent",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740032992,
-    "description": "Self-reflection + Self-criticism + Self-learning + Self-organizing memory. Agent evaluates its own work, catches mistakes, and improves permanently. Use when...",
+    "created_at": 1772740029553,
+    "description": "Security-first skill vetting for AI agents. Use before installing any skill from ClawdHub, GitHub, or other sources. Checks for red flags, permission scope, and suspicious patterns.",
     "description_zh": "",
-    "downloads": 338220,
-    "homepage": "https://api.skillhub.cn/ivangdavila/self-improving",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
-    "installs": 57561,
+    "downloads": 276952,
+    "homepage": "https://api.skillhub.cn/spclaudehome/skill-vetter",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
+    "installs": 37273,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Self-Improving + Proactive Agent",
-    "ownerName": "ivangdavila",
-    "score": 100000,
-    "slug": "self-improving",
+    "name": "Skill Vetter",
+    "ownerName": "spclaudehome",
+    "score": 28359.567174456763,
+    "slug": "skill-vetter",
     "source": "clawhub",
-    "stars": 1471,
-    "subCategories": [
-      {
-        "key": "agent-framework",
-        "name": "Agent 框架"
-      },
-      {
-        "key": "agent-context",
-        "name": "上下文管理"
-      },
-      {
-        "key": "agent-memory",
-        "name": "记忆增强"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094701393,
-    "upstream_owner_login": "ivangdavila",
-    "upstream_url": "https://clawhub.ai/ivangdavila/self-improving",
-    "verified": false,
-    "version": "1.2.16"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1773257813533,
-    "description": "Typed knowledge graph for structured agent memory and composable skills. Use when creating/querying entities (Person, Project, Task, Event, Document), linking related objects, enforcing constraints, planning multi-step actions as graph transformations, or when skills need to share state. Trigger on \"remember\", \"what do I know about\", \"link X to Y\", \"show dependencies\", entity CRUD, or cross-skill data access.",
-    "description_zh": "",
-    "downloads": 250985,
-    "homepage": "https://api.skillhub.cn/oswalpalash/ontology",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
-    "installs": 29080,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "ontology",
-    "ownerName": "oswalpalash",
-    "score": 100000,
-    "slug": "ontology",
-    "source": "clawhub",
-    "stars": 750,
+    "stars": 1267,
     "subCategories": [
       {
         "key": "agent-workflow",
         "name": "工作流编排"
       },
       {
-        "key": "agent-context",
-        "name": "上下文管理"
-      },
-      {
-        "key": "agent-memory",
-        "name": "记忆增强"
+        "key": "agent-tool-use",
+        "name": "工具调用"
       }
     ],
     "tags": null,
-    "updated_at": 1784094701438,
-    "upstream_owner_login": "oswalpalash",
-    "upstream_url": "https://clawhub.ai/oswalpalash/ontology",
+    "updated_at": 1784181571133,
+    "upstream_owner_login": "spclaudehome",
+    "upstream_url": "https://clawhub.ai/spclaudehome/skill-vetter",
     "verified": false,
-    "version": "1.0.4"
+    "version": "1.0.0"
   },
   {
     "category": "life-service",
@@ -254,7 +129,7 @@
     "created_at": 1772739778242,
     "description": "Get current weather and forecasts (no API key required).",
     "description_zh": "",
-    "downloads": 231500,
+    "downloads": 231657,
     "homepage": "https://api.skillhub.cn/steipete/weather",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
     "installs": 21530,
@@ -283,11 +158,54 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094592910,
+    "updated_at": 1784181471478,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/weather",
     "verified": false,
     "version": "1.0.0"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772739781263,
+    "description": "Transform AI agents from task-followers into proactive partners that anticipate needs and continuously improve. Now with WAL Protocol, Working Buffer, Autonomous Crons, and battle-tested patterns. Part of the Hal Stack 🦞",
+    "description_zh": "",
+    "downloads": 221090,
+    "homepage": "https://api.skillhub.cn/halthelobster/proactive-agent",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
+    "installs": 28937,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": 1782815009809,
+    "name": "Proactive Agent",
+    "ownerName": "halthelobster",
+    "score": 100000,
+    "slug": "proactive-agent",
+    "source": "clawhub",
+    "stars": 884,
+    "subCategories": [
+      {
+        "key": "agent-task-automation",
+        "name": "任务自动化"
+      },
+      {
+        "key": "agent-multi-agent",
+        "name": "多 Agent 协作"
+      },
+      {
+        "key": "agent-workflow",
+        "name": "工作流编排"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181471811,
+    "upstream_owner_login": "halthelobster",
+    "upstream_url": "https://clawhub.ai/halthelobster/proactive-agent",
+    "verified": false,
+    "version": "3.1.0"
   },
   {
     "category": "content-creation",
@@ -297,7 +215,7 @@
     "created_at": 1772739797003,
     "description": "Remove signs of AI-generated writing from text. Use when editing or reviewing\ntext to make it sound more natural and human-written. Based on Wikipedia's\ncomprehensive \"Signs of AI writing\" guide. Detects and fixes patterns including:\ninflated symbolism, promotional language, superficial -ing analyses, vague\nattributions, em dash overuse, rule of three, AI vocabulary words, negative\nparallelisms, and excessive conjunctive phrases.",
     "description_zh": "",
-    "downloads": 216726,
+    "downloads": 217279,
     "homepage": "https://api.skillhub.cn/biostartechnology/humanizer",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/34a07e4e-fec8-4ce0-aaf8-a83e46546c2d.png",
     "installs": 33756,
@@ -310,7 +228,7 @@
     "score": 100000,
     "slug": "humanizer",
     "source": "clawhub",
-    "stars": 965,
+    "stars": 972,
     "subCategories": [
       {
         "key": "content-article",
@@ -322,9 +240,52 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094536649,
+    "updated_at": 1784181471778,
     "upstream_owner_login": "biostartechnology",
     "upstream_url": "https://clawhub.ai/biostartechnology/humanizer",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "office-efficiency",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772739773556,
+    "description": "Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs.",
+    "description_zh": "",
+    "downloads": 188904,
+    "homepage": "https://api.skillhub.cn/steipete/gog",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
+    "installs": 14214,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "Gog",
+    "ownerName": "steipete",
+    "score": 87742.85122867196,
+    "slug": "gog",
+    "source": "clawhub",
+    "stars": 940,
+    "subCategories": [
+      {
+        "key": "office-doc",
+        "name": "文档处理"
+      },
+      {
+        "key": "office-email",
+        "name": "邮件处理"
+      },
+      {
+        "key": "office-automation",
+        "name": "流程自动化"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181471793,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/gog",
     "verified": false,
     "version": "1.0.0"
   },
@@ -336,7 +297,7 @@
     "created_at": 1772740027607,
     "description": "Headless browser automation CLI optimized for AI agents with accessibility tree snapshots and ref-based element selection",
     "description_zh": "",
-    "downloads": 148523,
+    "downloads": 148594,
     "homepage": "https://api.skillhub.cn/matrixy/agent-browser-clawdbot",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/64ea6fd6-ebe7-418c-af4f-2cafff71f2ec.png",
     "installs": 2631,
@@ -361,7 +322,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094432894,
+    "updated_at": 1784181471395,
     "upstream_owner_login": "matrixy",
     "upstream_url": "https://clawhub.ai/matrixy/agent-browser-clawdbot",
     "verified": false,
@@ -375,7 +336,7 @@
     "created_at": 1773419591912,
     "description": "AdMapix raw data layer for ad creatives, apps, rankings, downloads/revenue, and market metadata. Returns structured JSON from the AdMapix API; the calling ag...",
     "description_zh": "",
-    "downloads": 144162,
+    "downloads": 144252,
     "homepage": "https://api.skillhub.cn/fly0pants/admapix",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
     "installs": 6496,
@@ -407,11 +368,54 @@
       "ad-intelligence",
       "app-analytics"
     ],
-    "updated_at": 1784094536306,
+    "updated_at": 1784181529271,
     "upstream_owner_login": "fly0pants",
     "upstream_url": "https://clawhub.ai/fly0pants/admapix",
     "verified": false,
     "version": "1.0.30"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772739803931,
+    "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+    "description_zh": "",
+    "downloads": 135466,
+    "homepage": "https://api.skillhub.cn/chindden/skill-creator",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
+    "installs": 3425,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Skill Creator",
+    "ownerName": "chindden",
+    "score": 100000,
+    "slug": "skill-creator",
+    "source": "clawhub",
+    "stars": 427,
+    "subCategories": [
+      {
+        "key": "agent-framework",
+        "name": "Agent 框架"
+      },
+      {
+        "key": "agent-workflow",
+        "name": "工作流编排"
+      },
+      {
+        "key": "agent-tool-use",
+        "name": "工具调用"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181529067,
+    "upstream_owner_login": "chindden",
+    "upstream_url": "https://clawhub.ai/chindden/skill-creator",
+    "verified": false,
+    "version": "0.1.0"
   },
   {
     "category": "design-media",
@@ -421,7 +425,7 @@
     "created_at": 1772739784421,
     "description": "Generate/edit images with Nano Banana Pro (Gemini 3 Pro Image). Use for image create/modify requests incl. edits. Supports text-to-image + image-to-image; 1K/2K/4K; use --input-image.",
     "description_zh": "",
-    "downloads": 119091,
+    "downloads": 119217,
     "homepage": "https://api.skillhub.cn/steipete/nano-banana-pro",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/9bcddb03-161b-42cd-bf2e-cf0159d85bd7.png",
     "installs": 3086,
@@ -431,10 +435,10 @@
     "last_synced_at": null,
     "name": "Nano Banana Pro",
     "ownerName": "steipete",
-    "score": 53126.97226374356,
+    "score": 100000,
     "slug": "nano-banana-pro",
     "source": "clawhub",
-    "stars": 443,
+    "stars": 444,
     "subCategories": [
       {
         "key": "design-image-gen",
@@ -446,11 +450,46 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094592945,
+    "updated_at": 1784181471505,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/nano-banana-pro",
     "verified": false,
     "version": "1.0.1"
+  },
+  {
+    "category": "office-efficiency",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772739783611,
+    "description": "Edit PDFs with natural-language instructions using the nano-pdf CLI.",
+    "description_zh": "",
+    "downloads": 118736,
+    "homepage": "https://api.skillhub.cn/steipete/nano-pdf",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
+    "installs": 12773,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Nano Pdf",
+    "ownerName": "steipete",
+    "score": 78935.15289104215,
+    "slug": "nano-pdf",
+    "source": "clawhub",
+    "stars": 287,
+    "subCategories": [
+      {
+        "key": "office-pdf",
+        "name": "PDF 处理"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181471406,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/nano-pdf",
+    "verified": false,
+    "version": "1.0.0"
   },
   {
     "category": "knowledge-management",
@@ -460,7 +499,7 @@
     "created_at": 1772739813590,
     "description": "Search the web using Baidu AI Search Engine (BDSE). Use for live information, documentation, or research topics.",
     "description_zh": "",
-    "downloads": 110759,
+    "downloads": 110877,
     "homepage": "https://api.skillhub.cn/ide-rea/baidu-search",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/62f73a9b-1aca-4f8e-921d-6102e258c768.png",
     "installs": 3204,
@@ -470,7 +509,7 @@
     "last_synced_at": null,
     "name": "Baidu web search",
     "ownerName": "ide-rea",
-    "score": 100000,
+    "score": 48098.938990941795,
     "slug": "baidu-search",
     "source": "clawhub",
     "stars": 252,
@@ -481,7 +520,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094701084,
+    "updated_at": 1784181471455,
     "upstream_owner_login": "ide-rea",
     "upstream_url": "https://clawhub.ai/ide-rea/baidu-search",
     "verified": false,
@@ -492,49 +531,10 @@
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772739802573,
-    "description": "Automatically update Clawdbot and all installed skills once daily. Runs via cron, checks for updates, applies them, and messages the user with a summary of what changed.",
-    "description_zh": "",
-    "downloads": 108724,
-    "homepage": "https://api.skillhub.cn/maximeprades/auto-updater",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
-    "installs": 16784,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "Auto-Updater Skill",
-    "ownerName": "maximeprades",
-    "score": 100000,
-    "slug": "auto-updater",
-    "source": "clawhub",
-    "stars": 457,
-    "subCategories": [
-      {
-        "key": "agent-task-automation",
-        "name": "任务自动化"
-      },
-      {
-        "key": "agent-workflow",
-        "name": "工作流编排"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094432790,
-    "upstream_owner_login": "maximeprades",
-    "upstream_url": "https://clawhub.ai/maximeprades/auto-updater",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
     "created_at": 1772739794619,
     "description": "Connect to external services through Maton-managed API routes. Use this skill only after the user names the target app, account, and task. Start with read/li...",
     "description_zh": "",
-    "downloads": 107145,
+    "downloads": 107220,
     "homepage": "https://api.skillhub.cn/byungkyu/api-gateway",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/f7fabcfa-0496-4dc7-9258-df9b7c751850.png",
     "installs": 11601,
@@ -544,7 +544,7 @@
     "last_synced_at": 1781849672108,
     "name": "API Gateway",
     "ownerName": "byungkyu",
-    "score": 76637.44988077953,
+    "score": 73014.82618235316,
     "slug": "api-gateway",
     "source": "clawhub",
     "stars": 396,
@@ -559,50 +559,116 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094536330,
+    "updated_at": 1784181471378,
     "upstream_owner_login": "byungkyu",
     "upstream_url": "https://clawhub.ai/byungkyu/api-gateway",
     "verified": false,
     "version": "1.0.124"
   },
   {
+    "category": "data-analysis",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772748500420,
+    "description": "Web search via Tavily API (alternative to Brave). Use when the user asks to search the web / look up sources / find links and Brave web_search is unavailable...",
+    "description_zh": "",
+    "downloads": 102536,
+    "homepage": "https://api.skillhub.cn/jacky1n7/openclaw-tavily-search",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/cab3c5ed-3acd-4936-a59b-5f0c5f5dab1b.png",
+    "installs": 8311,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "Tavily 搜索",
+    "ownerName": "jacky1n7",
+    "score": 100000,
+    "slug": "openclaw-tavily-search",
+    "source": "clawhub",
+    "stars": 281,
+    "subCategories": [
+      {
+        "key": "data-web-scraping",
+        "name": "网页抓取"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181403581,
+    "upstream_owner_login": "jacky1n7",
+    "upstream_url": "https://clawhub.ai/jacky1n7/openclaw-tavily-search",
+    "verified": false,
+    "version": "0.1.0"
+  },
+  {
     "category": "office-efficiency",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740035082,
-    "description": "(Depreciated: This skill is no longer maintained; its related functions have been absorbed by the Evolver main body.) Feishu-integrated wrapper for the capability-evolver. Manages the evolution loop lifecycle (start/stop/ensure), sends rich Feishu card reports, and provides...",
+    "created_at": 1772744532909,
+    "description": "Create, inspect, and edit Microsoft PowerPoint presentations and PPTX decks with reliable layouts, templates, placeholders, notes, charts, and visual QA. Use...",
     "description_zh": "",
-    "downloads": 69356,
-    "homepage": "https://api.skillhub.cn/autogame-17/feishu-evolver-wrapper",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
-    "installs": 4610,
+    "downloads": 62081,
+    "homepage": "https://api.skillhub.cn/ivangdavila/powerpoint-pptx",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/62f73a9b-1aca-4f8e-921d-6102e258c768.png",
+    "installs": 8062,
     "labels": {
       "requires_api_key": "false"
     },
-    "last_synced_at": 1782790839496,
-    "name": "Feishu Evolver Wrapper",
-    "ownerName": "autogame-17",
-    "score": 46433.37640367119,
-    "slug": "feishu-evolver-wrapper",
+    "last_synced_at": null,
+    "name": "Powerpoint / PPTX",
+    "ownerName": "ivangdavila",
+    "score": 100000,
+    "slug": "powerpoint-pptx",
     "source": "clawhub",
-    "stars": 18,
+    "stars": 187,
     "subCategories": [
       {
-        "key": "office-report",
-        "name": "日报周报"
-      },
-      {
-        "key": "office-automation",
-        "name": "流程自动化"
+        "key": "office-ppt",
+        "name": "PPT 生成"
       }
     ],
     "tags": null,
-    "updated_at": 1784094536299,
-    "upstream_owner_login": "autogame-17",
-    "upstream_url": "https://clawhub.ai/autogame-17/feishu-evolver-wrapper",
+    "updated_at": 1784181403849,
+    "upstream_owner_login": "ivangdavila",
+    "upstream_url": "https://clawhub.ai/ivangdavila/powerpoint-pptx",
     "verified": false,
-    "version": "1.8.0"
+    "version": "1.0.1"
+  },
+  {
+    "category": "office-efficiency",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772739829168,
+    "description": "Read and send email via IMAP/SMTP. Check for new/unread messages, fetch content, search mailboxes, mark as read/unread, and send emails with attachments. Sup...",
+    "description_zh": "",
+    "downloads": 58414,
+    "homepage": "https://api.skillhub.cn/gzlicanyi/imap-smtp-email",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
+    "installs": 4540,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": 1781446933126,
+    "name": "imap-smtp-email",
+    "ownerName": "gzlicanyi",
+    "score": 25461.32261171839,
+    "slug": "imap-smtp-email",
+    "source": "clawhub",
+    "stars": 119,
+    "subCategories": [
+      {
+        "key": "office-email",
+        "name": "邮件处理"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181471843,
+    "upstream_owner_login": "gzlicanyi",
+    "upstream_url": "https://clawhub.ai/gzlicanyi/imap-smtp-email",
+    "verified": false,
+    "version": "0.0.16"
   },
   {
     "category": "ai-agent",
@@ -612,7 +678,7 @@
     "created_at": 1772740030744,
     "description": "Enable and configure Moltbot/Clawdbot memory search for persistent context. Use when setting up memory, fixing \"goldfish brain,\" or helping users configure memorySearch in their config. Covers MEMORY.md, daily logs, and vector search setup.",
     "description_zh": "",
-    "downloads": 51358,
+    "downloads": 51751,
     "homepage": "https://api.skillhub.cn/jrbobbyhansen-pixel/memory-setup",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 8659,
@@ -622,7 +688,7 @@
     "last_synced_at": null,
     "name": "Memory Setup",
     "ownerName": "jrbobbyhansen-pixel",
-    "score": 100000,
+    "score": 42476.40459963933,
     "slug": "memory-setup",
     "source": "clawhub",
     "stars": 133,
@@ -641,7 +707,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094836775,
+    "updated_at": 1784181471560,
     "upstream_owner_login": "jrbobbyhansen-pixel",
     "upstream_url": "https://clawhub.ai/jrbobbyhansen-pixel/memory-setup",
     "verified": false,
@@ -652,37 +718,72 @@
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772787329175,
-    "description": "When user asks to summarize text, articles, documents, meetings, emails, YouTube transcripts, books, PDFs, reports, conversations, or any long content. Also...",
+    "created_at": 1772740024460,
+    "description": "This skill should be used when users need to search the web for information, find current content, look up news articles, search for images, or find videos. It uses DuckDuckGo's search API to return results in clean, formatted output (text, markdown, or JSON). Use for research, fact-checking, finding recent information, or gathering web resources.",
     "description_zh": "",
-    "downloads": 49994,
-    "homepage": "https://api.skillhub.cn/mkpareek0315/summarize-pro",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/f7fabcfa-0496-4dc7-9258-df9b7c751850.png",
-    "installs": 1031,
+    "downloads": 43962,
+    "homepage": "https://api.skillhub.cn/billyutw/web-search",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7f79eb60-b8d8-4d8e-9b79-6ace0de1ff17.png",
+    "installs": 1302,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Summarize Pro",
-    "ownerName": "mkpareek0315",
-    "score": 96253.10081824577,
-    "slug": "summarize-pro",
+    "name": "Web Search",
+    "ownerName": "billyutw",
+    "score": 18648.36491740561,
+    "slug": "web-search",
     "source": "clawhub",
-    "stars": 100,
+    "stars": 49,
     "subCategories": [
       {
-        "key": "knowledge-summary",
-        "name": "摘要总结"
-      },
-      {
-        "key": "knowledge-doc-qa",
-        "name": "文档问答"
+        "key": "knowledge-retrieval",
+        "name": "信息检索"
       }
     ],
     "tags": null,
-    "updated_at": 1784094836794,
-    "upstream_owner_login": "mkpareek0315",
-    "upstream_url": "https://clawhub.ai/mkpareek0315/summarize-pro",
+    "updated_at": 1784181471489,
+    "upstream_owner_login": "billyutw",
+    "upstream_url": "https://clawhub.ai/billyutw/web-search",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "data-analysis",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772739818223,
+    "description": "Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI.",
+    "description_zh": "",
+    "downloads": 43834,
+    "homepage": "https://api.skillhub.cn/steipete/blogwatcher",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/5a1e9830-80e4-4cbb-8d00-cee893ca9555.png",
+    "installs": 3707,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Blogwatcher",
+    "ownerName": "steipete",
+    "score": 100000,
+    "slug": "blogwatcher",
+    "source": "clawhub",
+    "stars": 72,
+    "subCategories": [
+      {
+        "key": "data-insight",
+        "name": "数据洞察"
+      },
+      {
+        "key": "data-web-scraping",
+        "name": "网页抓取"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784172401130,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/blogwatcher",
     "verified": false,
     "version": "1.0.0"
   },
@@ -691,148 +792,234 @@
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772739801726,
-    "description": "You MUST use this for gathering contexts before any work. This is a Knowledge management for AI agents. Use `brv` to store and retrieve project patterns, dec...",
+    "created_at": 1772740022195,
+    "description": "Use when you need to control Discord from Clawdbot via the discord tool: send messages, react, post or upload stickers, upload emojis, run polls, manage threads/pins/search, fetch permissions or member/role/channel info, or handle moderation actions in Discord DMs or channels.",
     "description_zh": "",
-    "downloads": 45780,
-    "homepage": "https://api.skillhub.cn/byteroverinc/byterover",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/5a1e9830-80e4-4cbb-8d00-cee893ca9555.png",
-    "installs": 1358,
+    "downloads": 38759,
+    "homepage": "https://api.skillhub.cn/steipete/discord",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7422abc7-fa86-4505-a723-0575c56e7a2d.png",
+    "installs": 1331,
     "labels": {
       "requires_api_key": "false"
     },
-    "last_synced_at": 1782790875502,
-    "name": "ByteRover",
-    "ownerName": "byteroverinc",
+    "last_synced_at": 1782790889432,
+    "name": "Discord",
+    "ownerName": "steipete",
     "score": 100000,
-    "slug": "byterover",
+    "slug": "discord",
     "source": "clawhub",
-    "stars": 128,
+    "stars": 81,
     "subCategories": [
       {
-        "key": "agent-context",
-        "name": "上下文管理"
+        "key": "agent-task-automation",
+        "name": "任务自动化"
       },
       {
-        "key": "agent-memory",
-        "name": "记忆增强"
+        "key": "agent-tool-use",
+        "name": "工具调用"
       }
     ],
     "tags": null,
-    "updated_at": 1784094739113,
-    "upstream_owner_login": "byteroverinc",
-    "upstream_url": "https://clawhub.ai/byteroverinc/byterover",
+    "updated_at": 1784172401507,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/discord",
     "verified": false,
-    "version": "3.3.0"
+    "version": "1.0.1"
   },
   {
     "category": "knowledge-management",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740032454,
-    "description": "Multi-source deep research agent. Searches the web, synthesizes findings, and delivers cited reports. No API keys required.",
+    "created_at": 1772740022489,
+    "description": "Manage Apple Notes via the `memo` CLI on macOS (create, view, edit, delete, search, move, and export notes). Use when a user asks Clawdbot to add a note, list notes, search notes, or manage note folders.",
     "description_zh": "",
-    "downloads": 45475,
-    "homepage": "https://api.skillhub.cn/parags/deep-research-pro",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
-    "installs": 7380,
+    "downloads": 37182,
+    "homepage": "https://api.skillhub.cn/steipete/apple-notes",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/9bcddb03-161b-42cd-bf2e-cf0159d85bd7.png",
+    "installs": 3600,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Deep Research Pro",
-    "ownerName": "parags",
-    "score": 88109.51904920582,
-    "slug": "deep-research-pro",
+    "name": "Apple Notes",
+    "ownerName": "steipete",
+    "score": 100000,
+    "slug": "apple-notes",
     "source": "clawhub",
-    "stars": 106,
+    "stars": 59,
     "subCategories": [
       {
         "key": "knowledge-retrieval",
         "name": "信息检索"
       },
       {
-        "key": "knowledge-summary",
-        "name": "摘要总结"
+        "key": "knowledge-notes",
+        "name": "笔记整理"
       }
     ],
     "tags": null,
-    "updated_at": 1784094836770,
-    "upstream_owner_login": "parags",
-    "upstream_url": "https://clawhub.ai/parags/deep-research-pro",
+    "updated_at": 1784172401030,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/apple-notes",
     "verified": false,
-    "version": "1.0.2"
+    "version": "1.0.0"
   },
   {
-    "category": "dev-programming",
+    "category": "ai-agent",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772739809680,
-    "description": "YouTube Data API integration with managed OAuth. Search videos, manage playlists, access channel data, and interact with comments. Use this skill when users...",
+    "created_at": 1772740024836,
+    "description": "Designs and outputs n8n workflow JSON with robust triggers, idempotency, error handling, logging, retries, and human-in-the-loop review queues. Use when you need an auditable automation that won’t silently fail.",
     "description_zh": "",
-    "downloads": 42593,
-    "homepage": "https://api.skillhub.cn/byungkyu/youtube-api-skill",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/cab3c5ed-3acd-4936-a59b-5f0c5f5dab1b.png",
-    "installs": 5073,
+    "downloads": 34214,
+    "homepage": "https://api.skillhub.cn/kowl64/n8n-workflow-automation",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
+    "installs": 2873,
     "labels": {
-      "requires_api_key": "true"
+      "requires_api_key": "false"
     },
-    "last_synced_at": 1781849670930,
-    "name": "YouTube",
-    "ownerName": "byungkyu",
+    "last_synced_at": null,
+    "name": "n8n workflow automation",
+    "ownerName": "kowl64",
     "score": 100000,
-    "slug": "youtube-api-skill",
+    "slug": "n8n-workflow-automation",
     "source": "clawhub",
-    "stars": 143,
+    "stars": 161,
     "subCategories": [
       {
-        "key": "dev-code-gen",
-        "name": "代码生成"
+        "key": "agent-framework",
+        "name": "Agent 框架"
+      },
+      {
+        "key": "agent-task-automation",
+        "name": "任务自动化"
+      },
+      {
+        "key": "agent-workflow",
+        "name": "工作流编排"
       }
     ],
     "tags": null,
-    "updated_at": 1784094537003,
-    "upstream_owner_login": "byungkyu",
-    "upstream_url": "https://clawhub.ai/byungkyu/youtube-api-skill",
+    "updated_at": 1784172401284,
+    "upstream_owner_login": "kowl64",
+    "upstream_url": "https://clawhub.ai/kowl64/n8n-workflow-automation",
     "verified": false,
-    "version": "1.0.5"
+    "version": "1.0.0"
   },
   {
-    "category": "office-efficiency",
+    "category": "design-media",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740027852,
-    "description": "Microsoft Excel API integration with managed OAuth. Read and write Excel workbooks, worksheets, ranges, tables, and charts stored in OneDrive. Use this skill...",
+    "created_at": 1772740036387,
+    "description": "Generate and edit diagrams with the mcp-diagram-generator MCP server. Use this skill for new diagrams, existing .drawio/.mmd/.excalidraw edits, network topol...",
     "description_zh": "",
-    "downloads": 34515,
-    "homepage": "https://api.skillhub.cn/byungkyu/microsoft-excel",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
-    "installs": 4570,
+    "downloads": 34082,
+    "homepage": "https://api.skillhub.cn/matthewyin/diagram-generator",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7f79eb60-b8d8-4d8e-9b79-6ace0de1ff17.png",
+    "installs": 990,
     "labels": {
-      "requires_api_key": "true"
+      "requires_api_key": "false"
     },
-    "last_synced_at": 1781849675802,
-    "name": "Microsoft Excel",
-    "ownerName": "byungkyu",
-    "score": 23574.34961569714,
-    "slug": "microsoft-excel",
+    "last_synced_at": null,
+    "name": "diagram-generator",
+    "ownerName": "matthewyin",
+    "score": 100000,
+    "slug": "diagram-generator",
     "source": "clawhub",
-    "stars": 44,
+    "stars": 53,
     "subCategories": [
       {
-        "key": "office-spreadsheet",
-        "name": "表格处理"
+        "key": "design-image-gen",
+        "name": "图片生成"
+      },
+      {
+        "key": "design-visual-asset",
+        "name": "视觉素材"
       }
     ],
     "tags": null,
-    "updated_at": 1784094536303,
-    "upstream_owner_login": "byungkyu",
-    "upstream_url": "https://clawhub.ai/byungkyu/microsoft-excel",
+    "updated_at": 1784181404060,
+    "upstream_owner_login": "matthewyin",
+    "upstream_url": "https://clawhub.ai/matthewyin/diagram-generator",
     "verified": false,
-    "version": "1.0.4"
+    "version": "1.1.6"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740023247,
+    "description": "Local search/indexing CLI (BM25 + vectors + rerank) with MCP mode.",
+    "description_zh": "",
+    "downloads": 33942,
+    "homepage": "https://api.skillhub.cn/steipete/qmd",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
+    "installs": 3678,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Qmd",
+    "ownerName": "steipete",
+    "score": 79829.48270530548,
+    "slug": "qmd",
+    "source": "clawhub",
+    "stars": 110,
+    "subCategories": [
+      {
+        "key": "agent-tool-use",
+        "name": "工具调用"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784172401168,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/qmd",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740025218,
+    "description": "Capture and automate macOS UI with the Peekaboo CLI.",
+    "description_zh": "",
+    "downloads": 30993,
+    "homepage": "https://api.skillhub.cn/steipete/peekaboo",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7422abc7-fa86-4505-a723-0575c56e7a2d.png",
+    "installs": 1350,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Peekaboo",
+    "ownerName": "steipete",
+    "score": 72167.24831028847,
+    "slug": "peekaboo",
+    "source": "clawhub",
+    "stars": 84,
+    "subCategories": [
+      {
+        "key": "agent-task-automation",
+        "name": "任务自动化"
+      },
+      {
+        "key": "agent-workflow",
+        "name": "工作流编排"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784172401133,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/peekaboo",
+    "verified": false,
+    "version": "1.0.0"
   },
   {
     "category": "ai-agent",
@@ -842,7 +1029,7 @@
     "created_at": 1772740076890,
     "description": "Orchestrate multi-agent teams with defined roles, task lifecycles, handoff protocols, and review workflows. Use when: (1) Setting up a team of 2+ agents with different specializations, (2) Defining task routing and lifecycle (inbox → spec → build → review → done), (3) Creating handoff protocols between agents, (4) Establishing review and quality gates, (5) Managing async communication and artifact sharing between agents.",
     "description_zh": "",
-    "downloads": 30507,
+    "downloads": 30644,
     "homepage": "https://api.skillhub.cn/arminnaimi/agent-team-orchestration",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
     "installs": 4869,
@@ -852,7 +1039,7 @@
     "last_synced_at": null,
     "name": "Agent Team Orchestration",
     "ownerName": "arminnaimi",
-    "score": 3028.7508650681934,
+    "score": 20485.2435729958,
     "slug": "agent-team-orchestration",
     "source": "clawhub",
     "stars": 83,
@@ -871,79 +1058,9 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094837031,
+    "updated_at": 1784181404178,
     "upstream_owner_login": "arminnaimi",
     "upstream_url": "https://clawhub.ai/arminnaimi/agent-team-orchestration",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
-    "category": "knowledge-management",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740024591,
-    "description": "Performs web searches using DuckDuckGo to retrieve real-time information from the internet. Use when the user needs to search for current events, documentation, tutorials, or any information that requires web search capabilities.",
-    "description_zh": "",
-    "downloads": 29892,
-    "homepage": "https://api.skillhub.cn/10e9928a/duckduckgo-search",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c0bd7863-2689-46f1-941c-e45be1317e90.png",
-    "installs": 2404,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "Performs web searches using DuckDuckGo to retrieve real-time information from the internet. Use when the user needs to search for current events, documentation, tutorials, or any information that requires web search capabilities.",
-    "ownerName": "10e9928a",
-    "score": 100000,
-    "slug": "duckduckgo-search",
-    "source": "clawhub",
-    "stars": 41,
-    "subCategories": [
-      {
-        "key": "knowledge-retrieval",
-        "name": "信息检索"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784089301921,
-    "upstream_owner_login": "10e9928a",
-    "upstream_url": "https://clawhub.ai/10e9928a/duckduckgo-search",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
-    "category": "life-service",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740025105,
-    "description": "Manage Apple Reminders via the `remindctl` CLI on macOS (list, add, edit, complete, delete). Supports lists, date filters, and JSON/plain output.",
-    "description_zh": "",
-    "downloads": 29720,
-    "homepage": "https://api.skillhub.cn/steipete/apple-reminders",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/5a1e9830-80e4-4cbb-8d00-cee893ca9555.png",
-    "installs": 3177,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "Apple Reminders",
-    "ownerName": "steipete",
-    "score": 100000,
-    "slug": "apple-reminders",
-    "source": "clawhub",
-    "stars": 55,
-    "subCategories": [
-      {
-        "key": "life-personal-plan",
-        "name": "个人计划"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784089601493,
-    "upstream_owner_login": "steipete",
-    "upstream_url": "https://clawhub.ai/steipete/apple-reminders",
     "verified": false,
     "version": "1.0.0"
   },
@@ -952,70 +1069,35 @@
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740026919,
-    "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+    "created_at": 1772740134399,
+    "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when building web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
     "description_zh": "",
-    "downloads": 29426,
-    "homepage": "https://api.skillhub.cn/steipete/openai-image-gen",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e089b3bb-5a99-41bc-8881-40980028b748.png",
-    "installs": 5328,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": null,
-    "name": "Openai Image Gen",
-    "ownerName": "steipete",
-    "score": 100000,
-    "slug": "openai-image-gen",
-    "source": "clawhub",
-    "stars": 37,
-    "subCategories": [
-      {
-        "key": "design-image-gen",
-        "name": "图片生成"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784089601956,
-    "upstream_owner_login": "steipete",
-    "upstream_url": "https://clawhub.ai/steipete/openai-image-gen",
-    "verified": false,
-    "version": "1.0.1"
-  },
-  {
-    "category": "dev-programming",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1774615764015,
-    "description": "Generate valid Mermaid diagrams like flowcharts, sequence diagrams, mind maps, ER diagrams, or user journeys from text or product descriptions.",
-    "description_zh": "",
-    "downloads": 27162,
-    "homepage": "https://api.skillhub.cn/pupujanet-eng/mermaid-diagram",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7f79eb60-b8d8-4d8e-9b79-6ace0de1ff17.png",
-    "installs": 108,
+    "downloads": 29078,
+    "homepage": "https://api.skillhub.cn/michaelmonetized/frontend-design-3",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
+    "installs": 3180,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Mermaid Diagram",
-    "ownerName": "pupujanet-eng",
-    "score": 5067.412113264718,
-    "slug": "mermaid-diagram",
+    "name": "Frontend Design",
+    "ownerName": "michaelmonetized",
+    "score": 2902.452890725998,
+    "slug": "frontend-design-3",
     "source": "clawhub",
-    "stars": 35,
+    "stars": 93,
     "subCategories": [
       {
-        "key": "dev-code-gen",
-        "name": "代码生成"
+        "key": "design-ui",
+        "name": "UI 设计"
       }
     ],
     "tags": null,
-    "updated_at": 1784094836370,
-    "upstream_owner_login": "pupujanet-eng",
-    "upstream_url": "https://clawhub.ai/pupujanet-eng/mermaid-diagram",
+    "updated_at": 1784181571109,
+    "upstream_owner_login": "michaelmonetized",
+    "upstream_url": "https://clawhub.ai/michaelmonetized/frontend-design-3",
     "verified": false,
-    "version": "1.0.0"
+    "version": "0.1.0"
   },
   {
     "category": "design-media",
@@ -1025,7 +1107,7 @@
     "created_at": 1772740028254,
     "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
     "description_zh": "",
-    "downloads": 26505,
+    "downloads": 26510,
     "homepage": "https://api.skillhub.cn/steipete/openai-whisper-api",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/cab3c5ed-3acd-4936-a59b-5f0c5f5dab1b.png",
     "installs": 1192,
@@ -1046,11 +1128,93 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784089601602,
+    "updated_at": 1784161601043,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/openai-whisper-api",
     "verified": false,
     "version": "1.0.0"
+  },
+  {
+    "category": "content-creation",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740023536,
+    "description": "Marketing Mode combines 23 comprehensive marketing skills covering strategy, psychology, content, SEO, conversion optimization, and paid growth. Use when users need marketing strategy, copywriting, SEO help, conversion optimization, paid advertising, or any marketing tactic.",
+    "description_zh": "",
+    "downloads": 25593,
+    "homepage": "https://api.skillhub.cn/thesethrose/marketing-mode",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/10f9d8ff-5e7f-434f-9992-5e71e1d4e990.png",
+    "installs": 819,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Marketing Mode",
+    "ownerName": "thesethrose",
+    "score": 100000,
+    "slug": "marketing-mode",
+    "source": "clawhub",
+    "stars": 168,
+    "subCategories": [
+      {
+        "key": "content-article",
+        "name": "文章写作"
+      },
+      {
+        "key": "content-marketing-copy",
+        "name": "营销文案"
+      },
+      {
+        "key": "content-seo",
+        "name": "SEO 优化"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784172101219,
+    "upstream_owner_login": "thesethrose",
+    "upstream_url": "https://clawhub.ai/thesethrose/marketing-mode",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1773201141984,
+    "description": "Give your AI agent eyes to see the entire internet. 7500+ GitHub stars. Search and read 14 platforms: Twitter/X, Reddit, YouTube, GitHub, Bilibili, XiaoHongS...",
+    "description_zh": "",
+    "downloads": 24786,
+    "homepage": "https://api.skillhub.cn/panniantong/agent-reach",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
+    "installs": 2479,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": 1782791052010,
+    "name": "Agent Reach",
+    "ownerName": "panniantong",
+    "score": 74344.08969324455,
+    "slug": "agent-reach",
+    "source": "clawhub",
+    "stars": 67,
+    "subCategories": [
+      {
+        "key": "agent-task-automation",
+        "name": "任务自动化"
+      },
+      {
+        "key": "agent-tool-use",
+        "name": "工具调用"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181404037,
+    "upstream_owner_login": "panniantong",
+    "upstream_url": "https://clawhub.ai/panniantong/agent-reach",
+    "verified": false,
+    "version": "1.1.0"
   },
   {
     "category": "design-media",
@@ -1060,7 +1224,7 @@
     "created_at": 1772740050236,
     "description": "Local speech-to-text using OpenAI Whisper. Runs fully offline after model download. High quality transcription with multiple model sizes.",
     "description_zh": "",
-    "downloads": 24435,
+    "downloads": 24571,
     "homepage": "https://api.skillhub.cn/araa47/local-whisper",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
     "installs": 6654,
@@ -1070,7 +1234,7 @@
     "last_synced_at": null,
     "name": "Local Whisper",
     "ownerName": "araa47",
-    "score": 15730.572314954035,
+    "score": 70943.60025041261,
     "slug": "local-whisper",
     "source": "clawhub",
     "stars": 18,
@@ -1081,44 +1245,48 @@
       }
     ],
     "tags": null,
-    "updated_at": 1784094432891,
+    "updated_at": 1784181404045,
     "upstream_owner_login": "araa47",
     "upstream_url": "https://clawhub.ai/araa47/local-whisper",
     "verified": false,
     "version": "1.0.0"
   },
   {
-    "category": "data-analysis",
+    "category": "it-ops-security",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740031521,
-    "description": "Web search and scraping via Firecrawl API. Use when you need to search the web, scrape websites (including JS-heavy pages), crawl entire sites, or extract structured data from web pages. Requires FIRECRAWL_API_KEY environment variable.",
+    "created_at": 1772774578940,
+    "description": "Security vetting protocol before installing any AI agent skill. Red flag detection for credential theft, obfuscated code, exfiltration. Risk classification L...",
     "description_zh": "",
-    "downloads": 24098,
-    "homepage": "https://api.skillhub.cn/ashwingupy/firecrawl-search",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
-    "installs": 5310,
+    "downloads": 24019,
+    "homepage": "https://api.skillhub.cn/donovanpankratz-del/openclaw-skill-vetter",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/cab3c5ed-3acd-4936-a59b-5f0c5f5dab1b.png",
+    "installs": 2595,
     "labels": {
-      "requires_api_key": "true"
+      "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Firecrawl Search",
-    "ownerName": "ashwingupy",
+    "name": "Skill Vetter - Pre-Install Security Review",
+    "ownerName": "donovanpankratz-del",
     "score": 100000,
-    "slug": "firecrawl-search",
+    "slug": "openclaw-skill-vetter",
     "source": "clawhub",
-    "stars": 57,
+    "stars": 30,
     "subCategories": [
       {
-        "key": "data-web-scraping",
-        "name": "网页抓取"
+        "key": "itops-monitoring",
+        "name": "监控告警"
+      },
+      {
+        "key": "itops-security-scan",
+        "name": "安全扫描"
       }
     ],
     "tags": null,
-    "updated_at": 1784089601364,
-    "upstream_owner_login": "ashwingupy",
-    "upstream_url": "https://clawhub.ai/ashwingupy/firecrawl-search",
+    "updated_at": 1784172523757,
+    "upstream_owner_login": "donovanpankratz-del",
+    "upstream_url": "https://clawhub.ai/donovanpankratz-del/openclaw-skill-vetter",
     "verified": false,
     "version": "1.0.0"
   },
@@ -1127,33 +1295,76 @@
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772787242763,
-    "description": "Spec-first, TDD, subagent-driven software development workflow. Use when: (1) building any new feature or app — triggers brainstorm → plan → subagent executi...",
+    "created_at": 1773820030735,
+    "description": "This skill should be used ONLY when the user EXPLICITLY and UNAMBIGUOUSLY requests a Git repository commit-history analysis that produces aggregate collabora...",
     "description_zh": "",
-    "downloads": 21785,
-    "homepage": "https://api.skillhub.cn/wlshlad85/superpowers",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/f7fabcfa-0496-4dc7-9258-df9b7c751850.png",
-    "installs": 735,
+    "downloads": 21156,
+    "homepage": "https://api.skillhub.cn/wscats/who-is-actor",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7f79eb60-b8d8-4d8e-9b79-6ace0de1ff17.png",
+    "installs": 782,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Superpowers Dev Workflow",
-    "ownerName": "wlshlad85",
-    "score": 19004.07623664206,
-    "slug": "superpowers",
+    "name": "Who Is Actor",
+    "ownerName": "wscats",
+    "score": 100000,
+    "slug": "who-is-actor",
     "source": "clawhub",
-    "stars": 32,
+    "stars": 12,
     "subCategories": [
       {
-        "key": "dev-code-gen",
-        "name": "代码生成"
+        "key": "dev-git",
+        "name": "Git 辅助"
       }
     ],
     "tags": null,
-    "updated_at": 1784094836687,
-    "upstream_owner_login": "wlshlad85",
-    "upstream_url": "https://clawhub.ai/wlshlad85/superpowers",
+    "updated_at": 1784134940105,
+    "upstream_owner_login": "wscats",
+    "upstream_url": "https://clawhub.ai/wscats/who-is-actor",
+    "verified": false,
+    "version": "1.0.15"
+  },
+  {
+    "category": "data-analysis",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740140524,
+    "description": "Tavily AI search platform with 5 modes: Search (web/news/finance), Extract (URL content), Crawl (website crawling), Map (sitemap discovery), and Research (deep research with citations). Use for: web search with LLM answers, content extraction, site crawling, deep research.",
+    "description_zh": "",
+    "downloads": 20723,
+    "homepage": "https://api.skillhub.cn/shaharsha/tavily-search-pro",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/401a454b-4b16-4aee-a18c-4e3467ca48f1.png",
+    "installs": 5566,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "Tavily Search Pro",
+    "ownerName": "shaharsha",
+    "score": 100000,
+    "slug": "tavily-search-pro",
+    "source": "clawhub",
+    "stars": 15,
+    "subCategories": [
+      {
+        "key": "data-insight",
+        "name": "数据洞察"
+      },
+      {
+        "key": "data-web-scraping",
+        "name": "网页抓取"
+      },
+      {
+        "key": "data-competitor",
+        "name": "竞品分析"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181403487,
+    "upstream_owner_login": "shaharsha",
+    "upstream_url": "https://clawhub.ai/shaharsha/tavily-search-pro",
     "verified": false,
     "version": "1.0.0"
   },
@@ -1162,386 +1373,234 @@
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740041238,
-    "description": "The complete operating system for OpenClaw 5.x agents. Built-in memory tool integration (memory_search, memory_get, DREAMS.md), Discord channel-routing fixes...",
+    "created_at": 1778099282866,
+    "description": "Mandatory security audit for **every** Agent Skill that is newly added, installed, imported, updated, or written. Scope of inspection: the full bundle — `SKI...",
     "description_zh": "",
-    "downloads": 21594,
-    "homepage": "https://api.skillhub.cn/jeffjhunter/ai-persona-os",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a78375f1-773e-4817-b4f3-0557b6afd777.png",
-    "installs": 5887,
+    "downloads": 19568,
+    "homepage": "https://api.skillhub.cn/ambarion/skill-integrity-auditor",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/5a1e9830-80e4-4cbb-8d00-cee893ca9555.png",
+    "installs": 27,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "AI Persona OS",
-    "ownerName": "jeffjhunter",
-    "score": 100000,
-    "slug": "ai-persona-os",
+    "name": "Skill Auditor",
+    "ownerName": "ambarion",
+    "score": 15385.21589108254,
+    "slug": "skill-integrity-auditor",
     "source": "clawhub",
-    "stars": 96,
+    "stars": 7,
     "subCategories": [
       {
-        "key": "agent-framework",
-        "name": "Agent 框架"
+        "key": "agent-context",
+        "name": "上下文管理"
       },
       {
-        "key": "agent-workflow",
-        "name": "工作流编排"
+        "key": "agent-tool-use",
+        "name": "工具调用"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181471557,
+    "upstream_owner_login": "ambarion",
+    "upstream_url": "https://clawhub.ai/ambarion/skill-integrity-auditor",
+    "verified": false,
+    "version": "0.1.12"
+  },
+  {
+    "category": "content-creation",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740040189,
+    "description": "Browse and search Reddit in read-only mode using public JSON endpoints. Use when the user asks to browse subreddits, search for posts by topic, inspect comment threads, or build a shortlist of links to review and reply to manually.",
+    "description_zh": "",
+    "downloads": 18366,
+    "homepage": "https://api.skillhub.cn/buksan1950/reddit-readonly",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/27205dc2-3c4b-4854-85b1-8902f05745a3.png",
+    "installs": 2399,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Reddit (read only - no auth)",
+    "ownerName": "buksan1950",
+    "score": 100000,
+    "slug": "reddit-readonly",
+    "source": "clawhub",
+    "stars": 42,
+    "subCategories": [
+      {
+        "key": "content-social-media",
+        "name": "自媒体运营"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784172101165,
+    "upstream_owner_login": "buksan1950",
+    "upstream_url": "https://clawhub.ai/buksan1950/reddit-readonly",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "knowledge-management",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772744619615,
+    "description": "Search the web and get real-time SERP-style results with titles, URLs, and snippets. Use this for general web queries when you need current links and informa...",
+    "description_zh": "",
+    "downloads": 17255,
+    "homepage": "https://api.skillhub.cn/okradze/desearch-web-search",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/34a07e4e-fec8-4ce0-aaf8-a83e46546c2d.png",
+    "installs": 2094,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "Web Search by Desearch",
+    "ownerName": "okradze",
+    "score": 63212.34119782214,
+    "slug": "desearch-web-search",
+    "source": "clawhub",
+    "stars": 8,
+    "subCategories": [
+      {
+        "key": "knowledge-retrieval",
+        "name": "信息检索"
+      },
+      {
+        "key": "knowledge-summary",
+        "name": "摘要总结"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784161601031,
+    "upstream_owner_login": "okradze",
+    "upstream_url": "https://clawhub.ai/okradze/desearch-web-search",
+    "verified": false,
+    "version": "1.0.1"
+  },
+  {
+    "category": "design-media",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740053026,
+    "description": "Expert guidance on mobile-first UI/UX design, color systems, typography, accessibility (WCAG 2.2), Tailwind + Shadcn/ui integration, micro-interactions, and...",
+    "description_zh": "",
+    "downloads": 16500,
+    "homepage": "https://api.skillhub.cn/itsjustdri/ui-ux-design",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
+    "installs": 2491,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "UI/UX Design Guide",
+    "ownerName": "itsjustdri",
+    "score": 7228.713825019893,
+    "slug": "ui-ux-design",
+    "source": "clawhub",
+    "stars": 38,
+    "subCategories": [
+      {
+        "key": "design-ui",
+        "name": "UI 设计"
+      }
+    ],
+    "tags": [
+      "accessibility",
+      "design",
+      "responsive",
+      "shadcn",
+      "tailwind",
+      "ui",
+      "ux"
+    ],
+    "updated_at": 1784181471849,
+    "upstream_owner_login": "itsjustdri",
+    "upstream_url": "https://clawhub.ai/itsjustdri/ui-ux-design",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772744586163,
+    "description": "Automated multi-tiered memory management (HOT, WARM, COLD). Use this skill to organize, prune, and archive context during memory operations or compactions.",
+    "description_zh": "",
+    "downloads": 16472,
+    "homepage": "https://api.skillhub.cn/sarielwang93/memory-tiering",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/cab3c5ed-3acd-4936-a59b-5f0c5f5dab1b.png",
+    "installs": 1992,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Memory Tiering",
+    "ownerName": "sarielwang93",
+    "score": 100000,
+    "slug": "memory-tiering",
+    "source": "clawhub",
+    "stars": 10,
+    "subCategories": [
+      {
+        "key": "agent-context",
+        "name": "上下文管理"
       },
       {
         "key": "agent-memory",
         "name": "记忆增强"
       }
     ],
-    "tags": [
-      "advisor",
-      "ai-persona",
-      "ambient-monitoring",
-      "assistant",
-      "automation",
-      "business",
-      "client-proposals",
-      "closing-deals",
-      "context-protection",
-      "cost-saving",
-      "documents",
-      "escalation",
-      "framework",
-      "heartbeat",
-      "html",
-      "identity",
-      "in-chat-commands",
-      "long-running",
-      "meeting-notes",
-      "memory",
-      "never-forget",
-      "persona",
-      "presets",
-      "proactive",
-      "production",
-      "productivity",
-      "proposals",
-      "reliable-agent",
-      "sales",
-      "security",
-      "self-improving",
-      "setup-wizard",
-      "starter-packs",
-      "team",
-      "templates",
-      "workspace",
-      "zero-terminal"
-    ],
-    "updated_at": 1784094536823,
-    "upstream_owner_login": "jeffjhunter",
-    "upstream_url": "https://clawhub.ai/jeffjhunter/ai-persona-os",
-    "verified": false,
-    "version": "2.0.0"
-  },
-  {
-    "category": "business-ops",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740021212,
-    "description": "ClickUp API integration with managed OAuth. Access tasks, lists, folders, spaces, workspaces, users, and manage webhooks. Use this skill when users want to m...",
-    "description_zh": "",
-    "downloads": 21123,
-    "homepage": "https://api.skillhub.cn/byungkyu/clickup-api",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
-    "installs": 1586,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": 1781849711799,
-    "name": "ClickUp",
-    "ownerName": "byungkyu",
-    "score": 100000,
-    "slug": "clickup-api",
-    "source": "clawhub",
-    "stars": 12,
-    "subCategories": [
-      {
-        "key": "biz-project-management",
-        "name": "项目管理"
-      }
-    ],
     "tags": null,
-    "updated_at": 1784063544107,
-    "upstream_owner_login": "byungkyu",
-    "upstream_url": "https://clawhub.ai/byungkyu/clickup-api",
-    "verified": false,
-    "version": "1.0.5"
-  },
-  {
-    "category": "business-ops",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740026119,
-    "description": "WooCommerce REST API integration with managed OAuth. Access products, orders, customers, coupons, shipping, taxes, reports, webhooks, payment gateways, store...",
-    "description_zh": "",
-    "downloads": 19810,
-    "homepage": "https://api.skillhub.cn/byungkyu/woocommerce",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/62f73a9b-1aca-4f8e-921d-6102e258c768.png",
-    "installs": 2619,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": 1781849735355,
-    "name": "WooCommerce",
-    "ownerName": "byungkyu",
-    "score": 100000,
-    "slug": "woocommerce",
-    "source": "clawhub",
-    "stars": 19,
-    "subCategories": [
-      {
-        "key": "biz-ecommerce",
-        "name": "电商运营"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784089301054,
-    "upstream_owner_login": "byungkyu",
-    "upstream_url": "https://clawhub.ai/byungkyu/woocommerce",
-    "verified": false,
-    "version": "1.0.5"
-  },
-  {
-    "category": "knowledge-management",
-    "claim_state": "unclaimed",
-    "claimable": false,
-    "claimed_user_handle": null,
-    "created_at": 1777477053672,
-    "description": "API key for higher rate limits. Anonymous access available with lower rate limits.",
-    "description_zh": "",
-    "downloads": 18655,
-    "homepage": "https://api.skillhub.cn/user_51511428/anysearch",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/401a454b-4b16-4aee-a18c-4e3467ca48f1.png",
-    "installs": 0,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "AnySearch",
-    "ownerName": "user_51511428",
-    "score": 10543.427274344776,
-    "slug": "anysearch",
-    "source": "community",
-    "stars": 45,
-    "subCategories": [
-      {
-        "key": "knowledge-retrieval",
-        "name": "信息检索"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094836360,
-    "upstream_owner_login": null,
-    "upstream_url": null,
-    "verified": false,
-    "version": "2.1.0"
-  },
-  {
-    "category": "business-ops",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740021960,
-    "description": "Trello API integration with managed OAuth. Manage boards, lists, cards, members, and labels. Use this skill when users want to interact with Trello for project management. For other third party apps, use the api-gateway skill (https://clawhub.ai/byungkyu/api-gateway).",
-    "description_zh": "",
-    "downloads": 17460,
-    "homepage": "https://api.skillhub.cn/byungkyu/trello-api",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
-    "installs": 585,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": 1782791023226,
-    "name": "Trello",
-    "ownerName": "byungkyu",
-    "score": 100000,
-    "slug": "trello-api",
-    "source": "clawhub",
-    "stars": 7,
-    "subCategories": [
-      {
-        "key": "biz-project-management",
-        "name": "项目管理"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784089601670,
-    "upstream_owner_login": "byungkyu",
-    "upstream_url": "https://clawhub.ai/byungkyu/trello-api",
-    "verified": false,
-    "version": "1.0.6"
-  },
-  {
-    "category": "life-service",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740031800,
-    "description": "Google Calendar via gcalcli: today-only agenda by default, bounded meaning-first lookup via agenda scans, and fast create/delete with verification--optimized for low tool calls and minimal output.",
-    "description_zh": "",
-    "downloads": 16539,
-    "homepage": "https://api.skillhub.cn/lstpsche/gcalcli-calendar",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/5a1e9830-80e4-4cbb-8d00-cee893ca9555.png",
-    "installs": 2303,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "Google Calendar (via gcalcli)",
-    "ownerName": "lstpsche",
-    "score": 55489.62408009017,
-    "slug": "gcalcli-calendar",
-    "source": "clawhub",
-    "stars": 10,
-    "subCategories": [
-      {
-        "key": "life-personal-plan",
-        "name": "个人计划"
-      },
-      {
-        "key": "life-habit",
-        "name": "效率习惯"
-      }
-    ],
-    "tags": [
-      "agenda",
-      "calendar",
-      "events",
-      "gcalcli",
-      "google-calendar",
-      "productivity",
-      "schedule",
-      "token-efficient"
-    ],
-    "updated_at": 1784089601953,
-    "upstream_owner_login": "lstpsche",
-    "upstream_url": "https://clawhub.ai/lstpsche/gcalcli-calendar",
-    "verified": false,
-    "version": "3.0.0"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740038449,
-    "description": "Any-to-any AI sub-agent — research, images, video, audio, music, podcasts, avatars, voice cloning, documents, spreadsheets, dashboards, 3D models, diagrams,...",
-    "description_zh": "",
-    "downloads": 16460,
-    "homepage": "https://api.skillhub.cn/nitishgargiitd/cellcog",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
-    "installs": 520,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": null,
-    "name": "Cellcog",
-    "ownerName": "nitishgargiitd",
-    "score": 36785.25069852375,
-    "slug": "cellcog",
-    "source": "clawhub",
-    "stars": 13,
-    "subCategories": [
-      {
-        "key": "agent-framework",
-        "name": "Agent 框架"
-      },
-      {
-        "key": "agent-task-automation",
-        "name": "任务自动化"
-      },
-      {
-        "key": "agent-multi-agent",
-        "name": "多 Agent 协作"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094536961,
-    "upstream_owner_login": "nitishgargiitd",
-    "upstream_url": "https://clawhub.ai/nitishgargiitd/cellcog",
-    "verified": false,
-    "version": "2.0.15"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740045554,
-    "description": "Perform complex, long-running research tasks using Gemini Deep Research Agent. Use when asked to research topics requiring multi-source synthesis, competitive analysis, market research, or comprehensive technical investigations that benefit from systematic web search and analysis.",
-    "description_zh": "",
-    "downloads": 16348,
-    "homepage": "https://api.skillhub.cn/arun-8687/gemini-deep-research",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7422abc7-fa86-4505-a723-0575c56e7a2d.png",
-    "installs": 4557,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": null,
-    "name": "Gemini Deep Research",
-    "ownerName": "arun-8687",
-    "score": 100000,
-    "slug": "gemini-deep-research",
-    "source": "clawhub",
-    "stars": 33,
-    "subCategories": [
-      {
-        "key": "agent-task-automation",
-        "name": "任务自动化"
-      },
-      {
-        "key": "agent-workflow",
-        "name": "工作流编排"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094836810,
-    "upstream_owner_login": "arun-8687",
-    "upstream_url": "https://clawhub.ai/arun-8687/gemini-deep-research",
+    "updated_at": 1784161601119,
+    "upstream_owner_login": "sarielwang93",
+    "upstream_url": "https://clawhub.ai/sarielwang93/memory-tiering",
     "verified": false,
     "version": "1.0.0"
   },
   {
-    "category": "business-ops",
+    "category": "design-media",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740029433,
-    "description": "Zoho People API integration with managed OAuth. Manage employees, departments, designations, attendance, leave, and arbitrary Zoho People forms (including cu...",
+    "created_at": 1772740043574,
+    "description": "AI skill for automated UI audits. Evaluate interfaces against proven UX principles for visual hierarchy, accessibility, cognitive load, navigation, and more. Based on Making UX Decisions by Tommy Geoco.",
     "description_zh": "",
-    "downloads": 16181,
-    "homepage": "https://api.skillhub.cn/byungkyu/zoho-people",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
-    "installs": 2030,
+    "downloads": 15916,
+    "homepage": "https://api.skillhub.cn/tommygeoco/ui-audit",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a4e49550-e527-4406-b761-c4f2e607b757.png",
+    "installs": 3967,
     "labels": {
-      "requires_api_key": "true"
+      "requires_api_key": "false"
     },
-    "last_synced_at": 1781849753907,
-    "name": "Zoho People",
-    "ownerName": "byungkyu",
-    "score": 100000,
-    "slug": "zoho-people",
+    "last_synced_at": null,
+    "name": "UI Audit",
+    "ownerName": "tommygeoco",
+    "score": 10422.717414739938,
+    "slug": "ui-audit",
     "source": "clawhub",
-    "stars": 3,
+    "stars": 26,
     "subCategories": [
       {
-        "key": "biz-crm",
-        "name": "CRM 管理"
+        "key": "design-visual-asset",
+        "name": "视觉素材"
+      },
+      {
+        "key": "design-ui",
+        "name": "UI 设计"
       }
     ],
     "tags": null,
-    "updated_at": 1784089300818,
-    "upstream_owner_login": "byungkyu",
-    "upstream_url": "https://clawhub.ai/byungkyu/zoho-people",
+    "updated_at": 1784181471371,
+    "upstream_owner_login": "tommygeoco",
+    "upstream_url": "https://clawhub.ai/tommygeoco/ui-audit",
     "verified": false,
-    "version": "1.0.5"
+    "version": "1.0.1"
   },
   {
     "category": "data-analysis",
@@ -1551,7 +1610,7 @@
     "created_at": 1772763373892,
     "description": "Extract metadata and content from WeChat Official Account articles. Use when user needs to parse WeChat article URLs (mp.weixin.qq.com), extract article info...",
     "description_zh": "",
-    "downloads": 15290,
+    "downloads": 15324,
     "homepage": "https://api.skillhub.cn/freestylefly/wechat-article-extractor-skill",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/10f9d8ff-5e7f-434f-9992-5e71e1d4e990.png",
     "installs": 4167,
@@ -1561,7 +1620,7 @@
     "last_synced_at": 1782799713372,
     "name": "微信公众号文章解析",
     "ownerName": "freestylefly",
-    "score": 100000,
+    "score": 45825.50793921803,
     "slug": "wechat-article-extractor-skill",
     "source": "clawhub",
     "stars": 39,
@@ -1578,299 +1637,34 @@
     "tags": [
       "wechat"
     ],
-    "updated_at": 1784089601839,
+    "updated_at": 1784181404041,
     "upstream_owner_login": "freestylefly",
     "upstream_url": "https://clawhub.ai/freestylefly/wechat-article-extractor-skill",
     "verified": false,
     "version": "1.0.1"
   },
   {
-    "category": "content-creation",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740039668,
-    "description": "LinkedIn API integration with managed OAuth. Share posts, manage profile, and access LinkedIn features. Use this skill when users want to share content on Li...",
-    "description_zh": "",
-    "downloads": 15109,
-    "homepage": "https://api.skillhub.cn/byungkyu/linkedin-api",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
-    "installs": 1566,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": 1781849767305,
-    "name": "LinkedIn",
-    "ownerName": "byungkyu",
-    "score": 100000,
-    "slug": "linkedin-api",
-    "source": "clawhub",
-    "stars": 49,
-    "subCategories": [
-      {
-        "key": "content-social-media",
-        "name": "自媒体运营"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784089300913,
-    "upstream_owner_login": "byungkyu",
-    "upstream_url": "https://clawhub.ai/byungkyu/linkedin-api",
-    "verified": false,
-    "version": "1.0.9"
-  },
-  {
-    "category": "professional",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772745381564,
-    "description": "Expertise in scholarly writing, including papers, literature reviews, research methods, and thesis composition, adhering to strict academic standards and cit...",
-    "description_zh": "",
-    "downloads": 14300,
-    "homepage": "https://api.skillhub.cn/teamolab/academic-writing",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a78375f1-773e-4817-b4f3-0557b6afd777.png",
-    "installs": 2155,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "academic-writing",
-    "ownerName": "teamolab",
-    "score": 2731.7683562284137,
-    "slug": "academic-writing",
-    "source": "clawhub",
-    "stars": 36,
-    "subCategories": [
-      {
-        "key": "pro-research",
-        "name": "科研学术"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094836366,
-    "upstream_owner_login": "teamolab",
-    "upstream_url": "https://clawhub.ai/teamolab/academic-writing",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
     "category": "it-ops-security",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740157749,
-    "description": "A clean, reliable system resource monitor for CPU load, RAM, Swap, and Disk usage. Optimized for OpenClaw.",
+    "created_at": 1772740073586,
+    "description": "Schedule automatic OpenClaw and skill updates with reliable cron templates, timezone-safe scheduling, and clear summary outputs. Use for hands-off maintenance, scheduled upgrades, and concise update reports.",
     "description_zh": "",
-    "downloads": 14293,
-    "homepage": "https://api.skillhub.cn/passersss/system-resource-monitor",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
-    "installs": 964,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "System Resource Monitor",
-    "ownerName": "passersss",
-    "score": 100000,
-    "slug": "system-resource-monitor",
-    "source": "clawhub",
-    "stars": 10,
-    "subCategories": [
-      {
-        "key": "itops-monitoring",
-        "name": "监控告警"
-      },
-      {
-        "key": "itops-server",
-        "name": "服务器运维"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094593159,
-    "upstream_owner_login": "passersss",
-    "upstream_url": "https://clawhub.ai/passersss/system-resource-monitor",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740056818,
-    "description": "Meta-cognitive self-learning system - Automated skill evolution based on predictive coding and value-driven mechanisms.",
-    "description_zh": "",
-    "downloads": 13892,
-    "homepage": "https://api.skillhub.cn/whtoo/self-evolving-skill",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/f7fabcfa-0496-4dc7-9258-df9b7c751850.png",
-    "installs": 3690,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": 1782815069313,
-    "name": "Self Evolving Skill",
-    "ownerName": "whtoo",
-    "score": 100000,
-    "slug": "self-evolving-skill",
-    "source": "clawhub",
-    "stars": 37,
-    "subCategories": [
-      {
-        "key": "agent-framework",
-        "name": "Agent 框架"
-      },
-      {
-        "key": "agent-task-automation",
-        "name": "任务自动化"
-      },
-      {
-        "key": "agent-memory",
-        "name": "记忆增强"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784083644130,
-    "upstream_owner_login": "whtoo",
-    "upstream_url": "https://clawhub.ai/whtoo/self-evolving-skill",
-    "verified": false,
-    "version": "1.0.2"
-  },
-  {
-    "category": "dev-programming",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772739811718,
-    "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when building web components, pages, or applications. Gener...",
-    "description_zh": "",
-    "downloads": 12908,
-    "homepage": "https://api.skillhub.cn/paudyyin/frontend-design",
+    "downloads": 15072,
+    "homepage": "https://api.skillhub.cn/dasweltall/openclaw-auto-updater",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7f79eb60-b8d8-4d8e-9b79-6ace0de1ff17.png",
-    "installs": 614,
+    "installs": 1289,
     "labels": {
       "requires_api_key": "false"
     },
-    "last_synced_at": 1781874229113,
-    "name": "Frontend Design",
-    "ownerName": "paudyyin",
+    "last_synced_at": 1782988034103,
+    "name": "OpenClaw Auto‑Updater (Safe + Scheduled + Summary)",
+    "ownerName": "dasweltall",
     "score": 100000,
-    "slug": "frontend-design",
+    "slug": "openclaw-auto-updater",
     "source": "clawhub",
-    "stars": 2,
-    "subCategories": [
-      {
-        "key": "dev-frontend",
-        "name": "前端开发"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094432621,
-    "upstream_owner_login": "paudyyin",
-    "upstream_url": "https://clawhub.ai/paudyyin/frontend-design",
-    "verified": false,
-    "version": "1.1.0"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772763318614,
-    "description": "Prompt injection defense. Detect and block malicious prompts, protect system instructions, sanitize user input.",
-    "description_zh": "",
-    "downloads": 12497,
-    "homepage": "https://api.skillhub.cn/maorun/prompt-injection-guard",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/9bcddb03-161b-42cd-bf2e-cf0159d85bd7.png",
-    "installs": 419,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "Prompt Injection Guard",
-    "ownerName": "maorun",
-    "score": 100000,
-    "slug": "prompt-injection-guard",
-    "source": "clawhub",
-    "stars": 4,
-    "subCategories": [
-      {
-        "key": "agent-prompt",
-        "name": "提示词优化"
-      },
-      {
-        "key": "agent-context",
-        "name": "上下文管理"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784094593008,
-    "upstream_owner_login": "maorun",
-    "upstream_url": "https://clawhub.ai/maorun/prompt-injection-guard",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
-    "category": "data-analysis",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1774594112791,
-    "description": "Extract structured information from websites using web_fetch for simple pages and browser automation for dynamic sites, login-gated flows, pagination, infini...",
-    "description_zh": "",
-    "downloads": 12411,
-    "homepage": "https://api.skillhub.cn/zhangqixin9527/web-scraping",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/5a1e9830-80e4-4cbb-8d00-cee893ca9555.png",
-    "installs": 420,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": 1782988103796,
-    "name": "Web Scraping",
-    "ownerName": "zhangqixin9527",
-    "score": 71312.5,
-    "slug": "web-scraping",
-    "source": "clawhub",
-    "stars": 7,
-    "subCategories": [
-      {
-        "key": "data-cleaning",
-        "name": "数据清洗"
-      },
-      {
-        "key": "data-web-scraping",
-        "name": "网页抓取"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1784089601677,
-    "upstream_owner_login": "zhangqixin9527",
-    "upstream_url": "https://clawhub.ai/zhangqixin9527/web-scraping",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
-    "category": "it-ops-security",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740051069,
-    "description": "Essential SSH commands for secure remote access, key management, tunneling, and file transfers.",
-    "description_zh": "",
-    "downloads": 12047,
-    "homepage": "https://api.skillhub.cn/arnarsson/ssh-essentials",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/10f9d8ff-5e7f-434f-9992-5e71e1d4e990.png",
-    "installs": 1662,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "Ssh Essentials",
-    "ownerName": "arnarsson",
-    "score": 10565.16470199405,
-    "slug": "ssh-essentials",
-    "source": "clawhub",
-    "stars": 21,
+    "stars": 13,
     "subCategories": [
       {
         "key": "itops-server",
@@ -1881,98 +1675,289 @@
         "name": "DevOps"
       }
     ],
-    "tags": null,
-    "updated_at": 1784094836709,
-    "upstream_owner_login": "arnarsson",
-    "upstream_url": "https://clawhub.ai/arnarsson/ssh-essentials",
+    "tags": [
+      "auto-update",
+      "cron",
+      "maintenance",
+      "monitoring",
+      "openclaw",
+      "ops",
+      "skills",
+      "updates"
+    ],
+    "updated_at": 1784172523891,
+    "upstream_owner_login": "dasweltall",
+    "upstream_url": "https://clawhub.ai/dasweltall/openclaw-auto-updater",
     "verified": false,
     "version": "1.0.0"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740047660,
-    "description": "Manage, optimize, and troubleshoot the OpenClaw memory system — MEMORY.md curation, daily logs (memory/YYYY-MM-DD.md), memory_search tuning, compaction survi...",
-    "description_zh": "",
-    "downloads": 11994,
-    "homepage": "https://api.skillhub.cn/weareallsatoshin/openclaw-mem",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7f79eb60-b8d8-4d8e-9b79-6ace0de1ff17.png",
-    "installs": 388,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": 1782791441254,
-    "name": "OpenClaw Memory",
-    "ownerName": "weareallsatoshin",
-    "score": 52964.19154546228,
-    "slug": "openclaw-mem",
-    "source": "clawhub",
-    "stars": 23,
-    "subCategories": [
-      {
-        "key": "agent-context",
-        "name": "上下文管理"
-      },
-      {
-        "key": "agent-memory",
-        "name": "记忆增强"
-      }
-    ],
-    "tags": [
-      "core",
-      "journaling",
-      "memory",
-      "system"
-    ],
-    "updated_at": 1784094536855,
-    "upstream_owner_login": "weareallsatoshin",
-    "upstream_url": "https://clawhub.ai/weareallsatoshin/openclaw-mem",
-    "verified": false,
-    "version": "2.3.0"
   },
   {
     "category": "content-creation",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740155855,
-    "description": "Build and execute a content marketing strategy for a solopreneur business. Use when planning what content to create, deciding on content formats and channels, building a content calendar, measuring content performance, or systematizing content production. Covers audience research for content, content pillars, distribution strategy, repurposing workflows, and metrics. Trigger on \"content strategy\", \"content marketing\", \"what content should I create\", \"content plan\", \"content calendar\", \"content ideas\", \"content distribution\", \"grow through content\".",
+    "created_at": 1772744670995,
+    "description": "Search X (Twitter) posts using the xAI API. Use when the user wants to find tweets, search X/Twitter, look up what people are saying on X, or find social med...",
     "description_zh": "",
-    "downloads": 10534,
-    "homepage": "https://api.skillhub.cn/jk-0001/content-strategy",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/64ea6fd6-ebe7-418c-af4f-2cafff71f2ec.png",
-    "installs": 2021,
+    "downloads": 14968,
+    "homepage": "https://api.skillhub.cn/jaaneek/x-search",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
+    "installs": 481,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "X Search",
+    "ownerName": "jaaneek",
+    "score": 92616.89055503489,
+    "slug": "x-search",
+    "source": "clawhub",
+    "stars": 141,
+    "subCategories": [
+      {
+        "key": "content-social-media",
+        "name": "自媒体运营"
+      }
+    ],
+    "tags": [
+      "search",
+      "sentiment-analysis",
+      "social-media",
+      "trends",
+      "twitter",
+      "x",
+      "x402"
+    ],
+    "updated_at": 1784172101162,
+    "upstream_owner_login": "jaaneek",
+    "upstream_url": "https://clawhub.ai/jaaneek/x-search",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "knowledge-management",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772744583961,
+    "description": "Generate tech news digests with unified source model, quality scoring, and multi-format output. Six-source data collection from RSS feeds, Twitter/X KOLs, Gi...",
+    "description_zh": "",
+    "downloads": 14849,
+    "homepage": "https://api.skillhub.cn/dinstein/tech-news-digest",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
+    "installs": 1546,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "tech-news-digest",
+    "ownerName": "dinstein",
+    "score": 100000,
+    "slug": "tech-news-digest",
+    "source": "clawhub",
+    "stars": 26,
+    "subCategories": [
+      {
+        "key": "knowledge-retrieval",
+        "name": "信息检索"
+      },
+      {
+        "key": "knowledge-summary",
+        "name": "摘要总结"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784161600985,
+    "upstream_owner_login": "dinstein",
+    "upstream_url": "https://clawhub.ai/dinstein/tech-news-digest",
+    "verified": false,
+    "version": "3.16.0"
+  },
+  {
+    "category": "it-ops-security",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740039937,
+    "description": "Detect prompt injection, jailbreak, role-hijack, and system extraction attempts. Applies multi-layer defense with semantic analysis and penalty scoring.",
+    "description_zh": "",
+    "downloads": 13891,
+    "homepage": "https://api.skillhub.cn/georges91560/security-sentinel-skill",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/34a07e4e-fec8-4ce0-aaf8-a83e46546c2d.png",
+    "installs": 2516,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": 1782791420697,
+    "name": "Anti-Injection-Skill",
+    "ownerName": "georges91560",
+    "score": 100000,
+    "slug": "security-sentinel-skill",
+    "source": "clawhub",
+    "stars": 12,
+    "subCategories": [
+      {
+        "key": "itops-security-scan",
+        "name": "安全扫描"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784172524166,
+    "upstream_owner_login": "georges91560",
+    "upstream_url": "https://clawhub.ai/georges91560/security-sentinel-skill",
+    "verified": false,
+    "version": "2.0.3"
+  },
+  {
+    "category": "content-creation",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740146224,
+    "description": "Translate text accurately — preserve formatting, handle plurals, and adapt tone per locale.",
+    "description_zh": "",
+    "downloads": 13283,
+    "homepage": "https://api.skillhub.cn/ivangdavila/translate",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a4e49550-e527-4406-b761-c4f2e607b757.png",
+    "installs": 2771,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Content Strategy",
-    "ownerName": "jk-0001",
-    "score": 42927.331801252076,
-    "slug": "content-strategy",
+    "name": "Translate",
+    "ownerName": "ivangdavila",
+    "score": 100000,
+    "slug": "translate",
     "source": "clawhub",
     "stars": 15,
     "subCategories": [
       {
-        "key": "content-marketing-copy",
-        "name": "营销文案"
-      },
-      {
-        "key": "content-social-media",
-        "name": "自媒体运营"
-      },
-      {
-        "key": "content-topic-planning",
-        "name": "选题策划"
+        "key": "content-rewrite",
+        "name": "内容改写"
       }
     ],
     "tags": null,
-    "updated_at": 1784089601383,
-    "upstream_owner_login": "jk-0001",
-    "upstream_url": "https://clawhub.ai/jk-0001/content-strategy",
+    "updated_at": 1784171813132,
+    "upstream_owner_login": "ivangdavila",
+    "upstream_url": "https://clawhub.ai/ivangdavila/translate",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "dev-programming",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1777514168274,
+    "description": "Universal API integration skill for enterprise platforms. Connect to any platform using Swagger/OpenAPI discovery.",
+    "description_zh": "",
+    "downloads": 13262,
+    "homepage": "https://api.skillhub.cn/hgvgfgvh/link-skill",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a78375f1-773e-4817-b4f3-0557b6afd777.png",
+    "installs": 494,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": 1782791087065,
+    "name": "LinkSKILL",
+    "ownerName": "hgvgfgvh",
+    "score": 61983.54832679005,
+    "slug": "link-skill",
+    "source": "clawhub",
+    "stars": 0,
+    "subCategories": [
+      {
+        "key": "dev-code-gen",
+        "name": "代码生成"
+      },
+      {
+        "key": "dev-backend",
+        "name": "后端开发"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784134901345,
+    "upstream_owner_login": "hgvgfgvh",
+    "upstream_url": "https://clawhub.ai/hgvgfgvh/link-skill",
+    "verified": false,
+    "version": "1.0.1"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740137307,
+    "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+    "description_zh": "",
+    "downloads": 12922,
+    "homepage": "https://api.skillhub.cn/yixinli867/skill-creator-2",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
+    "installs": 816,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": 1782988083940,
+    "name": "Skill Creator",
+    "ownerName": "yixinli867",
+    "score": 41915.146346663416,
+    "slug": "skill-creator-2",
+    "source": "clawhub",
+    "stars": 42,
+    "subCategories": [
+      {
+        "key": "agent-framework",
+        "name": "Agent 框架"
+      },
+      {
+        "key": "agent-tool-use",
+        "name": "工具调用"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784181403848,
+    "upstream_owner_login": "yixinli867",
+    "upstream_url": "https://clawhub.ai/yixinli867/skill-creator-2",
     "verified": false,
     "version": "0.1.0"
+  },
+  {
+    "category": "knowledge-management",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740048950,
+    "description": "Create, search, and manage Bear notes via grizzly CLI.",
+    "description_zh": "",
+    "downloads": 12685,
+    "homepage": "https://api.skillhub.cn/steipete/bear-notes",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
+    "installs": 2338,
+    "labels": {
+      "requires_api_key": "true"
+    },
+    "last_synced_at": null,
+    "name": "Bear Notes",
+    "ownerName": "steipete",
+    "score": 100000,
+    "slug": "bear-notes",
+    "source": "clawhub",
+    "stars": 4,
+    "subCategories": [
+      {
+        "key": "knowledge-retrieval",
+        "name": "信息检索"
+      },
+      {
+        "key": "knowledge-notes",
+        "name": "笔记整理"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1784161601404,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/bear-notes",
+    "verified": false,
+    "version": "1.0.0"
   }
 ]
