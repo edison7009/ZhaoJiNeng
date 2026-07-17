@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-16T08:02:45.560381+00:00",
+  "updated_at": "2026-07-17T08:00:08.761040+00:00",
   "top_n": 20,
   "source": "artificialanalysis.ai",
   "intelligence": [
@@ -15,7 +15,7 @@
       "coding": 76.5,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 69.442,
+      "output_speed": 66.915,
       "rank": 1
     },
     {
@@ -30,8 +30,23 @@
       "coding": 77.4,
       "math": null,
       "price_blended": 11.25,
-      "output_speed": 67.377,
+      "output_speed": 65.703,
       "rank": 2
+    },
+    {
+      "model_id": "kimi-k3",
+      "name": "Kimi K3",
+      "short_name": "Kimi K3",
+      "author": "kimi",
+      "author_name": "Kimi",
+      "author_icon": "./public/models_icons/kimi.png",
+      "score": 57.1,
+      "intelligence": 57.1,
+      "coding": 76.2,
+      "math": null,
+      "price_blended": 6.0,
+      "output_speed": 58.503,
+      "rank": 3
     },
     {
       "model_id": "claude-opus-4-8",
@@ -45,8 +60,8 @@
       "coding": 74.3,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 54.264,
-      "rank": 3
+      "output_speed": 55.327,
+      "rank": 4
     },
     {
       "model_id": "gpt-5-6-terra",
@@ -60,8 +75,8 @@
       "coding": 76.7,
       "math": null,
       "price_blended": 5.625,
-      "output_speed": 164.965,
-      "rank": 4
+      "output_speed": 162.947,
+      "rank": 5
     },
     {
       "model_id": "gpt-5-5",
@@ -75,8 +90,8 @@
       "coding": 74.9,
       "math": null,
       "price_blended": 11.25,
-      "output_speed": 73.893,
-      "rank": 5
+      "output_speed": 76.749,
+      "rank": 6
     },
     {
       "model_id": "grok-4-5",
@@ -90,8 +105,8 @@
       "coding": 72.4,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 122.794,
-      "rank": 6
+      "output_speed": 119.08,
+      "rank": 7
     },
     {
       "model_id": "claude-opus-4-7",
@@ -105,8 +120,8 @@
       "coding": 73.6,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 50.425,
-      "rank": 7
+      "output_speed": 49.514,
+      "rank": 8
     },
     {
       "model_id": "claude-sonnet-5",
@@ -120,8 +135,8 @@
       "coding": 71.5,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 86.197,
-      "rank": 8
+      "output_speed": 89.225,
+      "rank": 9
     },
     {
       "model_id": "gpt-5-4",
@@ -135,8 +150,8 @@
       "coding": 71.1,
       "math": null,
       "price_blended": 5.625,
-      "output_speed": 151.747,
-      "rank": 9
+      "output_speed": 154.478,
+      "rank": 10
     },
     {
       "model_id": "gpt-5-6-luna",
@@ -150,8 +165,8 @@
       "coding": 71.4,
       "math": null,
       "price_blended": 2.25,
-      "output_speed": 243.553,
-      "rank": 10
+      "output_speed": 197.119,
+      "rank": 11
     },
     {
       "model_id": "glm-5-2",
@@ -165,8 +180,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 148.546,
-      "rank": 11
+      "output_speed": 163.418,
+      "rank": 12
     },
     {
       "model_id": "muse-spark-1-1",
@@ -180,8 +195,8 @@
       "coding": 71.3,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 126.227,
-      "rank": 12
+      "output_speed": 117.241,
+      "rank": 13
     },
     {
       "model_id": "gemini-3-5-flash",
@@ -195,8 +210,8 @@
       "coding": 70.1,
       "math": null,
       "price_blended": 3.375,
-      "output_speed": 241.164,
-      "rank": 13
+      "output_speed": 236.938,
+      "rank": 14
     },
     {
       "model_id": "claude-sonnet-4-6-adaptive",
@@ -210,8 +225,8 @@
       "coding": 63.0,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 71.281,
-      "rank": 14
+      "output_speed": 71.297,
+      "rank": 15
     },
     {
       "model_id": "gemini-3-1-pro-preview",
@@ -225,8 +240,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 123.077,
-      "rank": 15
+      "output_speed": 128.556,
+      "rank": 16
     },
     {
       "model_id": "qwen3-7-max",
@@ -240,8 +255,8 @@
       "coding": 66.0,
       "math": null,
       "price_blended": 3.75,
-      "output_speed": 198.908,
-      "rank": 16
+      "output_speed": 200.754,
+      "rank": 17
     },
     {
       "model_id": "minimax-m3",
@@ -255,8 +270,8 @@
       "coding": 58.6,
       "math": null,
       "price_blended": 0.525,
-      "output_speed": 94.76,
-      "rank": 17
+      "output_speed": 91.896,
+      "rank": 18
     },
     {
       "model_id": "gpt-5-3-codex",
@@ -270,8 +285,8 @@
       "coding": null,
       "math": null,
       "price_blended": 4.813,
-      "output_speed": 93.797,
-      "rank": 18
+      "output_speed": 94.89,
+      "rank": 19
     },
     {
       "model_id": "deepseek-v4-pro",
@@ -285,22 +300,7 @@
       "coding": 59.4,
       "math": null,
       "price_blended": 0.544,
-      "output_speed": 63.741,
-      "rank": 19
-    },
-    {
-      "model_id": "kimi-k2-6",
-      "name": "Kimi K2.6",
-      "short_name": "Kimi K2.6",
-      "author": "kimi",
-      "author_name": "Kimi",
-      "author_icon": "./public/models_icons/kimi.png",
-      "score": 44.2,
-      "intelligence": 44.2,
-      "coding": 61.8,
-      "math": null,
-      "price_blended": 1.712,
-      "output_speed": 39.104,
+      "output_speed": 64.775,
       "rank": 20
     }
   ],
@@ -317,7 +317,7 @@
       "coding": 78.3,
       "math": null,
       "price_blended": 11.25,
-      "output_speed": 56.992,
+      "output_speed": 56.1,
       "rank": 1
     },
     {
@@ -332,7 +332,7 @@
       "coding": 76.7,
       "math": null,
       "price_blended": 5.625,
-      "output_speed": 164.965,
+      "output_speed": 162.947,
       "rank": 2
     },
     {
@@ -347,8 +347,23 @@
       "coding": 76.5,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 69.442,
+      "output_speed": 66.915,
       "rank": 3
+    },
+    {
+      "model_id": "kimi-k3",
+      "name": "Kimi K3",
+      "short_name": "Kimi K3",
+      "author": "kimi",
+      "author_name": "Kimi",
+      "author_icon": "./public/models_icons/kimi.png",
+      "score": 76.2,
+      "intelligence": 57.1,
+      "coding": 76.2,
+      "math": null,
+      "price_blended": 6.0,
+      "output_speed": 58.503,
+      "rank": 4
     },
     {
       "model_id": "gpt-5-5",
@@ -362,8 +377,8 @@
       "coding": 74.9,
       "math": null,
       "price_blended": 11.25,
-      "output_speed": 73.893,
-      "rank": 4
+      "output_speed": 76.749,
+      "rank": 5
     },
     {
       "model_id": "claude-opus-4-8",
@@ -377,8 +392,8 @@
       "coding": 74.3,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 54.264,
-      "rank": 5
+      "output_speed": 55.327,
+      "rank": 6
     },
     {
       "model_id": "claude-opus-4-7",
@@ -392,8 +407,8 @@
       "coding": 73.6,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 50.425,
-      "rank": 6
+      "output_speed": 49.514,
+      "rank": 7
     },
     {
       "model_id": "grok-4-5",
@@ -407,8 +422,8 @@
       "coding": 72.4,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 122.794,
-      "rank": 7
+      "output_speed": 119.08,
+      "rank": 8
     },
     {
       "model_id": "claude-sonnet-5",
@@ -422,8 +437,8 @@
       "coding": 71.5,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 86.197,
-      "rank": 8
+      "output_speed": 89.225,
+      "rank": 9
     },
     {
       "model_id": "gpt-5-6-luna",
@@ -437,8 +452,8 @@
       "coding": 71.4,
       "math": null,
       "price_blended": 2.25,
-      "output_speed": 243.553,
-      "rank": 9
+      "output_speed": 197.119,
+      "rank": 10
     },
     {
       "model_id": "muse-spark-1-1",
@@ -452,8 +467,8 @@
       "coding": 71.3,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 126.227,
-      "rank": 10
+      "output_speed": 117.241,
+      "rank": 11
     },
     {
       "model_id": "gpt-5-4",
@@ -467,8 +482,8 @@
       "coding": 71.1,
       "math": null,
       "price_blended": 5.625,
-      "output_speed": 151.747,
-      "rank": 11
+      "output_speed": 154.478,
+      "rank": 12
     },
     {
       "model_id": "gemini-3-5-flash",
@@ -482,8 +497,8 @@
       "coding": 70.1,
       "math": null,
       "price_blended": 3.375,
-      "output_speed": 241.164,
-      "rank": 12
+      "output_speed": 236.938,
+      "rank": 13
     },
     {
       "model_id": "gemini-3-1-pro-preview",
@@ -497,8 +512,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 123.077,
-      "rank": 13
+      "output_speed": 128.556,
+      "rank": 14
     },
     {
       "model_id": "glm-5-2",
@@ -512,8 +527,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 148.546,
-      "rank": 14
+      "output_speed": 163.418,
+      "rank": 15
     },
     {
       "model_id": "qwen3-7-max",
@@ -527,8 +542,8 @@
       "coding": 66.0,
       "math": null,
       "price_blended": 3.75,
-      "output_speed": 198.908,
-      "rank": 15
+      "output_speed": 200.754,
+      "rank": 16
     },
     {
       "model_id": "claude-sonnet-4-6-adaptive",
@@ -542,8 +557,8 @@
       "coding": 63.0,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 71.281,
-      "rank": 16
+      "output_speed": 71.297,
+      "rank": 17
     },
     {
       "model_id": "kimi-k2-6",
@@ -557,8 +572,8 @@
       "coding": 61.8,
       "math": null,
       "price_blended": 1.712,
-      "output_speed": 39.104,
-      "rank": 17
+      "output_speed": 39.36,
+      "rank": 18
     },
     {
       "model_id": "kimi-k2-7-code",
@@ -572,8 +587,8 @@
       "coding": 60.8,
       "math": null,
       "price_blended": 1.712,
-      "output_speed": 42.327,
-      "rank": 18
+      "output_speed": 44.149,
+      "rank": 19
     },
     {
       "model_id": "mimo-v2-5-pro",
@@ -587,22 +602,7 @@
       "coding": 60.2,
       "math": null,
       "price_blended": 0.544,
-      "output_speed": 57.09,
-      "rank": 19
-    },
-    {
-      "model_id": "kat-coder-pro-v2",
-      "name": "KAT Coder Pro V2",
-      "short_name": "KAT Coder Pro V2",
-      "author": "kwaikat",
-      "author_name": "KwaiKAT",
-      "author_icon": "./public/models_icons/kwaikat.png",
-      "score": 59.5,
-      "intelligence": 33.7,
-      "coding": 59.5,
-      "math": null,
-      "price_blended": 0.525,
-      "output_speed": 0.0,
+      "output_speed": 58.514,
       "rank": 20
     }
   ],
@@ -619,7 +619,7 @@
       "coding": null,
       "math": 99.0,
       "price_blended": 4.813,
-      "output_speed": 77.12,
+      "output_speed": 79.766,
       "rank": 1
     },
     {
@@ -634,7 +634,7 @@
       "coding": null,
       "math": 98.7,
       "price_blended": 3.438,
-      "output_speed": 167.409,
+      "output_speed": 164.441,
       "rank": 2
     },
     {
@@ -649,7 +649,7 @@
       "coding": null,
       "math": 97.0,
       "price_blended": 1.125,
-      "output_speed": 197.729,
+      "output_speed": 196.604,
       "rank": 3
     },
     {
@@ -694,7 +694,7 @@
       "coding": null,
       "math": 95.7,
       "price_blended": 3.438,
-      "output_speed": 173.275,
+      "output_speed": 173.13,
       "rank": 6
     },
     {
@@ -724,7 +724,7 @@
       "coding": 45.3,
       "math": 95.0,
       "price_blended": 1.0,
-      "output_speed": 101.802,
+      "output_speed": 102.235,
       "rank": 8
     },
     {
@@ -754,7 +754,7 @@
       "coding": null,
       "math": 94.7,
       "price_blended": 1.075,
-      "output_speed": 131.058,
+      "output_speed": 129.954,
       "rank": 10
     },
     {
@@ -769,7 +769,7 @@
       "coding": 23.0,
       "math": 94.3,
       "price_blended": 0.85,
-      "output_speed": 182.524,
+      "output_speed": 170.045,
       "rank": 11
     },
     {
@@ -784,7 +784,7 @@
       "coding": 37.8,
       "math": 94.3,
       "price_blended": 3.438,
-      "output_speed": 102.654,
+      "output_speed": 95.517,
       "rank": 12
     },
     {
@@ -799,7 +799,7 @@
       "coding": 49.4,
       "math": 94.0,
       "price_blended": 3.438,
-      "output_speed": 90.999,
+      "output_speed": 90.199,
       "rank": 13
     },
     {
@@ -814,7 +814,7 @@
       "coding": 30.4,
       "math": 93.4,
       "price_blended": 0.262,
-      "output_speed": 228.781,
+      "output_speed": 257.451,
       "rank": 14
     },
     {
@@ -859,7 +859,7 @@
       "coding": null,
       "math": 91.7,
       "price_blended": 0.688,
-      "output_speed": 203.43,
+      "output_speed": 208.014,
       "rank": 17
     },
     {
@@ -874,7 +874,7 @@
       "coding": null,
       "math": 91.3,
       "price_blended": 10.0,
-      "output_speed": 58.544,
+      "output_speed": 58.562,
       "rank": 18
     },
     {
@@ -889,7 +889,7 @@
       "coding": 14.4,
       "math": 91.0,
       "price_blended": 0.088,
-      "output_speed": 111.746,
+      "output_speed": 147.237,
       "rank": 19
     },
     {
@@ -904,7 +904,7 @@
       "coding": 22.1,
       "math": 91.0,
       "price_blended": 2.625,
-      "output_speed": 57.705,
+      "output_speed": 58.649,
       "rank": 20
     }
   ]
