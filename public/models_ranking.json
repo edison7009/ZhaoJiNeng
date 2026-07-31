@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30T08:13:54.098788+00:00",
+  "updated_at": "2026-07-31T08:40:41.096964+00:00",
   "top_n": 20,
   "source": "artificialanalysis.ai",
   "intelligence": [
@@ -15,7 +15,7 @@
       "coding": 78.0,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 56.128,
+      "output_speed": 54.787,
       "rank": 1
     },
     {
@@ -30,7 +30,7 @@
       "coding": 76.5,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 67.313,
+      "output_speed": 58.598,
       "rank": 2
     },
     {
@@ -45,12 +45,12 @@
       "coding": 77.4,
       "math": null,
       "price_blended": 11.25,
-      "output_speed": 69.894,
+      "output_speed": 67.188,
       "rank": 3
     },
     {
       "model_id": "kimi-k3",
-      "name": "Kimi K3",
+      "name": "Kimi K3 (max)",
       "short_name": "Kimi K3",
       "author": "kimi",
       "author_name": "Kimi",
@@ -60,7 +60,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 32.525,
+      "output_speed": 32.62,
       "rank": 4
     },
     {
@@ -75,7 +75,7 @@
       "coding": 74.3,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 62.508,
+      "output_speed": 52.345,
       "rank": 5
     },
     {
@@ -89,8 +89,8 @@
       "intelligence": 55.0,
       "coding": 76.7,
       "math": null,
-      "price_blended": 5.625,
-      "output_speed": 149.889,
+      "price_blended": 4.5,
+      "output_speed": 128.253,
       "rank": 6
     },
     {
@@ -150,7 +150,7 @@
       "coding": 71.5,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 90.841,
+      "output_speed": 84.553,
       "rank": 10
     },
     {
@@ -179,8 +179,8 @@
       "intelligence": 51.2,
       "coding": 71.4,
       "math": null,
-      "price_blended": 2.25,
-      "output_speed": 203.612,
+      "price_blended": 0.45,
+      "output_speed": 186.687,
       "rank": 12
     },
     {
@@ -195,7 +195,7 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 146.096,
+      "output_speed": 106.582,
       "rank": 13
     },
     {
@@ -210,7 +210,7 @@
       "coding": 71.3,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 134.885,
+      "output_speed": 139.725,
       "rank": 14
     },
     {
@@ -225,7 +225,7 @@
       "coding": 70.1,
       "math": null,
       "price_blended": 3.375,
-      "output_speed": 253.538,
+      "output_speed": 219.824,
       "rank": 15
     },
     {
@@ -240,8 +240,23 @@
       "coding": 69.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 233.427,
+      "output_speed": 207.258,
       "rank": 16
+    },
+    {
+      "model_id": "deepseek-v4-flash-ga",
+      "name": "DeepSeek V4 Flash 0731",
+      "short_name": "DeepSeek V4 Flash 0731",
+      "author": "deepseek",
+      "author_name": "DeepSeek",
+      "author_icon": "./public/models_icons/deepseek.png",
+      "score": 49.9,
+      "intelligence": 49.9,
+      "coding": 69.1,
+      "math": null,
+      "price_blended": 0.175,
+      "output_speed": 0.0,
+      "rank": 17
     },
     {
       "model_id": "claude-sonnet-4-6-adaptive",
@@ -256,7 +271,7 @@
       "math": null,
       "price_blended": 6.0,
       "output_speed": 0.0,
-      "rank": 17
+      "rank": 18
     },
     {
       "model_id": "gemini-3-1-pro-preview",
@@ -270,8 +285,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 144.639,
-      "rank": 18
+      "output_speed": 135.642,
+      "rank": 19
     },
     {
       "model_id": "qwen3-7-max",
@@ -285,22 +300,7 @@
       "coding": 66.0,
       "math": null,
       "price_blended": 3.75,
-      "output_speed": 201.535,
-      "rank": 19
-    },
-    {
-      "model_id": "minimax-m3",
-      "name": "MiniMax-M3",
-      "short_name": "MiniMax-M3",
-      "author": "minimax",
-      "author_name": "MiniMax",
-      "author_icon": "./public/models_icons/minimax.png",
-      "score": 44.4,
-      "intelligence": 44.4,
-      "coding": 58.6,
-      "math": null,
-      "price_blended": 0.525,
-      "output_speed": 96.645,
+      "output_speed": 200.178,
       "rank": 20
     }
   ],
@@ -317,7 +317,7 @@
       "coding": 78.3,
       "math": null,
       "price_blended": 11.25,
-      "output_speed": 74.013,
+      "output_speed": 60.811,
       "rank": 1
     },
     {
@@ -332,7 +332,7 @@
       "coding": 78.0,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 56.128,
+      "output_speed": 54.787,
       "rank": 2
     },
     {
@@ -346,8 +346,8 @@
       "intelligence": 55.0,
       "coding": 76.7,
       "math": null,
-      "price_blended": 5.625,
-      "output_speed": 149.889,
+      "price_blended": 4.5,
+      "output_speed": 128.253,
       "rank": 3
     },
     {
@@ -362,12 +362,12 @@
       "coding": 76.5,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 67.313,
+      "output_speed": 58.598,
       "rank": 4
     },
     {
       "model_id": "kimi-k3",
-      "name": "Kimi K3",
+      "name": "Kimi K3 (max)",
       "short_name": "Kimi K3",
       "author": "kimi",
       "author_name": "Kimi",
@@ -377,7 +377,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 32.525,
+      "output_speed": 32.62,
       "rank": 5
     },
     {
@@ -407,7 +407,7 @@
       "coding": 74.3,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 62.508,
+      "output_speed": 52.345,
       "rank": 7
     },
     {
@@ -452,7 +452,7 @@
       "coding": 71.5,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 90.841,
+      "output_speed": 84.553,
       "rank": 10
     },
     {
@@ -466,8 +466,8 @@
       "intelligence": 51.2,
       "coding": 71.4,
       "math": null,
-      "price_blended": 2.25,
-      "output_speed": 203.612,
+      "price_blended": 0.45,
+      "output_speed": 186.687,
       "rank": 11
     },
     {
@@ -482,7 +482,7 @@
       "coding": 71.3,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 134.885,
+      "output_speed": 139.725,
       "rank": 12
     },
     {
@@ -512,7 +512,7 @@
       "coding": 70.1,
       "math": null,
       "price_blended": 3.375,
-      "output_speed": 253.538,
+      "output_speed": 219.824,
       "rank": 14
     },
     {
@@ -527,8 +527,23 @@
       "coding": 69.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 233.427,
+      "output_speed": 207.258,
       "rank": 15
+    },
+    {
+      "model_id": "deepseek-v4-flash-ga",
+      "name": "DeepSeek V4 Flash 0731",
+      "short_name": "DeepSeek V4 Flash 0731",
+      "author": "deepseek",
+      "author_name": "DeepSeek",
+      "author_icon": "./public/models_icons/deepseek.png",
+      "score": 69.1,
+      "intelligence": 49.9,
+      "coding": 69.1,
+      "math": null,
+      "price_blended": 0.175,
+      "output_speed": 0.0,
+      "rank": 16
     },
     {
       "model_id": "gemini-3-1-pro-preview",
@@ -542,8 +557,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 144.639,
-      "rank": 16
+      "output_speed": 135.642,
+      "rank": 17
     },
     {
       "model_id": "glm-5-2",
@@ -557,8 +572,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 146.096,
-      "rank": 17
+      "output_speed": 106.582,
+      "rank": 18
     },
     {
       "model_id": "qwen3-7-max",
@@ -572,8 +587,8 @@
       "coding": 66.0,
       "math": null,
       "price_blended": 3.75,
-      "output_speed": 201.535,
-      "rank": 18
+      "output_speed": 200.178,
+      "rank": 19
     },
     {
       "model_id": "claude-sonnet-4-6-adaptive",
@@ -587,21 +602,6 @@
       "coding": 63.0,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 0.0,
-      "rank": 19
-    },
-    {
-      "model_id": "motif-0714",
-      "name": "Motif 3 (Beta)",
-      "short_name": "Motif 3",
-      "author": "motif-technologies",
-      "author_name": "Motif Technologies",
-      "author_icon": "",
-      "score": 62.0,
-      "intelligence": 44.1,
-      "coding": 62.0,
-      "math": null,
-      "price_blended": 0.0,
       "output_speed": 0.0,
       "rank": 20
     }
@@ -769,7 +769,7 @@
       "coding": 23.0,
       "math": 94.3,
       "price_blended": 0.85,
-      "output_speed": 190.335,
+      "output_speed": 179.551,
       "rank": 11
     },
     {
@@ -814,7 +814,7 @@
       "coding": 30.4,
       "math": 93.4,
       "price_blended": 0.262,
-      "output_speed": 237.86,
+      "output_speed": 193.254,
       "rank": 14
     },
     {
@@ -889,7 +889,7 @@
       "coding": 14.4,
       "math": 91.0,
       "price_blended": 0.088,
-      "output_speed": 225.871,
+      "output_speed": 259.373,
       "rank": 19
     },
     {
