@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-05T08:26:44.463678+00:00",
+  "updated_at": "2026-08-06T08:24:25.373935+00:00",
   "top_n": 20,
   "source": "artificialanalysis.ai",
   "intelligence": [
@@ -15,7 +15,7 @@
       "coding": 78.0,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 61.706,
+      "output_speed": 57.695,
       "rank": 1
     },
     {
@@ -30,7 +30,7 @@
       "coding": 76.5,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 71.185,
+      "output_speed": 70.502,
       "rank": 2
     },
     {
@@ -45,7 +45,7 @@
       "coding": 77.4,
       "math": null,
       "price_blended": 11.25,
-      "output_speed": 76.494,
+      "output_speed": 70.109,
       "rank": 3
     },
     {
@@ -60,8 +60,23 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 36.479,
+      "output_speed": 36.906,
       "rank": 4
+    },
+    {
+      "model_id": "qwen3-8-max",
+      "name": "Qwen3.8 Max",
+      "short_name": "Qwen3.8 Max",
+      "author": "alibaba",
+      "author_name": "Alibaba",
+      "author_icon": "./public/models_icons/alibaba.png",
+      "score": 56.2,
+      "intelligence": 56.2,
+      "coding": 71.8,
+      "math": null,
+      "price_blended": 3.0,
+      "output_speed": 52.761,
+      "rank": 5
     },
     {
       "model_id": "claude-opus-4-8",
@@ -76,7 +91,7 @@
       "math": null,
       "price_blended": 10.0,
       "output_speed": 0.0,
-      "rank": 5
+      "rank": 6
     },
     {
       "model_id": "gpt-5-6-terra",
@@ -90,8 +105,8 @@
       "coding": 76.7,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 149.473,
-      "rank": 6
+      "output_speed": 126.899,
+      "rank": 7
     },
     {
       "model_id": "gpt-5-5",
@@ -106,7 +121,22 @@
       "math": null,
       "price_blended": 11.25,
       "output_speed": 0.0,
-      "rank": 7
+      "rank": 8
+    },
+    {
+      "model_id": "muse-spark-1-2",
+      "name": "Muse Spark 1.2 (xhigh)",
+      "short_name": "Muse Spark 1.2",
+      "author": "meta",
+      "author_name": "Meta",
+      "author_icon": "./public/models_icons/meta.jpg",
+      "score": 54.1,
+      "intelligence": 54.1,
+      "coding": 72.2,
+      "math": null,
+      "price_blended": 2.0,
+      "output_speed": 0.0,
+      "rank": 9
     },
     {
       "model_id": "grok-4-5",
@@ -120,8 +150,8 @@
       "coding": 72.4,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 67.468,
-      "rank": 8
+      "output_speed": 58.543,
+      "rank": 10
     },
     {
       "model_id": "claude-opus-4-7",
@@ -136,7 +166,7 @@
       "math": null,
       "price_blended": 10.0,
       "output_speed": 0.0,
-      "rank": 9
+      "rank": 11
     },
     {
       "model_id": "claude-sonnet-5",
@@ -150,8 +180,8 @@
       "coding": 71.5,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 96.731,
-      "rank": 10
+      "output_speed": 90.047,
+      "rank": 12
     },
     {
       "model_id": "gpt-5-4",
@@ -166,7 +196,7 @@
       "math": null,
       "price_blended": 5.625,
       "output_speed": 0.0,
-      "rank": 11
+      "rank": 13
     },
     {
       "model_id": "gpt-5-6-luna",
@@ -180,8 +210,8 @@
       "coding": 71.4,
       "math": null,
       "price_blended": 0.45,
-      "output_speed": 178.356,
-      "rank": 12
+      "output_speed": 165.604,
+      "rank": 14
     },
     {
       "model_id": "glm-5-2",
@@ -195,8 +225,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 2.086,
-      "output_speed": 182.464,
-      "rank": 13
+      "output_speed": 159.543,
+      "rank": 15
     },
     {
       "model_id": "muse-spark-1-1",
@@ -210,8 +240,8 @@
       "coding": 71.3,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 217.031,
-      "rank": 14
+      "output_speed": 191.877,
+      "rank": 16
     },
     {
       "model_id": "gemini-3-5-flash",
@@ -225,8 +255,8 @@
       "coding": 70.1,
       "math": null,
       "price_blended": 3.375,
-      "output_speed": 287.8,
-      "rank": 15
+      "output_speed": 254.728,
+      "rank": 17
     },
     {
       "model_id": "gemini-3-6-flash",
@@ -240,8 +270,8 @@
       "coding": 69.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 236.441,
-      "rank": 16
+      "output_speed": 235.792,
+      "rank": 18
     },
     {
       "model_id": "deepseek-v4-flash",
@@ -255,8 +285,8 @@
       "coding": 69.1,
       "math": null,
       "price_blended": 0.175,
-      "output_speed": 113.463,
-      "rank": 17
+      "output_speed": 112.751,
+      "rank": 19
     },
     {
       "model_id": "claude-sonnet-4-6-adaptive",
@@ -271,36 +301,6 @@
       "math": null,
       "price_blended": 6.0,
       "output_speed": 0.0,
-      "rank": 18
-    },
-    {
-      "model_id": "gemini-3-1-pro-preview",
-      "name": "Gemini 3.1 Pro Preview",
-      "short_name": "Gemini 3.1 Pro Preview",
-      "author": "google",
-      "author_name": "Google",
-      "author_icon": "./public/models_icons/google.svg",
-      "score": 46.5,
-      "intelligence": 46.5,
-      "coding": 68.8,
-      "math": null,
-      "price_blended": 4.5,
-      "output_speed": 141.47,
-      "rank": 19
-    },
-    {
-      "model_id": "qwen3-7-max",
-      "name": "Qwen3.7 Max",
-      "short_name": "Qwen3.7 Max",
-      "author": "alibaba",
-      "author_name": "Alibaba",
-      "author_icon": "./public/models_icons/alibaba.png",
-      "score": 46.0,
-      "intelligence": 46.0,
-      "coding": 66.0,
-      "math": null,
-      "price_blended": 3.75,
-      "output_speed": 213.368,
       "rank": 20
     }
   ],
@@ -317,7 +317,7 @@
       "coding": 78.3,
       "math": null,
       "price_blended": 11.25,
-      "output_speed": 75.547,
+      "output_speed": 62.365,
       "rank": 1
     },
     {
@@ -332,7 +332,7 @@
       "coding": 78.0,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 61.706,
+      "output_speed": 57.695,
       "rank": 2
     },
     {
@@ -347,7 +347,7 @@
       "coding": 76.7,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 149.473,
+      "output_speed": 126.899,
       "rank": 3
     },
     {
@@ -362,7 +362,7 @@
       "coding": 76.5,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 71.185,
+      "output_speed": 70.502,
       "rank": 4
     },
     {
@@ -377,7 +377,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 36.479,
+      "output_speed": 36.906,
       "rank": 5
     },
     {
@@ -437,8 +437,38 @@
       "coding": 72.4,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 67.468,
+      "output_speed": 58.543,
       "rank": 9
+    },
+    {
+      "model_id": "muse-spark-1-2",
+      "name": "Muse Spark 1.2 (xhigh)",
+      "short_name": "Muse Spark 1.2",
+      "author": "meta",
+      "author_name": "Meta",
+      "author_icon": "./public/models_icons/meta.jpg",
+      "score": 72.2,
+      "intelligence": 54.1,
+      "coding": 72.2,
+      "math": null,
+      "price_blended": 2.0,
+      "output_speed": 0.0,
+      "rank": 10
+    },
+    {
+      "model_id": "qwen3-8-max",
+      "name": "Qwen3.8 Max",
+      "short_name": "Qwen3.8 Max",
+      "author": "alibaba",
+      "author_name": "Alibaba",
+      "author_icon": "./public/models_icons/alibaba.png",
+      "score": 71.8,
+      "intelligence": 56.2,
+      "coding": 71.8,
+      "math": null,
+      "price_blended": 3.0,
+      "output_speed": 52.761,
+      "rank": 11
     },
     {
       "model_id": "claude-sonnet-5",
@@ -452,8 +482,8 @@
       "coding": 71.5,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 96.731,
-      "rank": 10
+      "output_speed": 90.047,
+      "rank": 12
     },
     {
       "model_id": "gpt-5-6-luna",
@@ -467,8 +497,8 @@
       "coding": 71.4,
       "math": null,
       "price_blended": 0.45,
-      "output_speed": 178.356,
-      "rank": 11
+      "output_speed": 165.604,
+      "rank": 13
     },
     {
       "model_id": "muse-spark-1-1",
@@ -482,8 +512,8 @@
       "coding": 71.3,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 217.031,
-      "rank": 12
+      "output_speed": 191.877,
+      "rank": 14
     },
     {
       "model_id": "gpt-5-4",
@@ -498,7 +528,7 @@
       "math": null,
       "price_blended": 5.625,
       "output_speed": 0.0,
-      "rank": 13
+      "rank": 15
     },
     {
       "model_id": "gemini-3-5-flash",
@@ -512,8 +542,8 @@
       "coding": 70.1,
       "math": null,
       "price_blended": 3.375,
-      "output_speed": 287.8,
-      "rank": 14
+      "output_speed": 254.728,
+      "rank": 16
     },
     {
       "model_id": "gemini-3-6-flash",
@@ -527,8 +557,8 @@
       "coding": 69.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 236.441,
-      "rank": 15
+      "output_speed": 235.792,
+      "rank": 17
     },
     {
       "model_id": "deepseek-v4-flash",
@@ -542,8 +572,8 @@
       "coding": 69.1,
       "math": null,
       "price_blended": 0.175,
-      "output_speed": 113.463,
-      "rank": 16
+      "output_speed": 112.751,
+      "rank": 18
     },
     {
       "model_id": "gemini-3-1-pro-preview",
@@ -557,8 +587,8 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 141.47,
-      "rank": 17
+      "output_speed": 134.121,
+      "rank": 19
     },
     {
       "model_id": "glm-5-2",
@@ -572,37 +602,7 @@
       "coding": 68.8,
       "math": null,
       "price_blended": 2.086,
-      "output_speed": 182.464,
-      "rank": 18
-    },
-    {
-      "model_id": "qwen3-7-max",
-      "name": "Qwen3.7 Max",
-      "short_name": "Qwen3.7 Max",
-      "author": "alibaba",
-      "author_name": "Alibaba",
-      "author_icon": "./public/models_icons/alibaba.png",
-      "score": 66.0,
-      "intelligence": 46.0,
-      "coding": 66.0,
-      "math": null,
-      "price_blended": 3.75,
-      "output_speed": 213.368,
-      "rank": 19
-    },
-    {
-      "model_id": "claude-sonnet-4-6-adaptive",
-      "name": "Claude Sonnet 4.6 (Adaptive Reasoning, Max Effort)",
-      "short_name": "Claude Sonnet 4.6",
-      "author": "anthropic",
-      "author_name": "Anthropic",
-      "author_icon": "./public/models_icons/anthropic.png",
-      "score": 63.0,
-      "intelligence": 47.2,
-      "coding": 63.0,
-      "math": null,
-      "price_blended": 6.0,
-      "output_speed": 0.0,
+      "output_speed": 159.543,
       "rank": 20
     }
   ],
@@ -769,7 +769,7 @@
       "coding": 23.0,
       "math": 94.3,
       "price_blended": 0.85,
-      "output_speed": 198.596,
+      "output_speed": 195.667,
       "rank": 11
     },
     {
@@ -814,7 +814,7 @@
       "coding": 30.4,
       "math": 93.4,
       "price_blended": 0.262,
-      "output_speed": 194.936,
+      "output_speed": 187.296,
       "rank": 14
     },
     {
@@ -889,7 +889,7 @@
       "coding": 14.4,
       "math": 91.0,
       "price_blended": 0.088,
-      "output_speed": 251.234,
+      "output_speed": 247.346,
       "rank": 19
     },
     {
