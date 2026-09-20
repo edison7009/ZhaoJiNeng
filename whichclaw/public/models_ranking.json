@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-19T10:08:46.572810+00:00",
+  "updated_at": "2026-09-20T10:26:55.642642+00:00",
   "top_n": 20,
   "source": "artificialanalysis.ai",
   "intelligence": [
@@ -15,7 +15,7 @@
       "coding": 81.6,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 73.506,
+      "output_speed": 71.033,
       "rank": 1
     },
     {
@@ -25,12 +25,12 @@
       "author": "openai",
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
-      "score": 52.8,
-      "intelligence": 52.8,
+      "score": 52.7,
+      "intelligence": 52.7,
       "coding": 76.9,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 57.816,
+      "output_speed": 59.632,
       "rank": 2
     },
     {
@@ -40,12 +40,12 @@
       "author": "anthropic",
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
-      "score": 50.7,
-      "intelligence": 50.7,
+      "score": 50.8,
+      "intelligence": 50.8,
       "coding": 78.0,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 53.973,
+      "output_speed": 51.847,
       "rank": 3
     },
     {
@@ -55,12 +55,12 @@
       "author": "anthropic",
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
-      "score": 49.7,
-      "intelligence": 49.7,
+      "score": 49.6,
+      "intelligence": 49.6,
       "coding": 76.5,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 67.15,
+      "output_speed": 0.0,
       "rank": 4
     },
     {
@@ -70,12 +70,12 @@
       "author": "meta",
       "author_name": "Meta",
       "author_icon": "./public/models_icons/meta.jpg",
-      "score": 48.2,
-      "intelligence": 48.2,
+      "score": 48.1,
+      "intelligence": 48.1,
       "coding": 75.8,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 233.601,
+      "output_speed": 250.845,
       "rank": 5
     },
     {
@@ -85,12 +85,12 @@
       "author": "openai",
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
-      "score": 47.1,
-      "intelligence": 47.1,
+      "score": 47.0,
+      "intelligence": 47.0,
       "coding": 77.4,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 60.334,
+      "output_speed": 64.928,
       "rank": 6
     },
     {
@@ -105,7 +105,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 40.104,
+      "output_speed": 39.215,
       "rank": 7
     },
     {
@@ -115,12 +115,12 @@
       "author": "zai",
       "author_name": "Z AI",
       "author_icon": "",
-      "score": 44.9,
-      "intelligence": 44.9,
+      "score": 44.8,
+      "intelligence": 44.8,
       "coding": 74.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 67.823,
+      "output_speed": 77.389,
       "rank": 8
     },
     {
@@ -130,28 +130,13 @@
       "author": "xai",
       "author_name": "SpaceXAI",
       "author_icon": "./public/models_icons/xai.png",
-      "score": 44.4,
-      "intelligence": 44.4,
+      "score": 44.3,
+      "intelligence": 44.3,
       "coding": 76.8,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 57.12,
+      "output_speed": 57.647,
       "rank": 9
-    },
-    {
-      "model_id": "kimi-k3",
-      "name": "Kimi K3 (max)",
-      "short_name": "Kimi K3",
-      "author": "kimi",
-      "author_name": "Kimi",
-      "author_icon": "./public/models_icons/kimi.png",
-      "score": 43.8,
-      "intelligence": 43.8,
-      "coding": 76.2,
-      "math": null,
-      "price_blended": 6.0,
-      "output_speed": 38.685,
-      "rank": 10
     },
     {
       "model_id": "step-5",
@@ -160,12 +145,27 @@
       "author": "stepfun",
       "author_name": "StepFun",
       "author_icon": "./public/models_icons/stepfun.png",
-      "score": 43.6,
-      "intelligence": 43.6,
+      "score": 43.7,
+      "intelligence": 43.7,
       "coding": null,
       "math": null,
       "price_blended": 1.425,
       "output_speed": 92.781,
+      "rank": 10
+    },
+    {
+      "model_id": "kimi-k3",
+      "name": "Kimi K3 (max)",
+      "short_name": "Kimi K3",
+      "author": "kimi",
+      "author_name": "Kimi",
+      "author_icon": "./public/models_icons/kimi.png",
+      "score": 43.6,
+      "intelligence": 43.6,
+      "coding": 76.2,
+      "math": null,
+      "price_blended": 6.0,
+      "output_speed": 40.191,
       "rank": 11
     },
     {
@@ -175,28 +175,13 @@
       "author": "openai",
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
-      "score": 42.3,
-      "intelligence": 42.3,
+      "score": 42.1,
+      "intelligence": 42.1,
       "coding": 76.7,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 92.001,
+      "output_speed": 88.083,
       "rank": 12
-    },
-    {
-      "model_id": "claude-opus-4-8",
-      "name": "Claude Opus 4.8 (Adaptive Reasoning, Max Effort)",
-      "short_name": "Claude Opus 4.8",
-      "author": "anthropic",
-      "author_name": "Anthropic",
-      "author_icon": "./public/models_icons/anthropic.png",
-      "score": 42.0,
-      "intelligence": 42.0,
-      "coding": 74.3,
-      "math": null,
-      "price_blended": 10.0,
-      "output_speed": 0.0,
-      "rank": 13
     },
     {
       "model_id": "glm-5-3-flash",
@@ -205,12 +190,27 @@
       "author": "zai",
       "author_name": "Z AI",
       "author_icon": "",
-      "score": 41.9,
-      "intelligence": 41.9,
+      "score": 41.8,
+      "intelligence": 41.8,
       "coding": 71.5,
       "math": null,
       "price_blended": 0.237,
-      "output_speed": 96.966,
+      "output_speed": 90.015,
+      "rank": 13
+    },
+    {
+      "model_id": "claude-opus-4-8",
+      "name": "Claude Opus 4.8 (Adaptive Reasoning, Max Effort)",
+      "short_name": "Claude Opus 4.8",
+      "author": "anthropic",
+      "author_name": "Anthropic",
+      "author_icon": "./public/models_icons/anthropic.png",
+      "score": 41.8,
+      "intelligence": 41.8,
+      "coding": 74.3,
+      "math": null,
+      "price_blended": 10.0,
+      "output_speed": 0.0,
       "rank": 14
     },
     {
@@ -220,12 +220,12 @@
       "author": "google",
       "author_name": "Google",
       "author_icon": "./public/models_icons/google.svg",
-      "score": 41.2,
-      "intelligence": 41.2,
+      "score": 40.9,
+      "intelligence": 40.9,
       "coding": 76.3,
       "math": null,
       "price_blended": 1.5,
-      "output_speed": 314.11,
+      "output_speed": 311.761,
       "rank": 15
     },
     {
@@ -250,12 +250,12 @@
       "author": "alibaba",
       "author_name": "Alibaba",
       "author_icon": "./public/models_icons/alibaba.png",
-      "score": 40.0,
-      "intelligence": 40.0,
+      "score": 39.9,
+      "intelligence": 39.9,
       "coding": 71.9,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.085,
+      "output_speed": 39.059,
       "rank": 17
     },
     {
@@ -265,28 +265,13 @@
       "author": "alibaba",
       "author_name": "Alibaba",
       "author_icon": "./public/models_icons/alibaba.png",
-      "score": 39.9,
-      "intelligence": 39.9,
+      "score": 39.8,
+      "intelligence": 39.8,
       "coding": 73.1,
       "math": null,
       "price_blended": 0.23,
-      "output_speed": 53.69,
+      "output_speed": 52.438,
       "rank": 18
-    },
-    {
-      "model_id": "muse-spark-1-2",
-      "name": "Muse Spark 1.2 (xhigh)",
-      "short_name": "Muse Spark 1.2",
-      "author": "meta",
-      "author_name": "Meta",
-      "author_icon": "./public/models_icons/meta.jpg",
-      "score": 39.8,
-      "intelligence": 39.8,
-      "coding": 72.2,
-      "math": null,
-      "price_blended": 2.0,
-      "output_speed": 260.39,
-      "rank": 19
     },
     {
       "model_id": "gemini-3-7-flash-medium",
@@ -300,7 +285,22 @@
       "coding": 71.5,
       "math": null,
       "price_blended": 1.5,
-      "output_speed": 362.85,
+      "output_speed": 0.0,
+      "rank": 19
+    },
+    {
+      "model_id": "muse-spark-1-2",
+      "name": "Muse Spark 1.2 (xhigh)",
+      "short_name": "Muse Spark 1.2",
+      "author": "meta",
+      "author_name": "Meta",
+      "author_icon": "./public/models_icons/meta.jpg",
+      "score": 39.6,
+      "intelligence": 39.6,
+      "coding": 72.2,
+      "math": null,
+      "price_blended": 2.0,
+      "output_speed": 0.0,
       "rank": 20
     }
   ],
@@ -317,7 +317,7 @@
       "coding": 81.6,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 73.506,
+      "output_speed": 71.033,
       "rank": 1
     },
     {
@@ -328,11 +328,11 @@
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
       "score": 78.3,
-      "intelligence": 44.1,
+      "intelligence": 44.0,
       "coding": 78.3,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 60.404,
+      "output_speed": 66.372,
       "rank": 2
     },
     {
@@ -343,11 +343,11 @@
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
       "score": 78.0,
-      "intelligence": 50.7,
+      "intelligence": 50.8,
       "coding": 78.0,
       "math": null,
       "price_blended": 10.0,
-      "output_speed": 53.973,
+      "output_speed": 51.847,
       "rank": 3
     },
     {
@@ -358,11 +358,11 @@
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
       "score": 77.1,
-      "intelligence": 51.0,
+      "intelligence": 50.9,
       "coding": 77.1,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 54.216,
+      "output_speed": 54.854,
       "rank": 4
     },
     {
@@ -373,11 +373,11 @@
       "author_name": "SpaceXAI",
       "author_icon": "./public/models_icons/xai.png",
       "score": 76.8,
-      "intelligence": 44.4,
+      "intelligence": 44.3,
       "coding": 76.8,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 57.12,
+      "output_speed": 57.647,
       "rank": 5
     },
     {
@@ -388,11 +388,11 @@
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
       "score": 76.7,
-      "intelligence": 42.3,
+      "intelligence": 42.1,
       "coding": 76.7,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 92.001,
+      "output_speed": 88.083,
       "rank": 6
     },
     {
@@ -403,11 +403,11 @@
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
       "score": 76.5,
-      "intelligence": 49.7,
+      "intelligence": 49.6,
       "coding": 76.5,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 67.15,
+      "output_speed": 0.0,
       "rank": 7
     },
     {
@@ -418,11 +418,11 @@
       "author_name": "Meta",
       "author_icon": "./public/models_icons/meta.jpg",
       "score": 76.5,
-      "intelligence": 45.2,
+      "intelligence": 45.1,
       "coding": 76.5,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 223.266,
+      "output_speed": 240.139,
       "rank": 8
     },
     {
@@ -433,11 +433,11 @@
       "author_name": "Google",
       "author_icon": "./public/models_icons/google.svg",
       "score": 76.3,
-      "intelligence": 41.2,
+      "intelligence": 40.9,
       "coding": 76.3,
       "math": null,
       "price_blended": 1.5,
-      "output_speed": 314.11,
+      "output_speed": 311.761,
       "rank": 9
     },
     {
@@ -452,7 +452,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 40.104,
+      "output_speed": 39.215,
       "rank": 10
     },
     {
@@ -463,11 +463,11 @@
       "author_name": "Kimi",
       "author_icon": "./public/models_icons/kimi.png",
       "score": 76.2,
-      "intelligence": 43.8,
+      "intelligence": 43.6,
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 38.685,
+      "output_speed": 40.191,
       "rank": 11
     },
     {
@@ -478,11 +478,11 @@
       "author_name": "Google",
       "author_icon": "./public/models_icons/google.svg",
       "score": 76.1,
-      "intelligence": 39.4,
+      "intelligence": 39.1,
       "coding": 76.1,
       "math": null,
       "price_blended": 1.5,
-      "output_speed": 394.817,
+      "output_speed": 0.0,
       "rank": 12
     },
     {
@@ -493,7 +493,7 @@
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
       "score": 74.9,
-      "intelligence": 38.6,
+      "intelligence": 38.4,
       "coding": 74.9,
       "math": null,
       "price_blended": 11.25,
@@ -508,11 +508,11 @@
       "author_name": "Z AI",
       "author_icon": "",
       "score": 74.8,
-      "intelligence": 44.9,
+      "intelligence": 44.8,
       "coding": 74.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 67.823,
+      "output_speed": 77.389,
       "rank": 14
     },
     {
@@ -523,7 +523,7 @@
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
       "score": 74.3,
-      "intelligence": 42.0,
+      "intelligence": 41.8,
       "coding": 74.3,
       "math": null,
       "price_blended": 10.0,
@@ -553,11 +553,11 @@
       "author_name": "Alibaba",
       "author_icon": "./public/models_icons/alibaba.png",
       "score": 73.1,
-      "intelligence": 39.9,
+      "intelligence": 39.8,
       "coding": 73.1,
       "math": null,
       "price_blended": 0.23,
-      "output_speed": 53.69,
+      "output_speed": 52.438,
       "rank": 17
     },
     {
@@ -568,11 +568,11 @@
       "author_name": "SpaceXAI",
       "author_icon": "./public/models_icons/xai.png",
       "score": 72.4,
-      "intelligence": 39.1,
+      "intelligence": 38.8,
       "coding": 72.4,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 65.789,
+      "output_speed": 0.0,
       "rank": 18
     },
     {
@@ -583,11 +583,11 @@
       "author_name": "Meta",
       "author_icon": "./public/models_icons/meta.jpg",
       "score": 72.2,
-      "intelligence": 39.8,
+      "intelligence": 39.6,
       "coding": 72.2,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 260.39,
+      "output_speed": 0.0,
       "rank": 19
     },
     {
@@ -598,11 +598,11 @@
       "author_name": "Alibaba",
       "author_icon": "./public/models_icons/alibaba.png",
       "score": 71.9,
-      "intelligence": 40.0,
+      "intelligence": 39.9,
       "coding": 71.9,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.085,
+      "output_speed": 39.059,
       "rank": 20
     }
   ],
@@ -784,7 +784,7 @@
       "coding": 23.0,
       "math": 94.3,
       "price_blended": 0.85,
-      "output_speed": 187.305,
+      "output_speed": 171.967,
       "rank": 12
     },
     {
@@ -810,11 +810,11 @@
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
       "score": 93.4,
-      "intelligence": 12.3,
+      "intelligence": 11.6,
       "coding": 30.4,
       "math": 93.4,
       "price_blended": 0.261,
-      "output_speed": 187.115,
+      "output_speed": 211.491,
       "rank": 14
     },
     {
@@ -904,7 +904,7 @@
       "coding": 14.4,
       "math": 91.0,
       "price_blended": 0.088,
-      "output_speed": 123.893,
+      "output_speed": 116.793,
       "rank": 20
     }
   ]
