@@ -7,7 +7,7 @@
     "created_at": 1781813129820,
     "description": "P8级全栈编程专家（Java/PHP-CMS/前端/MySQL）：API设计、Bug诊断、代码生成与审查、重构、测试、性能基准、技术选型、文档、Spec驱动、任务拆解、项目知识图谱，及工程纪律层（根因调试、阶段导航、事故复盘/SLO、威胁建模/供应链、生产就绪/渐进式发布、AI编码治理、Agent可读性、LLM安全、技术战略、技术影响力、效能度量）。支持 @标识 显式调用。",
     "description_zh": "编程专家.Skill P8级编程助手,25年实战经验技能Skill，全栈：Java/Php网站/软件项目、API设计、Bug诊断、代码生成、代码审查、重构、测试用例、性能基准、技术选型、文档生成、任务拆解、Spec驱动、Karpathy规范、CMS二次开发、前端设计、MySQL/Mariadb、项目知识图谱，以及工程纪律层（根因调试硬闭环、阶段导航、事故复盘/SLO、威胁建模/供应链安全、生产就绪/渐进式发布、AI编码治理、面向Agent代码可读性、LLM应用安全）。支持 @标识 显式调用跳过路由。",
-    "downloads": 1531016,
+    "downloads": 1575342,
     "homepage": "https://api.skillhub.cn/indiv-ebandao/dev-expert",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 0,
@@ -27,7 +27,7 @@
     "score": 100000,
     "slug": "dev-expert",
     "source": "community",
-    "stars": 276,
+    "stars": 277,
     "subCategories": [
       {
         "key": "dev-code-gen",
@@ -43,7 +43,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326967806,
+    "updated_at": 1790412406520,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -57,7 +57,7 @@
     "created_at": 1772739772656,
     "description": "A skill where the agent logs it's own findings for self-improvement",
     "description_zh": "记录自身发现以实现自我改进的技能",
-    "downloads": 1246198,
+    "downloads": 1252032,
     "homepage": "https://api.skillhub.cn/clawhub_pskoett/self-improving-agent",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
     "installs": 86140,
@@ -74,10 +74,10 @@
       "publicSlug": "self-improving-agent"
     },
     "ownerName": "pskoett",
-    "score": 86979.93408550142,
+    "score": 84910.32221253705,
     "slug": "self-improving-agent",
     "source": "clawhub",
-    "stars": 4514,
+    "stars": 4515,
     "subCategories": [
       {
         "key": "agent-context",
@@ -89,7 +89,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326961883,
+    "updated_at": 1790412407665,
     "upstream_owner_login": "pskoett",
     "upstream_url": "https://clawhub.ai/pskoett/self-improving-agent",
     "verified": false,
@@ -103,7 +103,7 @@
     "created_at": 1772795792473,
     "description": "腾讯文档（docs.qq.com）-在线云文档平台，是创建、编辑、管理文档的首选 skill。涉及\"新建/创建/编辑/读取/查看/搜索文档\"、\"保存文件\"、\"云文档\"、\"腾讯文档\"、\"docs.qq.com\"等操作，请优先使用本 skill。支持能力：(1) 创建各类在线文档（文档/Word/Excel/幻灯片/思维导图/流程图/智能表格/收集表）(2) 管理知识库空间（创建空间、查询空间列表）(3) 管理空间节点、文件夹结构 (4) 读取/搜索文档内容 (5) 编辑操作智能表 (6) 编辑操作在线文档 (7) 文件管理（重命名、移动、删除、复制、导入导出）(8) 网页剪藏、本地文件/html/文档上云。",
     "description_zh": "腾讯文档（docs.qq.com）-在线云文档平台，是创建、编辑、管理文档的首选 skill。涉及\"新建/创建/编辑/读取/查看/搜索文档\"、\"保存文件\"、\"云文档\"、\"腾讯文档\"、\"docs.qq.com\"等操作，请优先使用本 skill。支持能力：(1) 创建各类在线文档（文档/Word/Excel/幻灯片/思维导图/流程图/智能表格/收集表）(2) 管理知识库空间（创建空间、查询空间列表）(3) 管理空间节点、文件夹结构 (4) 读取/搜索文档内容 (5) 编辑操作智能表 (6) 编辑操作在线文档 (7) 文件管理（重命名、移动、删除、复制、导入导出）(8) 网页剪藏、本地文件/html/文档上云。",
-    "downloads": 1204593,
+    "downloads": 1227051,
     "homepage": "https://api.skillhub.cn/tencent-adm/tencent-docs",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a4e49550-e527-4406-b761-c4f2e607b757.png",
     "installs": 8107,
@@ -127,7 +127,7 @@
       "certifiedName": "腾讯科技（深圳）有限公司",
       "orgId": "org-bv6b8qcb"
     },
-    "score": 78796.26640703504,
+    "score": 78006.51788052492,
     "slug": "tencent-docs",
     "source": "enterprise",
     "stars": 307,
@@ -146,7 +146,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326964070,
+    "updated_at": 1790412406302,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -160,7 +160,7 @@
     "created_at": 1772739775136,
     "description": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express...",
     "description_zh": "帮助用户发现和安装智能体技能，当用户询问如「如何做X」、「找X的技能」、「有能做...的吗」等问题时",
-    "downloads": 1039227,
+    "downloads": 1048066,
     "homepage": "https://api.skillhub.cn/clawhub_root/find-skills",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/62f73a9b-1aca-4f8e-921d-6102e258c768.png",
     "installs": 75956,
@@ -177,10 +177,10 @@
       "publicSlug": "find-skills"
     },
     "ownerName": "root",
-    "score": 69939.59139258697,
+    "score": 68540.59948813384,
     "slug": "find-skills",
     "source": "clawhub",
-    "stars": 1771,
+    "stars": 1774,
     "subCategories": [
       {
         "key": "agent-framework",
@@ -196,7 +196,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326966440,
+    "updated_at": 1790412407591,
     "upstream_owner_login": "guipi888",
     "upstream_url": "https://clawhub.ai/guipi888/find-skills",
     "verified": false,
@@ -210,7 +210,7 @@
     "created_at": 1789558551984,
     "description": "育儿大师.Skill——0-18 岁全场景家庭养育支持，服务对象是家长。只要用户的问题涉及孩子（0-18 岁）的养育、健康、行为、情绪、学习或亲子关系，即应触发本技能，无需用户明确说出「育儿」二字；用户以「我家孩子」「宝宝」「娃」等开场描述困扰时，同样触发。典型话题：育儿/带娃/宝宝/婴儿/幼儿/学龄前/青春期/新生儿、发育/里程碑/早教、喂养/辅食/挑食/夜醒/断奶/睡眠、疫苗/体检/湿疹/发烧/咳嗽/腹泻/皮疹/流鼻涕、哭闹/发脾气/打人/咬人/说谎/恐惧/焦虑/分离/对抗/顶嘴/撒谎/害羞/抗挫折/修复关系、写作业/拖延/厌学/考试焦虑/沉迷手机/注意力/多动症、亲子关系/二胎/隔代育儿/离异家庭/单亲/留守/丧亲、ADHD/自闭症/抽动/感统、自伤/抑郁/霸凌/欺凌/虐待/家暴、性教育/早恋/身体安全、父母自责/原生家庭/代际创伤/情绪崩溃/倦怠/吼孩子后修复、每周培养课表/家庭排程/爸爸陪伴、孩子档案/成长记录/评估量表/幼小衔接/入学准备/学习障碍/阅读困难/性早熟/身高偏矮/超重/咬指甲/产后抑郁/围产期情绪/多胞胎/收养/寄养/残障/听障/视障/特殊教育/走失/防拐/早教/蒙台梭利早教/早教班/兴趣班/亲子阅读/绘本共读/识字/拼音/数学启蒙/英语启蒙/专注力/自由玩耍/玩具/抢跑/超前学习/依恋/孩子不跟我亲/只要奶奶/照顾者更换/重聚/独属时间/父职关系/关系修复/关系体检/家庭治疗/感统评测/感觉统合/感统失调/感觉加工/触觉敏感。",
     "description_zh": "育儿大师.Skill——0-18 岁全场景家庭养育支持，服务对象是家长。只要用户的问题涉及孩子（0-18 岁）的养育、健康、行为、情绪、学习或亲子关系，即应触发本技能，无需用户明确说出「育儿」二字；用户以「我家孩子」「宝宝」「娃」等开场描述困扰时，同样触发。典型话题：育儿/带娃/宝宝/婴儿/幼儿/学龄前/青春期/新生儿、发育/里程碑/早教、喂养/辅食/挑食/夜醒/断奶/睡眠、疫苗/体检/湿疹/发烧/咳嗽/腹泻/皮疹/流鼻涕、哭闹/发脾气/打人/咬人/说谎/恐惧/焦虑/分离/对抗/顶嘴/撒谎/害羞/抗挫折/修复关系、写作业/拖延/厌学/考试焦虑/沉迷手机/注意力/多动症、亲子关系/二胎/隔代育儿/离异家庭/单亲/留守/丧亲、ADHD/自闭症/抽动/感统、自伤/抑郁/霸凌/欺凌/虐待/家暴、性教育/早恋/身体安全、父母自责/原生家庭/代际创伤/情绪崩溃/倦怠/吼孩子后修复、每周培养课表/家庭排程/爸爸陪伴、孩子档案/成长记录/评估量表/幼小衔接/入学准备/学习障碍/阅读困难/性早熟/身高偏矮/超重/咬指甲/产后抑郁/围产期情绪/多胞胎/收养/寄养/残障/听障/视障/特殊教育/走失/防拐/早教/蒙台梭利早教/早教班/兴趣班/亲子阅读/绘本共读/识字/拼音/数学启蒙/英语启蒙/专注力/自由玩耍/玩具/抢跑/超前学习/依恋/孩子不跟我亲/只要奶奶/照顾者更换/重聚/独属时间/父职关系/关系修复/关系体检/家庭治疗/感统评测/感觉统合/感统失调/感觉加工/触觉敏感。",
-    "downloads": 919612,
+    "downloads": 1007448,
     "homepage": "https://api.skillhub.cn/indiv-ebandao/parenting-expert",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
     "installs": 0,
@@ -227,10 +227,10 @@
       "publicSlug": "parenting-expert"
     },
     "ownerName": "user_741dc82b",
-    "score": 59880.926968193395,
+    "score": 63759.850513827085,
     "slug": "parenting-expert",
     "source": "community",
-    "stars": 24,
+    "stars": 26,
     "subCategories": [
       {
         "key": "life-health",
@@ -246,62 +246,11 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326836296,
+    "updated_at": 1790412380455,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "1.11.4"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772739777381,
-    "description": "Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, filling forms, clicking buttons, taking...",
-    "description_zh": "用于 AI 代理的浏览器自动化 CLI。当用户需要与网站交互（包括浏览页面、填写表单、点击按钮、截图等）时使用。",
-    "downloads": 860796,
-    "homepage": "https://api.skillhub.cn/clawhub_rez0/agent-browser",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
-    "installs": 36434,
-    "isServiceized": false,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": 1781874009244,
-    "name": "Agent Browser",
-    "namespace": {
-      "canonicalName": "@clawhub_rez0/agent-browser",
-      "displayName": "rez0",
-      "handle": "clawhub_rez0",
-      "publicSlug": "agent-browser"
-    },
-    "ownerName": "rez0",
-    "score": 57307.86652574362,
-    "slug": "agent-browser",
-    "source": "clawhub",
-    "stars": 988,
-    "subCategories": [
-      {
-        "key": "agent-task-automation",
-        "name": "任务自动化"
-      },
-      {
-        "key": "agent-tool-use",
-        "name": "工具调用"
-      }
-    ],
-    "tags": [
-      "automation",
-      "browser",
-      "headless",
-      "web"
-    ],
-    "updated_at": 1790326965328,
-    "upstream_owner_login": "rez0",
-    "upstream_url": "https://clawhub.ai/rez0/agent-browser",
-    "verified": false,
-    "version": "1.0.0"
   },
   {
     "category": "dev-programming",
@@ -311,7 +260,7 @@
     "created_at": 1788317668655,
     "description": "编程专家.Skill P8级编程助手,覆盖：软件/网站项目总控、API设计、Bug诊断、代码生成、代码审查、重构、测试用例、性能基准、技术选型、文档生成、任务拆解、Spec驱动、Karpathy规范、CMS二次开发、前端设计、MySQL、项目知识图谱，以及工程纪律层（根因调试硬闭环、阶段导航、事故复盘/SLO、威胁建模/供应链安全、生产就绪/渐进式发布、AI编码治理、面向Agent代码可读性、LLM应用安全）。支持 @标识 显式调用跳过路由。",
     "description_zh": "编程专家.Skill P8级编程助手,覆盖：软件/网站项目总控、API设计、Bug诊断、代码生成、代码审查、重构、测试用例、性能基准、技术选型、文档生成、任务拆解、Spec驱动、Karpathy规范、CMS二次开发、前端设计、MySQL、项目知识图谱，以及工程纪律层（根因调试硬闭环、阶段导航、事故复盘/SLO、威胁建模/供应链安全、生产就绪/渐进式发布、AI编码治理、面向Agent代码可读性、LLM应用安全）。支持 @标识 显式调用跳过路由。",
-    "downloads": 857456,
+    "downloads": 900728,
     "homepage": "https://api.skillhub.cn/user_814dbe54/dev-expert",
     "iconUrl": null,
     "installs": 0,
@@ -328,7 +277,7 @@
       "publicSlug": "dev-expert"
     },
     "ownerName": "user_814dbe54",
-    "score": 55824.009330077526,
+    "score": 56995.27225940963,
     "slug": "dev-expert",
     "source": "community",
     "stars": 15,
@@ -347,11 +296,62 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326967809,
+    "updated_at": 1790412406522,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "1.17.0"
+  },
+  {
+    "category": "ai-agent",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772739777381,
+    "description": "Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, filling forms, clicking buttons, taking...",
+    "description_zh": "用于 AI 代理的浏览器自动化 CLI。当用户需要与网站交互（包括浏览页面、填写表单、点击按钮、截图等）时使用。",
+    "downloads": 867651,
+    "homepage": "https://api.skillhub.cn/clawhub_rez0/agent-browser",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
+    "installs": 36434,
+    "isServiceized": false,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": 1781874009244,
+    "name": "Agent Browser",
+    "namespace": {
+      "canonicalName": "@clawhub_rez0/agent-browser",
+      "displayName": "rez0",
+      "handle": "clawhub_rez0",
+      "publicSlug": "agent-browser"
+    },
+    "ownerName": "rez0",
+    "score": 56132.65253194103,
+    "slug": "agent-browser",
+    "source": "clawhub",
+    "stars": 987,
+    "subCategories": [
+      {
+        "key": "agent-task-automation",
+        "name": "任务自动化"
+      },
+      {
+        "key": "agent-tool-use",
+        "name": "工具调用"
+      }
+    ],
+    "tags": [
+      "automation",
+      "browser",
+      "headless",
+      "web"
+    ],
+    "updated_at": 1790412405280,
+    "upstream_owner_login": "rez0",
+    "upstream_url": "https://clawhub.ai/rez0/agent-browser",
+    "verified": false,
+    "version": "1.0.0"
   },
   {
     "category": "knowledge-management",
@@ -361,7 +361,7 @@
     "created_at": 1786928980849,
     "description": "多搜索引擎集成,16引擎(7国内+9全球)。Multi search engine integration with 16 engines (7 CN + 9 Global)。核心能力: -",
     "description_zh": "多搜索引擎集成,16引擎(7国内+9全球)。Multi search engine integration with 16 engines (7 CN + 9 Global)。核心能力: -",
-    "downloads": 652301,
+    "downloads": 668988,
     "homepage": "https://api.skillhub.cn/zcwl/multi-search-engine",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0860fda4-ff95-4bbc-b3ad-f6b7ad8e0774.png",
     "installs": 0,
@@ -385,10 +385,10 @@
       "certifiedName": "成都智创未来教育管理合伙企业（有限合伙）",
       "orgId": "org-2orcbd4z"
     },
-    "score": 42516.47862464661,
+    "score": 42378.1155076723,
     "slug": "multi-search-engine",
     "source": "enterprise",
-    "stars": 49,
+    "stars": 48,
     "subCategories": [
       {
         "key": "knowledge-retrieval",
@@ -406,7 +406,7 @@
       "搜索",
       "检索"
     ],
-    "updated_at": 1790326966112,
+    "updated_at": 1790412379918,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -420,7 +420,7 @@
     "created_at": 1772739775824,
     "description": "智能内容摘要工具，支持长文本、文档、网页内容自动摘要，提取核心要点、关键词，支持自定义摘要长度。",
     "description_zh": "智能摘要工具，自动为长文本、文档、网页生成摘要，提取要点与关键词，支持自定义摘要长度。",
-    "downloads": 630642,
+    "downloads": 633544,
     "homepage": "https://api.skillhub.cn/clawhub_paudyyin/summarize",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
     "installs": 45959,
@@ -437,7 +437,7 @@
       "publicSlug": "summarize"
     },
     "ownerName": "paudyyin",
-    "score": 42392.88893979705,
+    "score": 41387.27621669423,
     "slug": "summarize",
     "source": "clawhub",
     "stars": 1037,
@@ -456,7 +456,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326966210,
+    "updated_at": 1790412407734,
     "upstream_owner_login": "paudyyin",
     "upstream_url": "https://clawhub.ai/paudyyin/summarize",
     "verified": false,
@@ -470,7 +470,7 @@
     "created_at": 1786966756302,
     "description": "防骗大师.Skill:你身边的生活类防骗专家。 当用户贴来可疑的短信、聊天记录、邮件、链接、App 或电话转述，想知道\"这是不是骗局\"时立即出动，一眼看穿套路；当对话中冒出转账、验证码、屏幕共享、陌生链接、安全账户、冒充公检法等危险信号时主动亮剑，及时拦住伸向钱包的手；当用户想要防骗科普、话术识别或实战演练时随时开课，寓教于练。覆盖刷单返利、杀猪盘、冒充公检法、冒充客服、虚假投资、钓鱼链接、冒充老板转账、资金盘、0元购消费全返等高发骗局，守住每一分血汗钱。",
     "description_zh": "防骗大师.Skill:你身边的生活类防骗专家。 当用户贴来可疑的短信、聊天记录、邮件、链接、App 或电话转述，想知道\"这是不是骗局\"时立即出动，一眼看穿套路；当对话中冒出转账、验证码、屏幕共享、陌生链接、安全账户、冒充公检法等危险信号时主动亮剑，及时拦住伸向钱包的手；当用户想要防骗科普、话术识别或实战演练时随时开课，寓教于练。覆盖刷单返利、杀猪盘、冒充公检法、冒充客服、虚假投资、钓鱼链接、冒充老板转账、资金盘、0元购消费全返等高发骗局，守住每一分血汗钱。",
-    "downloads": 617399,
+    "downloads": 648394,
     "homepage": "https://api.skillhub.cn/indiv-ebandao/anti-fraud",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 0,
@@ -487,7 +487,7 @@
       "publicSlug": "anti-fraud"
     },
     "ownerName": "user_741dc82b",
-    "score": 40216.369808452255,
+    "score": 41048.85753648912,
     "slug": "anti-fraud",
     "source": "community",
     "stars": 27,
@@ -502,7 +502,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326839220,
+    "updated_at": 1790412236503,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -516,7 +516,7 @@
     "created_at": 1785901197655,
     "description": "通过同一个AI创作工具完成AI图片、视频、音乐与语音创作，查找公开社交数据，编辑视觉成果，并集中查看和管理生成资产。Beatra 全能创作支持AI图片生成（文生图）、AI视频生成（图生视频）和AI视频编辑，通过AI音乐生成把想法做成歌曲或纯音乐，也可用AI语音生成（文字转语音）、多语言旁白和AI语音克隆完成跨媒介内容；还能查找抖音数据、小红书数据，以及 YouTube、TikTok、Instagram 与 X 上的公开帖子、笔记、评论、账号和趋势，把社交媒体数据用于竞品调研和创作。它是一款面向AI内容创作与多模态内容创作的AI创作套件，用起来就是一个把图片、视频、音乐与语音收在同一处的AI创作助手，适用于社交内容、产品展示、营销素材、课程、播客、短片和跨媒介项目；还能在不同媒介间复用原始素材、已有成果和查到的公开资料，查看制作进度、返回文件、实际用量和积分记录。",
     "description_zh": "通过同一个AI创作工具完成AI图片、视频、音乐与语音创作，查找公开社交数据，编辑视觉成果，并集中查看和管理生成资产。Beatra 全能创作支持AI图片生成（文生图）、AI视频生成（图生视频）和AI视频编辑，通过AI音乐生成把想法做成歌曲或纯音乐，也可用AI语音生成（文字转语音）、多语言旁白和AI语音克隆完成跨媒介内容；还能查找抖音数据、小红书数据，以及 YouTube、TikTok、Instagram 与 X 上的公开帖子、笔记、评论、账号和趋势，把社交媒体数据用于竞品调研和创作。它是一款面向AI内容创作与多模态内容创作的AI创作套件，用起来就是一个把图片、视频、音乐与语音收在同一处的AI创作助手，适用于社交内容、产品展示、营销素材、课程、播客、短片和跨媒介项目；还能在不同媒介间复用原始素材、已有成果和查到的公开资料，查看制作进度、返回文件、实际用量和积分记录。",
-    "downloads": 513895,
+    "downloads": 549669,
     "homepage": "https://api.skillhub.cn/beatra-ai/beatra",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/5a1e9830-80e4-4cbb-8d00-cee893ca9555.png",
     "installs": 0,
@@ -540,7 +540,7 @@
       "certifiedName": "乐萱同行科技（深圳）有限公司",
       "orgId": "org-0bqts5ar"
     },
-    "score": 33528.33906917898,
+    "score": 34850.735222489726,
     "slug": "beatra",
     "source": "enterprise",
     "stars": 64,
@@ -559,61 +559,11 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326967474,
+    "updated_at": 1790412355188,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "2.8.6"
-  },
-  {
-    "category": "ai-agent",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772740032992,
-    "description": "Self-reflection + Self-criticism + Self-learning + Self-organizing memory. Agent evaluates its own work, catches mistakes, and improves permanently. Use when...",
-    "description_zh": "自我反思+自我批评+自我学习+自组织记忆。智能体评估自身工作、发现错误并持续改进。",
-    "downloads": 420803,
-    "homepage": "https://api.skillhub.cn/clawhub_ivangdavila/self-improving",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
-    "installs": 57561,
-    "isServiceized": false,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "Self-Improving + Proactive Agent",
-    "namespace": {
-      "canonicalName": "@clawhub_ivangdavila/self-improving",
-      "displayName": "ivangdavila",
-      "handle": "clawhub_ivangdavila",
-      "publicSlug": "self-improving"
-    },
-    "ownerName": "ivangdavila",
-    "score": 29474.28501512493,
-    "slug": "self-improving",
-    "source": "clawhub",
-    "stars": 1604,
-    "subCategories": [
-      {
-        "key": "agent-framework",
-        "name": "Agent 框架"
-      },
-      {
-        "key": "agent-context",
-        "name": "上下文管理"
-      },
-      {
-        "key": "agent-memory",
-        "name": "记忆增强"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1790326961628,
-    "upstream_owner_login": "ivangdavila",
-    "upstream_url": "https://clawhub.ai/ivangdavila/self-improving",
-    "verified": false,
-    "version": "1.2.16"
   },
   {
     "category": "data-analysis",
@@ -623,7 +573,7 @@
     "created_at": 1785899575356,
     "description": "大宗商品价格数据查询技能。用于查询大宗商品期现货价格、宏观经济指标、产业链供需数据、进出口库存数据、金融市场数据等。当用户询问：(1) 期货/现货价格查询，如\"螺纹钢价格\"、\"铜期货收盘价\"； (2) 历史行情或趋势分析；(3) 区域或企业价格对比；(4) 宏观经济指标，如GDP、CPI；(5) 产业链上下游数据；(6) 多市场金融数据（期权、股票、债券、外汇）；(7) 结算确认单生成时触发此技能。",
     "description_zh": "大宗商品价格数据查询技能。用于查询大宗商品期现货价格、宏观经济指标、产业链供需数据、进出口库存数据、金融市场数据等。当用户询问：(1) 期货/现货价格查询，如\"螺纹钢价格\"、\"铜期货收盘价\"； (2) 历史行情或趋势分析；(3) 区域或企业价格对比；(4) 宏观经济指标，如GDP、CPI；(5) 产业链上下游数据；(6) 多市场金融数据（期权、股票、债券、外汇）；(7) 结算确认单生成时触发此技能。",
-    "downloads": 430467,
+    "downloads": 501889,
     "homepage": "https://api.skillhub.cn/mysteel/mysteel-datasearch",
     "iconUrl": null,
     "installs": 0,
@@ -647,7 +597,7 @@
       "certifiedName": "上海钢联电子商务股份有限公司",
       "orgId": "org-0y4u59un"
     },
-    "score": 28019.32398590075,
+    "score": 31751.199646779456,
     "slug": "mysteel-datasearch",
     "source": "enterprise",
     "stars": 3,
@@ -666,53 +616,61 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326967961,
+    "updated_at": 1790412405301,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "1.0.2"
   },
   {
-    "category": "dev-programming",
+    "category": "ai-agent",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772739776608,
-    "description": "Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.",
-    "description_zh": "使用 `gh` CLI 与 GitHub 交互，通过 `gh issue`、`gh pr`、`gh run` 和 `gh api` 管理议题、PR、CI 运行及高级查询。",
-    "downloads": 377284,
-    "homepage": "https://api.skillhub.cn/clawhub_steipete/github",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
-    "installs": 35756,
+    "created_at": 1772740032992,
+    "description": "Self-reflection + Self-criticism + Self-learning + Self-organizing memory. Agent evaluates its own work, catches mistakes, and improves permanently. Use when...",
+    "description_zh": "自我反思+自我批评+自我学习+自组织记忆。智能体评估自身工作、发现错误并持续改进。",
+    "downloads": 423738,
+    "homepage": "https://api.skillhub.cn/clawhub_ivangdavila/self-improving",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
+    "installs": 57561,
     "isServiceized": false,
     "labels": {
-      "requires_api_key": "true"
+      "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Github",
+    "name": "Self-Improving + Proactive Agent",
     "namespace": {
-      "canonicalName": "@clawhub_steipete/github",
-      "displayName": "steipete",
-      "handle": "clawhub_steipete",
-      "publicSlug": "github"
+      "canonicalName": "@clawhub_ivangdavila/self-improving",
+      "displayName": "ivangdavila",
+      "handle": "clawhub_ivangdavila",
+      "publicSlug": "self-improving"
     },
-    "ownerName": "steipete",
-    "score": 25474.44381387745,
-    "slug": "github",
+    "ownerName": "ivangdavila",
+    "score": 28833.145041818425,
+    "slug": "self-improving",
     "source": "clawhub",
-    "stars": 707,
+    "stars": 1604,
     "subCategories": [
       {
-        "key": "dev-git",
-        "name": "Git 辅助"
+        "key": "agent-framework",
+        "name": "Agent 框架"
+      },
+      {
+        "key": "agent-context",
+        "name": "上下文管理"
+      },
+      {
+        "key": "agent-memory",
+        "name": "记忆增强"
       }
     ],
     "tags": null,
-    "updated_at": 1790326966171,
-    "upstream_owner_login": "steipete",
-    "upstream_url": "https://clawhub.ai/steipete/github",
+    "updated_at": 1790412378399,
+    "upstream_owner_login": "ivangdavila",
+    "upstream_url": "https://clawhub.ai/ivangdavila/self-improving",
     "verified": false,
-    "version": "1.0.0"
+    "version": "1.2.16"
   },
   {
     "category": "knowledge-management",
@@ -722,7 +680,7 @@
     "created_at": 1773798184610,
     "description": "ima skills，支持对笔记、知识库的读取、写入和检索等操作，可以帮你随时记录，收入ima智能管理，随时调用，龙虾输出精准懂你，友好的接入了OpenClaw生态，构建你的第二大脑。",
     "description_zh": "ima skills，支持对笔记、知识库的读取、写入和检索等操作，可以帮你随时记录，收入ima智能管理，随时调用，龙虾输出精准懂你，友好的接入了OpenClaw生态，构建你的第二大脑。",
-    "downloads": 379005,
+    "downloads": 384174,
     "homepage": "https://api.skillhub.cn/tencent-adm/ima-skills",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a78375f1-773e-4817-b4f3-0557b6afd777.png",
     "installs": 11831,
@@ -746,10 +704,10 @@
       "certifiedName": "腾讯科技（深圳）有限公司",
       "orgId": "org-bv6b8qcb"
     },
-    "score": 25367.775307574964,
+    "score": 24984.407438379334,
     "slug": "ima-skills",
     "source": "enterprise",
-    "stars": 539,
+    "stars": 540,
     "subCategories": [
       {
         "key": "knowledge-base-qa",
@@ -765,53 +723,53 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326967037,
+    "updated_at": 1790412356552,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "1.1.9"
   },
   {
-    "category": "data-analysis",
+    "category": "dev-programming",
     "claim_state": "unclaimed",
-    "claimable": false,
+    "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1774848512353,
-    "description": "将数据文件（CSV/TSV/TXT/XLSX/XLS/JSON）转化为独立交互式 ECharts HTML 图表——32 类图表、3 套主题，全离线无需 CDN。出图前可先取数据画像（--profile：每列 dtype/基数/缺失/样本/统计、实体粒度、候选洞察信号、疑似非数据行），让 agent 在用户没说想看什么时自己读懂数据并决定出什么图——哪列是 ID、哪列是维度、出什么图，全部由 agent 从画像的客观事实自行判断，技能不代笔；每张图内置事实卡（plot_stats + data_preview），其数值是解读时唯一可引用的数字。本技能负责出图与算事实，不产出书面报告或叙事文档。触发：用户提供或指向表格数据文件并要求出图；提到「画图/出图/可视化/生成图表/generate a chart/make a graph」；想把表格渲染成交互式 HTML 图表。不触发：要的是书面报告、叙事分析或幻灯片；没有数据文件；需要后端的仪表盘；图片/音频/视频等非表格内容。",
-    "description_zh": "32种图表，3 个主题，2步生成：\n1.上传数据 — 将 CSV / Excel / JSON 等格式的数据文件拖入对话框;\n2.查看结果 — 交互式图表（HTML），可保存图表为图片.",
-    "downloads": 372659,
-    "homepage": "https://api.skillhub.cn/user_5b28ea14/smart-charts",
-    "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/421765/85a10ac10d4242a89852889f7ee5b06d.png",
-    "installs": 8,
+    "created_at": 1772739776608,
+    "description": "Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.",
+    "description_zh": "使用 `gh` CLI 与 GitHub 交互，通过 `gh issue`、`gh pr`、`gh run` 和 `gh api` 管理议题、PR、CI 运行及高级查询。",
+    "downloads": 378425,
+    "homepage": "https://api.skillhub.cn/clawhub_steipete/github",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
+    "installs": 35756,
     "isServiceized": false,
     "labels": {
-      "requires_api_key": "false"
+      "requires_api_key": "true"
     },
     "last_synced_at": null,
-    "name": "smart-charts",
+    "name": "Github",
     "namespace": {
-      "canonicalName": "@user_5b28ea14/smart-charts",
-      "displayName": "user_5b28ea14",
-      "handle": "user_5b28ea14",
-      "publicSlug": "smart-charts"
+      "canonicalName": "@clawhub_steipete/github",
+      "displayName": "steipete",
+      "handle": "clawhub_steipete",
+      "publicSlug": "github"
     },
-    "ownerName": "user_5b28ea14",
-    "score": 24396.36949606127,
-    "slug": "smart-charts",
-    "source": "community",
-    "stars": 110,
+    "ownerName": "steipete",
+    "score": 24832.024148544926,
+    "slug": "github",
+    "source": "clawhub",
+    "stars": 707,
     "subCategories": [
       {
-        "key": "data-visualization",
-        "name": "数据可视化"
+        "key": "dev-git",
+        "name": "Git 辅助"
       }
     ],
     "tags": null,
-    "updated_at": 1790326962218,
-    "upstream_owner_login": null,
-    "upstream_url": null,
+    "updated_at": 1790412355296,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/github",
     "verified": false,
-    "version": "8.4.0"
+    "version": "1.0.0"
   },
   {
     "category": "life-service",
@@ -821,7 +779,7 @@
     "created_at": 1788484472166,
     "description": "防骗大师.Skill:你身边的生活类防骗专家。 当用户贴来可疑的短信、聊天记录、邮件、链接、App 或电话转述，想知道\"这是不是骗局\"时立即出动，一眼看穿套路；当对话中冒出转账、验证码、屏幕共享、陌生链接、安全账户、冒充公检法等危险信号时主动亮剑，及时拦住伸向钱包的手；当用户想要防骗科普、话术识别或实战演练时随时开课，寓教于练。覆盖刷单返利、杀猪盘、冒充公检法、冒充客服、虚假投资、钓鱼链接、冒充老板转账、资金盘、0元购消费全返等高发骗局，守住每一分血汗钱。",
     "description_zh": "防骗大师.Skill:你身边的生活类防骗专家。 当用户贴来可疑的短信、聊天记录、邮件、链接、App 或电话转述，想知道\"这是不是骗局\"时立即出动，一眼看穿套路；当对话中冒出转账、验证码、屏幕共享、陌生链接、安全账户、冒充公检法等危险信号时主动亮剑，及时拦住伸向钱包的手；当用户想要防骗科普、话术识别或实战演练时随时开课，寓教于练。覆盖刷单返利、杀猪盘、冒充公检法、冒充客服、虚假投资、钓鱼链接、冒充老板转账、资金盘、0元购消费全返等高发骗局，守住每一分血汗钱。",
-    "downloads": 353763,
+    "downloads": 384103,
     "homepage": "https://api.skillhub.cn/user_814dbe54/anti-fraud",
     "iconUrl": null,
     "installs": 0,
@@ -838,7 +796,7 @@
       "publicSlug": "anti-fraud"
     },
     "ownerName": "user_814dbe54",
-    "score": 23023.41110133443,
+    "score": 24296.753331368185,
     "slug": "anti-fraud",
     "source": "community",
     "stars": 0,
@@ -849,57 +807,53 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790323462943,
+    "updated_at": 1790410103095,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "2.0.12"
   },
   {
-    "category": "ai-agent",
+    "category": "data-analysis",
     "claim_state": "unclaimed",
-    "claimable": true,
+    "claimable": false,
     "claimed_user_handle": null,
-    "created_at": 1772740029553,
-    "description": "Security-first skill vetting for AI agents. Use before installing any skill from ClawdHub, GitHub, or other sources. Checks for red flags, permission scope, and suspicious patterns.",
-    "description_zh": "AI智能体技能安全预审工具。安装ClawdHub、GitHub等来源技能前，检查风险信号、权限范围及可疑模式。",
-    "downloads": 318051,
-    "homepage": "https://api.skillhub.cn/clawhub_spclaudehome/skill-vetter",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
-    "installs": 37273,
+    "created_at": 1774848512353,
+    "description": "将数据文件（CSV/TSV/TXT/XLSX/XLS/JSON）转化为独立交互式 ECharts HTML 图表——32 类图表、3 套主题，全离线无需 CDN。出图前可先取数据画像（--profile：每列 dtype/基数/缺失/样本/统计、实体粒度、候选洞察信号、疑似非数据行），让 agent 在用户没说想看什么时自己读懂数据并决定出什么图——哪列是 ID、哪列是维度、出什么图，全部由 agent 从画像的客观事实自行判断，技能不代笔；每张图内置事实卡（plot_stats + data_preview），其数值是解读时唯一可引用的数字。本技能负责出图与算事实，不产出书面报告或叙事文档。触发：用户提供或指向表格数据文件并要求出图；提到「画图/出图/可视化/生成图表/generate a chart/make a graph」；想把表格渲染成交互式 HTML 图表。不触发：要的是书面报告、叙事分析或幻灯片；没有数据文件；需要后端的仪表盘；图片/音频/视频等非表格内容。",
+    "description_zh": "32种图表，3 个主题，2步生成：\n1.上传数据 — 将 CSV / Excel / JSON 等格式的数据文件拖入对话框;\n2.查看结果 — 交互式图表（HTML），可保存图表为图片.",
+    "downloads": 375289,
+    "homepage": "https://api.skillhub.cn/user_5b28ea14/smart-charts",
+    "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/421765/85a10ac10d4242a89852889f7ee5b06d.png",
+    "installs": 8,
     "isServiceized": false,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Skill Vetter",
+    "name": "smart-charts",
     "namespace": {
-      "canonicalName": "@clawhub_spclaudehome/skill-vetter",
-      "displayName": "spclaudehome",
-      "handle": "clawhub_spclaudehome",
-      "publicSlug": "skill-vetter"
+      "canonicalName": "@user_5b28ea14/smart-charts",
+      "displayName": "user_5b28ea14",
+      "handle": "user_5b28ea14",
+      "publicSlug": "smart-charts"
     },
-    "ownerName": "spclaudehome",
-    "score": 22421.277470882556,
-    "slug": "skill-vetter",
-    "source": "clawhub",
-    "stars": 1323,
+    "ownerName": "user_5b28ea14",
+    "score": 23878.379284475377,
+    "slug": "smart-charts",
+    "source": "community",
+    "stars": 110,
     "subCategories": [
       {
-        "key": "agent-workflow",
-        "name": "工作流编排"
-      },
-      {
-        "key": "agent-tool-use",
-        "name": "工具调用"
+        "key": "data-visualization",
+        "name": "数据可视化"
       }
     ],
     "tags": null,
-    "updated_at": 1790326962405,
-    "upstream_owner_login": "spclaudehome",
-    "upstream_url": "https://clawhub.ai/spclaudehome/skill-vetter",
+    "updated_at": 1790412405857,
+    "upstream_owner_login": null,
+    "upstream_url": null,
     "verified": false,
-    "version": "1.0.0"
+    "version": "8.4.0"
   },
   {
     "category": "data-analysis",
@@ -909,7 +863,7 @@
     "created_at": 1773419591912,
     "description": "AdMapix raw data layer for ad creatives, apps, rankings, downloads/revenue, and market metadata. Returns structured JSON from the AdMapix API; the calling ag...",
     "description_zh": "AdMapix 原始数据层，提供广告创意、应用、排名、下载/收入及市场元数据。返回 AdMapix API 的结构化 JSON；调用方...",
-    "downloads": 337883,
+    "downloads": 340899,
     "homepage": "https://api.skillhub.cn/clawhub_fly0pants/admapix",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
     "installs": 6496,
@@ -926,7 +880,7 @@
       "publicSlug": "admapix"
     },
     "ownerName": "fly0pants",
-    "score": 22385.61283302181,
+    "score": 21948.443969885164,
     "slug": "admapix",
     "source": "clawhub",
     "stars": 304,
@@ -948,99 +902,57 @@
       "ad-intelligence",
       "app-analytics"
     ],
-    "updated_at": 1790326965668,
+    "updated_at": 1790412400008,
     "upstream_owner_login": "fly0pants",
     "upstream_url": "https://clawhub.ai/fly0pants/admapix",
     "verified": false,
     "version": "1.0.30"
   },
   {
-    "category": "content-creation",
+    "category": "ai-agent",
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772739797003,
-    "description": "Remove signs of AI-generated writing from text. Use when editing or reviewing\ntext to make it sound more natural and human-written. Based on Wikipedia's\ncomprehensive \"Signs of AI writing\" guide. Detects and fixes patterns including:\ninflated symbolism, promotional language, superficial -ing analyses, vague\nattributions, em dash overuse, rule of three, AI vocabulary words, negative\nparallelisms, and excessive conjunctive phrases.",
-    "description_zh": "消除AI写作痕迹，使文本更自然真实。基于维基百科\"AI写作特征\"指南，识别并修正夸张象征、宣传用语、肤浅-ing分析、模糊归因、破折号滥用、三项排比、AI词汇、负面平行结构及冗长连接词等模式。",
-    "downloads": 293848,
-    "homepage": "https://api.skillhub.cn/clawhub_biostartechnology/humanizer",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/34a07e4e-fec8-4ce0-aaf8-a83e46546c2d.png",
-    "installs": 33756,
+    "created_at": 1772740029553,
+    "description": "Security-first skill vetting for AI agents. Use before installing any skill from ClawdHub, GitHub, or other sources. Checks for red flags, permission scope, and suspicious patterns.",
+    "description_zh": "AI智能体技能安全预审工具。安装ClawdHub、GitHub等来源技能前，检查风险信号、权限范围及可疑模式。",
+    "downloads": 319645,
+    "homepage": "https://api.skillhub.cn/clawhub_spclaudehome/skill-vetter",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
+    "installs": 37273,
     "isServiceized": false,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Humanizer",
+    "name": "Skill Vetter",
     "namespace": {
-      "canonicalName": "@clawhub_biostartechnology/humanizer",
-      "displayName": "biostartechnology",
-      "handle": "clawhub_biostartechnology",
-      "publicSlug": "humanizer"
+      "canonicalName": "@clawhub_spclaudehome/skill-vetter",
+      "displayName": "spclaudehome",
+      "handle": "clawhub_spclaudehome",
+      "publicSlug": "skill-vetter"
     },
-    "ownerName": "biostartechnology",
-    "score": 20559.75258633706,
-    "slug": "humanizer",
+    "ownerName": "spclaudehome",
+    "score": 21893.15837614699,
+    "slug": "skill-vetter",
     "source": "clawhub",
-    "stars": 1103,
+    "stars": 1323,
     "subCategories": [
       {
-        "key": "content-article",
-        "name": "文章写作"
+        "key": "agent-workflow",
+        "name": "工作流编排"
       },
       {
-        "key": "content-rewrite",
-        "name": "内容改写"
+        "key": "agent-tool-use",
+        "name": "工具调用"
       }
     ],
     "tags": null,
-    "updated_at": 1790326963322,
-    "upstream_owner_login": "biostartechnology",
-    "upstream_url": "https://clawhub.ai/biostartechnology/humanizer",
+    "updated_at": 1790412357057,
+    "upstream_owner_login": "spclaudehome",
+    "upstream_url": "https://clawhub.ai/spclaudehome/skill-vetter",
     "verified": false,
     "version": "1.0.0"
-  },
-  {
-    "category": "professional",
-    "claim_state": "unclaimed",
-    "claimable": false,
-    "claimed_user_handle": null,
-    "created_at": 1783025976972,
-    "description": "包拯.Skills你身边的专家律师团 — 专业法律咨询 + 要素式/通用起诉状起草 + 刑事专项材料辅助 + 法条分析与法规检索。flk.npc.gov.cn API实时法条优先，不可用时AI知识库降级兜底，**法条来源按四档标注可核验（已核验-flk API / 已核验-单源 / 已引-离线库 / 未核验-模型生成），交付末尾附法条/事实/金额/程序分项置信度**；以22类法律领域覆盖矩阵约束路由边界；支持35个起诉状模板、5类刑事专项材料辅助；内置Logic Doctor逻辑自检、诉讼时效追踪及10类异常容错处理（含连续失败熔断）；渐进式意图收敛协议（3轮状态机）；混合意图自动任务拆解（按依赖排序→合并→顺序执行）；含反模式清单与危机干预出口（自杀/家暴/未成年人侵害先于一切法律分析）。非标准案由自动使用通用模板。",
-    "description_zh": "包拯.Skills你身边的专家律师团 — 专业法律咨询 + 要素式/通用起诉状起草 + 刑事专项材料辅助 + 法条分析与法规检索。flk.npc.gov.cn API实时法条优先，不可用时AI知识库降级兜底，**法条来源按四档标注可核验（已核验-flk API / 已核验-单源 / 已引-离线库 / 未核验-模型生成），交付末尾附法条/事实/金额/程序分项置信度**；以22类法律领域覆盖矩阵约束路由边界；支持35个起诉状模板、5类刑事专项材料辅助；内置Logic Doctor逻辑自检、诉讼时效追踪及10类异常容错处理（含连续失败熔断）；渐进式意图收敛协议（3轮状态机）；混合意图自动任务拆解（按依赖排序→合并→顺序执行）；含反模式清单与危机干预出口（自杀/家暴/未成年人侵害先于一切法律分析）。非标准案由自动使用通用模板。",
-    "downloads": 312006,
-    "homepage": "https://api.skillhub.cn/indiv-ebandao/baozheng",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
-    "installs": 0,
-    "isServiceized": false,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "包拯.SKILL",
-    "namespace": {
-      "canonicalName": "@indiv-ebandao/baozheng",
-      "displayName": "user_741dc82b",
-      "handle": "indiv-ebandao",
-      "publicSlug": "baozheng"
-    },
-    "ownerName": "user_741dc82b",
-    "score": 20356.568280860323,
-    "slug": "baozheng",
-    "source": "community",
-    "stars": 39,
-    "subCategories": [
-      {
-        "key": "pro-legal",
-        "name": "法律合规"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1790326834974,
-    "upstream_owner_login": null,
-    "upstream_url": null,
-    "verified": false,
-    "version": "1.0.3"
   },
   {
     "category": "professional",
@@ -1050,7 +962,7 @@
     "created_at": 1788962313252,
     "description": "反电信网络诈骗（反诈）专家技能。当用户描述一个疑似诈骗的场景、短信、电话、链接、聊天记录、App、投资平台、招聘信息或转账要求，并询问「这是不是诈骗」「要不要转钱」「怎么止损」「钱还能不能追回来」，或需要识别诈骗话术、拆解骗局结构、生成报案材料与取证清单时使用。同时在对话中主动嗅探「转账、验证码、屏幕共享、安全账户、保证金、刷单、稳赚、百万保障、跑分」等风险词并插入预警，即使对方并未询问反诈。适用场景还包括：家属求助劝阻疑似被骗的亲人、企业/银行/支付机构/互联网平台做涉诈账户识别与交易监测规则、涉诈资金链（跑分、卡四件套、GOIP）分析、反诈合规与员工培训、反诈实战演练。",
     "description_zh": "反电信网络诈骗（反诈）专家技能。当用户描述一个疑似诈骗的场景、短信、电话、链接、聊天记录、App、投资平台、招聘信息或转账要求，并询问「这是不是诈骗」「要不要转钱」「怎么止损」「钱还能不能追回来」，或需要识别诈骗话术、拆解骗局结构、生成报案材料与取证清单时使用。同时在对话中主动嗅探「转账、验证码、屏幕共享、安全账户、保证金、刷单、稳赚、百万保障、跑分」等风险词并插入预警，即使对方并未询问反诈。适用场景还包括：家属求助劝阻疑似被骗的亲人、企业/银行/支付机构/互联网平台做涉诈账户识别与交易监测规则、涉诈资金链（跑分、卡四件套、GOIP）分析、反诈合规与员工培训、反诈实战演练。",
-    "downloads": 310638,
+    "downloads": 340978,
     "homepage": "https://api.skillhub.cn/indiv-skill/anti-fraud",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 0,
@@ -1067,7 +979,7 @@
       "publicSlug": "anti-fraud"
     },
     "ownerName": "user_e9185b15",
-    "score": 20218.074942598156,
+    "score": 21570.110862164285,
     "slug": "anti-fraud",
     "source": "community",
     "stars": 1,
@@ -1082,11 +994,145 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790323462945,
+    "updated_at": 1790410103097,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "1.0.0"
+  },
+  {
+    "category": "content-creation",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772739797003,
+    "description": "Remove signs of AI-generated writing from text. Use when editing or reviewing\ntext to make it sound more natural and human-written. Based on Wikipedia's\ncomprehensive \"Signs of AI writing\" guide. Detects and fixes patterns including:\ninflated symbolism, promotional language, superficial -ing analyses, vague\nattributions, em dash overuse, rule of three, AI vocabulary words, negative\nparallelisms, and excessive conjunctive phrases.",
+    "description_zh": "消除AI写作痕迹，使文本更自然真实。基于维基百科\"AI写作特征\"指南，识别并修正夸张象征、宣传用语、肤浅-ing分析、模糊归因、破折号滥用、三项排比、AI词汇、负面平行结构及冗长连接词等模式。",
+    "downloads": 297101,
+    "homepage": "https://api.skillhub.cn/clawhub_biostartechnology/humanizer",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/34a07e4e-fec8-4ce0-aaf8-a83e46546c2d.png",
+    "installs": 33756,
+    "isServiceized": false,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Humanizer",
+    "namespace": {
+      "canonicalName": "@clawhub_biostartechnology/humanizer",
+      "displayName": "biostartechnology",
+      "handle": "clawhub_biostartechnology",
+      "publicSlug": "humanizer"
+    },
+    "ownerName": "biostartechnology",
+    "score": 20192.588694159334,
+    "slug": "humanizer",
+    "source": "clawhub",
+    "stars": 1106,
+    "subCategories": [
+      {
+        "key": "content-article",
+        "name": "文章写作"
+      },
+      {
+        "key": "content-rewrite",
+        "name": "内容改写"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1790412405696,
+    "upstream_owner_login": "biostartechnology",
+    "upstream_url": "https://clawhub.ai/biostartechnology/humanizer",
+    "verified": false,
+    "version": "1.0.0"
+  },
+  {
+    "category": "professional",
+    "claim_state": "unclaimed",
+    "claimable": false,
+    "claimed_user_handle": null,
+    "created_at": 1783025976972,
+    "description": "包拯.Skills你身边的专家律师团 — 专业法律咨询 + 要素式/通用起诉状起草 + 刑事专项材料辅助 + 法条分析与法规检索。flk.npc.gov.cn API实时法条优先，不可用时AI知识库降级兜底，**法条来源按四档标注可核验（已核验-flk API / 已核验-单源 / 已引-离线库 / 未核验-模型生成），交付末尾附法条/事实/金额/程序分项置信度**；以22类法律领域覆盖矩阵约束路由边界；支持35个起诉状模板、5类刑事专项材料辅助；内置Logic Doctor逻辑自检、诉讼时效追踪及10类异常容错处理（含连续失败熔断）；渐进式意图收敛协议（3轮状态机）；混合意图自动任务拆解（按依赖排序→合并→顺序执行）；含反模式清单与危机干预出口（自杀/家暴/未成年人侵害先于一切法律分析）。非标准案由自动使用通用模板。",
+    "description_zh": "包拯.Skills你身边的专家律师团 — 专业法律咨询 + 要素式/通用起诉状起草 + 刑事专项材料辅助 + 法条分析与法规检索。flk.npc.gov.cn API实时法条优先，不可用时AI知识库降级兜底，**法条来源按四档标注可核验（已核验-flk API / 已核验-单源 / 已引-离线库 / 未核验-模型生成），交付末尾附法条/事实/金额/程序分项置信度**；以22类法律领域覆盖矩阵约束路由边界；支持35个起诉状模板、5类刑事专项材料辅助；内置Logic Doctor逻辑自检、诉讼时效追踪及10类异常容错处理（含连续失败熔断）；渐进式意图收敛协议（3轮状态机）；混合意图自动任务拆解（按依赖排序→合并→顺序执行）；含反模式清单与危机干预出口（自杀/家暴/未成年人侵害先于一切法律分析）。非标准案由自动使用通用模板。",
+    "downloads": 312486,
+    "homepage": "https://api.skillhub.cn/indiv-ebandao/baozheng",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
+    "installs": 0,
+    "isServiceized": false,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "包拯.SKILL",
+    "namespace": {
+      "canonicalName": "@indiv-ebandao/baozheng",
+      "displayName": "user_741dc82b",
+      "handle": "indiv-ebandao",
+      "publicSlug": "baozheng"
+    },
+    "ownerName": "user_741dc82b",
+    "score": 19815.900237968424,
+    "slug": "baozheng",
+    "source": "community",
+    "stars": 39,
+    "subCategories": [
+      {
+        "key": "pro-legal",
+        "name": "法律合规"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1790412356092,
+    "upstream_owner_login": null,
+    "upstream_url": null,
+    "verified": false,
+    "version": "1.0.3"
+  },
+  {
+    "category": "content-creation",
+    "claim_state": "unclaimed",
+    "claimable": false,
+    "claimed_user_handle": null,
+    "created_at": 1775481246712,
+    "description": "去除文本中的AI写作痕迹，让文字读起来更像人类写作。当用户要求'去AI味'、'降AI味'、'让回复更像人话'、'润色'、'改写得更自然'时使用。检测并修复：AI高频词汇、过度结构化、虚假客观性、机械化连接词、完美主义陷阱、公式化结尾、过度修饰、情感缺失、'不是而是'假靶子/同义替换、莫名其妙的比喻、高频堆叠副词等问题。",
+    "description_zh": "去除文本中的AI写作痕迹，让文字读起来更像人类写作。当用户要求'去AI味'、'降AI味'、'让回复更像人话'、'润色'、'改写得更自然'时使用。检测并修复：AI高频词汇、过度结构化、虚假客观性、机械化连接词、完美主义陷阱、公式化结尾、过度修饰、情感缺失等问题。",
+    "downloads": 294422,
+    "homepage": "https://api.skillhub.cn/user_ab5ae6ee/unclecheng-reduce-ai-perception-v2",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
+    "installs": 650,
+    "isServiceized": false,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "文章去AI味工具",
+    "namespace": {
+      "canonicalName": "@user_ab5ae6ee/unclecheng-reduce-ai-perception-v2",
+      "displayName": "user_ab5ae6ee",
+      "handle": "user_ab5ae6ee",
+      "publicSlug": "unclecheng-reduce-ai-perception-v2"
+    },
+    "ownerName": "user_ab5ae6ee",
+    "score": 19485.451792100866,
+    "slug": "unclecheng-reduce-ai-perception-v2",
+    "source": "community",
+    "stars": 681,
+    "subCategories": [
+      {
+        "key": "content-article",
+        "name": "文章写作"
+      },
+      {
+        "key": "content-rewrite",
+        "name": "内容改写"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1790412406279,
+    "upstream_owner_login": null,
+    "upstream_url": null,
+    "verified": false,
+    "version": "1.0.5"
   },
   {
     "category": "professional",
@@ -1096,7 +1142,7 @@
     "created_at": 1789369561703,
     "description": "露禾论文写作助手（免费版）：一句话生成引用可溯源、不编造的专业学术论文，按国标 GB/T 7714 插入真实文献引用，中英文 3000/5000/8000 字，一键导出 Word。说「写论文 / 帮我写论文」即可使用。",
     "description_zh": "露禾论文写作助手（免费版）：一句话生成引用可溯源、不编造的专业学术论文，按国标 GB/T 7714 插入真实文献引用，中英文 3000/5000/8000 字，一键导出 Word。说「写论文 / 帮我写论文」即可使用。",
-    "downloads": 302576,
+    "downloads": 302910,
     "homepage": "https://api.skillhub.cn/org-liz6o019/luhe-paper-free-pro",
     "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/729171/aaf994218b044e95a6138d7d5d772816.png",
     "installs": 0,
@@ -1120,7 +1166,7 @@
       "certifiedName": "重庆维普朗润数据科技有限公司",
       "orgId": "org-liz6o019"
     },
-    "score": 19705.10290679815,
+    "score": 19173.474048031418,
     "slug": "luhe-paper-free-pro",
     "source": "enterprise",
     "stars": 10,
@@ -1131,57 +1177,11 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326765601,
+    "updated_at": 1790412353475,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "1.0.2"
-  },
-  {
-    "category": "content-creation",
-    "claim_state": "unclaimed",
-    "claimable": false,
-    "claimed_user_handle": null,
-    "created_at": 1775481246712,
-    "description": "去除文本中的AI写作痕迹，让文字读起来更像人类写作。当用户要求'去AI味'、'降AI味'、'让回复更像人话'、'润色'、'改写得更自然'时使用。检测并修复：AI高频词汇、过度结构化、虚假客观性、机械化连接词、完美主义陷阱、公式化结尾、过度修饰、情感缺失、'不是而是'假靶子/同义替换、莫名其妙的比喻、高频堆叠副词等问题。",
-    "description_zh": "去除文本中的AI写作痕迹，让文字读起来更像人类写作。当用户要求'去AI味'、'降AI味'、'让回复更像人话'、'润色'、'改写得更自然'时使用。检测并修复：AI高频词汇、过度结构化、虚假客观性、机械化连接词、完美主义陷阱、公式化结尾、过度修饰、情感缺失等问题。",
-    "downloads": 285342,
-    "homepage": "https://api.skillhub.cn/user_ab5ae6ee/unclecheng-reduce-ai-perception-v2",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
-    "installs": 650,
-    "isServiceized": false,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "文章去AI味工具",
-    "namespace": {
-      "canonicalName": "@user_ab5ae6ee/unclecheng-reduce-ai-perception-v2",
-      "displayName": "user_ab5ae6ee",
-      "handle": "user_ab5ae6ee",
-      "publicSlug": "unclecheng-reduce-ai-perception-v2"
-    },
-    "ownerName": "user_ab5ae6ee",
-    "score": 19455.580604684823,
-    "slug": "unclecheng-reduce-ai-perception-v2",
-    "source": "community",
-    "stars": 680,
-    "subCategories": [
-      {
-        "key": "content-article",
-        "name": "文章写作"
-      },
-      {
-        "key": "content-rewrite",
-        "name": "内容改写"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1790326963922,
-    "upstream_owner_login": null,
-    "upstream_url": null,
-    "verified": false,
-    "version": "1.0.5"
   },
   {
     "category": "ai-agent",
@@ -1191,7 +1191,7 @@
     "created_at": 1773257813533,
     "description": "Typed knowledge graph for structured agent memory and composable skills. Use when creating/querying entities (Person, Project, Task, Event, Document), linking related objects, enforcing constraints, planning multi-step actions as graph transformations, or when skills need to share state. Trigger on \"remember\", \"what do I know about\", \"link X to Y\", \"show dependencies\", entity CRUD, or cross-skill data access.",
     "description_zh": "类型化知识图谱，用于结构化智能体记忆与可组合技能。适用于以下场景：创建/查询实体（人物、项目、任务、事件、文档）、关联相关对象、强制执行约束、将多步操作规划为图谱变换，或当技能需要共享状态时。触发关键词包括\"记住\"\"我知道关于什么\"\"将X链接到Y\"\"显示依赖关系\"、实体增删改查操作，以及跨技能数据访问。",
-    "downloads": 280220,
+    "downloads": 281968,
     "homepage": "https://api.skillhub.cn/clawhub_oswalpalash/ontology",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0c9b068f-f22e-44e2-96fe-d2b6f5b43b07.png",
     "installs": 29080,
@@ -1208,7 +1208,7 @@
       "publicSlug": "ontology"
     },
     "ownerName": "oswalpalash",
-    "score": 19261.507703041127,
+    "score": 18831.76606476638,
     "slug": "ontology",
     "source": "clawhub",
     "stars": 787,
@@ -1227,7 +1227,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326966856,
+    "updated_at": 1790412405545,
     "upstream_owner_login": "oswalpalash",
     "upstream_url": "https://clawhub.ai/oswalpalash/ontology",
     "verified": false,
@@ -1241,7 +1241,7 @@
     "created_at": 1772739781263,
     "description": "Transform AI agents from task-followers into proactive partners that anticipate needs and continuously improve. Now with WAL Protocol, Working Buffer, Autonomous Crons, and battle-tested patterns. Part of the Hal Stack 🦞",
     "description_zh": "将 AI 代理从任务执行者转变为能够预见需求、持续优化的主动伙伴。现已支持 WAL Protocol、Working Buffer、Autonomous Crons 及经过实战验证的模式。属于 Hal Stack 🦞。",
-    "downloads": 260812,
+    "downloads": 263954,
     "homepage": "https://api.skillhub.cn/clawhub_halthelobster/proactive-agent",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
     "installs": 28937,
@@ -1258,7 +1258,7 @@
       "publicSlug": "proactive-agent"
     },
     "ownerName": "halthelobster",
-    "score": 18162.412074953012,
+    "score": 17851.680264561175,
     "slug": "proactive-agent",
     "source": "clawhub",
     "stars": 913,
@@ -1277,11 +1277,53 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326966523,
+    "updated_at": 1790412405100,
     "upstream_owner_login": "halthelobster",
     "upstream_url": "https://clawhub.ai/halthelobster/proactive-agent",
     "verified": false,
     "version": "3.1.0"
+  },
+  {
+    "category": "content-creation",
+    "claim_state": "unclaimed",
+    "claimable": false,
+    "claimed_user_handle": null,
+    "created_at": 1782514159228,
+    "description": "李白.Skill:润色专家 检测并消除中文文本中的AI生成痕迹，将生硬的机器输出转化为自然流畅的人类文笔。融合规则检测、分层改写和质控流水线，确保最终文本通过人工审查。",
+    "description_zh": "李白.Skill:润色专家 检测并消除中文文本中的AI生成痕迹，将生硬的机器输出转化为自然流畅的人类文笔。融合规则检测、分层改写（词汇→句式→内容→逻辑→语气）和六步质控流水线，确保最终文本通过人工审查。",
+    "downloads": 278288,
+    "homepage": "https://api.skillhub.cn/indiv-ebandao/libai",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
+    "installs": 0,
+    "isServiceized": false,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "李白.Skill",
+    "namespace": {
+      "canonicalName": "@indiv-ebandao/libai",
+      "displayName": "user_741dc82b",
+      "handle": "indiv-ebandao",
+      "publicSlug": "libai"
+    },
+    "ownerName": "user_741dc82b",
+    "score": 17674.184410980706,
+    "slug": "libai",
+    "source": "community",
+    "stars": 56,
+    "subCategories": [
+      {
+        "key": "content-rewrite",
+        "name": "内容改写"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1790412396916,
+    "upstream_owner_login": null,
+    "upstream_url": null,
+    "verified": false,
+    "version": "1.0.4"
   },
   {
     "category": "life-service",
@@ -1291,7 +1333,7 @@
     "created_at": 1772739778242,
     "description": "Get current weather and forecasts (no API key required).",
     "description_zh": "获取当前天气和预报（无需API密钥）",
-    "downloads": 265200,
+    "downloads": 267062,
     "homepage": "https://api.skillhub.cn/clawhub_steipete/weather",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/81015f94-5620-494e-bbd6-ac3268e7ccd3.png",
     "installs": 21530,
@@ -1308,7 +1350,7 @@
       "publicSlug": "weather"
     },
     "ownerName": "steipete",
-    "score": 17886.98735337148,
+    "score": 17503.014140207808,
     "slug": "weather",
     "source": "clawhub",
     "stars": 482,
@@ -1327,7 +1369,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326962885,
+    "updated_at": 1790412377745,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/weather",
     "verified": false,
@@ -1341,7 +1383,7 @@
     "created_at": 1782582516934,
     "description": "WPS Office 全家桶 - 四引擎（WPS/MS Office/LibreOffice/纯Python）智能识别用户已安装软件，纯Python模式支持排序/筛选/图表/公式/统计，含文档模板（代码生成）、最佳实践案例、故障排除大章（20+避坑+15 FAQ+15错误ID 统一索引）、自动重试、硬件自适应、环境自检、Skill更新提醒；v5.1新增：kingdoc云端桥接（白名单探测+配置预检+subprocess上传+差异检查）、条件格式/数据验证跨引擎IO（JSON中间格式保真往返）、会议纪要三段式要素化（待办清单+决策记录+风险异议）+说话人标注（MFCC聚类）；v5.2新增：公文一键排版（GB/T 9704 规则库约束+结构识别套版+红头预留位+联合行文）、批量水印与敏感信息打码（身份证/手机号/银行卡/邮箱双轨识别+黑色矩形覆盖+打码清单）、跨文档知识检索与问答（本地TF-IDF零依赖+跳转+可选zwjh记忆桥接）；删除：与contract-review重复的轻量合同审查模块，改为文档互链引导；v5.2.5修复：MS Office引擎下Excel/PPT创建必然失败（错用Word COM对象），新增get_ms_excel/get_ms_ppt及三槽位统一释放release_ms，MS Office路径透传filepath参数",
     "description_zh": "WPS Office 全家桶 - 四引擎（WPS/MS Office/LibreOffice/纯Python）智能识别用户已安装软件，纯Python模式支持排序/筛选/图表/公式/统计，含文档模板（代码生成）、最佳实践案例、故障排除大章（20+避坑+15 FAQ+15错误ID 统一索引）、自动重试、硬件自适应、环境自检、Skill更新提醒；v5.1新增：kingdoc云端桥接（白名单探测+配置预检+subprocess上传+差异检查）、条件格式/数据验证跨引擎IO（JSON中间格式保真往返）、会议纪要三段式要素化（待办清单+决策记录+风险异议）+说话人标注（MFCC聚类）；v5.2新增：公文一键排版（GB/T 9704 规则库约束+结构识别套版+红头预留位+联合行文）、批量水印与敏感信息打码（身份证/手机号/银行卡/邮箱双轨识别+黑色矩形覆盖+打码清单）、跨文档知识检索与问答（本地TF-IDF零依赖+跳转+可选zwjh记忆桥接）；删除：与contract-review重复的轻量合同审查模块，改为文档互链引导；v5.2.5修复：MS Office引擎下Excel/PPT创建必然失败（错用Word COM对象），新增get_ms_excel/get_ms_ppt及三槽位统一释放release_ms，MS Office路径透传filepath参数",
-    "downloads": 262048,
+    "downloads": 265586,
     "homepage": "https://api.skillhub.cn/user_1a470ba8/wps-office-suite",
     "iconUrl": null,
     "installs": 0,
@@ -1358,10 +1400,10 @@
       "publicSlug": "wps-office-suite"
     },
     "ownerName": "user_1a470ba8",
-    "score": 17189.834797232215,
+    "score": 16935.229827400148,
     "slug": "wps-office-suite",
     "source": "community",
-    "stars": 104,
+    "stars": 107,
     "subCategories": [
       {
         "key": "office-doc",
@@ -1377,7 +1419,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326965155,
+    "updated_at": 1790412407708,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -1391,7 +1433,7 @@
     "created_at": 1782903092627,
     "description": "【零一数科·出品】视频号爆款短视频拆解（付费版：全能）。一键拆解爆款，把一条视频号视频拆成结构分段、爆款归因、六维评分和可借鉴策略，照着学照着抄。支持视频号分享链接和本地视频，付费全能版远端分析，1–5 分钟出 Markdown 报告。",
     "description_zh": "【零一数科·出品】视频号爆款短视频拆解（付费版：全能）。一键拆解爆款，把一条视频号视频拆成结构分段、爆款归因、六维评分和可借鉴策略，照着学照着抄。支持视频号分享链接和本地视频，付费全能版远端分析，1–5 分钟出 Markdown 报告。",
-    "downloads": 255243,
+    "downloads": 256125,
     "homepage": "https://api.skillhub.cn/org-28ib33ph/lingyi-wx-video-decomposer-plus",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a4e49550-e527-4406-b761-c4f2e607b757.png",
     "installs": 0,
@@ -1415,7 +1457,7 @@
       "certifiedName": "零一裂变（深圳）科技有限公司",
       "orgId": "org-28ib33ph"
     },
-    "score": 16728.73268182457,
+    "score": 16315.259456430018,
     "slug": "lingyi-wx-video-decomposer-plus",
     "source": "enterprise",
     "stars": 90,
@@ -1426,7 +1468,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326966425,
+    "updated_at": 1790412396941,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -1440,7 +1482,7 @@
     "created_at": 1774842724122,
     "description": "",
     "description_zh": "MANDATORY before calling web_search, web_fetch, browser, or opencli. Contains required error-handling procedures (web_search failure → must guide user to configure API), fallback chain (opencli CLI covers 70+ sites as structured fallback before browser), and site-specific login URLs. Without reading this skill, you WILL handle failures incorrectly and miss available tools. Trigger on: 搜索/上网/查资料/打开网站/抓取网页/新闻/热点/web search/fetch/browser/opencli.",
-    "downloads": 248893,
+    "downloads": 251132,
     "homepage": "https://api.skillhub.cn/user_ec205dbb/web-tools-guide",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7422abc7-fa86-4505-a723-0575c56e7a2d.png",
     "installs": 3459,
@@ -1457,7 +1499,7 @@
       "publicSlug": "web-tools-guide"
     },
     "ownerName": "user_ec205dbb",
-    "score": 16479.47070553505,
+    "score": 16158.827793598763,
     "slug": "web-tools-guide",
     "source": "community",
     "stars": 216,
@@ -1468,7 +1510,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326965362,
+    "updated_at": 1790412378573,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -1482,7 +1524,7 @@
     "created_at": 1775614909972,
     "description": "以 JSON 或薄 HTML 稳定生成泳道、层级卡片和共享轨道矩阵，支持交互式结构图及原生可编辑 PPTX、Visio 导出",
     "description_zh": "使用 ContextWeave 生成或修改架构图、流程图、思维导图和复杂信息图。适用于需要从代码、文件或自然语言中提取结构与关系并实际产出 CW、SVG、HTML、可编辑 PPTX 或原生 VSDX 的请求；未特别说明时，PPTX 与 Visio 使用原生形状和连接器导出。不适用于统计图表、手绘插画或像素级排版。",
-    "downloads": 241166,
+    "downloads": 242868,
     "homepage": "https://api.skillhub.cn/user_bddf3fe6/contextweave-interactive-architecture",
     "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/427739/7ae782c64d90426a9ebf08526d2dbbae.png",
     "installs": 239,
@@ -1499,7 +1541,7 @@
       "publicSlug": "contextweave-interactive-architecture"
     },
     "ownerName": "user_bddf3fe6",
-    "score": 16015.635168977493,
+    "score": 15674.035127226447,
     "slug": "contextweave-interactive-architecture",
     "source": "community",
     "stars": 246,
@@ -1510,53 +1552,11 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326962834,
+    "updated_at": 1790412399927,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "1.3.0"
-  },
-  {
-    "category": "content-creation",
-    "claim_state": "unclaimed",
-    "claimable": false,
-    "claimed_user_handle": null,
-    "created_at": 1782514159228,
-    "description": "李白.Skill:润色专家 检测并消除中文文本中的AI生成痕迹，将生硬的机器输出转化为自然流畅的人类文笔。融合规则检测、分层改写和质控流水线，确保最终文本通过人工审查。",
-    "description_zh": "李白.Skill:润色专家 检测并消除中文文本中的AI生成痕迹，将生硬的机器输出转化为自然流畅的人类文笔。融合规则检测、分层改写（词汇→句式→内容→逻辑→语气）和六步质控流水线，确保最终文本通过人工审查。",
-    "downloads": 233606,
-    "homepage": "https://api.skillhub.cn/indiv-ebandao/libai",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/a00e31c7-8d6a-4e65-84fc-16a177f95674.png",
-    "installs": 0,
-    "isServiceized": false,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "李白.Skill",
-    "namespace": {
-      "canonicalName": "@indiv-ebandao/libai",
-      "displayName": "user_741dc82b",
-      "handle": "indiv-ebandao",
-      "publicSlug": "libai"
-    },
-    "ownerName": "user_741dc82b",
-    "score": 15276.309829382457,
-    "slug": "libai",
-    "source": "community",
-    "stars": 56,
-    "subCategories": [
-      {
-        "key": "content-rewrite",
-        "name": "内容改写"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1790326875422,
-    "upstream_owner_login": null,
-    "upstream_url": null,
-    "verified": false,
-    "version": "1.0.4"
   },
   {
     "category": "ai-agent",
@@ -1566,7 +1566,7 @@
     "created_at": 1787314647763,
     "description": "无头浏览器自动化CLI,为AI Agent优化,支持无障碍树快照与引用提取,精准网页操作",
     "description_zh": "无头浏览器自动化CLI,为AI Agent优化,支持无障碍树快照与引用提取,精准网页操作",
-    "downloads": 232889,
+    "downloads": 237296,
     "homepage": "https://api.skillhub.cn/zcwl/agent-browser",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/0860fda4-ff95-4bbc-b3ad-f6b7ad8e0774.png",
     "installs": 0,
@@ -1590,7 +1590,7 @@
       "certifiedName": "成都智创未来教育管理合伙企业（有限合伙）",
       "orgId": "org-2orcbd4z"
     },
-    "score": 15171.073115110872,
+    "score": 15024.271261232652,
     "slug": "agent-browser",
     "source": "enterprise",
     "stars": 11,
@@ -1604,103 +1604,11 @@
       "automation",
       "research"
     ],
-    "updated_at": 1790326965331,
+    "updated_at": 1790412354109,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "0.1.0"
-  },
-  {
-    "category": "office-efficiency",
-    "claim_state": "unclaimed",
-    "claimable": true,
-    "claimed_user_handle": null,
-    "created_at": 1772739773556,
-    "description": "Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs.",
-    "description_zh": "Google Workspace 命令行工具，支持 Gmail、日历、云端硬盘、通讯录、表格和文档。",
-    "downloads": 202601,
-    "homepage": "https://api.skillhub.cn/clawhub_steipete/gog",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
-    "installs": 14214,
-    "isServiceized": false,
-    "labels": {
-      "requires_api_key": "true"
-    },
-    "last_synced_at": null,
-    "name": "Gog",
-    "namespace": {
-      "canonicalName": "@clawhub_steipete/gog",
-      "displayName": "steipete",
-      "handle": "clawhub_steipete",
-      "publicSlug": "gog"
-    },
-    "ownerName": "steipete",
-    "score": 14414.305945321164,
-    "slug": "gog",
-    "source": "clawhub",
-    "stars": 944,
-    "subCategories": [
-      {
-        "key": "office-doc",
-        "name": "文档处理"
-      },
-      {
-        "key": "office-email",
-        "name": "邮件处理"
-      },
-      {
-        "key": "office-automation",
-        "name": "流程自动化"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1790326961695,
-    "upstream_owner_login": "steipete",
-    "upstream_url": "https://clawhub.ai/steipete/gog",
-    "verified": false,
-    "version": "1.0.0"
-  },
-  {
-    "category": "dev-programming",
-    "claim_state": "unclaimed",
-    "claimable": false,
-    "claimed_user_handle": null,
-    "created_at": 1785603241108,
-    "description": "将 Excel、CSV、Word、PDF、JSON、TXT、ZIP、电子表单或已有 Python/Web 源码转换、升级或持续修改为可填写、查询、导入导出并可本地/局域网部署的中文业务系统。用于“根据附件生成系统”“把Excel做成系统”“升级或继续修改已有系统”“生成完整部署ZIP”“生成服务端及Windows/macOS填写客户端”等任务。保留3.0的Spec-first变更、影响分析、候选副本、E2E与回滚能力，并强制最终ZIP采用图1式六编号目录：服务端、Windows客户端、macOS客户端、原始资料、申请单模板、说明与版本记录，以及根目录成对启停和密码说明。生成的系统界面布局与功能模块必须参照点工系统的成熟范式（顶栏+左侧多视图导航+卡片+筛选+汇总卡片+表格+弹窗+明细录入+签字审核+看板+汇总导出+系统管理），见 references/ui-functional-patterns.md。",
-    "description_zh": "读取用户提示词和上传的业务附件，自动识别业务类型、字段、公式、流程、权限和报表规则，生成对应的完整本地部署 Python Web 系统。支持能源、点工、生产、质量、设备、库存、审批及组合业务，并交付完整源码、SQLite 数据库、导入导出、权限审计、备份恢复和 Windows EXE 打包代码。\n生产日报与班报系统\n质量问题与整改闭环系统\n设备点检、保养与维修系统\n库存管理与采购预警系统\n考勤与交接班系统\n安全巡检与隐患整改系统\n会议任务跟踪与闭环系统\n自定义业务台账、审批流程和管理看板\n系统采用通用的 business-system-blueprint.json 业务蓝图进行配置，可根据不同电子档灵活定义数据实体、字段、页面、表单、角色权限、审批流程、统计指标、导入导出规则、审计策略和数据保留规则。\n技能可连续完成电子档安全检查、结构分析、字段映射、系统生成、历史数据导入、自动测试和完整源码 ZIP 交付，不仅生成分析报告或静态演示页面。",
-    "downloads": 220197,
-    "homepage": "https://api.skillhub.cn/user_84b8c7d7/paperless-business-system-from-files",
-    "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/615449/cd92d8d69e6541349bbb699397bf31f8.png",
-    "installs": 0,
-    "isServiceized": false,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "纸质表单电子化系统生成器",
-    "namespace": {
-      "canonicalName": "@user_84b8c7d7/paperless-business-system-from-files",
-      "displayName": "user_84b8c7d7",
-      "handle": "user_84b8c7d7",
-      "publicSlug": "paperless-business-system-from-files"
-    },
-    "ownerName": "user_84b8c7d7",
-    "score": 14347.662534428091,
-    "slug": "paperless-business-system-from-files",
-    "source": "community",
-    "stars": 13,
-    "subCategories": [
-      {
-        "key": "dev-code-gen",
-        "name": "代码生成"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1790326844585,
-    "upstream_owner_login": null,
-    "upstream_url": null,
-    "verified": false,
-    "version": "1.0.32"
   },
   {
     "category": "ai-agent",
@@ -1710,7 +1618,7 @@
     "created_at": 1772739803931,
     "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
     "description_zh": "创建有效技能指南。当用户希望创建新技能（或更新现有技能）以利用专业知识、工作流程或工具集成扩展 Claude 的能力时，应使用此技能。",
-    "downloads": 210993,
+    "downloads": 214067,
     "homepage": "https://api.skillhub.cn/clawhub_chindden/skill-creator",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/2d8152d9-7618-454e-9d87-2487f1b4457f.png",
     "installs": 3453,
@@ -1727,7 +1635,7 @@
       "publicSlug": "skill-creator"
     },
     "ownerName": "chindden",
-    "score": 14347.40220860429,
+    "score": 14139.38548228141,
     "slug": "skill-creator",
     "source": "clawhub",
     "stars": 473,
@@ -1746,7 +1654,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326963970,
+    "updated_at": 1790412406255,
     "upstream_owner_login": "chindden",
     "upstream_url": "https://clawhub.ai/chindden/skill-creator",
     "verified": false,
@@ -1757,84 +1665,92 @@
     "claim_state": "unclaimed",
     "claimable": true,
     "claimed_user_handle": null,
-    "created_at": 1772740044096,
-    "description": "Create, inspect, and edit Microsoft Word documents and DOCX files with reliable styles, numbering, tracked changes, tables, sections, and compatibility check...",
-    "description_zh": "创建、检查和编辑 Microsoft Word 文档及 DOCX 文件，支持样式、编号、修订记录、表格、分节符及兼容性检查等功能。",
-    "downloads": 202576,
-    "homepage": "https://api.skillhub.cn/clawhub_ivangdavila/word-docx",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
-    "installs": 23940,
+    "created_at": 1772739773556,
+    "description": "Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs.",
+    "description_zh": "Google Workspace 命令行工具，支持 Gmail、日历、云端硬盘、通讯录、表格和文档。",
+    "downloads": 202999,
+    "homepage": "https://api.skillhub.cn/clawhub_steipete/gog",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
+    "installs": 14214,
     "isServiceized": false,
     "labels": {
-      "requires_api_key": "false"
+      "requires_api_key": "true"
     },
     "last_synced_at": null,
-    "name": "Word / DOCX",
+    "name": "Gog",
     "namespace": {
-      "canonicalName": "@clawhub_ivangdavila/word-docx",
-      "displayName": "ivangdavila",
-      "handle": "clawhub_ivangdavila",
-      "publicSlug": "word-docx"
+      "canonicalName": "@clawhub_steipete/gog",
+      "displayName": "steipete",
+      "handle": "clawhub_steipete",
+      "publicSlug": "gog"
     },
-    "ownerName": "ivangdavila",
-    "score": 13884.217486606238,
-    "slug": "word-docx",
+    "ownerName": "steipete",
+    "score": 14035.139877612624,
+    "slug": "gog",
     "source": "clawhub",
-    "stars": 538,
+    "stars": 944,
     "subCategories": [
       {
         "key": "office-doc",
         "name": "文档处理"
+      },
+      {
+        "key": "office-email",
+        "name": "邮件处理"
+      },
+      {
+        "key": "office-automation",
+        "name": "流程自动化"
       }
     ],
     "tags": null,
-    "updated_at": 1790326964654,
-    "upstream_owner_login": "ivangdavila",
-    "upstream_url": "https://clawhub.ai/ivangdavila/word-docx",
+    "updated_at": 1790411902416,
+    "upstream_owner_login": "steipete",
+    "upstream_url": "https://clawhub.ai/steipete/gog",
     "verified": false,
-    "version": "1.0.2"
+    "version": "1.0.0"
   },
   {
-    "category": "office-efficiency",
+    "category": "dev-programming",
     "claim_state": "unclaimed",
-    "claimable": true,
+    "claimable": false,
     "claimed_user_handle": null,
-    "created_at": 1772740083296,
-    "description": "Create, inspect, and edit Microsoft Excel workbooks and XLSX files with reliable formulas, dates, types, formatting, recalculation, and template preservation...",
-    "description_zh": "创建、检查和编辑 Microsoft Excel 工作簿及 XLSX 文件，支持可靠的公式、日期、类型、格式、重算及模板保留功能。",
-    "downloads": 197732,
-    "homepage": "https://api.skillhub.cn/clawhub_ivangdavila/excel-xlsx",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/27205dc2-3c4b-4854-85b1-8902f05745a3.png",
-    "installs": 24636,
+    "created_at": 1785603241108,
+    "description": "将 Excel、CSV、Word、PDF、JSON、TXT、ZIP、电子表单或已有 Python/Web 源码转换、升级或持续修改为可填写、查询、导入导出并可本地/局域网部署的中文业务系统。用于“根据附件生成系统”“把Excel做成系统”“升级或继续修改已有系统”“生成完整部署ZIP”“生成服务端及Windows/macOS填写客户端”等任务。保留3.0的Spec-first变更、影响分析、候选副本、E2E与回滚能力，并强制最终ZIP采用图1式六编号目录：服务端、Windows客户端、macOS客户端、原始资料、申请单模板、说明与版本记录，以及根目录成对启停和密码说明。生成的系统界面布局与功能模块必须参照点工系统的成熟范式（顶栏+左侧多视图导航+卡片+筛选+汇总卡片+表格+弹窗+明细录入+签字审核+看板+汇总导出+系统管理），见 references/ui-functional-patterns.md。",
+    "description_zh": "读取用户提示词和上传的业务附件，自动识别业务类型、字段、公式、流程、权限和报表规则，生成对应的完整本地部署 Python Web 系统。支持能源、点工、生产、质量、设备、库存、审批及组合业务，并交付完整源码、SQLite 数据库、导入导出、权限审计、备份恢复和 Windows EXE 打包代码。\n生产日报与班报系统\n质量问题与整改闭环系统\n设备点检、保养与维修系统\n库存管理与采购预警系统\n考勤与交接班系统\n安全巡检与隐患整改系统\n会议任务跟踪与闭环系统\n自定义业务台账、审批流程和管理看板\n系统采用通用的 business-system-blueprint.json 业务蓝图进行配置，可根据不同电子档灵活定义数据实体、字段、页面、表单、角色权限、审批流程、统计指标、导入导出规则、审计策略和数据保留规则。\n技能可连续完成电子档安全检查、结构分析、字段映射、系统生成、历史数据导入、自动测试和完整源码 ZIP 交付，不仅生成分析报告或静态演示页面。",
+    "downloads": 220564,
+    "homepage": "https://api.skillhub.cn/user_84b8c7d7/paperless-business-system-from-files",
+    "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/615449/cd92d8d69e6541349bbb699397bf31f8.png",
+    "installs": 0,
     "isServiceized": false,
     "labels": {
       "requires_api_key": "false"
     },
     "last_synced_at": null,
-    "name": "Excel / XLSX",
+    "name": "纸质表单电子化系统生成器",
     "namespace": {
-      "canonicalName": "@clawhub_ivangdavila/excel-xlsx",
-      "displayName": "ivangdavila",
-      "handle": "clawhub_ivangdavila",
-      "publicSlug": "excel-xlsx"
+      "canonicalName": "@user_84b8c7d7/paperless-business-system-from-files",
+      "displayName": "user_84b8c7d7",
+      "handle": "user_84b8c7d7",
+      "publicSlug": "paperless-business-system-from-files"
     },
-    "ownerName": "ivangdavila",
-    "score": 13457.022809748682,
-    "slug": "excel-xlsx",
-    "source": "clawhub",
-    "stars": 452,
+    "ownerName": "user_84b8c7d7",
+    "score": 13968.404978992741,
+    "slug": "paperless-business-system-from-files",
+    "source": "community",
+    "stars": 13,
     "subCategories": [
       {
-        "key": "office-spreadsheet",
-        "name": "表格处理"
+        "key": "dev-code-gen",
+        "name": "代码生成"
       }
     ],
     "tags": null,
-    "updated_at": 1790326967391,
-    "upstream_owner_login": "ivangdavila",
-    "upstream_url": "https://clawhub.ai/ivangdavila/excel-xlsx",
+    "updated_at": 1790412096991,
+    "upstream_owner_login": null,
+    "upstream_url": null,
     "verified": false,
-    "version": "1.0.2"
+    "version": "1.0.32"
   },
   {
     "category": "design-media",
@@ -1844,7 +1760,7 @@
     "created_at": 1786074581548,
     "description": "用一张人像和一段短脚本或语音，制作有明确讲述内容的数字人口播视频。可使用现成录音，也可以先选择音色，把脚本生成旁白，让画面中的人物随声音完成稳定、自然的口播。适合 AI 主播、虚拟主播视频、数字人讲解、让照片说话、照片说话视频、产品讲解视频、数字人培训视频、公告和社交口播，并在交付后检查人物一致性、声音清晰度、口型同步和动作稳定性。",
     "description_zh": "用一张人像和一段短脚本或语音，制作有明确讲述内容的数字人口播视频。可使用现成录音，也可以先选择音色，把脚本生成旁白，让画面中的人物随声音完成稳定、自然的口播。适合 AI 主播、虚拟主播视频、数字人讲解、让照片说话、照片说话视频、产品讲解视频、数字人培训视频、公告和社交口播，并在交付后检查人物一致性、声音清晰度、口型同步和动作稳定性。",
-    "downloads": 204428,
+    "downloads": 218620,
     "homepage": "https://api.skillhub.cn/beatra-ai/talking-avatar-video",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/c5e5faab-b8e1-489d-a489-8b56ffc52c07.png",
     "installs": 0,
@@ -1868,7 +1784,7 @@
       "certifiedName": "乐萱同行科技（深圳）有限公司",
       "orgId": "org-0bqts5ar"
     },
-    "score": 13333.107717619372,
+    "score": 13856.82169826717,
     "slug": "talking-avatar-video",
     "source": "enterprise",
     "stars": 22,
@@ -1879,11 +1795,137 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326874507,
+    "updated_at": 1790412398229,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "0.2.0"
+  },
+  {
+    "category": "office-efficiency",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740044096,
+    "description": "Create, inspect, and edit Microsoft Word documents and DOCX files with reliable styles, numbering, tracked changes, tables, sections, and compatibility check...",
+    "description_zh": "创建、检查和编辑 Microsoft Word 文档及 DOCX 文件，支持样式、编号、修订记录、表格、分节符及兼容性检查等功能。",
+    "downloads": 204145,
+    "homepage": "https://api.skillhub.cn/clawhub_ivangdavila/word-docx",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
+    "installs": 23940,
+    "isServiceized": false,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Word / DOCX",
+    "namespace": {
+      "canonicalName": "@clawhub_ivangdavila/word-docx",
+      "displayName": "ivangdavila",
+      "handle": "clawhub_ivangdavila",
+      "publicSlug": "word-docx"
+    },
+    "ownerName": "ivangdavila",
+    "score": 13593.993732612555,
+    "slug": "word-docx",
+    "source": "clawhub",
+    "stars": 538,
+    "subCategories": [
+      {
+        "key": "office-doc",
+        "name": "文档处理"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1790412378637,
+    "upstream_owner_login": "ivangdavila",
+    "upstream_url": "https://clawhub.ai/ivangdavila/word-docx",
+    "verified": false,
+    "version": "1.0.2"
+  },
+  {
+    "category": "office-efficiency",
+    "claim_state": "unclaimed",
+    "claimable": true,
+    "claimed_user_handle": null,
+    "created_at": 1772740083296,
+    "description": "Create, inspect, and edit Microsoft Excel workbooks and XLSX files with reliable formulas, dates, types, formatting, recalculation, and template preservation...",
+    "description_zh": "创建、检查和编辑 Microsoft Excel 工作簿及 XLSX 文件，支持可靠的公式、日期、类型、格式、重算及模板保留功能。",
+    "downloads": 200069,
+    "homepage": "https://api.skillhub.cn/clawhub_ivangdavila/excel-xlsx",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/27205dc2-3c4b-4854-85b1-8902f05745a3.png",
+    "installs": 24636,
+    "isServiceized": false,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "Excel / XLSX",
+    "namespace": {
+      "canonicalName": "@clawhub_ivangdavila/excel-xlsx",
+      "displayName": "ivangdavila",
+      "handle": "clawhub_ivangdavila",
+      "publicSlug": "excel-xlsx"
+    },
+    "ownerName": "ivangdavila",
+    "score": 13227.362953085683,
+    "slug": "excel-xlsx",
+    "source": "clawhub",
+    "stars": 452,
+    "subCategories": [
+      {
+        "key": "office-spreadsheet",
+        "name": "表格处理"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1790412397075,
+    "upstream_owner_login": "ivangdavila",
+    "upstream_url": "https://clawhub.ai/ivangdavila/excel-xlsx",
+    "verified": false,
+    "version": "1.0.2"
+  },
+  {
+    "category": "professional",
+    "claim_state": "unclaimed",
+    "claimable": false,
+    "claimed_user_handle": null,
+    "created_at": 1780546470120,
+    "description": "当用户上传交底材料、研发报告、技术方案文档，并要求撰写专利、撰写初稿，或请专利代理师视角输出可申请的专利文件时触发。也涵盖如下说法：'帮我把这份交底写成专利''生成专利文件''生成初稿''专利撰写'等，无论是否明确说'生成专利文件'。",
+    "description_zh": "基于技术交底书生成专利申请初稿。技术交底书内容至少包含技术问题、解决方案、技术效果。内置的推理、视觉、多模态、数学、函数、仿真等模型底座均为国产，国外模型0使用，可放心食用。\n近期安装量暴增感谢支持，不少私信希望能力提升但这已是国产极限，我们不必追求最强技能，达到及格即可。学习交流欢迎联系微信号A26dian4",
+    "downloads": 196028,
+    "homepage": "https://api.skillhub.cn/user_9c63fdb4/patent-drafting-cn",
+    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
+    "installs": 0,
+    "isServiceized": false,
+    "labels": {
+      "requires_api_key": "false"
+    },
+    "last_synced_at": null,
+    "name": "专利初稿助手",
+    "namespace": {
+      "canonicalName": "@user_9c63fdb4/patent-drafting-cn",
+      "displayName": "user_9c63fdb4",
+      "handle": "user_9c63fdb4",
+      "publicSlug": "patent-drafting-cn"
+    },
+    "ownerName": "user_9c63fdb4",
+    "score": 12445.45766224171,
+    "slug": "patent-drafting-cn",
+    "source": "community",
+    "stars": 36,
+    "subCategories": [
+      {
+        "key": "pro-legal",
+        "name": "法律合规"
+      }
+    ],
+    "tags": null,
+    "updated_at": 1790412405506,
+    "upstream_owner_login": null,
+    "upstream_url": null,
+    "verified": false,
+    "version": "2.0.9"
   },
   {
     "category": "office-efficiency",
@@ -1893,7 +1935,7 @@
     "created_at": 1786589857381,
     "description": "腾讯会议：会议管理与音视频协作助手。预约/创建/修改/取消会议、查询会议详情与会议号转换、查看参会成员/受邀人/等候室成员、管理会中等候室成员、查询用户会议列表（即将开始/进行中/已结束）、搜索会议列表、导出参会成员统计与获取异步任务结果、查询录制列表与播放地址、搜索录制文件、获取转写全文/段落/搜索、获取AI智能纪要（支持多语言翻译）、搜索与查询元宝纪要（支持关键词/时间过滤、获取概览/要点/待办/滚动总结）、录制权限申请（预览+提交两步流程）、企业通讯录搜索/按手机号或邮箱批量查询用户（获取open_id）、向会议添加/移除/替换受邀人（创建或修改会议时可一并指定）、会中批量呼叫成员入会、会中踢出成员（支持普通成员/SIP/PSTN，可选是否允许重新加入）、时间转换与版本检查、Agent意见箱反馈上报。当用户需要预约或管理腾讯会议、查看参会人员、查询会议录制或转写内容、获取智能纪要、通过姓名/手机号/邮箱定位企业成员、管理会议受邀人、会中呼叫或踢人时使用；当用户访问录制相关内容（播放地址/转写/智能纪要）出现无权限错误时，自动发起录制权限申请流程；当用户仅提供姓名/手机号/邮箱、且已明确要邀请或呼叫该成员入会时，才先调用contact_*工具获取open_id后再执行邀请/呼叫；用户只是想查询某人是谁/部门/职位等纯人员查询场景，禁止调用contact_*工具；当Agent遇到以下任何情况时必须立即触发submit_feedback：工具缺失（功能不存在）、工具报错（返回错误码）、能力不足（参数/功能限制）、结果不符预期（数据异常）、改进建议（功能优化）；如果用户提供的是9位会议号而非meeting_id，优先使用get_meeting_by_code转换后再操作。不要在以下场景触发：日程管理（非腾讯会议日程）、即时通讯/聊天、腾讯文档操作、企业微信审批流程、电话/PSTN拨号、视频剪辑或视频编辑、其他视频会议平台（Zoom/Teams/飞书/钉钉）。",
     "description_zh": "腾讯会议：会议管理与音视频协作助手。预约/创建/修改/取消会议、查询会议详情与会议号转换、查看参会成员/受邀人/等候室成员、管理会中等候室成员、查询用户会议列表（即将开始/进行中/已结束）、搜索会议列表、导出参会成员统计与获取异步任务结果、查询录制列表与播放地址、搜索录制文件、获取转写全文/段落/搜索、获取AI智能纪要（支持多语言翻译）、搜索与查询元宝纪要（支持关键词/时间过滤、获取概览/要点/待办/滚动总结）、录制权限申请（预览+提交两步流程）、企业通讯录搜索/按手机号或邮箱批量查询用户（获取open_id）、向会议添加/移除/替换受邀人（创建或修改会议时可一并指定）、会中批量呼叫成员入会、会中踢出成员（支持普通成员/SIP/PSTN，可选是否允许重新加入）、时间转换与版本检查、Agent意见箱反馈上报。当用户需要预约或管理腾讯会议、查看参会人员、查询会议录制或转写内容、获取智能纪要、通过姓名/手机号/邮箱定位企业成员、管理会议受邀人、会中呼叫或踢人时使用；当用户访问录制相关内容（播放地址/转写/智能纪要）出现无权限错误时，自动发起录制权限申请流程；当用户仅提供姓名/手机号/邮箱、且已明确要邀请或呼叫该成员入会时，才先调用contact_*工具获取open_id后再执行邀请/呼叫；用户只是想查询某人是谁/部门/职位等纯人员查询场景，禁止调用contact_*工具；当Agent遇到以下任何情况时必须立即触发submit_feedback：工具缺失（功能不存在）、工具报错（返回错误码）、能力不足（参数/功能限制）、结果不符预期（数据异常）、改进建议（功能优化）；如果用户提供的是9位会议号而非meeting_id，优先使用get_meeting_by_code转换后再操作。不要在以下场景触发：日程管理（非腾讯会议日程）、即时通讯/聊天、腾讯文档操作、企业微信审批流程、电话/PSTN拨号、视频剪辑或视频编辑、其他视频会议平台（Zoom/Teams/飞书/钉钉）。",
-    "downloads": 192912,
+    "downloads": 193480,
     "homepage": "https://api.skillhub.cn/tencent-adm/tencent-meeting-mcp",
     "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/586409/5c818906ffdb4d8fb94539c75f8bb822.png",
     "installs": 0,
@@ -1917,7 +1959,7 @@
       "certifiedName": "腾讯科技（深圳）有限公司",
       "orgId": "org-bv6b8qcb"
     },
-    "score": 12636.996464775313,
+    "score": 12318.439959465666,
     "slug": "tencent-meeting-mcp",
     "source": "enterprise",
     "stars": 63,
@@ -1932,53 +1974,11 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326835289,
+    "updated_at": 1790412354395,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
     "version": "1.0.16"
-  },
-  {
-    "category": "professional",
-    "claim_state": "unclaimed",
-    "claimable": false,
-    "claimed_user_handle": null,
-    "created_at": 1780546470120,
-    "description": "当用户上传交底材料、研发报告、技术方案文档，并要求撰写专利、撰写初稿，或请专利代理师视角输出可申请的专利文件时触发。也涵盖如下说法：'帮我把这份交底写成专利''生成专利文件''生成初稿''专利撰写'等，无论是否明确说'生成专利文件'。",
-    "description_zh": "基于技术交底书生成专利申请初稿。技术交底书内容至少包含技术问题、解决方案、技术效果。内置的推理、视觉、多模态、数学、函数、仿真等模型底座均为国产，国外模型0使用，可放心食用。\n近期安装量暴增感谢支持，不少私信希望能力提升但这已是国产极限，我们不必追求最强技能，达到及格即可。学习交流欢迎联系微信号A26dian4",
-    "downloads": 187131,
-    "homepage": "https://api.skillhub.cn/user_9c63fdb4/patent-drafting-cn",
-    "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/7920727c-4e7d-496a-9223-d9c6673e9e53.png",
-    "installs": 0,
-    "isServiceized": false,
-    "labels": {
-      "requires_api_key": "false"
-    },
-    "last_synced_at": null,
-    "name": "专利初稿助手",
-    "namespace": {
-      "canonicalName": "@user_9c63fdb4/patent-drafting-cn",
-      "displayName": "user_9c63fdb4",
-      "handle": "user_9c63fdb4",
-      "publicSlug": "patent-drafting-cn"
-    },
-    "ownerName": "user_9c63fdb4",
-    "score": 12225.616581713673,
-    "slug": "patent-drafting-cn",
-    "source": "community",
-    "stars": 36,
-    "subCategories": [
-      {
-        "key": "pro-legal",
-        "name": "法律合规"
-      }
-    ],
-    "tags": null,
-    "updated_at": 1790326964427,
-    "upstream_owner_login": null,
-    "upstream_url": null,
-    "verified": false,
-    "version": "2.0.9"
   },
   {
     "category": "office-efficiency",
@@ -1988,7 +1988,7 @@
     "created_at": 1778316773752,
     "description": "用于中文公文、事务性材料、新闻稿件和新闻评论的起草、改写、压缩与复核，兼顾办公效率、内容创作、事实边界和正式表达。",
     "description_zh": "用于中文公文、事务性材料和新闻稿件的起草、改写、压缩、润色、审校、文种核对、去口语化、降 AI 味及 Word 格式处理，适用于机关、企事业单位、学校和新闻机构。涵盖申请、请示、报告、通知、通告、意见、决定、决议、议案、公报、命令、函、复函、批复、说明、方案、纪要、公告、公示、通报、制度、规定、办法、细则、操作规程、工作要点、总结、调研、讲话、致辞、主持词、述职、可研、审查材料、技术需求、新闻消息、编者按、新闻评论，以及采购、整改、反馈和 AI 算力等场景。",
-    "downloads": 183241,
+    "downloads": 186113,
     "homepage": "https://api.skillhub.cn/user_f3d82da7/chinese-official-writing",
     "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/437097/fbafa4ddeb204e4584a699f65e06d137.png",
     "installs": 53,
@@ -2005,7 +2005,7 @@
       "publicSlug": "chinese-official-writing"
     },
     "ownerName": "gongyu0918-debug",
-    "score": 12018.006737232321,
+    "score": 11862.555206523954,
     "slug": "chinese-official-writing",
     "source": "clawhub",
     "stars": 71,
@@ -2013,6 +2013,10 @@
       {
         "key": "office-doc",
         "name": "文档处理"
+      },
+      {
+        "key": "office-report",
+        "name": "日报周报"
       }
     ],
     "tags": [
@@ -2024,11 +2028,11 @@
       "official-document",
       "writing"
     ],
-    "updated_at": 1790326967871,
+    "updated_at": 1790412405478,
     "upstream_owner_login": "gongyu0918-debug",
     "upstream_url": "https://clawhub.ai/gongyu0918-debug/chinese-official-writing",
     "verified": true,
-    "version": "2.0.13"
+    "version": "2.0.14"
   },
   {
     "category": "ai-agent",
@@ -2038,7 +2042,7 @@
     "created_at": 1772740027607,
     "description": "Headless browser automation CLI optimized for AI agents with accessibility tree snapshots and ref-based element selection",
     "description_zh": "专为AI智能体优化的无头浏览器自动化CLI，支持无障碍树快照和基于引用的元素选择。",
-    "downloads": 164006,
+    "downloads": 164315,
     "homepage": "https://api.skillhub.cn/clawhub_matrixy/agent-browser-clawdbot",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/64ea6fd6-ebe7-418c-af4f-2cafff71f2ec.png",
     "installs": 2631,
@@ -2055,7 +2059,7 @@
       "publicSlug": "agent-browser-clawdbot"
     },
     "ownerName": "matrixy",
-    "score": 11277.70517579803,
+    "score": 10980.89547480457,
     "slug": "agent-browser-clawdbot",
     "source": "clawhub",
     "stars": 464,
@@ -2070,7 +2074,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326964745,
+    "updated_at": 1790411601545,
     "upstream_owner_login": "matrixy",
     "upstream_url": "https://clawhub.ai/matrixy/agent-browser-clawdbot",
     "verified": false,
@@ -2084,7 +2088,7 @@
     "created_at": 1783228574662,
     "description": "【零一数科·出品】视频号挂车爆单短视频脚本生成（付费版）。一条链接二创脚本，丢进爆款视频号链接即以此骨架改写成你的挂车脚本，或按方向/目的/商品原创多条口播脚本（含分段表、口播全文、六维质检评分）。",
     "description_zh": "【零一数科·出品】视频号挂车爆单短视频脚本生成（付费版）。一条链接二创脚本，丢进爆款视频号链接即以此骨架改写成你的挂车脚本，或按方向/目的/商品原创多条口播脚本（含分段表、口播全文、六维质检评分）。",
-    "downloads": 166607,
+    "downloads": 166918,
     "homepage": "https://api.skillhub.cn/org-28ib33ph/lingyi-wx-video-script-creator-plus",
     "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/554345/bb182dd3803f468cbfc1502a7939d4f2.png",
     "installs": 0,
@@ -2108,7 +2112,7 @@
       "certifiedName": "零一裂变（深圳）科技有限公司",
       "orgId": "org-28ib33ph"
     },
-    "score": 10880.773375957348,
+    "score": 10595.224691026908,
     "slug": "lingyi-wx-video-script-creator-plus",
     "source": "enterprise",
     "stars": 29,
@@ -2123,7 +2127,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326901726,
+    "updated_at": 1790412396957,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -2137,7 +2141,7 @@
     "created_at": 1783076004834,
     "description": "【零一数科·出品】视频号爆款文案生成（体验版）。免费免登录出脚本，给创作目的、行业、受众、选题就按爆款结构（Hook-中段-CTA、节奏标签）产出口播脚本，信息不全也能按爆款潜质兜底。本地运行、无需 Key，零成本上手。",
     "description_zh": "【零一数科·出品】视频号爆款文案生成（体验版）。免费免登录出脚本，给创作目的、行业、受众、选题就按爆款结构（Hook-中段-CTA、节奏标签）产出口播脚本，信息不全也能按爆款潜质兜底。本地运行、无需 Key，零成本上手。",
-    "downloads": 163640,
+    "downloads": 165106,
     "homepage": "https://api.skillhub.cn/org-28ib33ph/lingyi-wx-viral-script-generator",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/f7fabcfa-0496-4dc7-9258-df9b7c751850.png",
     "installs": 0,
@@ -2161,7 +2165,7 @@
       "certifiedName": "零一裂变（深圳）科技有限公司",
       "orgId": "org-28ib33ph"
     },
-    "score": 10755.361410341182,
+    "score": 10546.391191752453,
     "slug": "lingyi-wx-viral-script-generator",
     "source": "enterprise",
     "stars": 81,
@@ -2176,7 +2180,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326892055,
+    "updated_at": 1790412400389,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -2190,7 +2194,7 @@
     "created_at": 1775788233472,
     "description": "从图片或 PDF 文档中识别并提取文字内容，支持多种图片格式和 PDF 文件，自动判断是否包含文字并保留原始格式输出结构化结果；v2.1 采用零额外依赖方案：扫描版 PDF 自动渲染为图片交由 AI 视觉识别（无需 tesseract/rapidocr）、表格用 pymupdf 内置 find_tables 结构化提取（无需 pdfplumber）、批量处理目录（PDF+图片一次性提取）；当用户需要从图片或 PDF 提取文字、进行 OCR 识别、处理含文字的文档、提取 PDF 表格、批量处理文件夹或转换为可编辑文本时使用。该skill能力来自RedFoxHub，官网：https://redfox.hk/skills。",
     "description_zh": "从图片或 PDF 文档中识别并提取文字内容，支持多种图片格式和 PDF 文件，自动判断是否包含文字并保留原始格式输出结构化结果；v2.1 采用零额外依赖方案：扫描版 PDF 自动渲染为图片交由 AI 视觉识别（无需 tesseract/rapidocr）、表格用 pymupdf 内置 find_tables 结构化提取（无需 pdfplumber）、批量处理目录（PDF+图片一次性提取）；当用户需要从图片或 PDF 提取文字、进行 OCR 识别、处理含文字的文档、提取 PDF 表格、批量处理文件夹或转换为可编辑文本时使用。该skill能力来自RedFoxHub，官网：https://redfox.hk/skills。",
-    "downloads": 154182,
+    "downloads": 155945,
     "homepage": "https://api.skillhub.cn/user_5f9c21aa/pdf-image-text-extractor",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/5a1e9830-80e4-4cbb-8d00-cee893ca9555.png",
     "installs": 378,
@@ -2207,7 +2211,7 @@
       "publicSlug": "pdf-image-text-extractor"
     },
     "ownerName": "user_5f9c21aa",
-    "score": 10269.983911864088,
+    "score": 10093.416206902222,
     "slug": "pdf-image-text-extractor",
     "source": "community",
     "stars": 181,
@@ -2222,7 +2226,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326962114,
+    "updated_at": 1790412406611,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
@@ -2234,9 +2238,9 @@
     "claimable": false,
     "claimed_user_handle": null,
     "created_at": 1779415160584,
-    "description": "中国金融机构数据爬取与分析综合 Skill v9.0.0。全量机构名单（2334家，43大类）、\n全网舆情（4 类 60+ 商业财经媒体源 + RSS 直连 + akshare 兜底）、A股报告/公告/研报、\n多源金融数据统一查询（36种查询类型，akshare→东方财富API→新浪→yfinance→RSS→搜索引擎 自动降级）、\n深度类人浏览器爬取、真实风险指标分析、定期报告解读（财报自动解读/同比环比/亮点风险/评分评级）。\n\n🆕 v9.0.0 多源 MCP 桥接 + 反爬深度升级（三轨升级）：\n数据源：FinancialDataRouter 统一路由器（36种查询/5个适配器/自动健康追踪/30秒冷却恢复）\n+ AkshareAdapter（A股/基金/期货/宏观/Shibor/港股/可转债/ETF 30+接口）\n+ EastmoneyApiAdapter（行情/公告/龙虎榜/融资融券 直连API）\n+ YFinanceAdapter（全球市场：美股/港股/ETF/外汇/期货）\n+ FinnhubAdapter（美股深度，需API Key）+ RssFeedAdapter（零爬虫风险公开信息流）。\n反爬：FreeProxyDiscovery 免费代理发现与验证\n+ HeaderOrderRandomizer 浏览器Header顺序随机化（Chrome/Firefox/Safari 三模板）\n+ FingerprintSession 反指纹一致性会话（30分钟/100请求自动轮换）\n+ RequestTempoScheduler 人类化请求节奏（对数正态分布：70%快浏览+20%阅读+10%长暂停）\n+ HTTP UA池扩展到24个（Chrome137/Edge137/Firefox138/Safari18/华为浏览器）\n+ 自适应抖动延迟（easy/normal/hard 三档对数正态分布）。\n\nv8.0.0（承接）代理池/行为画像/TLS指纹/预算/IP信誉/验证码/会话预热/一站式管道\n+ 关键词实体/跨源验证/趋势异常/同业对标/洞察生成/时间分桶/一站式聚合。\n\nv7.7.0（承接）爬取自适应/语音指令接线/断点续传/分析指标扩展；\nv7.6.0（承接）知识库总结同步与反向校对；v7.5.0 编码检测链与下载加固。\n\n触发词：爬取机构、舆情爬取、全网舆情、网页爬取、智能爬取、内容识别、表格识别、\n汇总分析、语音交互、语音爬取、公告下载、券商研报、批量爬取、定时爬取、文档分析、\n东方财富、龙虎榜、北向资金、监管动态、搜索引擎、网页归档、类人爬取、数据回测、\n结构化数据、期货、宏观经济、港股美股、风险指标、组合复刻、夏普比率、\n多源数据、统一查询、数据源切换、免费代理、代理发现、Header随机化、指纹会话等\n（完整触发词见下方 auto_trigger）。",
-    "description_zh": "中国金融机构数据爬取与分析综合 Skill v9.0.0。全量机构名单（2334家，43大类）、\n全网舆情（4 类 60+ 商业财经媒体源 + RSS 直连 + akshare 兜底）、A股报告/公告/研报、\n多源金融数据统一查询（36种查询类型，akshare→东方财富API→新浪→yfinance→RSS→搜索引擎 自动降级）、\n深度类人浏览器爬取、真实风险指标分析、定期报告解读（财报自动解读/同比环比/亮点风险/评分评级）。\n\n🆕 v9.0.0 多源 MCP 桥接 + 反爬深度升级（三轨升级）：\n数据源：FinancialDataRouter 统一路由器（36种查询/5个适配器/自动健康追踪/30秒冷却恢复）\n+ AkshareAdapter（A股/基金/期货/宏观/Shibor/港股/可转债/ETF 30+接口）\n+ EastmoneyApiAdapter（行情/公告/龙虎榜/融资融券 直连API）\n+ YFinanceAdapter（全球市场：美股/港股/ETF/外汇/期货）\n+ FinnhubAdapter（美股深度，需API Key）+ RssFeedAdapter（零爬虫风险公开信息流）。\n反爬：FreeProxyDiscovery 免费代理发现与验证\n+ HeaderOrderRandomizer 浏览器Header顺序随机化（Chrome/Firefox/Safari 三模板）\n+ FingerprintSession 反指纹一致性会话（30分钟/100请求自动轮换）\n+ RequestTempoScheduler 人类化请求节奏（对数正态分布：70%快浏览+20%阅读+10%长暂停）\n+ HTTP UA池扩展到24个（Chrome137/Edge137/Firefox138/Safari18/华为浏览器）\n+ 自适应抖动延迟（easy/normal/hard 三档对数正态分布）。\n\nv8.0.0（承接）代理池/行为画像/TLS指纹/预算/IP信誉/验证码/会话预热/一站式管道\n+ 关键词实体/跨源验证/趋势异常/同业对标/洞察生成/时间分桶/一站式聚合。\n\nv7.7.0（承接）爬取自适应/语音指令接线/断点续传/分析指标扩展；\nv7.6.0（承接）知识库总结同步与反向校对；v7.5.0 编码检测链与下载加固。\n\n触发词：爬取机构、舆情爬取、全网舆情、网页爬取、智能爬取、内容识别、表格识别、\n汇总分析、语音交互、语音爬取、公告下载、券商研报、批量爬取、定时爬取、文档分析、\n东方财富、龙虎榜、北向资金、监管动态、搜索引擎、网页归档、类人爬取、数据回测、\n结构化数据、期货、宏观经济、港股美股、风险指标、组合复刻、夏普比率、\n多源数据、统一查询、数据源切换、免费代理、代理发现、Header随机化、指纹会话等\n（完整触发词见下方 auto_trigger）。",
-    "downloads": 140323,
+    "description": "中国金融机构数据爬取与分析综合 Skill v10.0.0。2334家/43大类机构名单、60+财经媒体源舆情、\nA股报告/公告/研报、60+种查询9适配器金融数据（akshare/东财/yfinance/RSS/Tushare/CoinGecko/ExchangeRate 自动降级 + 缓存）、\n爬取调度中心（智能选源 + 增量 + 断点续爬）、网页操作增强（Shadow DOM / iframe / Cookie / OCR / 行为 / WS）、\n79 MCP 工具 + 8 Resource + 10 Prompt、类人浏览器、风险分析、定期报告解读。\n\n🆕 v10.0.0 三轨升级（爬取调度 / 网页操作 / MCP 数据获取）：\n调度：CrawlerDispatcher 4 策略智能选源 + BaseScraper 协议统一 + 增量 + 断点续爬 + 反爬包裹。\n网页：Shadow DOM / iframe 穿透 + Cookie Banner 自动 + 验证码 OCR（stdlib→ddddocr→tesseract）+ 人类行为轨迹 + WebSocket 监听。\nMCP：Tushare / CoinGecko / Alpha Vantage / ExchangeRate 4 适配器 + LRU+TTL 缓存 +\n8 Resource + 10 Prompt。\nv9.0.0（承接）5 适配器 36 查询 + 反爬深度（代理/Header/指纹/节奏）+ UA 池 24。\nv8.0.0（承接）反爬管道 + 数据分析增强（关键词/跨源/趋势/对标/洞察）。\n\n触发词：爬取机构、舆情爬取、全网舆情、网页爬取、智能爬取、汇总分析、语音交互、公告下载、\n券商研报、批量爬取、定时爬取、文档分析、东方财富、龙虎榜、监管动态、类人爬取、数据回测、\nShadow DOM、iframe穿透、Cookie弹窗、验证码识别、人类行为、WebSocket监听、数字货币行情、\n外汇汇率、Tushare、CoinGecko、断点续爬、增量爬取、爬取调度、数据源健康。\n结构化数据、期货、宏观经济、港股美股、风险指标、组合复刻、夏普比率、\n多源数据、统一查询、数据源切换、免费代理、代理发现、Header随机化、指纹会话等\n（完整触发词见下方 auto_trigger）。",
+    "description_zh": "中国金融机构数据爬取与分析综合 Skill v10.0.0。2334家/43大类机构名单、60+财经媒体源舆情、\nA股报告/公告/研报、60+种查询9适配器金融数据（akshare/东财/yfinance/RSS/Tushare/CoinGecko/ExchangeRate 自动降级 + 缓存）、\n爬取调度中心（智能选源 + 增量 + 断点续爬）、网页操作增强（Shadow DOM / iframe / Cookie / OCR / 行为 / WS）、\n79 MCP 工具 + 8 Resource + 10 Prompt、类人浏览器、风险分析、定期报告解读。\n\n🆕 v10.0.0 三轨升级（爬取调度 / 网页操作 / MCP 数据获取）：\n调度：CrawlerDispatcher 4 策略智能选源 + BaseScraper 协议统一 + 增量 + 断点续爬 + 反爬包裹。\n网页：Shadow DOM / iframe 穿透 + Cookie Banner 自动 + 验证码 OCR（stdlib→ddddocr→tesseract）+ 人类行为轨迹 + WebSocket 监听。\nMCP：Tushare / CoinGecko / Alpha Vantage / ExchangeRate 4 适配器 + LRU+TTL 缓存 +\n8 Resource + 10 Prompt。\nv9.0.0（承接）5 适配器 36 查询 + 反爬深度（代理/Header/指纹/节奏）+ UA 池 24。\nv8.0.0（承接）反爬管道 + 数据分析增强（关键词/跨源/趋势/对标/洞察）。\n\n触发词：爬取机构、舆情爬取、全网舆情、网页爬取、智能爬取、汇总分析、语音交互、公告下载、\n券商研报、批量爬取、定时爬取、文档分析、东方财富、龙虎榜、监管动态、类人爬取、数据回测、\nShadow DOM、iframe穿透、Cookie弹窗、验证码识别、人类行为、WebSocket监听、数字货币行情、\n外汇汇率、Tushare、CoinGecko、断点续爬、增量爬取、爬取调度、数据源健康。\n结构化数据、期货、宏观经济、港股美股、风险指标、组合复刻、夏普比率、\n多源数据、统一查询、数据源切换、免费代理、代理发现、Header随机化、指纹会话等\n（完整触发词见下方 auto_trigger）。",
+    "downloads": 148257,
     "homepage": "https://api.skillhub.cn/user_9d5a2a39/cnfinancialscraper",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
     "installs": 0,
@@ -2253,10 +2257,10 @@
       "publicSlug": "cnfinancialscraper"
     },
     "ownerName": "user_9d5a2a39",
-    "score": 9444.81613187065,
+    "score": 9683.012394346953,
     "slug": "cnfinancialscraper",
     "source": "community",
-    "stars": 240,
+    "stars": 241,
     "subCategories": [
       {
         "key": "data-insight",
@@ -2272,11 +2276,11 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326963770,
+    "updated_at": 1790412407616,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
-    "version": "1.0.48"
+    "version": "1.0.49"
   },
   {
     "category": "design-media",
@@ -2286,7 +2290,7 @@
     "created_at": 1772739784421,
     "description": "Generate/edit images with Nano Banana Pro (Gemini 3 Pro Image). Use for image create/modify requests incl. edits. Supports text-to-image + image-to-image; 1K/2K/4K; use --input-image.",
     "description_zh": "使用 Nano Banana Pro (Gemini 3 Pro Image) 生成或编辑图像。支持文生图、图生图及 1K/2K/4K 分辨率，适用于图像创建、修改及编辑请求，使用 --input-image 指定输入图像。",
-    "downloads": 134967,
+    "downloads": 135708,
     "homepage": "https://api.skillhub.cn/clawhub_steipete/nano-banana-pro",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/9bcddb03-161b-42cd-bf2e-cf0159d85bd7.png",
     "installs": 3086,
@@ -2303,7 +2307,7 @@
       "publicSlug": "nano-banana-pro"
     },
     "ownerName": "steipete",
-    "score": 9399.519438529263,
+    "score": 9182.722050096087,
     "slug": "nano-banana-pro",
     "source": "clawhub",
     "stars": 473,
@@ -2318,7 +2322,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326963289,
+    "updated_at": 1790412381079,
     "upstream_owner_login": "steipete",
     "upstream_url": "https://clawhub.ai/steipete/nano-banana-pro",
     "verified": false,
@@ -2332,7 +2336,7 @@
     "created_at": 1772739802573,
     "description": "Automatically update Clawdbot and all installed skills once daily. Runs via cron, checks for updates, applies them, and messages the user with a summary of what changed.",
     "description_zh": "每日自动更新 Clawdbot 及所有已安装技能。运行 cron 检查更新并应用，同时向用户发送变更摘要。",
-    "downloads": 133018,
+    "downloads": 134967,
     "homepage": "https://api.skillhub.cn/clawhub_maximeprades/auto-updater",
     "iconUrl": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/e9a58ede-ead5-43fd-9523-d1ba7f1b78cd.png",
     "installs": 16784,
@@ -2349,7 +2353,7 @@
       "publicSlug": "auto-updater"
     },
     "ownerName": "maximeprades",
-    "score": 9267.469164406171,
+    "score": 9130.78901524592,
     "slug": "auto-updater",
     "source": "clawhub",
     "stars": 469,
@@ -2364,7 +2368,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326963042,
+    "updated_at": 1790412406062,
     "upstream_owner_login": "maximeprades",
     "upstream_url": "https://clawhub.ai/maximeprades/auto-updater",
     "verified": false,
@@ -2378,7 +2382,7 @@
     "created_at": 1775748478661,
     "description": "操作金山文档（WPS 云文档 / Kdocs / 365.kdocs.cn / www.kdocs.cn）云文档的官方 Skill。核心能力覆盖云端新建、读取、编辑、搜索、分享、整理在线文档（智能文档、Word、Excel、PDF、PPT、演示文稿、智能表格、多维表格）及个人知识库。当用户的任务涉及云文档操作时使用，包括但不限于：写周报/日报/工作汇报、处理合同/发票、创建报名表/登记表、网页剪藏、接龙转表格、信息收集、文档总结与内容生成、改写仿写、翻译、AI PPT生成、PDF拆分导出、标签分类归档、收藏管理、碎片笔记整理、表格美化、回收站还原、知识库管理。",
     "description_zh": "操作金山文档（WPS 云文档 / Kdocs / 365.kdocs.cn / www.kdocs.cn）云文档的官方 Skill。核心能力覆盖云端新建、读取、编辑、搜索、分享、整理在线文档（智能文档、Word、Excel、PDF、PPT、演示文稿、智能表格、多维表格）及个人知识库。当用户的任务涉及云文档操作时使用，包括但不限于：写周报/日报/工作汇报、处理合同/发票、创建报名表/登记表、网页剪藏、接龙转表格、信息收集、文档总结与内容生成、改写仿写、翻译、AI PPT生成、PDF拆分导出、标签分类归档、收藏管理、碎片笔记整理、表格美化、回收站还原、知识库管理。",
-    "downloads": 139661,
+    "downloads": 141415,
     "homepage": "https://api.skillhub.cn/user_5ea84866/kdocs-skill",
     "iconUrl": "https://skillhub-1388575217.cos.accelerate.myqcloud.com/skill-icons/uploads/420051/5214371ab9d44bb28908f19755262ccd.png",
     "installs": 2029,
@@ -2395,7 +2399,7 @@
       "publicSlug": "kdocs-skill"
     },
     "ownerName": "user_5ea84866",
-    "score": 9249.441601107947,
+    "score": 9100.932264394181,
     "slug": "kdocs-skill",
     "source": "community",
     "stars": 123,
@@ -2414,7 +2418,7 @@
       }
     ],
     "tags": null,
-    "updated_at": 1790326963403,
+    "updated_at": 1790412397513,
     "upstream_owner_login": null,
     "upstream_url": null,
     "verified": false,
