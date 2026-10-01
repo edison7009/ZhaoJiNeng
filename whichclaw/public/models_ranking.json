@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T11:46:05.916557+00:00",
+  "updated_at": "2026-10-01T12:15:14.894724+00:00",
   "top_n": 20,
   "source": "artificialanalysis.ai",
   "intelligence": [
@@ -15,7 +15,7 @@
       "coding": null,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 95.755,
+      "output_speed": 95.995,
       "rank": 1
     },
     {
@@ -30,7 +30,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 145.279,
+      "output_speed": 145.16,
       "rank": 2
     },
     {
@@ -45,12 +45,12 @@
       "coding": 81.6,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 68.862,
+      "output_speed": 69.669,
       "rank": 3
     },
     {
       "model_id": "gpt-6-astra",
-      "name": "GPT-6 Astra (max)",
+      "name": "GPT-6 Astra (Max)",
       "short_name": "GPT-6 Astra",
       "author": "openai",
       "author_name": "OpenAI",
@@ -60,12 +60,27 @@
       "coding": 76.9,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 55.199,
+      "output_speed": 52.341,
       "rank": 4
     },
     {
+      "model_id": "gemini-4-argon",
+      "name": "Gemini 4 Argon (High)",
+      "short_name": "Gemini 4 Argon",
+      "author": "google",
+      "author_name": "Google",
+      "author_icon": "./public/models_icons/google.svg",
+      "score": 52.6,
+      "intelligence": 52.6,
+      "coding": null,
+      "math": null,
+      "price_blended": 4.0,
+      "output_speed": 0.0,
+      "rank": 5
+    },
+    {
       "model_id": "gpt-6-1-sol",
-      "name": "GPT-6.1 Sol (max)",
+      "name": "GPT-6.1 Sol (Max)",
       "short_name": "GPT-6.1 Sol",
       "author": "openai",
       "author_name": "OpenAI",
@@ -75,8 +90,8 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 80.013,
-      "rank": 5
+      "output_speed": 73.384,
+      "rank": 6
     },
     {
       "model_id": "claude-opus-5",
@@ -91,7 +106,7 @@
       "math": null,
       "price_blended": 10.0,
       "output_speed": 0.0,
-      "rank": 6
+      "rank": 7
     },
     {
       "model_id": "claude-fable-5",
@@ -106,11 +121,11 @@
       "math": null,
       "price_blended": 20.0,
       "output_speed": 0.0,
-      "rank": 7
+      "rank": 8
     },
     {
       "model_id": "muse-spark-1-3",
-      "name": "Muse Spark 1.3 (max)",
+      "name": "Muse Spark 1.3 (Max)",
       "short_name": "Muse Spark 1.3",
       "author": "meta",
       "author_name": "Meta",
@@ -120,27 +135,27 @@
       "coding": 75.8,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 189.456,
-      "rank": 8
+      "output_speed": 172.206,
+      "rank": 9
     },
     {
       "model_id": "gpt-6-sol",
-      "name": "GPT-6 Sol (max)",
+      "name": "GPT-6 Sol (Max)",
       "short_name": "GPT-6 Sol",
       "author": "openai",
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
-      "score": 47.5,
-      "intelligence": 47.5,
+      "score": 47.6,
+      "intelligence": 47.6,
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 79.832,
-      "rank": 9
+      "output_speed": 83.804,
+      "rank": 10
     },
     {
       "model_id": "gpt-5-6-sol",
-      "name": "GPT-5.6 Sol (max)",
+      "name": "GPT-5.6 Sol (Max)",
       "short_name": "GPT-5.6 Sol",
       "author": "openai",
       "author_name": "OpenAI",
@@ -151,11 +166,11 @@
       "math": null,
       "price_blended": 8.0,
       "output_speed": 0.0,
-      "rank": 10
+      "rank": 11
     },
     {
       "model_id": "grok-4-7",
-      "name": "Grok 4.7 (xhigh)",
+      "name": "Grok 4.7 (Xhigh)",
       "short_name": "Grok 4.7",
       "author": "xai",
       "author_name": "SpaceXAI",
@@ -165,8 +180,8 @@
       "coding": null,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 82.607,
-      "rank": 11
+      "output_speed": 83.076,
+      "rank": 12
     },
     {
       "model_id": "mimo-v2-6-pro",
@@ -180,8 +195,8 @@
       "coding": null,
       "math": null,
       "price_blended": 0.544,
-      "output_speed": 44.303,
-      "rank": 12
+      "output_speed": 49.19,
+      "rank": 13
     },
     {
       "model_id": "qwen3-8-max",
@@ -195,12 +210,12 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.267,
-      "rank": 13
+      "output_speed": 39.279,
+      "rank": 14
     },
     {
       "model_id": "glm-5-3",
-      "name": "GLM-5.3 (max)",
+      "name": "GLM-5.3 (Max)",
       "short_name": "GLM-5.3",
       "author": "zai",
       "author_name": "Z AI",
@@ -210,12 +225,12 @@
       "coding": 74.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 70.434,
-      "rank": 14
+      "output_speed": 69.965,
+      "rank": 15
     },
     {
       "model_id": "grok-4-6",
-      "name": "Grok 4.6 (high)",
+      "name": "Grok 4.6 (High)",
       "short_name": "Grok 4.6",
       "author": "xai",
       "author_name": "SpaceXAI",
@@ -225,8 +240,8 @@
       "coding": 76.8,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 62.616,
-      "rank": 15
+      "output_speed": 59.141,
+      "rank": 16
     },
     {
       "model_id": "step-5",
@@ -240,12 +255,12 @@
       "coding": null,
       "math": null,
       "price_blended": 1.425,
-      "output_speed": 86.247,
-      "rank": 16
+      "output_speed": 87.402,
+      "rank": 17
     },
     {
       "model_id": "kimi-k3",
-      "name": "Kimi K3 (max)",
+      "name": "Kimi K3 (Max)",
       "short_name": "Kimi K3",
       "author": "kimi",
       "author_name": "Kimi",
@@ -255,12 +270,12 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 38.459,
-      "rank": 17
+      "output_speed": 39.44,
+      "rank": 18
     },
     {
       "model_id": "gpt-5-6-terra",
-      "name": "GPT-5.6 Terra (max)",
+      "name": "GPT-5.6 Terra (Max)",
       "short_name": "GPT-5.6 Terra",
       "author": "openai",
       "author_name": "OpenAI",
@@ -271,7 +286,7 @@
       "math": null,
       "price_blended": 4.5,
       "output_speed": 107.685,
-      "rank": 18
+      "rank": 19
     },
     {
       "model_id": "glm-5-3-flash",
@@ -285,22 +300,7 @@
       "coding": 71.5,
       "math": null,
       "price_blended": 0.237,
-      "output_speed": 46.936,
-      "rank": 19
-    },
-    {
-      "model_id": "claude-opus-4-8",
-      "name": "Claude Opus 4.8 (Adaptive Reasoning, Max Effort)",
-      "short_name": "Claude Opus 4.8",
-      "author": "anthropic",
-      "author_name": "Anthropic",
-      "author_icon": "./public/models_icons/anthropic.png",
-      "score": 41.8,
-      "intelligence": 41.8,
-      "coding": 74.3,
-      "math": null,
-      "price_blended": 10.0,
-      "output_speed": 0.0,
+      "output_speed": 48.181,
       "rank": 20
     }
   ],
@@ -317,12 +317,12 @@
       "coding": 81.6,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 68.862,
+      "output_speed": 69.669,
       "rank": 1
     },
     {
       "model_id": "gpt-5-6-sol-xhigh",
-      "name": "GPT-5.6 Sol (xhigh)",
+      "name": "GPT-5.6 Sol (Xhigh)",
       "short_name": "GPT-5.6 Sol",
       "author": "openai",
       "author_name": "OpenAI",
@@ -352,7 +352,7 @@
     },
     {
       "model_id": "gpt-6-astra-high",
-      "name": "GPT-6 Astra (high)",
+      "name": "GPT-6 Astra (High)",
       "short_name": "GPT-6 Astra",
       "author": "openai",
       "author_name": "OpenAI",
@@ -362,12 +362,12 @@
       "coding": 77.1,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 49.969,
+      "output_speed": 49.272,
       "rank": 4
     },
     {
       "model_id": "grok-4-6",
-      "name": "Grok 4.6 (high)",
+      "name": "Grok 4.6 (High)",
       "short_name": "Grok 4.6",
       "author": "xai",
       "author_name": "SpaceXAI",
@@ -377,12 +377,12 @@
       "coding": 76.8,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 62.616,
+      "output_speed": 59.141,
       "rank": 5
     },
     {
       "model_id": "gpt-5-6-terra",
-      "name": "GPT-5.6 Terra (max)",
+      "name": "GPT-5.6 Terra (Max)",
       "short_name": "GPT-5.6 Terra",
       "author": "openai",
       "author_name": "OpenAI",
@@ -412,7 +412,7 @@
     },
     {
       "model_id": "muse-spark-1-3-xhigh",
-      "name": "Muse Spark 1.3 (xhigh)",
+      "name": "Muse Spark 1.3 (Xhigh)",
       "short_name": "Muse Spark 1.3",
       "author": "meta",
       "author_name": "Meta",
@@ -422,12 +422,12 @@
       "coding": 76.5,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 153.49,
+      "output_speed": 216.642,
       "rank": 8
     },
     {
       "model_id": "gemini-3-8-flash",
-      "name": "Gemini 3.8 Flash (high)",
+      "name": "Gemini 3.8 Flash (High)",
       "short_name": "Gemini 3.8 Flash",
       "author": "google",
       "author_name": "Google",
@@ -437,7 +437,7 @@
       "coding": 76.3,
       "math": null,
       "price_blended": 1.5,
-      "output_speed": 222.13,
+      "output_speed": 237.734,
       "rank": 9
     },
     {
@@ -452,12 +452,12 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.267,
+      "output_speed": 39.279,
       "rank": 10
     },
     {
       "model_id": "kimi-k3",
-      "name": "Kimi K3 (max)",
+      "name": "Kimi K3 (Max)",
       "short_name": "Kimi K3",
       "author": "kimi",
       "author_name": "Kimi",
@@ -467,12 +467,12 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 38.459,
+      "output_speed": 39.44,
       "rank": 11
     },
     {
       "model_id": "gemini-3-7-flash",
-      "name": "Gemini 3.7 Flash (high)",
+      "name": "Gemini 3.7 Flash (High)",
       "short_name": "Gemini 3.7 Flash",
       "author": "google",
       "author_name": "Google",
@@ -487,7 +487,7 @@
     },
     {
       "model_id": "gpt-5-5",
-      "name": "GPT-5.5 (xhigh)",
+      "name": "GPT-5.5 (Xhigh)",
       "short_name": "GPT-5.5",
       "author": "openai",
       "author_name": "OpenAI",
@@ -502,7 +502,7 @@
     },
     {
       "model_id": "glm-5-3",
-      "name": "GLM-5.3 (max)",
+      "name": "GLM-5.3 (Max)",
       "short_name": "GLM-5.3",
       "author": "zai",
       "author_name": "Z AI",
@@ -512,7 +512,7 @@
       "coding": 74.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 70.434,
+      "output_speed": 69.965,
       "rank": 14
     },
     {
@@ -557,12 +557,12 @@
       "coding": 73.1,
       "math": null,
       "price_blended": 0.23,
-      "output_speed": 52.938,
+      "output_speed": 52.897,
       "rank": 17
     },
     {
       "model_id": "grok-4-5",
-      "name": "Grok 4.5 (high)",
+      "name": "Grok 4.5 (High)",
       "short_name": "Grok 4.5",
       "author": "xai",
       "author_name": "SpaceXAI",
@@ -577,7 +577,7 @@
     },
     {
       "model_id": "muse-spark-1-2",
-      "name": "Muse Spark 1.2 (xhigh)",
+      "name": "Muse Spark 1.2 (Xhigh)",
       "short_name": "Muse Spark 1.2",
       "author": "meta",
       "author_name": "Meta",
@@ -602,14 +602,14 @@
       "coding": 71.9,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.342,
+      "output_speed": 39.994,
       "rank": 20
     }
   ],
   "math": [
     {
       "model_id": "gpt-5-2",
-      "name": "GPT-5.2 (xhigh)",
+      "name": "GPT-5.2 (Xhigh)",
       "short_name": "GPT-5.2",
       "author": "openai",
       "author_name": "OpenAI",
@@ -624,7 +624,7 @@
     },
     {
       "model_id": "gpt-5-codex",
-      "name": "GPT-5 Codex (high)",
+      "name": "GPT-5 Codex (High)",
       "short_name": "GPT-5 Codex",
       "author": "openai",
       "author_name": "OpenAI",
@@ -684,7 +684,7 @@
     },
     {
       "model_id": "gemini-3-pro",
-      "name": "Gemini 3 Pro Preview (high)",
+      "name": "Gemini 3 Pro Preview (High)",
       "short_name": "Gemini 3 Pro Preview",
       "author": "google",
       "author_name": "Google",
@@ -699,7 +699,7 @@
     },
     {
       "model_id": "gpt-5-1-codex",
-      "name": "GPT-5.1 Codex (high)",
+      "name": "GPT-5.1 Codex (High)",
       "short_name": "GPT-5.1 Codex",
       "author": "openai",
       "author_name": "OpenAI",
@@ -759,7 +759,7 @@
     },
     {
       "model_id": "gpt-5",
-      "name": "GPT-5 (high)",
+      "name": "GPT-5 (High)",
       "short_name": "GPT-5",
       "author": "openai",
       "author_name": "OpenAI",
@@ -774,7 +774,7 @@
     },
     {
       "model_id": "nova-2-0-lite-reasoning",
-      "name": "Nova 2.0 Lite (high)",
+      "name": "Nova 2.0 Lite (High)",
       "short_name": "Nova 2.0 Lite",
       "author": "aws",
       "author_name": "Amazon",
@@ -784,12 +784,12 @@
       "coding": 23.0,
       "math": 94.3,
       "price_blended": 0.85,
-      "output_speed": 208.543,
+      "output_speed": 197.528,
       "rank": 12
     },
     {
       "model_id": "gpt-5-1",
-      "name": "GPT-5.1 (high)",
+      "name": "GPT-5.1 (High)",
       "short_name": "GPT-5.1",
       "author": "openai",
       "author_name": "OpenAI",
@@ -804,7 +804,7 @@
     },
     {
       "model_id": "gpt-oss-120b",
-      "name": "gpt-oss-120b (high)",
+      "name": "gpt-oss-120b (High)",
       "short_name": "gpt-oss-120b",
       "author": "openai",
       "author_name": "OpenAI",
@@ -814,7 +814,7 @@
       "coding": 30.4,
       "math": 93.4,
       "price_blended": 0.261,
-      "output_speed": 179.665,
+      "output_speed": 161.414,
       "rank": 14
     },
     {
@@ -849,7 +849,7 @@
     },
     {
       "model_id": "gpt-5-1-codex-mini",
-      "name": "GPT-5.1 Codex mini (high)",
+      "name": "GPT-5.1 Codex mini (High)",
       "short_name": "GPT-5.1 Codex mini",
       "author": "openai",
       "author_name": "OpenAI",
@@ -904,7 +904,7 @@
       "coding": 14.4,
       "math": 91.0,
       "price_blended": 0.088,
-      "output_speed": 151.534,
+      "output_speed": 151.276,
       "rank": 20
     }
   ]
