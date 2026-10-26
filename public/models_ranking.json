@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25T10:32:23.713698+00:00",
+  "updated_at": "2026-10-26T12:05:33.771612+00:00",
   "top_n": 20,
   "source": "artificialanalysis.ai",
   "intelligence": [
@@ -15,7 +15,7 @@
       "coding": null,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 95.141,
+      "output_speed": 95.564,
       "rank": 1
     },
     {
@@ -30,7 +30,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 138.593,
+      "output_speed": 140.537,
       "rank": 2
     },
     {
@@ -60,7 +60,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 51.256,
+      "output_speed": 47.748,
       "rank": 4
     },
     {
@@ -75,7 +75,7 @@
       "coding": 81.6,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 67.486,
+      "output_speed": 67.949,
       "rank": 5
     },
     {
@@ -105,7 +105,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 79.157,
+      "output_speed": 77.848,
       "rank": 7
     },
     {
@@ -135,7 +135,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 56.229,
+      "output_speed": 59.16,
       "rank": 9
     },
     {
@@ -225,7 +225,7 @@
       "coding": null,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 79.982,
+      "output_speed": 75.706,
       "rank": 15
     },
     {
@@ -240,7 +240,7 @@
       "coding": null,
       "math": null,
       "price_blended": 0.544,
-      "output_speed": 46.422,
+      "output_speed": 45.59,
       "rank": 16
     },
     {
@@ -255,7 +255,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.647,
+      "output_speed": 40.041,
       "rank": 17
     },
     {
@@ -270,7 +270,7 @@
       "coding": null,
       "math": null,
       "price_blended": 0.525,
-      "output_speed": 157.045,
+      "output_speed": 153.657,
       "rank": 18
     },
     {
@@ -285,7 +285,7 @@
       "coding": 74.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 83.516,
+      "output_speed": 86.298,
       "rank": 19
     },
     {
@@ -317,7 +317,7 @@
       "coding": 81.6,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 67.486,
+      "output_speed": 67.949,
       "rank": 1
     },
     {
@@ -362,7 +362,7 @@
       "coding": 77.1,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 49.935,
+      "output_speed": 52.293,
       "rank": 4
     },
     {
@@ -392,7 +392,7 @@
       "coding": 76.7,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 121.781,
+      "output_speed": 129.22,
       "rank": 6
     },
     {
@@ -437,7 +437,7 @@
       "coding": 76.3,
       "math": null,
       "price_blended": 1.5,
-      "output_speed": 124.281,
+      "output_speed": 124.793,
       "rank": 9
     },
     {
@@ -452,7 +452,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.647,
+      "output_speed": 40.041,
       "rank": 10
     },
     {
@@ -467,7 +467,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 39.08,
+      "output_speed": 44.66,
       "rank": 11
     },
     {
@@ -512,7 +512,7 @@
       "coding": 74.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 83.516,
+      "output_speed": 86.298,
       "rank": 14
     },
     {
@@ -557,7 +557,7 @@
       "coding": 73.1,
       "math": null,
       "price_blended": 0.23,
-      "output_speed": 49.226,
+      "output_speed": 53.06,
       "rank": 17
     },
     {
@@ -602,7 +602,7 @@
       "coding": 71.9,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.044,
+      "output_speed": 39.726,
       "rank": 20
     }
   ],
@@ -784,7 +784,7 @@
       "coding": 23.0,
       "math": 94.3,
       "price_blended": 0.85,
-      "output_speed": 215.403,
+      "output_speed": 217.298,
       "rank": 12
     },
     {
@@ -814,7 +814,7 @@
       "coding": 30.4,
       "math": 93.4,
       "price_blended": 0.262,
-      "output_speed": 212.231,
+      "output_speed": 236.073,
       "rank": 14
     },
     {
@@ -904,7 +904,7 @@
       "coding": 14.4,
       "math": 91.0,
       "price_blended": 0.088,
-      "output_speed": 241.211,
+      "output_speed": 250.561,
       "rank": 20
     }
   ]
