@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T12:05:33.771612+00:00",
+  "updated_at": "2026-10-27T11:25:57.772208+00:00",
   "top_n": 20,
   "source": "artificialanalysis.ai",
   "intelligence": [
@@ -15,7 +15,7 @@
       "coding": null,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 95.564,
+      "output_speed": 96.732,
       "rank": 1
     },
     {
@@ -30,7 +30,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 140.537,
+      "output_speed": 140.978,
       "rank": 2
     },
     {
@@ -60,7 +60,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 47.748,
+      "output_speed": 38.372,
       "rank": 4
     },
     {
@@ -75,7 +75,7 @@
       "coding": 81.6,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 67.949,
+      "output_speed": 65.81,
       "rank": 5
     },
     {
@@ -90,7 +90,7 @@
       "coding": 76.9,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 63.003,
+      "output_speed": 64.323,
       "rank": 6
     },
     {
@@ -105,7 +105,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 77.848,
+      "output_speed": 80.457,
       "rank": 7
     },
     {
@@ -120,7 +120,7 @@
       "coding": null,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 122.875,
+      "output_speed": 157.742,
       "rank": 8
     },
     {
@@ -135,7 +135,7 @@
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 59.16,
+      "output_speed": 64.281,
       "rank": 9
     },
     {
@@ -169,6 +169,21 @@
       "rank": 11
     },
     {
+      "model_id": "gpt-6-1-terra",
+      "name": "GPT-6.1 Terra (Max)",
+      "short_name": "GPT-6.1 Terra",
+      "author": "openai",
+      "author_name": "OpenAI",
+      "author_icon": "./public/models_icons/openai.svg",
+      "score": 48.1,
+      "intelligence": 48.1,
+      "coding": null,
+      "math": null,
+      "price_blended": 2.0,
+      "output_speed": 90.94,
+      "rank": 12
+    },
+    {
       "model_id": "muse-spark-1-3",
       "name": "Muse Spark 1.3 (Max)",
       "short_name": "Muse Spark 1.3",
@@ -181,7 +196,7 @@
       "math": null,
       "price_blended": 2.0,
       "output_speed": 0.0,
-      "rank": 12
+      "rank": 13
     },
     {
       "model_id": "gpt-6-sol",
@@ -196,7 +211,7 @@
       "math": null,
       "price_blended": 4.0,
       "output_speed": 0.0,
-      "rank": 13
+      "rank": 14
     },
     {
       "model_id": "gpt-5-6-sol",
@@ -211,7 +226,7 @@
       "math": null,
       "price_blended": 8.0,
       "output_speed": 0.0,
-      "rank": 14
+      "rank": 15
     },
     {
       "model_id": "grok-4-7",
@@ -225,8 +240,8 @@
       "coding": null,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 75.706,
-      "rank": 15
+      "output_speed": 75.872,
+      "rank": 16
     },
     {
       "model_id": "mimo-v2-6-pro",
@@ -240,8 +255,8 @@
       "coding": null,
       "math": null,
       "price_blended": 0.544,
-      "output_speed": 45.59,
-      "rank": 16
+      "output_speed": 45.963,
+      "rank": 17
     },
     {
       "model_id": "qwen3-8-max",
@@ -255,8 +270,8 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 40.041,
-      "rank": 17
+      "output_speed": 39.909,
+      "rank": 18
     },
     {
       "model_id": "deepseek-v4-1-flash-1017",
@@ -270,8 +285,8 @@
       "coding": null,
       "math": null,
       "price_blended": 0.525,
-      "output_speed": 153.657,
-      "rank": 18
+      "output_speed": 157.495,
+      "rank": 19
     },
     {
       "model_id": "glm-5-3",
@@ -285,22 +300,7 @@
       "coding": 74.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 86.298,
-      "rank": 19
-    },
-    {
-      "model_id": "grok-4-6",
-      "name": "Grok 4.6 (High)",
-      "short_name": "Grok 4.6",
-      "author": "xai",
-      "author_name": "SpaceXAI",
-      "author_icon": "./public/models_icons/xai.png",
-      "score": 44.3,
-      "intelligence": 44.3,
-      "coding": 76.8,
-      "math": null,
-      "price_blended": 3.0,
-      "output_speed": 0.0,
+      "output_speed": 78.663,
       "rank": 20
     }
   ],
@@ -317,7 +317,7 @@
       "coding": 81.6,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 67.949,
+      "output_speed": 65.81,
       "rank": 1
     },
     {
@@ -362,7 +362,7 @@
       "coding": 77.1,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 52.293,
+      "output_speed": 53.244,
       "rank": 4
     },
     {
@@ -392,7 +392,7 @@
       "coding": 76.7,
       "math": null,
       "price_blended": 4.5,
-      "output_speed": 129.22,
+      "output_speed": 142.5,
       "rank": 6
     },
     {
@@ -437,7 +437,7 @@
       "coding": 76.3,
       "math": null,
       "price_blended": 1.5,
-      "output_speed": 124.793,
+      "output_speed": 131.649,
       "rank": 9
     },
     {
@@ -452,7 +452,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 40.041,
+      "output_speed": 39.909,
       "rank": 10
     },
     {
@@ -467,7 +467,7 @@
       "coding": 76.2,
       "math": null,
       "price_blended": 6.0,
-      "output_speed": 44.66,
+      "output_speed": 0.0,
       "rank": 11
     },
     {
@@ -512,7 +512,7 @@
       "coding": 74.8,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 86.298,
+      "output_speed": 78.663,
       "rank": 14
     },
     {
@@ -557,7 +557,7 @@
       "coding": 73.1,
       "math": null,
       "price_blended": 0.23,
-      "output_speed": 53.06,
+      "output_speed": 53.227,
       "rank": 17
     },
     {
@@ -602,7 +602,7 @@
       "coding": 71.9,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 39.726,
+      "output_speed": 40.207,
       "rank": 20
     }
   ],
@@ -814,7 +814,7 @@
       "coding": 30.4,
       "math": 93.4,
       "price_blended": 0.262,
-      "output_speed": 236.073,
+      "output_speed": 238.332,
       "rank": 14
     },
     {
@@ -904,7 +904,7 @@
       "coding": 14.4,
       "math": 91.0,
       "price_blended": 0.088,
-      "output_speed": 250.561,
+      "output_speed": 247.487,
       "rank": 20
     }
   ]
