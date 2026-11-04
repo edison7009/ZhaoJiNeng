@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03T13:27:37.855777+00:00",
+  "updated_at": "2026-11-04T13:39:06.729445+00:00",
   "top_n": 20,
   "source": "artificialanalysis.ai",
   "intelligence": [
@@ -10,12 +10,12 @@
       "author": "google",
       "author_name": "Google",
       "author_icon": "./public/models_icons/google.svg",
-      "score": 59.4,
-      "intelligence": 59.4,
+      "score": 60.0,
+      "intelligence": 60.0,
       "coding": null,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 90.587,
+      "output_speed": 89.839,
       "rank": 1
     },
     {
@@ -25,8 +25,8 @@
       "author": "anthropic",
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
-      "score": 58.4,
-      "intelligence": 58.4,
+      "score": 59.1,
+      "intelligence": 59.1,
       "coding": null,
       "math": null,
       "price_blended": 8.0,
@@ -45,7 +45,7 @@
       "coding": null,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 58.982,
+      "output_speed": 53.665,
       "rank": 3
     },
     {
@@ -55,12 +55,12 @@
       "author": "openai",
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
-      "score": 54.5,
-      "intelligence": 54.5,
+      "score": 54.6,
+      "intelligence": 54.6,
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 68.042,
+      "output_speed": 62.595,
       "rank": 4
     },
     {
@@ -70,12 +70,12 @@
       "author": "anthropic",
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
-      "score": 54.2,
-      "intelligence": 54.2,
+      "score": 54.5,
+      "intelligence": 54.5,
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 133.144,
+      "output_speed": 134.089,
       "rank": 5
     },
     {
@@ -85,12 +85,12 @@
       "author": "openai",
       "author_name": "OpenAI",
       "author_icon": "./public/models_icons/openai.svg",
-      "score": 51.0,
-      "intelligence": 51.0,
+      "score": 51.3,
+      "intelligence": 51.3,
       "coding": null,
       "math": null,
       "price_blended": 2.0,
-      "output_speed": 116.867,
+      "output_speed": 109.823,
       "rank": 6
     },
     {
@@ -105,7 +105,7 @@
       "coding": null,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 82.234,
+      "output_speed": 81.333,
       "rank": 7
     },
     {
@@ -115,8 +115,8 @@
       "author": "meta",
       "author_name": "Meta",
       "author_icon": "./public/models_icons/meta.jpg",
-      "score": 49.7,
-      "intelligence": 49.7,
+      "score": 50.1,
+      "intelligence": 50.1,
       "coding": null,
       "math": null,
       "price_blended": 0.0,
@@ -130,12 +130,12 @@
       "author": "anthropic",
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
-      "score": 49.7,
-      "intelligence": 49.7,
+      "score": 50.0,
+      "intelligence": 50.0,
       "coding": null,
       "math": null,
       "price_blended": 20.0,
-      "output_speed": 53.654,
+      "output_speed": 51.752,
       "rank": 9
     },
     {
@@ -145,13 +145,28 @@
       "author": "kimi",
       "author_name": "Kimi",
       "author_icon": "./public/models_icons/kimi.png",
-      "score": 46.0,
-      "intelligence": 46.0,
+      "score": 46.5,
+      "intelligence": 46.5,
       "coding": null,
       "math": null,
       "price_blended": 4.0,
-      "output_speed": 28.369,
+      "output_speed": 28.48,
       "rank": 10
+    },
+    {
+      "model_id": "gpt-6-sol",
+      "name": "GPT-6 Sol (Max)",
+      "short_name": "GPT-6 Sol",
+      "author": "openai",
+      "author_name": "OpenAI",
+      "author_icon": "./public/models_icons/openai.svg",
+      "score": 44.2,
+      "intelligence": 44.2,
+      "coding": null,
+      "math": null,
+      "price_blended": 4.0,
+      "output_speed": 0.0,
+      "rank": 11
     },
     {
       "model_id": "muse-wonder",
@@ -160,13 +175,13 @@
       "author": "meta",
       "author_name": "Meta",
       "author_icon": "./public/models_icons/meta.jpg",
-      "score": 43.3,
-      "intelligence": 43.3,
+      "score": 43.6,
+      "intelligence": 43.6,
       "coding": null,
       "math": null,
       "price_blended": 8.0,
-      "output_speed": 138.767,
-      "rank": 11
+      "output_speed": 125.124,
+      "rank": 12
     },
     {
       "model_id": "muse-spark-1-3",
@@ -175,13 +190,13 @@
       "author": "meta",
       "author_name": "Meta",
       "author_icon": "./public/models_icons/meta.jpg",
-      "score": 36.4,
-      "intelligence": 36.4,
+      "score": 36.6,
+      "intelligence": 36.6,
       "coding": null,
       "math": null,
       "price_blended": 2.0,
       "output_speed": 0.0,
-      "rank": 12
+      "rank": 13
     },
     {
       "model_id": "claude-haiku-5-5",
@@ -190,13 +205,13 @@
       "author": "anthropic",
       "author_name": "Anthropic",
       "author_icon": "./public/models_icons/anthropic.png",
-      "score": 36.2,
-      "intelligence": 36.2,
+      "score": 36.5,
+      "intelligence": 36.5,
       "coding": null,
       "math": null,
       "price_blended": 0.2,
-      "output_speed": 231.752,
-      "rank": 13
+      "output_speed": 235.374,
+      "rank": 14
     },
     {
       "model_id": "grok-4-7",
@@ -205,13 +220,13 @@
       "author": "xai",
       "author_name": "SpaceXAI",
       "author_icon": "./public/models_icons/xai.png",
-      "score": 35.3,
-      "intelligence": 35.3,
+      "score": 35.5,
+      "intelligence": 35.5,
       "coding": null,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 61.774,
-      "rank": 14
+      "output_speed": 61.593,
+      "rank": 15
     },
     {
       "model_id": "qwen3-8-max",
@@ -220,13 +235,13 @@
       "author": "alibaba",
       "author_name": "Alibaba",
       "author_icon": "./public/models_icons/alibaba.png",
-      "score": 33.6,
-      "intelligence": 33.6,
+      "score": 33.7,
+      "intelligence": 33.7,
       "coding": null,
       "math": null,
       "price_blended": 3.0,
-      "output_speed": 38.268,
-      "rank": 15
+      "output_speed": 37.142,
+      "rank": 16
     },
     {
       "model_id": "deepseek-v4-1-flash-1017",
@@ -235,13 +250,28 @@
       "author": "deepseek",
       "author_name": "DeepSeek",
       "author_icon": "./public/models_icons/deepseek.png",
-      "score": 32.5,
-      "intelligence": 32.5,
+      "score": 32.6,
+      "intelligence": 32.6,
       "coding": null,
       "math": null,
       "price_blended": 0.525,
-      "output_speed": 156.909,
-      "rank": 16
+      "output_speed": 155.383,
+      "rank": 17
+    },
+    {
+      "model_id": "gpt-5-6-terra",
+      "name": "GPT-5.6 Terra (Max)",
+      "short_name": "GPT-5.6 Terra",
+      "author": "openai",
+      "author_name": "OpenAI",
+      "author_icon": "./public/models_icons/openai.svg",
+      "score": 32.3,
+      "intelligence": 32.3,
+      "coding": null,
+      "math": null,
+      "price_blended": 4.5,
+      "output_speed": 0.0,
+      "rank": 18
     },
     {
       "model_id": "glm-5-3",
@@ -255,8 +285,8 @@
       "coding": null,
       "math": null,
       "price_blended": 2.15,
-      "output_speed": 77.235,
-      "rank": 17
+      "output_speed": 67.655,
+      "rank": 19
     },
     {
       "model_id": "gemini-3-8-flash",
@@ -265,42 +295,12 @@
       "author": "google",
       "author_name": "Google",
       "author_icon": "./public/models_icons/google.svg",
-      "score": 30.5,
-      "intelligence": 30.5,
+      "score": 30.8,
+      "intelligence": 30.8,
       "coding": null,
       "math": null,
       "price_blended": 1.5,
-      "output_speed": 131.033,
-      "rank": 18
-    },
-    {
-      "model_id": "mimo-v2-6-pro",
-      "name": "MiMo-V2.6-Pro",
-      "short_name": "MiMo-V2.6-Pro",
-      "author": "xiaomi",
-      "author_name": "Xiaomi",
-      "author_icon": "./public/models_icons/xiaomi.png",
-      "score": 29.9,
-      "intelligence": 29.9,
-      "coding": null,
-      "math": null,
-      "price_blended": 0.544,
-      "output_speed": 38.638,
-      "rank": 19
-    },
-    {
-      "model_id": "ling-3-1-flash-1019",
-      "name": "Ling 3.1 Flash 1019",
-      "short_name": "Ling 3.1 Flash 1019",
-      "author": "inclusionai",
-      "author_name": "InclusionAI",
-      "author_icon": "./public/models_icons/inclusionai.png",
-      "score": 29.5,
-      "intelligence": 29.5,
-      "coding": null,
-      "math": null,
-      "price_blended": 0.45,
-      "output_speed": 0.0,
+      "output_speed": 118.282,
       "rank": 20
     }
   ],
